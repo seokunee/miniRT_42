@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 17:58:37 by chanwjeo          #+#    #+#             */
-/*   Updated: 2022/11/16 20:20:21 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/11 09:27:59 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
  * nothing else to read, or an error occurred */
 extern char		*get_next_line(int fd);
 
-typedef struct s_array {
+typedef struct s_array
+{
 	size_t	size;
 	size_t	capacity;
 	char	*data;
