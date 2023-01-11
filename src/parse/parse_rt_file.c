@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 16:22:05 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/11 21:02:10 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	check_file_name(char *file_name)
 		error_exit("Invalid file type");
 }
 
+void	check_flags(char *line)
+{
+	ft_split_is_space();
+}
+
 char	*read_file(t_info *info, char *file_name)
 {
 	int				fd;
@@ -36,13 +41,13 @@ char	*read_file(t_info *info, char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		error_exit("File open failed");
-	check = ft_calloc(sizeof(t_check_flag), 1);
 	tmp = get_next_line(fd);
 	if (!tmp)
 	{
 		close(fd);
 		return (NULL);
 	}
+	check = ft_calloc(sizeof(t_check_flag), 1);
 	readed = ft_calloc(sizeof(char *), 1);
 	while (1)
 	{
@@ -55,8 +60,9 @@ char	*read_file(t_info *info, char *file_name)
 			break ;
 	}
 	close(fd);
-	printf("%s", readed);
+	// printf("%s", readed);
 	free(readed);
+	free(check);
 	return (NULL);
 }
 
