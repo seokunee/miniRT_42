@@ -6,7 +6,7 @@
 #    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/10 15:14:21 by chanwjeo         ###   ########.fr        #
+#    Updated: 2023/01/11 09:53:58 by chanwjeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,16 @@ INCLUDE			= includes
 # ------------------------------------------------------ #
 SRC_DIR			= src
 MAIN_DIR		= $(SRC_DIR)/main/
-LEXER_DIR		= $(SRC_DIR)/lexer/
-PARSER_DIR		= $(SRC_DIR)/parser/
-EXECUTER_DIR	= $(SRC_DIR)/executer/
-BUILTIN_DIR		= $(SRC_DIR)/builtin/
+PARSE_DIR		= $(SRC_DIR)/parse/
+
 LIBFT_DIR		= $(SRC_DIR)/libft/
-STRING_DIR		= $(SRC_DIR)/string/
-ITERATOR_DIR	= $(SRC_DIR)/iterator/
 MLX_DIR			= $(SRC_DIR)/mlx/
+
+# STRING_DIR		= $(SRC_DIR)/string/
+# ITERATOR_DIR	= $(SRC_DIR)/iterator/
+# LEXER_DIR		= $(SRC_DIR)/lexer/
+# EXECUTER_DIR	= $(SRC_DIR)/executer/
+# BUILTIN_DIR		= $(SRC_DIR)/builtin/
 
 # Use MLX library
 # MLX				= -L./$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
@@ -38,11 +40,11 @@ MLX_DIR			= $(SRC_DIR)/mlx/
 # ------------------------------------------------------ #
 MAIN_SRC		= main
 
+PARSE_SRC		= init_info
+
 # LEXER_SRC		= token_create token_modify \
 # 				  scanner_main scanner_create scanner_function_ptr \
 # 				  scanner_helper scanner_helper2 scanner_get_token_1 scanner_get_token_2
-
-# PARSER_SRC		= parse_tree parse_tree_utils parse_tree_helper
 
 # EXECUTER_SRC	= executer token_expand token_expand_utils get_full_path subshell \
 # 				  redirection redirection_utils exec_command exec_command_utils \
@@ -57,9 +59,9 @@ MAIN_SRC		= main
 
 # NOTE : Add to SRC here
 # ------------------------------------------------------ #
-SRC = $(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
+SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
+		$(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(LEXER_DIR), $(LEXER_SRC))) \
-	#   $(addsuffix .c, $(addprefix $(PARSER_DIR), $(PARSER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(EXECUTER_DIR), $(EXECUTER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(BUILTIN_DIR), $(BUILTIN_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(STRING_DIR), $(STRING_SRC))) \
