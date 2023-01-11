@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 16:24:41 by chanwjeo          #+#    #+#             */
-/*   Updated: 2022/11/16 20:20:21 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/11 09:27:16 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <stddef.h>
 # include <stdbool.h>
 
-typedef struct s_darray {
+typedef struct s_darray
+{
 	size_t		size;
 	size_t		capacity;
 	void		**data;

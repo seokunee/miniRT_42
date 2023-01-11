@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:11:25 by chanwjeo          #+#    #+#             */
-/*   Updated: 2022/11/16 20:20:21 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/11 09:28:12 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
  |              _info State handler                |
  -------------------------------------------------*/
 /* TODO : add member for Bonus */
-typedef struct s_print {
+typedef struct s_print
+{
 	size_t	print_cnt;
 	int		state;
 }	t_print;

@@ -6,11 +6,11 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2022/11/23 15:51:38 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/11 09:37:31 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/minirt.h"
 
 void	error_exit(char *msg)
 {
@@ -18,64 +18,33 @@ void	error_exit(char *msg)
 	exit(1);
 }
 
-void	init_map(t_map *map)
+void	init_info(t_info *info)
 {
-	ft_memset(map, 0, sizeof(t_map));
-	map->mlx = mlx_init();
-	map->texture = malloc(sizeof(t_texture));
-}
-
-void	init_img(t_map *map, t_img *a, int i, char *xpm)
-{
-	int	wd;
-	int	hg;
-
-	a[i].pt = mlx_xpm_file_to_image(map->mlx, xpm, &wd, &hg);
-}
-
-void	validate_map(t_map *map, char *map_path)
-{
-	int		value_of_map;
-
-	value_of_map = ft_strlen(map_path);
-	if (ft_strncmp(map_path + value_of_map - 4, ".cub", 4))
-		error_exit("Not validate map extension.");
-	char	**texture_split;
-	int		map_fd;
-	char	*line;
-	texture_split = ft_split("NO,SO,WE,EA", ',');
-	if (!texture_split)
-		error_exit("Failure memory allocate for split.");
-	map_fd = open(map_path, O_RDONLY);
-	if (map_fd == -1)
-		error_exit("Failure map open.");
-	int i = 0;
-	char **line_split;
-	char *line_without_newline;
-	while (texture_split[i])
-	{
-		line = get_next_line(map_fd);
-		line_split = ft_split(line, ' ');
-		line_without_newline = ft_strdup_without_newline(line_split[1]);
-		init_img(map, map->texture->textures, i, line_without_newline);
-		// map->texture->textures[i] = mlx_xpm_file_to_image(map->mlx, line_without_newline, 0, 0);
-		printf("%s\n", line_without_newline);
-		i++;
-		free(line);
-		free_double_array((void **)line_split);
-		free(line_without_newline);
-	}
-	free_double_array((void **)texture_split);
+	ft_memset(info, 0, sizeof(t_info));
+	info->t_a = malloc(sizeof(t_a));
+	info->t_c = malloc(sizeof(t_c));
+	info->t_l = malloc(sizeof(t_l));
+	info->t_pl = malloc(sizeof(t_pl));
+	info->t_sp = malloc(sizeof(t_sp));
+	info->t_cy = malloc(sizeof(t_cy));
+	if (!info->t_a || !info->t_c || !info->t_cy || \
+		!info->t_l || !info->t_pl || !info->t_sp)
+		error_exit("Malloc failure.");
+	ft_memset(info->t_a, 0, sizeof(t_a));
+	ft_memset(info->t_c, 0, sizeof(t_c));
+	ft_memset(info->t_l, 0, sizeof(t_l));
+	ft_memset(info->t_pl, 0, sizeof(t_pl));
+	ft_memset(info->t_sp, 0, sizeof(t_sp));
+	ft_memset(info->t_cy, 0, sizeof(t_cy));
 }
 
 int	main(int ac, char **av)
 {
-	t_map	map;
-	
-	if (ac != 2 && ac != 3)
-		return (0);
-	init_map(&map);
-	validate_map(&map, av[1]);
-	system("leaks cub3d");
+	t_info	info;
+
+	if (ac != 2)
+		error_exit("Invalid number of arguments. Check it!");
+	init_info(&info);
+	system("leaks minirt");
 	return (0);
 }

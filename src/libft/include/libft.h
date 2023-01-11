@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:45:16 by chanwjeo          #+#    #+#             */
-/*   Updated: 2022/11/21 17:37:12 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/11 09:33:13 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ extern void		delete_vector(t_vector **address_of_vec);
  * - capacity : total size of it's allocated memory.
  * - **data   : pointer to array of data(= void *) set. */
 
-typedef struct s_darray {
+typedef struct s_darray
+{
 	size_t		size;
 	size_t		capacity;
 	void		**data;
@@ -397,7 +398,7 @@ extern char		**ft_split(char const *str, char c);
 /* ----------------------------
  * * Free allocated memory for 2d array.
  * ’s’ using the character ’c’ as a delimiter. */
-void	free_double_array(void **array);
+void			free_double_array(void **array);
 
 /* ----------------------------
  * * Allocates and returns a string representing the integer 
