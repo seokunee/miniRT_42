@@ -6,7 +6,7 @@
 #    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/11 09:53:58 by chanwjeo         ###   ########.fr        #
+#    Updated: 2023/01/11 16:09:16 by chanwjeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ PARSE_DIR		= $(SRC_DIR)/parse/
 
 LIBFT_DIR		= $(SRC_DIR)/libft/
 MLX_DIR			= $(SRC_DIR)/mlx/
+MATH_DIR		= $(SRC_DIR)/math/
 
 # STRING_DIR		= $(SRC_DIR)/string/
 # ITERATOR_DIR	= $(SRC_DIR)/iterator/
@@ -41,6 +42,8 @@ MLX_DIR			= $(SRC_DIR)/mlx/
 MAIN_SRC		= main
 
 PARSE_SRC		= init_info
+
+MATH_SRC		= vector_dot_cross vector_op
 
 # LEXER_SRC		= token_create token_modify \
 # 				  scanner_main scanner_create scanner_function_ptr \
@@ -61,6 +64,7 @@ PARSE_SRC		= init_info
 # ------------------------------------------------------ #
 SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
 		$(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
+		$(addsuffix .c, $(addprefix $(MATH_DIR), $(MATH_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(LEXER_DIR), $(LEXER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(EXECUTER_DIR), $(EXECUTER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(BUILTIN_DIR), $(BUILTIN_SRC))) \

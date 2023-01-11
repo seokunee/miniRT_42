@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:45:16 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 09:33:13 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:24:34 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -478,5 +478,12 @@ extern void		ft_lstiter(t_list *lst, void (*f)(void *));
  * the content of an element if needed. */
 extern t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), \
 		void (*del)(void *));
+
+/*
+* Memory allocate function
+* size: type size
+*/
+extern void		*ft_malloc(size_t size);
+
 
 #endif	/* LIBFT_H */
