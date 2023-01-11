@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 09:56:02 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:17:24 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,21 @@ typedef struct s_info
 	struct s_cy	*t_cy;
 }	t_info;
 
+/*
+* check_flag
+* explaination : check number of flags in '.rt file'
+*/
+typedef struct s_check_flag
+{
+	int	a;
+	int	c;
+	int	l;
+	int	pl;
+	int	sp;
+	int	cy;
+}	t_check_flag;
+
 void	init_info(t_info *info);
+char	*parse_rt_file(t_info *info, char *file_name);
 
 #endif
