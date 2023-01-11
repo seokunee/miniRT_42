@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 16:13:37 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/12 08:46:26 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ typedef struct s_vec
 t_vec	*vec_sum(t_vec *v1, t_vec *v2);
 t_vec	*vec_multiple(t_vec *v1, t_vec *v2);
 t_vec	*vec_subtract(t_vec *v1, t_vec *v2);
+
+/*
+* Return a length of vector
+*/
+float	vec_length(t_vec *v);
 
 /*
 * dot and cross product of vector

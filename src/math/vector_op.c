@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:46:29 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 16:14:14 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/12 08:46:38 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,9 @@ t_vec	*vec_subtract(t_vec *v1, t_vec *v2)
 	ret_vector->y = v1->y + v2->y;
 	ret_vector->z = v1->z + v2->z;
 	return ret_vector;
+}
+
+float	vec_length(t_vec *v)
+{
+	return sqrtf(v->x * v->x + v->y * v->y + v->z * v->z);
 }
