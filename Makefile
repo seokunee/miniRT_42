@@ -6,7 +6,7 @@
 #    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/11 16:09:16 by chanwjeo         ###   ########.fr        #
+#    Updated: 2023/01/12 10:46:31 by chanwjeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ MAIN_SRC		= main
 
 PARSE_SRC		= init_info
 
-MATH_SRC		= vector_dot_cross vector_op
+MATH_SRC		= vector_dot_cross vector_op create_vector
 
 # LEXER_SRC		= token_create token_modify \
 # 				  scanner_main scanner_create scanner_function_ptr \
