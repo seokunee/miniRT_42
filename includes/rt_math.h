@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/12 09:24:15 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/13 23:18:30 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,12 @@ t_vec3	*create_3d_vec_input_same_value(float f);
 t_vec4	*create_4d_vec_input_3d(t_vec3 *v1, float f);
 t_vec4	*create_4d_vec_input_4fs(float f1, float f2, float f3, float f4);
 t_vec4	*create_4d_vec_input_same_value(float f);
+
+/*
+* Return normalized 3D-vector.
+*/
+t_vec3	*normalize_3d_vector(t_vec3 *v);
+
+
 
 #endif
