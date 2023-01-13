@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/13 23:18:30 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/13 23:21:48 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ t_vec4	*create_4d_vec_input_same_value(float f);
 */
 t_vec3	*normalize_3d_vector(t_vec3 *v);
 
+/*
+* Calculate power of float value.
+* Input 2 float numbers, base and exp.
+*/
+float	float_pow(float base, float exp);
 
 
 #endif
