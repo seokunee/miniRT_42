@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/13 23:21:48 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/13 23:36:04 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,12 @@ t_vec3	*normalize_3d_vector(t_vec3 *v);
 */
 float	float_pow(float base, float exp);
 
+/*
+* compare_value.c
+* Implement funcions that are comparing 2 float values.
+* Return a float value that is suitable for the condition of the function.
+*/
+float	float_max(float f1, float f2);
+float	float_min(float f1, float f2);
 
 #endif
