@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_vector.c                                    :+:      :+:    :+:   */
+/*   create_4d_vector.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:00:41 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/15 15:28:10 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:53:58 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_vec4	*create_4d_vec_input_2d_vector(t_vec2 *v, float f1, float f2)
 	ret_vector->x2 = v->y;
 	ret_vector->x3 = f1;
 	ret_vector->x4 = f2;
-	return ret_vector;
+	return (ret_vector);
 }
 
 t_vec4	*create_4d_vec_input_3d_vector(t_vec3 *v1, float f)
@@ -57,5 +57,5 @@ t_vec4	*create_4d_vec_input_same_value(float f)
 	ret_vector->x2 = f;
 	ret_vector->x3 = f;
 	ret_vector->x4 = f;
-	return (ret_vector);	
+	return (ret_vector);
 }
