@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/13 23:36:04 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:27:17 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 #include "minirt.h"
 #include <math.h>
+
+typedef struct s_vec2
+{
+	float	x;
+	float	y;
+}	t_vec2;
 
 typedef struct s_vec3
 {
@@ -49,23 +55,35 @@ float	vec_length(t_vec3 *v);
 float	vec_dot(t_vec3 *v1, t_vec3 *v2);
 t_vec3	*vec_cross(t_vec3 *v1, t_vec3 *v2);
 
+/* Create 2D-vector functions
+* 1. Input 2 float values into arguments.
+* 2. Input a float value into arguments.
+	* Then, The vector will be returned that elements will get same value.
+*/
+t_vec2	*create_2d_vec(float f1, float f2);
+t_vec2	*create_2d_vec_input_same_value(float f);
+
 /*
 * Create 3D-vector functions
 * 1. Input 3 float values into arguments.
-* 2. Input a float values into arguments.
+* 2. Input a float value into arguments.
 	* Then, The vector will be returned that elements will get same value.
+* 3. Input a 2D-vector and a float value into arguments.
 */
 t_vec3	*create_3d_vec(float f1, float f2, float f3);
 t_vec3	*create_3d_vec_input_same_value(float f);
+t_vec3	*create_3d_vec_input_2d_vector(t_vec2 *v, float f);
 
 /*
 * Create 4D-vector functions.
-* 1. Input 3D-vector and a float value into arguments.
-* 2. Input 4 float values into arguments.
-* 3. Input a float values into arguments.
+* 1. Input 2D-vector and 2 float values into arguments.
+* 2. Input 3D-vector and a float value into arguments.
+* 3. Input 4 float values into arguments.
+* 4. Input a float value into arguments.
 	* Then, The vector will be returned that elements will get same value.
 */
-t_vec4	*create_4d_vec_input_3d(t_vec3 *v1, float f);
+t_vec4	*create_4d_vec_input_2d_vector(t_vec2 *v, float f1, float f2);
+t_vec4	*create_4d_vec_input_3d_vector(t_vec3 *v1, float f);
 t_vec4	*create_4d_vec_input_4fs(float f1, float f2, float f3, float f4);
 t_vec4	*create_4d_vec_input_same_value(float f);
 
