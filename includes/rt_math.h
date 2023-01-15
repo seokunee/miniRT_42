@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/15 19:12:18 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/15 23:45:32 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,23 @@ typedef struct s_vec4
 float	abs_float(float f);
 
 /*
-* '+', '*', '-' operator of vector
+* '+', '*', '-' operator of 2D-vector
+*/
+t_vec2	*vec_sum_2d(t_vec2 *v1, t_vec2 *v2);
+t_vec2	*vec_sub_2d(t_vec2 *v1, t_vec2 *v2);
+t_vec2	*vec_mul_2d(t_vec2 *v, float f);
+
+/*
+* '+', '*', '-' operator of 3D-vector
 */
 t_vec3	*vec_sum(t_vec3 *v1, t_vec3 *v2);
 t_vec3	*vec_sub(t_vec3 *v1, t_vec3 *v2);
-t_vec3	*vec_multiple(t_vec3 *v1, float f);
+t_vec3	*vec_mul(t_vec3 *v, float f);
 
 /*
 * Convert each element to minus element.
 */
+t_vec2	*vec_minus_2d(t_vec2 *v);
 t_vec3	*vec_minus(t_vec3 *v);
 
 /*
