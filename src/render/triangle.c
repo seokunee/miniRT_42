@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raytracer.c                                        :+:      :+:    :+:   */
+/*   triangle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:14:59 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 00:06:57 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:10:49 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,39 +49,6 @@ t_hit	*check_ray_collision(t_ray *ray, t_tri *tri)
 	hit->d = 1.0f;
 	hit->point = create_3d_vec_input_same_value(0.0f);
 	hit->normal = create_3d_vec_input_same_value(0.0f);
-	if (intersect_ray_triangle(ray, tri, &hit))
+	intersect_ray_triangle(ray, tri, &hit);
 	return (hit);
-}
-
-t_hit	*find_closest_collision(t_ray *ray)
-{
-	float	closest_d;
-	t_hit	*closest_hit;
-	int		i;
-
-	closest_hit = ft_malloc(sizeof(t_hit));
-	closest_d = 2147483647.0
-	i = -1;
-	while (++i < ray->num_of_objs)
-	{
-
-		
-	}
-	for (int l = 0; l < objects.size(); l++)
-	{
-		auto hit = objects[l]->CheckRayCollision(ray);
-
-		if (hit.d >= 0.0f)
-		{
-			if (hit.d < closestD)
-			{
-				closestD = hit.d;
-				closestHit = hit;
-				closestHit.obj = objects[l];
-
-				// 텍스춰 좌표
-				closestHit.uv = hit.uv;
-			}
-		}
-	}
 }
