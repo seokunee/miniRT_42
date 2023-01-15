@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/15 15:27:17 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:53:06 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,17 @@ float	float_pow(float base, float exp);
 * Implement funcions that are comparing 2 float values.
 * Return a float value that is suitable for the condition of the function.
 */
-float	float_max(float f1, float f2);
-float	float_min(float f1, float f2);
+float	max_float(float f1, float f2);
+float	min_float(float f1, float f2);
+
+/*
+* clamp.c
+* Constrain a value to lie between two further values.
+* clamp returns the vector of v constrained to the range min_val to max_val.
+	* The returned vector is computed as min(max(v->element, minVal), maxVal).
+*/
+t_vec2	*clamp_2d(t_vec2 *v, float min_val, float max_val);
+t_vec3	*clamp_3d(t_vec3 *v, float min_val, float max_val);
+t_vec4	*clamp_4d(t_vec4 *v, float min_val, float max_val);
 
 #endif
