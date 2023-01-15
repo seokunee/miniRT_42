@@ -6,13 +6,13 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 19:49:48 by yje               #+#    #+#             */
-/*   Updated: 2023/01/15 23:45:32 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:01:23 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/rt_math.h"
 
-t_vec2	*vec_sum_2d(t_vec2 *v1, t_vec2 *v2)
+t_vec2	*v_sum_2d(t_vec2 *v1, t_vec2 *v2)
 {
 	t_vec2	*ret_vector;
 
@@ -22,7 +22,7 @@ t_vec2	*vec_sum_2d(t_vec2 *v1, t_vec2 *v2)
 	return(ret_vector);
 }
 
-t_vec2	*vec_sub_2d(t_vec2 *v1, t_vec2 *v2)
+t_vec2	*v_sub_2d(t_vec2 *v1, t_vec2 *v2)
 {
 	t_vec2	*ret_vector;
 
@@ -32,7 +32,7 @@ t_vec2	*vec_sub_2d(t_vec2 *v1, t_vec2 *v2)
 	return (ret_vector);
 }
 
-t_vec2	*vec_mul_2d(t_vec2 *v, float f)
+t_vec2	*v_mul_2d(t_vec2 *v, float f)
 {
 	t_vec2	*ret_vector;
 
@@ -42,7 +42,7 @@ t_vec2	*vec_mul_2d(t_vec2 *v, float f)
 	return(ret_vector);
 }
 
-t_vec2	*vec_minus_2d(t_vec2 *v)
+t_vec2	*v_minus_2d(t_vec2 *v)
 {
 	t_vec2	*ret_vector;
 
