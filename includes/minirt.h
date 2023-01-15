@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 09:54:55 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:50:51 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 #include "../src/mlx/mlx.h"
 #include "../src/libft/include/libft.h"
 #include "info.h"
+#include "rt_math.h"
+#include "raytracer.h"
+
+# define TRUE	1
+# define FALSE	0
 
 /*
 * main.c
