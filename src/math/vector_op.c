@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:46:29 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/12 09:14:10 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/15 18:37:50 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ t_vec3	*vec_subtract(t_vec3 *v1, t_vec3 *v2)
 	ret_vector->x = v1->x + v2->x;
 	ret_vector->y = v1->y + v2->y;
 	ret_vector->z = v1->z + v2->z;
+	return (ret_vector);
+}
+
+t_vec3	*vec_minus(t_vec3 *v)
+{
+	t_vec3	*ret_vector;
+
+	ret_vector = ft_malloc(sizeof(t_vec3));
+	ret_vector->x = -(v->x);
+	ret_vector->y = -(v->y);
+	ret_vector->z = -(v->z);
 	return (ret_vector);
 }
 

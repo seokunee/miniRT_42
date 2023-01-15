@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/15 15:53:06 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/15 18:41:34 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,21 @@ typedef struct s_vec4
 }	t_vec4;
 
 /*
+* Return absolute value of float f.
+*/
+float	abs_float(float f);
+
+/*
 * '+', '*', '-' operator of vector
 */
 t_vec3	*vec_sum(t_vec3 *v1, t_vec3 *v2);
 t_vec3	*vec_multiple(t_vec3 *v1, t_vec3 *v2);
 t_vec3	*vec_subtract(t_vec3 *v1, t_vec3 *v2);
+
+/*
+* Convert each element to minus element.
+*/
+t_vec3	*vec_minus(t_vec3 *v);
 
 /*
 * Return a length of vector
