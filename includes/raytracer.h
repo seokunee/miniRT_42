@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:14:26 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/15 19:53:05 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:12:42 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,13 @@ typedef struct s_tri
 	t_vec2	*uv1;
 	t_vec2	*uv2;
 }	t_tri;
+
+/*
+* triangle.c
+*/
+int		intersect_ray_triangle(t_ray *ray, t_tri *tri, t_hit **hit);
+t_hit	*check_ray_collision(t_ray *ray, t_tri *tri);
+
 
 
 
