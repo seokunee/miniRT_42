@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   free_vector.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 08:53:40 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/01/16 08:41:24 by chanwjeo          #+#    #+#             */
+/*   Updated: 2023/01/16 08:44:10 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-#define MINIRT_H
+#include "../../includes/memory.h"
 
-#include <fcntl.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-#include "../src/mlx/mlx.h"
-#include "../src/libft/include/libft.h"
-#include "info.h"
-#include "rt_math.h"
-#include "raytracer.h"
-#include "memory.h"
+void	free_vec_2d(t_vec2 *v)
+{
+	free(v);
+}
 
-# define TRUE	1
-# define FALSE	0
+void	free_vec_3d(t_vec3 *v)
+{
+	free(v);
+}
 
-/*
-* main.c
-*/
-void	error_exit(char *msg);
-
-#endif
+void	free_vec_4d(t_vec4 *v)
+{
+	free(v);
+}
