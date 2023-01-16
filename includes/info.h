@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 21:33:05 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 21:50:44 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,13 @@ typedef struct s_info
 	t_list		*t_objs;
 	int 		wid;
 	int 		hei;
+
+	// tmp
+	struct s_hit	*hit;
+	struct s_vec3	*color;
+	struct s_vec3	*phong_color;
+	float	diff;
+	float	specular;
 }	t_info;
 
 /*

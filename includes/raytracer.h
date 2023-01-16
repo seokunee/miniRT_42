@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:14:26 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 16:17:03 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 21:52:53 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct s_hit
 	struct	s_vec3	*point;
 	struct	s_vec3	*normal;
 	struct	s_vec2	*uv;
+
+	t_list			*obj;
 }	t_hit;
 
 /*

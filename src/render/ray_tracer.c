@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 00:10:23 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:56:25 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 22:16:52 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,26 @@ t_vec3	*transform_screen_to_world(t_info *info, t_vec2 *screen)
 }
 
 // 임시로 정의해놓음
-t_vec3	*trace_ray(t_info *info, t_raytracer *rt, t_ray *ray, const int recurse_level)
+t_vec3	*trace_ray(t_info *info, t_ray *ray, const int recurse_level)
 {
-	t_hit	*hit;
 	t_vec3	*dir_to_light;
-	float	diff;
 	t_vec3	*reflect_dir;
-	float	specular;
 
 	if (recurse_level < 0)
 		return (create_3d_vec_input_same_value(0.0f));
-	hit = find_closest_collision(ray);
-	if (hit->d >= 0.0f)
+	info->hit = find_closest_collision(info, ray);
+	if (info->hit->d >= 0.0f)
 	{
-		if (rt->color)
-			free(rt->color);
-		if (rt->phong_color)
-			free(rt->phong_color);
-		rt->color = create_3d_vec_input_same_value(0.0f);
-		rt->phong_color = create_3d_vec_input_same_value(0.0f);
-		dir_to_light = normalize_3d_vector(v_sub(rt->light, hit->point));
-		diff = max_float(v_dot(hit->normal, dir_to_light), 0.0f);
-		reflect_dir = v_sub(v_mul(v_mul(hit->normal, 2.0f), v_dot(dir_to_light, hit->normal)), dir_to_light);
-		specular = powf(max_float(v_dot(v_minus(ray->dir), reflect_dir), 0.0f), hit->obj->alpha);
+		if (info->color)
+			free(info->color);
+		if (info->phong_color)
+			free(info->phong_color);
+		info->color = create_3d_vec_input_same_value(0.0f);
+		info->phong_color = create_3d_vec_input_same_value(0.0f);
+		dir_to_light = normalize_3d_vector(v_sub(info->t_l->coor, info->hit->point));
+		info->diff = max_float(v_dot(info->hit->normal, dir_to_light), 0.0f);
+		reflect_dir = v_sub(v_mul(v_mul(info->hit->normal, 2.0f), v_dot(dir_to_light, info->hit->normal)), dir_to_light);
+		info->specular = powf(max_float(v_dot(v_minus(ray->dir), reflect_dir), 0.0f), info->hit->obj->alpha);
 
 		// 함수 내부에서 free를 해주면 깔끔할듯
 		if (hit->obj->amb_texture)
