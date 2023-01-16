@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 20:08:20 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 21:17:12 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ t_vec3	*get_arg_color(char *s)
 	float	color[3];
 
 	tmp = ft_split(s[2], ',');
-	if (tmp[3] != NULL)
+	if (sec_arr_len(tmp) != 3)
 		error_exit("wrong argument");
 	check_only_num(tmp, "");
 	color[0] = ft_atof(tmp[0]);
@@ -175,7 +175,7 @@ t_vec3	*get_arg_color(char *s)
 	
 void	get_ambient(t_info *info, char **s)
 {
-	if (s[3] != NULL)
+	if (sec_arr_len(s) != 3)
 		error_exit("wrong argument");
 	check_only_num1(s[1], ".");
 	info->t_a->amb_light_ratio = ft_atof(s[1]);
@@ -241,29 +241,22 @@ void	check_normal_vector(t_objs *obj, char *str)
 		error_exit("wrong normal argument");
 }
 
+void	check_diameter(t_objs *obj, float dia)
+{
+	if (dia <= 0)
+		error_exit("wrong argument");
+	obj->diameter = dia;
+}
+
 void	check_obj(t_objs *obj, char **opt, t_type type)
 {
 	obj->type = type;
 	if (type == PL)
-	{
-		if (sec_arr_len(opt) != 4) // 개수 체크 
-			error_exit("wrong argument");
-		check_coordinates(obj, opt[1]); // coor 체크 후 저장
-		check_normal_vector(obj, opt[2]);
-	}
+		set_pl(obj, opt);
 	if (type == SP)
-	{
-		if (sec_arr_len(opt) != 4)
-			error_exit("wrong argument");
-		check_coordinates(obj, opt[1]);
-	}
+		set_sp(obj, opt);
 	if (type == CY)
-	{
-		if (sec_arr_len(opt) != 6)
-			error_exit("wrong argument");
-		check_coordinates(obj, opt[1]);
-		check_normal_vector(obj, opt[2]);
-	}
+		set_cy(obj, opt);
 }
 
 void	get_obj(t_info *info, char **opt, t_type type)
@@ -276,13 +269,7 @@ void	get_obj(t_info *info, char **opt, t_type type)
 		error_exit("malloc error");
 	new = ft_lstnew(obj);
 	ft_lstadd_back(&(info->t_objs), new);
-	// 체크
 	check_obj(obj, opt, type);
-	// 데이터 담기a
-	
-	// if (!info->objs)
-		// info->objs = ft_lstnew();
-	// if (!info->)
 }
 
 t_vec3	*get_arg_coor(char *s)
@@ -291,7 +278,7 @@ t_vec3	*get_arg_coor(char *s)
 	float	color[3];
 
 	tmp = ft_split(s[2], ',');
-	if (tmp[3] != NULL)
+	if (!tmp[3])
 		error_exit("wrong argument");
 	check_only_num(tmp, ".");
 	color[0] = ft_atof(tmp[0]);
@@ -310,7 +297,7 @@ t_vec3	*get_arg_normal(char *s)
 	float	color[3];
 
 	tmp = ft_split(s[2], ',');
-	if (tmp[3] != NULL)
+	if (sec_arr_len(tmp) != 3);
 		error_exit("wrong argument");
 	check_only_num(tmp, ".");
 	color[0] = ft_atof(tmp[0]);
@@ -329,28 +316,6 @@ t_vec3	*get_arg_normal(char *s)
 	return (create_3d_vec(color[0],color[1], color[2]));
 }
 
-void	get_camera(t_info *info, char **s)
-{
-	if (s[4] != NULL)
-		error_exit("wrong argument");
-	info->t_c->coor = get_arg_coor(s[1]);
-	info->t_c->normal = get_arg_normal(s[2]);
-	check_only_num1(s[3], "");
-	info->t_c->fov = atoi(s[3]);
-	if (check_range(180, info->t_c->fov) == ERR)
-		error_exit("wrong argument");
-}
-
-void	get_light(t_info *info, char **s)
-{
-	if (s[4] != NULL)
-		error_exit("wrong argument");
-	info->t_l->coor = get_arg_coor(s[1]);
-	info->t_l->colors = get_arg_color(s[2]);
-	info->t_l->light_brightness_ratio = ft_atof(s[3]);
-	if (check_range(1, info->t_l->light_brightness_ratio) == ERR)
-		error_exit("wrong argument");
-}
 
 void	edit_info(t_info *info, char *s)
 {

@@ -1,13 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_a.c                                            :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 21:18:27 by seokchoi         ###   ########.fr       */
+/*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
+/*   Updated: 2023/01/16 21:18:52 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#ifndef PARSE_H
+#define PARSE_H
+
+#include "minirt.h"
+
+char	*parse_rt_file(t_info *info, char *file_name);
+
+
+#endif

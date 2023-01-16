@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 17:43:35 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 20:47:34 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ struct s_objs
 	enum e_type		type;
 	t_vec3	*coor;
 	t_vec3	*normal;
-	float	cy_dia;
+	float	diameter;
 	float	cy_hei;
 	t_vec3	*colors;
 	t_objs	*next;
@@ -171,6 +171,5 @@ typedef struct s_check_flag
 }	t_check_flag;
 
 void	init_info(t_info *info);
-char	*parse_rt_file(t_info *info, char *file_name);
 
 #endif
