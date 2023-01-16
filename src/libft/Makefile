@@ -6,7 +6,11 @@
 #    By: kko <kko@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 15:31:26 by chanwjeo          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2023/01/16 09:56:04 by kko              ###   ########.fr        #
+=======
+#    Updated: 2023/01/11 15:25:13 by chanwjeo         ###   ########.fr        #
+>>>>>>> feat-11-create-math-library
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +45,7 @@ SRC3_FILES		= get_next_line get_next_line_utils \
 SRC4_FILES		= ft_printf ft_printf_hex ft_printf_info ft_printf_parse ft_printf_spec1 ft_printf_spec2
 
 SRC5_FILES		= darray_create darray_modify darray_iterate \
-				  vector
+				  vector ft_malloc
 
 SRC_BONUS_FILES = ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
                   ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize

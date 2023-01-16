@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   memory.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:02:23 by yje              ###   ########.fr       */
+/*   Created: 2023/01/16 08:43:38 by chanwjeo          #+#    #+#             */
+/*   Updated: 2023/01/16 14:20:42 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-#define MINIRT_H
+#ifndef MEMORY_H
+#define MEMORY_H
 
-#include <fcntl.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-#include "../src/mlx/mlx.h"
+#include "minirt.h"
 #include "../src/libft/include/libft.h"
-#include "raytracer.h"
-#include "info.h"
-#include "rt_math.h"
-#include "memory.h"
-
-# define TRUE	1
-# define FALSE	0
 
 /*
-* main.c
+* Allocated memory free functions
 */
-void	error_exit(char *msg);
+void	free_vec_2d(t_vec2 *v);
+void	free_vec_3d(t_vec3 *v);
+void	free_vec_4d(t_vec4 *v);
+
+// void	free_raytracer(t_raytracer *rt);	// 이건 보완이 필요함
+void	free_ray(t_ray *ray);
+void	free_hit(t_hit *hit);
+void	free_tri(t_tri *tri);
 
 #endif

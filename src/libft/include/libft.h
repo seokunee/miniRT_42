@@ -6,7 +6,11 @@
 /*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:45:16 by chanwjeo          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/01/16 12:51:43 by kko              ###   ########.fr       */
+=======
+/*   Updated: 2023/01/11 15:24:34 by chanwjeo         ###   ########.fr       */
+>>>>>>> feat-11-create-math-library
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -479,5 +483,12 @@ extern void		ft_lstiter(t_list *lst, void (*f)(void *));
  * the content of an element if needed. */
 extern t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), \
 		void (*del)(void *));
+
+/*
+* Memory allocate function
+* size: type size
+*/
+extern void		*ft_malloc(size_t size);
+
 
 #endif	/* LIBFT_H */
