@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   free_raytracer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 08:43:04 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 09:10:30 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:19:41 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/memory.h"
 
-void	free_raytracer(t_raytracer *rt)
-{
-	if (rt->light)
-		free(rt->light);
-	if (rt->object)
-		ft_lstclear(rt->object, free_);	// 이곳에 content 할당 해제하는 함수 넣어주면 될듯.
-	free(rt);
-}
+// void	free_raytracer(t_raytracer *rt)
+// {
+// 	if (rt->light)
+// 		free(rt->light);
+// 	if (rt->object)
+// 		ft_lstclear(rt->object, free_);	// 이곳에 content 할당 해제하는 함수 넣어주면 될듯.
+// 	free(rt);
+// }
 
 void	free_ray(t_ray *ray)
 {

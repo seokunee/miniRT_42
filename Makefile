@@ -3,15 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yje <yje@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/12 10:46:31 by chanwjeo         ###   ########.fr        #
+#    Updated: 2023/01/16 14:19:14 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME			= miniRT
+TEST_NAME		= miniRT_test
 CC				= cc
 
 # CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
@@ -28,6 +29,9 @@ LIBFT_DIR		= $(SRC_DIR)/libft/
 MLX_DIR			= $(SRC_DIR)/mlx/
 MATH_DIR		= $(SRC_DIR)/math/
 
+TEST_DIR		= $(SRC_DIR)/test/
+MEMORY_DIR		= $(SRC_DIR)/memory/
+
 # STRING_DIR		= $(SRC_DIR)/string/
 # ITERATOR_DIR	= $(SRC_DIR)/iterator/
 # LEXER_DIR		= $(SRC_DIR)/lexer/
@@ -39,12 +43,15 @@ MATH_DIR		= $(SRC_DIR)/math/
 
 # NOTE : Add Source files here
 # ------------------------------------------------------ #
+TEST_MAIN_SRC	= main_test
+
 MAIN_SRC		= main
 
 PARSE_SRC		= init_info
 
-MATH_SRC		= vector_dot_cross vector_op create_vector
+MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values create_2d_3d_vector create_4d_vector normalize vector_op_2d
 
+MEMORY_SRC		= free_raytracer free_vector 
 # LEXER_SRC		= token_create token_modify \
 # 				  scanner_main scanner_create scanner_function_ptr \
 # 				  scanner_helper scanner_helper2 scanner_get_token_1 scanner_get_token_2
@@ -71,12 +78,21 @@ SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(STRING_DIR), $(STRING_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(ITERATOR_DIR), $(ITERATOR_SRC)))
 
+TEST_SRC =	$(addsuffix .c, $(addprefix $(TEST_DIR), $(TEST_MAIN_SRC))) \
+		$(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
+		$(addsuffix .c, $(addprefix $(MATH_DIR), $(MATH_SRC))) \
+		$(addsuffix .c, $(addprefix $(MEMORY_DIR), $(MEMORY_SRC))) \
+
 # ------------------------------------------------------ #
 
 OBJ_DIR = obj/
 OBJ = $(SRC:c=o)
 
+TEST_OBJ = $(TEST_SRC:c=o)
+
 all: $(NAME)
+
+test: $(TEST_NAME)
 
 # Colors
 DEF_COLOR = \033[0;39m
@@ -114,6 +130,20 @@ $(NAME): $(OBJ)
 	@cp ./src/mlx/libmlx.dylib ./
 	@$(CC) $(CFLAGS) $(LIBFT_DIR)libft.a -L. -lmlx $(OBJ) -o $(NAME)
 	@mv $(OBJ) $(OBJ_DIR)
+	@echo "$(CUSTOM)╔══════════════════════════════════════════╗$(DEF_COLOR)"
+	@echo "$(CUSTOM)║         miniRT compile finished.         ║$(DEF_COLOR)"
+	@echo "$(CUSTOM)╠══════════════════════════════════════════╣$(DEF_COLOR)"
+	@echo "$(CUSTOM)║                                          ║$(DEF_COLOR)"
+	@echo "$(CUSTOM)║                        Have fun!         ║$(DEF_COLOR)"
+	@echo "$(CUSTOM)╚══════════════════════════════════════════╝$(DEF_COLOR)"
+
+$(TEST_NAME): $(TEST_OBJ)
+	@mkdir -p $(OBJ_DIR)
+	@make bonus -C $(LIBFT_DIR)
+	@make -C $(MLX_DIR) all
+	@cp ./src/mlx/libmlx.dylib ./
+	@$(CC) $(CFLAGS) $(LIBFT_DIR)libft.a -L. -lmlx $(TEST_OBJ) -o $(NAME)
+	@mv $(TEST_OBJ) $(OBJ_DIR)
 	@echo "$(CUSTOM)╔══════════════════════════════════════════╗$(DEF_COLOR)"
 	@echo "$(CUSTOM)║         miniRT compile finished.         ║$(DEF_COLOR)"
 	@echo "$(CUSTOM)╠══════════════════════════════════════════╣$(DEF_COLOR)"

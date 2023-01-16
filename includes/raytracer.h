@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:14:26 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 00:12:42 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:09:34 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 #define RAYTRACER_H
 
 #include "minirt.h"
+// #include "../src/libft/include/libft.h"
+// #include "rt_math.h"
 
 typedef struct s_raytracer
 {
 	int		width;
 	int 	height;
-	t_vec3	*light;
+	struct s_vec3	*light;
 
 	// temp variables. 다른곳에서 정의될 수 있음.
 	t_list	*object;
@@ -33,8 +35,8 @@ typedef struct s_raytracer
 */
 typedef struct s_ray
 {
-	t_vec3	*start;
-	t_vec3	*dir;
+	struct	s_vec3	*start;
+	struct	s_vec3	*dir;
 }	t_ray;
 
 /*
@@ -47,9 +49,9 @@ typedef struct s_ray
 typedef struct s_hit
 {
 	float	d;
-	t_vec3	*point;
-	t_vec3	*normal;
-	t_vec2	*uv;
+	struct	s_vec3	*point;
+	struct	s_vec3	*normal;
+	struct	s_vec2	*uv;
 }	t_hit;
 
 /*
@@ -57,12 +59,12 @@ typedef struct s_hit
 */
 typedef struct s_tri
 {
-	t_vec3	*v0;
-	t_vec3	*v1;
-	t_vec3	*v2;
-	t_vec2	*uv0;
-	t_vec2	*uv1;
-	t_vec2	*uv2;
+	struct	s_vec3	*v0;
+	struct	s_vec3	*v1;
+	struct	s_vec3	*v2;
+	struct	s_vec2	*uv0;
+	struct	s_vec2	*uv1;
+	struct	s_vec2	*uv2;
 }	t_tri;
 
 /*

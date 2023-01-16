@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 08:53:40 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:02:23 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 #include <math.h>
 #include "../src/mlx/mlx.h"
 #include "../src/libft/include/libft.h"
+#include "raytracer.h"
 #include "info.h"
 #include "rt_math.h"
-#include "raytracer.h"
 #include "memory.h"
 
 # define TRUE	1
