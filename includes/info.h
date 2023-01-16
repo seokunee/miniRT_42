@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 13:01:48 by kko              ###   ########.fr       */
+/*   Updated: 2023/01/16 16:43:22 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ typedef enum e_type
 	PL,
 	SP,
 	CY,
-}	t_tpye;
+}	t_type;
 
 /*
 * Objs:
@@ -130,11 +130,11 @@ typedef enum e_type
 */
 typedef struct s_objs
 {
-	enum e_type	type;k
-	float	coordinates[3];
-	float	normalized_orientation[3];
-	float	cylinder_diameter;
-	float	cylinder_height;
+	enum e_type	type;
+	float	coor[3];
+	float	normal[3];
+	float	cy_dia;
+	float	cy_hei;
 	int		colors[3];
 	struct s_objs	*next;
 	struct s_objs	*prev;
@@ -148,10 +148,9 @@ typedef struct s_info
 	struct s_a		*t_a;
 	struct s_c		*t_c;
 	struct s_l		*t_l;
-	// struct s_pl		*t_pl;
-	// struct s_sp		*t_sp;
-	// struct s_cy		*t_cy;
 	struct s_objs	*t_objs;
+	int wid;
+	int hei;
 }	t_info;
 
 /*
