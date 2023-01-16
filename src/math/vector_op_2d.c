@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_op_2d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 19:49:48 by yje               #+#    #+#             */
-/*   Updated: 2023/01/16 00:01:23 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:44:08 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_vec2	*v_sub_2d(t_vec2 *v1, t_vec2 *v2)
 	return (ret_vector);
 }
 
-t_vec2	*v_mul_2d(t_vec2 *v, float f)
+t_vec2	*v_float_mul_2d(t_vec2 *v, float f)
 {
 	t_vec2	*ret_vector;
 
