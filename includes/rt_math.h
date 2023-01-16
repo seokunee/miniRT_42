@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:13:49 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/16 16:47:23 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,16 @@ float	abs_float(float f);
 */
 t_vec2	*v_sum_2d(t_vec2 *v1, t_vec2 *v2);
 t_vec2	*v_sub_2d(t_vec2 *v1, t_vec2 *v2);
-t_vec2	*v_mul_2d(t_vec2 *v, float f);
+t_vec2	*v_float_mul_2d(t_vec2 *v, float f);
+t_vec2	*v_mul_2d(t_vec2 *v1, t_vec2 *v2);
 
 /*
 * '+', '*', '-' operator of 3D-vector
 */
 t_vec3	*v_sum(t_vec3 *v1, t_vec3 *v2);
 t_vec3	*v_sub(t_vec3 *v1, t_vec3 *v2);
-t_vec3	*v_mul(t_vec3 *v, float f);
+t_vec3	*v_float_mul(t_vec3 *v, float f);
+t_vec3	*v_mul(t_vec3 *v1, t_vec3 *v2);
 
 /*
 * Convert each element to minus element.
