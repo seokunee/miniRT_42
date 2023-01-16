@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   rt_math.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 00:02:00 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:13:49 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_MATH_H
 #define RT_MATH_H
 
-#include "minirt.h"
+// #include "minirt.h"
+#include "../src/libft/include/libft.h"
 #include <math.h>
 
 typedef struct s_vec2
