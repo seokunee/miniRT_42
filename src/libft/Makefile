@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kko <kko@student.42.fr>                    +#+  +:+       +#+         #
+#    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 15:31:26 by chanwjeo          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/01/16 09:56:04 by kko              ###   ########.fr        #
-=======
-#    Updated: 2023/01/11 15:25:13 by chanwjeo         ###   ########.fr        #
->>>>>>> feat-11-create-math-library
+#    Updated: 2023/01/16 16:46:52 by seokchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
