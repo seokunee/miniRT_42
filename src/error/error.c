@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:24:07 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/16 14:24:00 by sunhwang          #+#    #+#             */
+/*   Updated: 2023/01/16 14:26:07 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "minirt.h"
 
-int	main(int ac, char **av)
+void	error_exit(char *msg)
 {
-	t_info	info;
-
-	if (ac != 2)
-		error_exit("Invalid number of arguments. Check it!");
-	init_info(&info);
-	printf("%s\n", av[1]);
-	system("leaks miniRT");
-	return (0);
+	printf("Error\n%s\n", msg);
+	exit(EXIT_FAILURE);
 }
