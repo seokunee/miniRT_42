@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 09:56:02 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:29:14 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,9 @@ typedef struct s_info
 	struct s_a	*t_a;
 	struct s_c	*t_c;
 	struct s_l	*t_l;
-	struct s_pl	*t_pl;
-	struct s_sp	*t_sp;
-	struct s_cy	*t_cy;
+	t_list		*objs;
+	int			wid;
+	int			hei;
 }	t_info;
 
 void	init_info(t_info *info);

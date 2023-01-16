@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:14:26 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:09:34 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/16 16:17:03 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_raytracer
 	// temp variables. 다른곳에서 정의될 수 있음.
 	t_list	*object;
 	int		num_of_objs;
+	t_vec3	*color;
+	t_vec3	*phong_color;
 }	t_raytracer;
 
 /*
@@ -73,6 +75,10 @@ typedef struct s_tri
 int		intersect_ray_triangle(t_ray *ray, t_tri *tri, t_hit **hit);
 t_hit	*check_ray_collision(t_ray *ray, t_tri *tri);
 
+/*
+* ray_tracer.c
+*/
+t_vec3	*transform_screen_to_world(t_info *info, t_vec2 *screen);
 
 
 

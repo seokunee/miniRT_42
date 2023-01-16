@@ -6,24 +6,25 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 00:10:23 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 09:53:44 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:56:25 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/raytracer.h"
 
-t_hit	*find_closest_collision(t_ray *ray)
+t_hit	*find_closest_collision(t_info *info, t_ray *ray)
 {
 	float	closest_d;
 	t_hit	*closest_hit;
-	t_hit	*tmp_hit
-	// t_list	*head;	필요하다면 사용
+	t_hit	*tmp_hit;
+	t_list	*tmp_list;
 
 	closest_hit = NULL;
-	closest_d = 2147483647.0f
-	while (end_of_tlist)
+	closest_d = 2147483647.0f;
+	tmp_list = info->objs;
+	while (tmp_list != NULL)
 	{
-		tmp_hit = check_ray_collision(t_list->content);
+		tmp_hit = check_ray_collision(ray);
 		if (tmp_hit->d >= 0.0f && tmp_hit->d < closest_d)
 		{
 			if (closest_hit)
@@ -47,15 +48,37 @@ t_vec3	*transform_screen_to_world(t_info *info, t_vec2 *screen)
 }
 
 // 임시로 정의해놓음
-t_vec3	*trace_ray(t_ray *ray, const int recurse_level)
+t_vec3	*trace_ray(t_info *info, t_raytracer *rt, t_ray *ray, const int recurse_level)
 {
 	t_hit	*hit;
+	t_vec3	*dir_to_light;
+	float	diff;
+	t_vec3	*reflect_dir;
+	float	specular;
 
 	if (recurse_level < 0)
 		return (create_3d_vec_input_same_value(0.0f));
 	hit = find_closest_collision(ray);
 	if (hit->d >= 0.0f)
 	{
+		if (rt->color)
+			free(rt->color);
+		if (rt->phong_color)
+			free(rt->phong_color);
+		rt->color = create_3d_vec_input_same_value(0.0f);
+		rt->phong_color = create_3d_vec_input_same_value(0.0f);
+		dir_to_light = normalize_3d_vector(v_sub(rt->light, hit->point));
+		diff = max_float(v_dot(hit->normal, dir_to_light), 0.0f);
+		reflect_dir = v_sub(v_mul(v_mul(hit->normal, 2.0f), v_dot(dir_to_light, hit->normal)), dir_to_light);
+		specular = powf(max_float(v_dot(v_minus(ray->dir), reflect_dir), 0.0f), hit->obj->alpha);
+
+		// 함수 내부에서 free를 해주면 깔끔할듯
+		if (hit->obj->amb_texture)
+			rt->phong_color = v_sum(rt->phong_color, v_cross(hit->obj->amb, sample_linear(hit->uv)));
+		else
+			rt->phong_color = v_sum(rt->phong_color, hit->obj->amb);
+		if (hit->obj->dif_texture)
+			rt->phong_color = v_sum(rt->phong_color, (v_mul(hit->obj->dif, diff)))
 		
 	}
 }
