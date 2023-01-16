@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:02:23 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/16 14:58:12 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
-#define MINIRT_H
+# define MINIRT_H
 
 #include <fcntl.h>
 #include <stddef.h>
@@ -30,7 +30,7 @@
 # define FALSE	0
 
 /*
-* main.c
+* error/error.c
 */
 void	error_exit(char *msg);
 
