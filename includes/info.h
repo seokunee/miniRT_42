@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 16:43:22 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:43:35 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 
 #define ERR 1
 #define SUCCESS 0
+
+typedef struct s_objs t_objs;
+
 /*
 * Ambient lightning:
 * identifier: A
@@ -25,9 +28,9 @@
 */
 typedef struct s_a
 {
-	//char	*identifier;	// 일단 넣어봤는데, 없어도 될것같습니다.
-	float	amb_light_ratio;
-	int		colors[3];
+	//char			*identifier;	// 일단 넣어봤는데, 없어도 될것같습니다.
+	float			amb_light_ratio;
+	t_vec3	*colors;
 }	t_a;
 
 /*
@@ -39,10 +42,10 @@ typedef struct s_a
 */
 typedef struct s_c
 {
-	// char		*identifier;
-	float	coordinates[3];
-	float	normalized_orientation[3];
-	int		fov;
+	// char			*identifier;
+	t_vec3	*coor;
+	t_vec3	*normal;
+	int				fov;
 }	t_c;
 
 /*
@@ -54,10 +57,10 @@ typedef struct s_c
 */
 typedef struct s_l
 {
-	float	coordinates[3];
-	float	light_brightness_ratio;
+	t_vec3	*coor;
+	float			light_brightness_ratio;
 	/* unsued in mand part */
-	int		colors[3];
+	t_vec3	*colors;
 }	t_l;
 
 /*
@@ -99,11 +102,11 @@ typedef struct s_sp
 */
 typedef struct s_cy
 {
-	float	coordinates[3];
-	float	normalized_orientation[3];
-	float	cylinder_diameter;
-	float	cylinder_height;
-	int		colors[3];
+	t_vec3	*coor;
+	t_vec3	*normal;
+	t_vec3	*colors;
+	float			cylinder_diameter;
+	float			cylinder_height;
 }	t_cy;
 
 /*
@@ -128,29 +131,29 @@ typedef enum e_type
 * the cylinder height: 21.42
 * R,G,B colors in range [0,255]: 10, 0, 255
 */
-typedef struct s_objs
+struct s_objs
 {
-	enum e_type	type;
-	float	coor[3];
-	float	normal[3];
+	enum e_type		type;
+	t_vec3	*coor;
+	t_vec3	*normal;
 	float	cy_dia;
 	float	cy_hei;
-	int		colors[3];
-	struct s_objs	*next;
-	struct s_objs	*prev;
-}	t_objs;
+	t_vec3	*colors;
+	t_objs	*next;
+	t_objs	*prev;
+};
 
 /*
 * info
 */
 typedef struct s_info
 {
-	struct s_a		*t_a;
-	struct s_c		*t_c;
-	struct s_l		*t_l;
-	struct s_objs	*t_objs;
-	int wid;
-	int hei;
+	struct s_a	*t_a;
+	struct s_c	*t_c;
+	struct s_l	*t_l;
+	t_list		*t_objs;
+	int 		wid;
+	int 		hei;
 }	t_info;
 
 /*

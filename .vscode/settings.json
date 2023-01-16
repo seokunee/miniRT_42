@@ -6,6 +6,9 @@
 		"locale": "cpp",
 		"sstream": "cpp",
 		"string": "cpp",
-		"vector": "cpp"
+		"vector": "cpp",
+		"minirt.h": "c",
+		"rt_math.h": "c",
+		"libft.h": "c"
 	}
 }

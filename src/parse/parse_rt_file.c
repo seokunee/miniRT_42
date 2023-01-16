@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 16:36:34 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 20:08:20 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,15 @@ void	check_file_name(char *file_name)
 
 int	check_range(int type, float ret)
 {
-	if (type == 255 || (ret <= 0 && ret >= 255))
+	if (type == 255 || (ret >= 0 && ret <= 255))
 		return (SUCCESS);
-	else if (type == -1 || (ret <= -1 && ret >= 1))
+	else if (type == -1 || (ret >= -1 && ret <= 1))
 		return (SUCCESS);
-	else if (type == 1 || (ret <= 0 && ret >= 1))
+	else if (type == 1 || (ret >= 0 && ret <= 1))
 		return (SUCCESS);
-	else
-		return (ERR);
+	else if (type == 180 || (ret >= 0 && ret <= 180))
+		return (SUCCESS);
+	return (ERR);
 }
 
 float	ft_atof(char *s)
@@ -147,42 +148,42 @@ int	check_only_num(char **opt, char *oper)
 	}
 }
 
-void	get_arg_color(int *color, char *s)
+t_vec3	*get_arg_color(char *s)
 {
 	char	**tmp;
-	
+	float	color[3];
+
 	tmp = ft_split(s[2], ',');
 	if (tmp[3] != NULL)
 		error_exit("wrong argument");
-	check_only_num(tmp, ",-");
-	color[0] = ft_atoi(tmp[0]);
+	check_only_num(tmp, "");
+	color[0] = ft_atof(tmp[0]);
 	if (check_range(255, color[0]) == ERR)
 		error_exit("wrong argument");
 	while (!(tmp >= '0' && tmp <= '9') && tmp != 0)
 		s++;
-	color[1] = ft_atoi(tmp[1]);
+	color[1] = ft_atof(tmp[1]);
 	if (check_range(255, color[1]) == ERR)
 		error_exit("wrong argument");
 	while (!(tmp >= '0' && tmp <= '9') && tmp != 0)
 		s++;
-	color[2] = ft_atoi(tmp[2]);
+	color[2] = ft_atof(tmp[2]);
 	if (check_range(255, color[2]) == ERR)
 		error_exit("wrong argument");
+	return (create_3d_vec(color[0],color[1], color[2]));
 }
 	
 void	get_ambient(t_info *info, char **s)
 {
 	if (s[3] != NULL)
 		error_exit("wrong argument");
-	while (*s != 0 && ft_isspace(*s))
-		s++;
 	check_only_num1(s[1], ".");
 	info->t_a->amb_light_ratio = ft_atof(s[1]);
 	if (check_range(1, info->t_a->amb_light_ratio) == ERR)
 		error_exit("wrong argument:A:amb_L");
 	while (*s != 0 && ft_isspace(*s))
 		s++;
-	get_arg_color(info->t_a->colors, s[2]);
+	info->t_a->colors = get_arg_color(s[2]);
 }
 
 int	sec_arr_len(char **arr)
@@ -205,57 +206,78 @@ void	free_sec_arr(char *arr)
 	free(arr);
 }
 
-void	check_coordinates(t_info *info, char *str)
+void	check_coordinates(t_objs *obj, char *str) // 모든 coor을 체크 할 수 있음.
 {
 	char **coor;
 
 	coor = ft_split(str, ',');
 	if (!coor)
 		error_exit("Malloc Error\n");
-	if (sec_arr_len(coor) != 3)
+	if (sec_arr_len(coor) != 3) // vector 3인지 체크
 		error_exit("wrong argument");
-	check_only_num1(coor[0], ".");
+	check_only_num1(coor[0], "."); // 숫자와 . 으로 이루어졌는지는 체크.
 	check_only_num1(coor[1], ".");
 	check_only_num1(coor[2], ".");
+	obj->coor = create_3d_vec(ft_atof(coor[0]),\
+	ft_atof(coor[1]), ft_atof(coor[2]));
+	free_sec_arr(coor);
 }
 
-void	check_normal_vector(char *str)
+void	check_normal_vector(t_objs *obj, char *str)
 {
-	
+	char **normal;
+
+	normal = ft_split(str, ',');
+	if (!normal)
+		error_exit("Malloc Error\n");
+	if (sec_arr_len(normal) != 3) // vector 3인지 체크
+		error_exit("wrong argument");
+	check_only_num1(normal[0], ".");
+	check_only_num1(normal[1], ".");
+	check_only_num1(normal[2], ".");
+	obj->normal = create_3d_vec(ft_atof(normal[0]),\
+	ft_atof(normal[1]), ft_atof(normal[2]));
+	if (v_dot(obj->normal, obj->normal) != 1)
+		error_exit("wrong normal argument");
 }
 
-void	check_obj(t_info *info, char **opt, t_type type)
-{;
+void	check_obj(t_objs *obj, char **opt, t_type type)
+{
+	obj->type = type;
 	if (type == PL)
 	{
-		if (sec_arr_len(opt) != 4)
+		if (sec_arr_len(opt) != 4) // 개수 체크 
 			error_exit("wrong argument");
-		check_coordinates(info, opt[1]);
+		check_coordinates(obj, opt[1]); // coor 체크 후 저장
+		check_normal_vector(obj, opt[2]);
 	}
 	if (type == SP)
 	{
 		if (sec_arr_len(opt) != 4)
 			error_exit("wrong argument");
-		check_coordinates(info, opt[1]);
+		check_coordinates(obj, opt[1]);
 	}
 	if (type == CY)
 	{
 		if (sec_arr_len(opt) != 6)
 			error_exit("wrong argument");
-		check_coordinates(info, opt[1]);
+		check_coordinates(obj, opt[1]);
+		check_normal_vector(obj, opt[2]);
 	}
 }
 
 void	get_obj(t_info *info, char **opt, t_type type)
 {
 	t_objs *obj;
+	t_list *new;
 
 	obj = malloc(sizeof(t_objs));
 	if (!obj)
 		error_exit("malloc error");
-	ft_lstadd_back(&info, ft_lstnew(obj));
+	new = ft_lstnew(obj);
+	ft_lstadd_back(&(info->t_objs), new);
 	// 체크
-	check_obj(info, opt, type);
+	check_obj(obj, opt, type);
 	// 데이터 담기a
 	
 	// if (!info->objs)
@@ -263,15 +285,71 @@ void	get_obj(t_info *info, char **opt, t_type type)
 	// if (!info->)
 }
 
+t_vec3	*get_arg_coor(char *s)
+{
+	char	**tmp;
+	float	color[3];
+
+	tmp = ft_split(s[2], ',');
+	if (tmp[3] != NULL)
+		error_exit("wrong argument");
+	check_only_num(tmp, ".");
+	color[0] = ft_atof(tmp[0]);
+	while (!(tmp >= '0' && tmp <= '9') && tmp != 0)
+		s++;
+	color[1] = ft_atof(tmp[1]);
+	while (!(tmp >= '0' && tmp <= '9') && tmp != 0)
+		s++;
+	color[2] = ft_atof(tmp[2]);
+	return (create_3d_vec(color[0],color[1], color[2]));
+}
+
+t_vec3	*get_arg_normal(char *s)
+{
+	char	**tmp;
+	float	color[3];
+
+	tmp = ft_split(s[2], ',');
+	if (tmp[3] != NULL)
+		error_exit("wrong argument");
+	check_only_num(tmp, ".");
+	color[0] = ft_atof(tmp[0]);
+	if (check_range(-1, color[0]) == ERR)
+		error_exit("wrong argument");
+	while (!(tmp >= '0' && tmp <= '9') && tmp != 0)
+		s++;
+	color[1] = ft_atof(tmp[1]);
+	if (check_range(-1, color[1]) == ERR)
+		error_exit("wrong argument");
+	while (!(tmp >= '0' && tmp <= '9') && tmp != 0)
+		s++;
+	color[2] = ft_atof(tmp[2]);
+	if (check_range(-1, color[2]) == ERR)
+		error_exit("wrong argument");
+	return (create_3d_vec(color[0],color[1], color[2]));
+}
+
 void	get_camera(t_info *info, char **s)
 {
 	if (s[4] != NULL)
 		error_exit("wrong argument");
-	while (*s != 0 && ft_isspace(*s))
-		s++;
-	get_arg_color(info->t_c->coordinates, s[1]);
-	get_arg_color(info->t_c->normalized_orientation, s[2]);
-	
+	info->t_c->coor = get_arg_coor(s[1]);
+	info->t_c->normal = get_arg_normal(s[2]);
+	check_only_num1(s[3], "");
+	info->t_c->fov = atoi(s[3]);
+	if (check_range(180, info->t_c->fov) == ERR)
+		error_exit("wrong argument");
+}
+
+void	get_light(t_info *info, char **s)
+{
+	if (s[4] != NULL)
+		error_exit("wrong argument");
+	info->t_l->coor = get_arg_coor(s[1]);
+	info->t_l->colors = get_arg_color(s[2]);
+	info->t_l->light_brightness_ratio = ft_atof(s[3]);
+	if (check_range(1, info->t_l->light_brightness_ratio) == ERR)
+		error_exit("wrong argument");
 }
 
 void	edit_info(t_info *info, char *s)
