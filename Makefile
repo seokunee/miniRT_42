@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: kko <kko@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/11 16:23:33 by seokchoi         ###   ########.fr        #
+#    Updated: 2023/01/16 10:19:04 by kko              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME			= miniRT
 CC				= cc
 
 # CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
-CFLAGS			= -Wall -Wextra -Werror
+#CFLAGS			= -Wall -Wextra -Werror
 INCLUDE			= includes
 
 # NOTE : Add Source directory here
@@ -106,8 +106,8 @@ CUSTOM = \033[38;5;135m
 $(NAME): $(OBJ)
 	@mkdir -p $(OBJ_DIR)
 	@make bonus -C $(LIBFT_DIR)
-	@make -C $(MLX_DIR) all
-	@cp ./src/mlx/libmlx.dylib ./
+#	@make -C $(MLX_DIR) all
+#	@cp ./src/mlx/libmlx.dylib ./
 	@$(CC) $(CFLAGS) $(LIBFT_DIR)libft.a -L. -lmlx $(OBJ) -o $(NAME)
 	@mv $(OBJ) $(OBJ_DIR)
 	@echo "$(CUSTOM)╔══════════════════════════════════════════╗$(DEF_COLOR)"

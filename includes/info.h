@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 16:17:24 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:01:48 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include "minirt.h"
 
+#define ERR 1
+#define SUCCESS 0
 /*
 * Ambient lightning:
 * identifier: A
@@ -23,12 +25,8 @@
 */
 typedef struct s_a
 {
-	char	*identifier;	// 일단 넣어봤는데, 없어도 될것같습니다.
+	//char	*identifier;	// 일단 넣어봤는데, 없어도 될것같습니다.
 	float	amb_light_ratio;
-	int		color_r;
-	int		color_g;
-	int		color_b;
-	/* 위처럼 r, g, b 쓰거나 혹은 */
 	int		colors[3];
 }	t_a;
 
@@ -109,16 +107,51 @@ typedef struct s_cy
 }	t_cy;
 
 /*
+* PL : Plane
+* SP : Sphere
+* CY : Cylinder
+*/
+typedef enum e_type
+{
+	NO_OBJS,
+	PL,
+	SP,
+	CY,
+}	t_tpye;
+
+/*
+* Objs:
+* identifier : objs type
+* x,y,z coordinates: 50.0,0.0,20.6
+* 3d normalized orientation vector. In range [-1,1] for each x,y,z axis: 0.0,0.0,1.0
+* the cylinder diameter: 14.2
+* the cylinder height: 21.42
+* R,G,B colors in range [0,255]: 10, 0, 255
+*/
+typedef struct s_objs
+{
+	enum e_type	type;k
+	float	coordinates[3];
+	float	normalized_orientation[3];
+	float	cylinder_diameter;
+	float	cylinder_height;
+	int		colors[3];
+	struct s_objs	*next;
+	struct s_objs	*prev;
+}	t_objs;
+
+/*
 * info
 */
 typedef struct s_info
 {
-	struct s_a	*t_a;
-	struct s_c	*t_c;
-	struct s_l	*t_l;
-	struct s_pl	*t_pl;
-	struct s_sp	*t_sp;
-	struct s_cy	*t_cy;
+	struct s_a		*t_a;
+	struct s_c		*t_c;
+	struct s_l		*t_l;
+	// struct s_pl		*t_pl;
+	// struct s_sp		*t_sp;
+	// struct s_cy		*t_cy;
+	struct s_objs	*t_objs;
 }	t_info;
 
 /*
