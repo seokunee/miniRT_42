@@ -6,18 +6,18 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:14:35 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/12 09:13:57 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:02:00 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/rt_math.h"
 
-float	vec_dot(t_vec3 *v1, t_vec3 *v2)
+float	v_dot(t_vec3 *v1, t_vec3 *v2)
 {
 	return ((float)(v1->x * v2->x + v1->y * v2->y + v1->z * v2->z));
 }
 
-t_vec3	*vec_cross(t_vec3 *v1, t_vec3 *v2)
+t_vec3	*v_cross(t_vec3 *v1, t_vec3 *v2)
 {
 	t_vec3	*ret_vector;
 

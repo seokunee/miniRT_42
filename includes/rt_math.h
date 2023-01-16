@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/15 15:53:06 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:02:00 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,40 @@ typedef struct s_vec4
 }	t_vec4;
 
 /*
-* '+', '*', '-' operator of vector
+* Return absolute value of float f.
 */
-t_vec3	*vec_sum(t_vec3 *v1, t_vec3 *v2);
-t_vec3	*vec_multiple(t_vec3 *v1, t_vec3 *v2);
-t_vec3	*vec_subtract(t_vec3 *v1, t_vec3 *v2);
+float	abs_float(float f);
+
+/*
+* '+', '*', '-' operator of 2D-vector
+*/
+t_vec2	*v_sum_2d(t_vec2 *v1, t_vec2 *v2);
+t_vec2	*v_sub_2d(t_vec2 *v1, t_vec2 *v2);
+t_vec2	*v_mul_2d(t_vec2 *v, float f);
+
+/*
+* '+', '*', '-' operator of 3D-vector
+*/
+t_vec3	*v_sum(t_vec3 *v1, t_vec3 *v2);
+t_vec3	*v_sub(t_vec3 *v1, t_vec3 *v2);
+t_vec3	*v_mul(t_vec3 *v, float f);
+
+/*
+* Convert each element to minus element.
+*/
+t_vec2	*v_minus_2d(t_vec2 *v);
+t_vec3	*v_minus(t_vec3 *v);
 
 /*
 * Return a length of vector
 */
-float	vec_length(t_vec3 *v);
+float	v_len(t_vec3 *v);
 
 /*
 * dot and cross product of vector
 */
-float	vec_dot(t_vec3 *v1, t_vec3 *v2);
-t_vec3	*vec_cross(t_vec3 *v1, t_vec3 *v2);
+float	v_dot(t_vec3 *v1, t_vec3 *v2);
+t_vec3	*v_cross(t_vec3 *v1, t_vec3 *v2);
 
 /* Create 2D-vector functions
 * 1. Input 2 float values into arguments.
