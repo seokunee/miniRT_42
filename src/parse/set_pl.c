@@ -1,25 +1,22 @@
-// /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_pl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 10:14:05 by kko              ###   ########.fr       */
+/*   Updated: 2023/01/16 21:18:29 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-int	main(int ac, char **av)
+void	set_pl(t_objs *obj, char **opt)
 {
-	t_info	info;
-
-	if (ac != 2)
-		error_exit("Invalid number of arguments. Check it!");
-	parse_rt_file(&info, av[1]);
-	printf("%s\n", av[1]);
-	// system("leaks miniRT");
-	return (0);
+	if (sec_arr_len(opt) != 4)
+		error_exit("wrong argument");
+	check_coordinates(obj, opt[1]);
+	check_normal_vector(obj, opt[2]);
+	obj->colors = get_arg_color(opt[3]);
 }

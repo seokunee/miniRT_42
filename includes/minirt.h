@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:58:12 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 21:33:05 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #include "info.h"
 #include "rt_math.h"
 #include "memory.h"
+#include "parse.h"
 
 # define TRUE	1
 # define FALSE	0

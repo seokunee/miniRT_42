@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:45:16 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 15:24:34 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:46:53 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -353,6 +353,7 @@ extern char		*ft_strnstr(const char *haystack, \
  * * Convert the initial portion of the string pointed to by str to int. 
  * ft_atoi() does not detect errors, such as overflow. */
 extern int		ft_atoi(const char *str);
+extern int		ft_atoi_stream(char **str);
 
 /* ----------------------------
  * * Allocates memory for an array of count elements of size bytes each.

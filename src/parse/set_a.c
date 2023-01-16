@@ -1,25 +1,13 @@
-// /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_a.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 10:14:05 by kko              ###   ########.fr       */
+/*   Updated: 2023/01/16 21:18:27 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
-
-int	main(int ac, char **av)
-{
-	t_info	info;
-
-	if (ac != 2)
-		error_exit("Invalid number of arguments. Check it!");
-	parse_rt_file(&info, av[1]);
-	printf("%s\n", av[1]);
-	// system("leaks miniRT");
-	return (0);
-}
