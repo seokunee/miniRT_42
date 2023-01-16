@@ -6,7 +6,7 @@
 #    By: yje <yje@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/16 14:19:14 by yje              ###   ########.fr        #
+#    Updated: 2023/01/16 16:50:51 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ MAIN_SRC		= main
 
 PARSE_SRC		= init_info
 
-MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values create_2d_3d_vector create_4d_vector normalize vector_op_2d
+MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values \
+					create_2d_3d_vector create_4d_vector normalize vector_op_2d vector_op2 vector_op_2d2
 
 MEMORY_SRC		= free_raytracer free_vector 
 # LEXER_SRC		= token_create token_modify \
