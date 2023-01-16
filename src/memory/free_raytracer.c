@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 08:43:04 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 08:52:32 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 09:10:30 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_raytracer(t_raytracer *rt)
 	if (rt->light)
 		free(rt->light);
 	if (rt->object)
-		ft_lstclear(rt->object, free_);
+		ft_lstclear(rt->object, free_);	// 이곳에 content 할당 해제하는 함수 넣어주면 될듯.
 	free(rt);
 }
 
