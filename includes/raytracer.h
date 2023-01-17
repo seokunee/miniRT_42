@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:14:26 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 09:53:24 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:47:00 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ typedef struct s_ray
 typedef struct s_hit
 {
 	float	d;
-	struct	s_vec3	*point;
-	struct	s_vec3	*normal;
-	struct	s_vec2	*uv;
+	struct s_vec3	*point;
+	struct s_vec3	*normal;
+	struct s_vec2	*uv;
 
-	t_list			*obj;
+	struct s_objs			*obj;
 }	t_hit;
 
 /*
@@ -63,12 +63,12 @@ typedef struct s_hit
 */
 typedef struct s_tri
 {
-	struct	s_vec3	*v0;
-	struct	s_vec3	*v1;
-	struct	s_vec3	*v2;
-	struct	s_vec2	*uv0;
-	struct	s_vec2	*uv1;
-	struct	s_vec2	*uv2;
+	struct s_vec3	*v0;
+	struct s_vec3	*v1;
+	struct s_vec3	*v2;
+	struct s_vec2	*uv0;
+	struct s_vec2	*uv1;
+	struct s_vec2	*uv2;
 }	t_tri;
 
 /*
@@ -82,7 +82,7 @@ t_vec3	*trace_ray(t_info **info, t_ray *ray, const int recurse_level);
 * sphere.c
 */
 t_hit	*check_ray_collision_sphere(t_ray *ray, t_objs *sphere);
-
-
+int		calculate_pixel_color(t_info **info, int x, int y);
+int		create_trgb(int t, int r, int g, int b);
 
 #endif
