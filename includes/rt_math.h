@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_math.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:13:49 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/17 09:50:12 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ t_vec4	*create_4d_vec_input_same_value(float f);
 /*
 * Return normalized 3D-vector.
 */
-t_vec3	*normalize_3d_vector(t_vec3 *v);
+t_vec3	*norm_3d_vec(t_vec3 *v);
 
 /*
 * Calculate power of float value.
