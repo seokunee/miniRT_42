@@ -6,23 +6,27 @@
 #    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/17 02:05:53 by seokchoi         ###   ########.fr        #
+#    Updated: 2023/01/17 14:25:06 by seokchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 NAME			= miniRT
-TEST_NAME		= miniRT_test
-CC				= cc
 
-# CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
-#CFLAGS			= -Wall -Wextra -Werror
-INCLUDE			= includes
+INC_DIR			= -Iincludes -I$(LIBFT_DIR)/include -I$(MLX_DIR)
+CFLAGS			= -Wall -Wextra -Werror $(INC_DIR) -g3 -fsanitize=address
+# CFLAGS			= -Wall -Wextra -Werror $(INC_DIR)
+LDFLAGS			= -L$(LIBFT_DIR) -lft -L. -lmlx
 
 # NOTE : Add Source directory here
 # ------------------------------------------------------ #
 SRC_DIR			= src
+
+ifeq (,$(findstring test,$(MAKECMDGOALS)))
 MAIN_DIR		= $(SRC_DIR)/main/
+else
+MAIN_DIR		= $(SRC_DIR)/test/
+endif
+
 PARSE_DIR		= $(SRC_DIR)/parse/
 
 LIBFT_DIR		= $(SRC_DIR)/libft/
@@ -31,6 +35,8 @@ MATH_DIR		= $(SRC_DIR)/math/
 
 TEST_DIR		= $(SRC_DIR)/test/
 MEMORY_DIR		= $(SRC_DIR)/memory/
+ERROR_DIR		= $(SRC_DIR)/error/
+WINDOW_DIR		= $(SRC_DIR)/window/
 
 # STRING_DIR		= $(SRC_DIR)/string/
 # ITERATOR_DIR	= $(SRC_DIR)/iterator/
@@ -43,14 +49,13 @@ MEMORY_DIR		= $(SRC_DIR)/memory/
 
 # NOTE : Add Source files here
 # ------------------------------------------------------ #
-TEST_MAIN_SRC	= main_test
-
 MAIN_SRC		= main
 
 PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light\
 					normal objects parse_rt_file plane sphere utils utils2\
-
 MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values create_2d_3d_vector create_4d_vector normalize vector_op_2d
+ERROR_SRC		= error
+WINDOW_SRC		= init_window key_hook mouse_hook window_hooks
 
 MEMORY_SRC		= free_raytracer free_vector 
 # LEXER_SRC		= token_create token_modify \
@@ -73,27 +78,21 @@ MEMORY_SRC		= free_raytracer free_vector
 SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
 		$(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
 		$(addsuffix .c, $(addprefix $(MATH_DIR), $(MATH_SRC))) \
+		$(addsuffix .c, $(addprefix $(ERROR_DIR), $(ERROR_SRC))) \
+		$(addsuffix .c, $(addprefix $(WINDOW_DIR), $(WINDOW_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(LEXER_DIR), $(LEXER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(EXECUTER_DIR), $(EXECUTER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(BUILTIN_DIR), $(BUILTIN_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(STRING_DIR), $(STRING_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(ITERATOR_DIR), $(ITERATOR_SRC)))
-
-TEST_SRC =	$(addsuffix .c, $(addprefix $(TEST_DIR), $(TEST_MAIN_SRC))) \
-		$(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
-		$(addsuffix .c, $(addprefix $(MATH_DIR), $(MATH_SRC))) \
-		$(addsuffix .c, $(addprefix $(MEMORY_DIR), $(MEMORY_SRC))) \
-
 # ------------------------------------------------------ #
 
 OBJ_DIR = obj/
-OBJ = $(SRC:c=o)
-
-TEST_OBJ = $(TEST_SRC:c=o)
+OBJ = $(SRC:%.c=$(OBJ_DIR)%.o)
 
 all: $(NAME)
 
-test: $(TEST_NAME)
+test: $(NAME)
 
 # Colors
 DEF_COLOR = \033[0;39m
@@ -125,26 +124,10 @@ CUSTOM = \033[38;5;135m
 #    Mac compile option                                                |
 #-----------------------------------------------------------------------
 $(NAME): $(OBJ)
-	@mkdir -p $(OBJ_DIR)
-	@make bonus -C $(LIBFT_DIR)
-#	@make -C $(MLX_DIR) all
-#	@cp ./src/mlx/libmlx.dylib ./
-	@$(CC) $(CFLAGS) $(LIBFT_DIR)libft.a -L. -lmlx $(OBJ) -o $(NAME)
-	@mv $(OBJ) $(OBJ_DIR)
-	@echo "$(CUSTOM)╔══════════════════════════════════════════╗$(DEF_COLOR)"
-	@echo "$(CUSTOM)║         miniRT compile finished.         ║$(DEF_COLOR)"
-	@echo "$(CUSTOM)╠══════════════════════════════════════════╣$(DEF_COLOR)"
-	@echo "$(CUSTOM)║                                          ║$(DEF_COLOR)"
-	@echo "$(CUSTOM)║                        Have fun!         ║$(DEF_COLOR)"
-	@echo "$(CUSTOM)╚══════════════════════════════════════════╝$(DEF_COLOR)"
-
-$(TEST_NAME): $(TEST_OBJ)
-	@mkdir -p $(OBJ_DIR)
-	@make bonus -C $(LIBFT_DIR)
-	@make -C $(MLX_DIR) all
+	@$(MAKE) -C $(LIBFT_DIR) bonus
+	@$(MAKE) -C $(MLX_DIR) all
 	@cp ./src/mlx/libmlx.dylib ./
-	@$(CC) $(CFLAGS) $(LIBFT_DIR)libft.a -L. -lmlx $(TEST_OBJ) -o $(NAME)
-	@mv $(TEST_OBJ) $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $@
 	@echo "$(CUSTOM)╔══════════════════════════════════════════╗$(DEF_COLOR)"
 	@echo "$(CUSTOM)║         miniRT compile finished.         ║$(DEF_COLOR)"
 	@echo "$(CUSTOM)╠══════════════════════════════════════════╣$(DEF_COLOR)"
@@ -152,24 +135,25 @@ $(TEST_NAME): $(TEST_OBJ)
 	@echo "$(CUSTOM)║                        Have fun!         ║$(DEF_COLOR)"
 	@echo "$(CUSTOM)╚══════════════════════════════════════════╝$(DEF_COLOR)"
 
-%.o: %.c
-	@${CC} ${CFLAGS} -c $< -o $@
+$(OBJ): $(OBJ_DIR)%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(CUSTOM)Compiling... \t$< $(DEF_COLOR)"
 # #-----------------------------------------------------------------------
 
 clean:
-	@make clean -C $(LIBFT_DIR)
-	@make clean -C $(MLX_DIR)
-	@rm -f libmlx.dylib
-	@rm -rf $(OBJ_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(MAKE) -C $(MLX_DIR) clean
+	@$(RM) libmlx.dylib
+	@$(RM) -r $(OBJ_DIR)
 	@echo "$(CUSTOM)miniRT obj files has been deleted.$(DEF_COLOR)"
 
 fclean:
-	@make fclean -C $(LIBFT_DIR)
-	@make clean -C $(MLX_DIR)
-	@rm -f libmlx.dylib
-	@rm -rf $(OBJ_DIR)
-	@rm -f $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@$(MAKE) -C $(MLX_DIR) clean
+	@$(RM) libmlx.dylib
+	@$(RM) -r $(OBJ_DIR)
+	@$(RM) $(NAME)
 	@echo "$(CUSTOM)miniRT archive files has been deleted.$(DEF_COLOR)"
 
 re: fclean all

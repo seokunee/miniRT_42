@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_malloc.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 15:23:04 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:35:54 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/16 14:24:00 by sunhwang          #+#    #+#             */
+/*   Updated: 2023/01/16 14:26:07 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "minirt.h"
 
-void	*ft_malloc(size_t size)
+void	error_exit(char *msg)
 {
-	void	*p;
-
-	p = ft_calloc(1, size);
-	if (!p)
-		exit(1);
-	return (p);
+	printf("Error\n%s\n", msg);
+	exit(EXIT_FAILURE);
 }

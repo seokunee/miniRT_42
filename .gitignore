@@ -1,2 +1,7 @@
+.vscode
 obj
-src/test/
+test
+*.dylib
+*.a
+miniRT
+*.swift*

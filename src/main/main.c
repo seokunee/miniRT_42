@@ -12,12 +12,6 @@
 
 #include "../../includes/minirt.h"
 
-void	error_exit(char *msg)
-{
-	write(2, msg, ft_strlen(msg));
-	exit(1);
-}
-
 int	main(int ac, char **av)
 {
 	t_info	info;
