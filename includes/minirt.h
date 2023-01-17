@@ -19,13 +19,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
-#include "../src/mlx/mlx.h"
-#include "../src/libft/include/libft.h"
+#include "mlx.h"
+#include "libft.h"
 #include "raytracer.h"
 #include "info.h"
 #include "rt_math.h"
 #include "memory.h"
 #include "parse.h"
+#include "window.h"
 
 # define TRUE	1
 # define FALSE	0
