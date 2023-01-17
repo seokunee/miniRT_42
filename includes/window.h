@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/16 17:28:36 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:16:43 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_window
 {
 	void	*mlx;
 	void	*mlx_win;
-	int		sizex;
-	int		sizey;
+	int		width;
+	int		height;
 	t_data	data;
 }	t_window;
 
