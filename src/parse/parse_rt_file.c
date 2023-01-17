@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 18:09:54 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 20:58:34 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ bool read_file(t_info *info, int fd)
 	char *tmp;
 	
 	tmp = get_next_line(fd);
-	if (!tmp) //eof일때 = 동적할당없이 NULL이 왔음
+	if (!tmp)
 	{
 		close(fd);
 		return (false);
 	}
-	else if (ft_strncmp(tmp, "", 1) == 0)
+	else if (ft_strncmp(tmp, "\n", 2) == 0)
 	{
 		free(tmp);
 		return (true);

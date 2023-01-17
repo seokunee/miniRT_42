@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:46:53 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/17 18:22:27 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 20:57:57 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,3 @@ t_vec3	*get_arg_normal(char *s)
 		error_exit("Wrong normal argument");
 	return (vec3);
 }
-
-// void	check_normal_vector(t_objs *obj, char *str)
-// {
-// 	char **normal;
-
-// 	normal = ft_split(str, ',');
-// 	if (!normal)
-// 		error_exit("Malloc Error");
-// 	if (sec_arr_len(normal) != 3) // vector 3인지 체크
-// 		error_exit("Wrong normal argument num");
-// 	check_only_num1(normal[0], ".");
-// 	check_only_num1(normal[1], ".");
-// 	check_only_num1(normal[2], ".");
-// 	obj->normal = create_3d_vec(ft_atof(normal[0]),\
-// 	ft_atof(normal[1]), ft_atof(normal[2]));
-// 	if (v_dot(obj->normal, obj->normal) != 1)
-// 		error_exit("Wrong normal argument");
-// }
