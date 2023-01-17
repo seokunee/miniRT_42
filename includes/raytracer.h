@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:14:26 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 21:52:53 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/17 09:53:24 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,16 @@ typedef struct s_tri
 }	t_tri;
 
 /*
-* triangle.c
-*/
-int		intersect_ray_triangle(t_ray *ray, t_tri *tri, t_hit **hit);
-t_hit	*check_ray_collision(t_ray *ray, t_tri *tri);
-
-/*
 * ray_tracer.c
 */
-t_vec3	*transform_screen_to_world(t_info *info, t_vec2 *screen);
+t_vec3	*transform_screen_to_world(t_info **info, t_vec2 *screen);
+t_hit	*find_closest_collision(t_info **info, t_ray *ray);
+t_vec3	*trace_ray(t_info **info, t_ray *ray, const int recurse_level);
 
+/*
+* sphere.c
+*/
+t_hit	*check_ray_collision_sphere(t_ray *ray, t_objs *sphere);
 
 
 
