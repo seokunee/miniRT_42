@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:14:26 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 15:47:00 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/17 21:58:43 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,75 +14,129 @@
 #define RAYTRACER_H
 
 #include "minirt.h"
-// #include "../src/libft/include/libft.h"
-// #include "rt_math.h"
-
-typedef struct s_raytracer
+typedef struct s_image
 {
-	int		width;
-	int 	height;
-	struct s_vec3	*light;
+	float	aspect;
+	int		sample_per_pixel;
+	int		max_depth;
+}	t_image;
 
-	// temp variables. 다른곳에서 정의될 수 있음.
-	t_list	*object;
-	int		num_of_objs;
-	t_vec3	*color;
-	t_vec3	*phong_color;
-}	t_raytracer;
-
-/*
-* Ray
-* start: Start position of the ray.
-* dir: Direction of the ray.
-*/
-typedef struct s_ray
+typedef struct s_hit_record
 {
-	struct	s_vec3	*start;
-	struct	s_vec3	*dir;
-}	t_ray;
+	struct s_vec3 p;	// point
+	struct s_vec3 normal;
+    shared_ptr<material> mat_ptr;
+    double t;
+    bool front_face;
 
-/*
-* Hit
-* d: Distance from start of ray to crash point.
-* point: Position vector of crash.
-* normal: Vertical vector of surface from crash point.
-* uv: Coordinates of texture.
-*/
-typedef struct s_hit
+    // inline void set_face_normal(const ray& r, const vec3& outward_normal) {
+    //     front_face = dot(r.direction(), outward_normal) < 0;
+    //     normal = front_face ? outward_normal :-outward_normal;
+    // }
+}	t_hit_record;
+
+typedef struct s_lambertian_reflection
 {
-	float	d;
-	struct s_vec3	*point;
-	struct s_vec3	*normal;
-	struct s_vec2	*uv;
+	struct s_vec3	*color;
+}	t_lambertian_reflection;
 
-	struct s_objs			*obj;
-}	t_hit;
-
-/*
-* Triangle
-*/
-typedef struct s_tri
+typedef struct s_material
 {
-	struct s_vec3	*v0;
-	struct s_vec3	*v1;
-	struct s_vec3	*v2;
-	struct s_vec2	*uv0;
-	struct s_vec2	*uv1;
-	struct s_vec2	*uv2;
-}	t_tri;
+	char							type[1];
+	struct s_lambertian_reflection	*lamb;
+	// struct s_material *next;
+}	t_material;
 
-/*
-* ray_tracer.c
-*/
-t_vec3	*transform_screen_to_world(t_info **info, t_vec2 *screen);
-t_hit	*find_closest_collision(t_info **info, t_ray *ray);
-t_vec3	*trace_ray(t_info **info, t_ray *ray, const int recurse_level);
+// class lambertian : public material {
+//     public:
+//         lambertian(const color& a) : albedo(a) {}
 
-/*
-* sphere.c
-*/
-t_hit	*check_ray_collision_sphere(t_ray *ray, t_objs *sphere);
-int		calculate_pixel_color(t_info **info, int x, int y);
-int		create_trgb(int t, int r, int g, int b);
+//         virtual bool scatter(
+//             const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
+//         ) const override {
+//             auto scatter_direction = rec.normal + random_unit_vector();
+
+//             // Catch degenerate scatter direction
+//             if (scatter_direction.near_zero())
+//                 scatter_direction = rec.normal;
+
+//             scattered = ray(rec.p, scatter_direction);
+//             attenuation = albedo;
+//             return true;
+//         }
+
+//     public:
+//         color albedo;
+// };
+
+
+// class metal : public material {
+//     public:
+//         metal(const color& a, double f) : albedo(a), fuzz(f < 1 ? f : 1) {}
+
+//         virtual bool scatter(
+//             const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
+//         ) const override {
+//             vec3 reflected = reflect(unit_vector(r_in.direction()), rec.normal);
+//             scattered = ray(rec.p, reflected + fuzz*random_in_unit_sphere());
+//             attenuation = albedo;
+//             return (dot(scattered.direction(), rec.normal) > 0);
+//         }
+
+//     public:
+//         color albedo;
+//         double fuzz;
+// };
+
+
+// class dielectric : public material {
+//     public:
+//         dielectric(double index_of_refraction) : ir(index_of_refraction) {}
+
+//         virtual bool scatter(
+//             const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
+//         ) const override {
+//             attenuation = color(1.0, 1.0, 1.0);
+//             double refraction_ratio = rec.front_face ? (1.0/ir) : ir;
+
+//             vec3 unit_direction = unit_vector(r_in.direction());
+//             double cos_theta = fmin(dot(-unit_direction, rec.normal), 1.0);
+//             double sin_theta = sqrt(1.0 - cos_theta*cos_theta);
+
+//             bool cannot_refract = refraction_ratio * sin_theta > 1.0;
+//             vec3 direction;
+
+//             if (cannot_refract || reflectance(cos_theta, refraction_ratio) > random_double())
+//                 direction = reflect(unit_direction, rec.normal);
+//             else
+//                 direction = refract(unit_direction, rec.normal, refraction_ratio);
+
+//             scattered = ray(rec.p, direction);
+//             return true;
+//         }
+
+//     public:
+//         double ir; // Index of Refraction
+
+//     private:
+//         static double reflectance(double cosine, double ref_idx) {
+//             // Use Schlick's approximation for reflectance.
+//             auto r0 = (1-ref_idx) / (1+ref_idx);
+//             r0 = r0*r0;
+//             return r0 + (1-r0)*pow((1 - cosine),5);
+//         }
+// };
+
+
+
+typedef struct s_oneweek
+{
+	struct s_info	*info;
+	struct s_image	*image;
+
+}	t_oneweek;
+
+
+
 
 #endif
