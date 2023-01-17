@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   compare_values.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 21:33:05 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/01/13 22:43:16 by chanwjeo          #+#    #+#             */
+/*   Updated: 2023/01/15 15:44:10 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "../../includes/rt_math.h"
 
-#include <fcntl.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-#include "mlx.h"
-#include "libft.h"
-#include "raytracer.h"
-#include "info.h"
-#include "rt_math.h"
-#include "memory.h"
-#include "parse.h"
-#include "window.h"
+float	max_float(float f1, float f2)
+{
+	if (f1 > f2)
+		return (f1);
+	return (f2);
+}
 
-# define TRUE	1
-# define FALSE	0
-
-/*
-* error/error.c
-*/
-void	error_exit(char *msg);
-
-#endif
+float	min_float(float f1, float f2)
+{
+	if (f1 > f2)
+		return (f2);
+	return (f1);
+}

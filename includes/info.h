@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 09:56:02 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/17 08:40:52 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 #define INFO_H
 
 #include "minirt.h"
+
+#define ERR 1
+#define SUCCESS 0
+
+typedef struct s_objs t_objs;
 
 /*
 * Ambient lightning:
@@ -23,13 +28,9 @@
 */
 typedef struct s_a
 {
-	char	*identifier;	// 일단 넣어봤는데, 없어도 될것같습니다.
-	float	amb_light_ratio;
-	int		color_r;
-	int		color_g;
-	int		color_b;
-	/* 위처럼 r, g, b 쓰거나 혹은 */
-	int		colors[3];
+	//char			*identifier;	// 일단 넣어봤는데, 없어도 될것같습니다.
+	float			amb_light_ratio;
+	t_vec3	*colors;
 }	t_a;
 
 /*
@@ -41,10 +42,10 @@ typedef struct s_a
 */
 typedef struct s_c
 {
-	// char		*identifier;
-	float	coordinates[3];
-	float	normalized_orientation[3];
-	int		fov;
+	// char			*identifier;
+	t_vec3	*coor;
+	t_vec3	*normal;
+	int				fov;
 }	t_c;
 
 /*
@@ -56,10 +57,10 @@ typedef struct s_c
 */
 typedef struct s_l
 {
-	float	coordinates[3];
-	float	light_brightness_ratio;
+	t_vec3	*coor;
+	float			light_brightness_ratio;
 	/* unsued in mand part */
-	int		colors[3];
+	t_vec3	*colors;
 }	t_l;
 
 /*
@@ -101,12 +102,46 @@ typedef struct s_sp
 */
 typedef struct s_cy
 {
-	float	coordinates[3];
-	float	normalized_orientation[3];
-	float	cylinder_diameter;
-	float	cylinder_height;
-	int		colors[3];
+	t_vec3	*coor;
+	t_vec3	*normal;
+	t_vec3	*colors;
+	float			cylinder_diameter;
+	float			cylinder_height;
 }	t_cy;
+
+/*
+* PL : Plane
+* SP : Sphere
+* CY : Cylinder
+*/
+typedef enum e_type
+{
+	NO_OBJS,
+	PL,
+	SP,
+	CY,
+}	t_type;
+
+/*
+* Objs:
+* identifier : objs type
+* x,y,z coordinates: 50.0,0.0,20.6
+* 3d normalized orientation vector. In range [-1,1] for each x,y,z axis: 0.0,0.0,1.0
+* the cylinder diameter: 14.2
+* the cylinder height: 21.42
+* R,G,B colors in range [0,255]: 10, 0, 255
+*/
+struct s_objs
+{
+	enum e_type		type;
+	t_vec3	*coor;
+	t_vec3	*normal;
+	float	diameter;
+	float	cy_hei;
+	t_vec3	*colors;
+	t_objs	*next;
+	t_objs	*prev;
+};
 
 /*
 * info
@@ -116,10 +151,31 @@ typedef struct s_info
 	struct s_a	*t_a;
 	struct s_c	*t_c;
 	struct s_l	*t_l;
-	struct s_pl	*t_pl;
-	struct s_sp	*t_sp;
-	struct s_cy	*t_cy;
+	struct s_objs	*t_objs;
+	int 		wid;
+	int 		hei;
+
+	// tmp
+	struct s_hit	*hit;
+	struct s_vec3	*color;
+	struct s_vec3	*phong_color;
+	float	diff;
+	float	specular;
 }	t_info;
+
+/*
+* check_flag
+* explaination : check number of flags in '.rt file'
+*/
+typedef struct s_check_flag
+{
+	int	a;
+	int	c;
+	int	l;
+	int	pl;
+	int	sp;
+	int	cy;
+}	t_check_flag;
 
 void	init_info(t_info *info);
 

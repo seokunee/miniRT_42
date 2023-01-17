@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
 #    Updated: 2023/01/16 17:26:52 by sunhwang         ###   ########.fr        #
@@ -48,10 +48,13 @@ WINDOW_DIR		= $(SRC_DIR)/window/
 # ------------------------------------------------------ #
 MAIN_SRC		= main
 PARSE_SRC		= init_info
-MATH_SRC		= vector_dot_cross vector_op create_vector
+
+MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values \
+					create_2d_3d_vector create_4d_vector normalize vector_op_2d vector_op2 vector_op_2d2
 ERROR_SRC		= error
 WINDOW_SRC		= init_window key_hook mouse_hook window_hooks
 
+MEMORY_SRC		= free_raytracer free_vector 
 # LEXER_SRC		= token_create token_modify \
 # 				  scanner_main scanner_create scanner_function_ptr \
 # 				  scanner_helper scanner_helper2 scanner_get_token_1 scanner_get_token_2

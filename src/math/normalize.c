@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 21:33:05 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/01/13 23:10:51 by chanwjeo          #+#    #+#             */
+/*   Updated: 2023/01/17 09:50:12 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "../../includes/rt_math.h"
 
-#include <fcntl.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-#include "mlx.h"
-#include "libft.h"
-#include "raytracer.h"
-#include "info.h"
-#include "rt_math.h"
-#include "memory.h"
-#include "parse.h"
-#include "window.h"
+t_vec3	*norm_3d_vec(t_vec3 *v)
+{
+	t_vec3	*ret;
 
-# define TRUE	1
-# define FALSE	0
-
-/*
-* error/error.c
-*/
-void	error_exit(char *msg);
-
-#endif
+	ret = ft_malloc(sizeof(t_vec3));
+	ret->x = v->x / v_len(v);
+	ret->y = v->y / v_len(v);
+	ret->z = v->z / v_len(v);
+	return (ret);
+}
