@@ -6,15 +6,15 @@
 #    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/17 15:00:00 by seokchoi         ###   ########.fr        #
+#    Updated: 2023/01/17 18:02:04 by seokchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= miniRT
 
 INC_DIR			= -Iincludes -I$(LIBFT_DIR)/include -I$(MLX_DIR)
-CFLAGS			= -Wall -Wextra -Werror $(INC_DIR) -g3 -fsanitize=address
-# CFLAGS			= -Wall -Wextra -Werror $(INC_DIR)
+# CFLAGS			= -Wall -Wextra -Werror $(INC_DIR) -g3 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror $(INC_DIR)
 LDFLAGS			= -L$(LIBFT_DIR) -lft -L. -lmlx
 
 # NOTE : Add Source directory here

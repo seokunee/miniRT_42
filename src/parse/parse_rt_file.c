@@ -6,11 +6,11 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 14:41:19 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:09:54 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "minirt.h"
 
 void	check_file_name(char *file_name)
 {
@@ -60,25 +60,27 @@ void	edit_info(t_info *info, char *s)
 		get_obj(info, options, CY);
 	else
 		error_exit("Wrong identifier");
-	free_sec_arr(options);
+	free_double_array((void**)options);
 }
 
-char	*read_file(t_info *info, int fd)
+bool read_file(t_info *info, int fd)
 {
 	char *tmp;
 	
 	tmp = get_next_line(fd);
-	if (!tmp)
+	if (!tmp) //eof일때 = 동적할당없이 NULL이 왔음
 	{
 		close(fd);
-		return (NULL);
+		return (false);
 	}
-	// tmp1 = tmp; -> it is not necessary
-	// while (*tmp1 != 0 && ft_isspace(*tmp1))
-	// 	tmp1++;
+	else if (ft_strncmp(tmp, "", 1) == 0)
+	{
+		free(tmp);
+		return (true);
+	}
 	edit_info(info, tmp);
 	free(tmp);
-	return ("yet");
+	return (true);
 }
 
 char	*parse_rt_file(t_info *info, char *file_name)
@@ -89,6 +91,10 @@ char	*parse_rt_file(t_info *info, char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		error_exit("File open failed");
-	read_file(info, fd);
+	while (1)
+	{
+		if (!read_file(info, fd))
+			break ;
+	}
 	return (NULL);
 }

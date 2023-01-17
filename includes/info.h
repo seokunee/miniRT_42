@@ -6,20 +6,21 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 13:31:35 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:17:53 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INFO_H
 #define INFO_H
 
-#include "minirt.h"
+# include "minirt.h"
 
-#define ERR 1
-#define SUCCESS 0
+# define ERR 1
+# define SUCCESS 0
 
 typedef struct s_objs t_objs;
 typedef struct s_info t_info;
+typedef struct s_l t_l;
 typedef enum e_type t_type;
 
 /*
@@ -57,13 +58,15 @@ typedef struct s_c
 * the light brightness ratio in range [0.0,1.0]: 0.6
 * (unused in mandatory part)R,G,B colors in range [0-255]: 10, 0, 255
 */
-typedef struct s_l
+struct s_l
 {
 	t_vec3	*coor;
 	float			light_brightness_ratio;
 	/* unsued in mand part */
 	t_vec3	*colors;
-}	t_l;
+	t_l	*next;
+	t_l	*prev;
+};
 
 /*
 * Plane:

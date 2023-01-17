@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "minirt.h"
 
 int	main(int ac, char **av)
 {
@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 	init_info(&info);
 	parse_rt_file(&info, av[1]);
 	printf("%s\n", av[1]);
-	// system("leaks miniRT");
+	print_all_info(&info);
+	system("leaks miniRT");
 	return (0);
 }

@@ -6,17 +6,17 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 02:11:51 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:22:27 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "minirt.h"
 
 void	set_pl(t_objs *obj, char **opt)
 {
 	if (sec_arr_len(opt) != 4)
-		error_exit("wrong argument");
+		error_exit("Wrong plane argument num");
 	check_coordinates(obj, opt[1]);
-	check_normal_vector(obj, opt[2]);
+	obj->normal = get_arg_normal(opt[2]);
 	obj->colors = get_arg_color(opt[3]);
 }

@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:48:40 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 02:12:11 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:05:13 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,11 @@ void	init_info(t_info *info)
 	info->t_a = malloc(sizeof(t_a));
 	info->t_c = malloc(sizeof(t_c));
 	info->t_l = malloc(sizeof(t_l));
-	info->t_objs = malloc(sizeof(t_objs));
-	if (!info->t_a || !info->t_c || !info->t_objs || \
+	info->t_objs = 0;
+	if (!info->t_a || !info->t_c || \
 		!info->t_l)
 		error_exit("Malloc failure.");
 	ft_memset(info->t_a, 0, sizeof(t_a));
 	ft_memset(info->t_c, 0, sizeof(t_c));
 	ft_memset(info->t_l, 0, sizeof(t_l));
-	ft_memset(info->t_objs, 0, sizeof(t_objs));
 }
