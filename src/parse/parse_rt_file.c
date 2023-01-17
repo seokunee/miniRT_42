@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 02:11:49 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:41:19 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,32 +63,32 @@ void	edit_info(t_info *info, char *s)
 	free_sec_arr(options);
 }
 
-char	*read_file(t_info *info, char *file_name)
+char	*read_file(t_info *info, int fd)
 {
 	char *tmp;
-	char *tmp1;
-	int fd;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		error_exit("File open failed");
+	
 	tmp = get_next_line(fd);
 	if (!tmp)
 	{
 		close(fd);
 		return (NULL);
 	}
-	tmp1 = tmp;
-	while (*tmp1 != 0 && ft_isspace(*tmp1))
-		tmp1++;
-	edit_info(info, tmp1);
+	// tmp1 = tmp; -> it is not necessary
+	// while (*tmp1 != 0 && ft_isspace(*tmp1))
+	// 	tmp1++;
+	edit_info(info, tmp);
 	free(tmp);
 	return ("yet");
 }
 
 char	*parse_rt_file(t_info *info, char *file_name)
 {
+	int fd;
+
 	check_file_name(file_name);
-	read_file(info, file_name);
+	fd = open(file_name, O_RDONLY);
+	if (fd < 0)
+		error_exit("File open failed");
+	read_file(info, fd);
 	return (NULL);
 }

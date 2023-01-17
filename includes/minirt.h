@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 14:26:56 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:38:09 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "mlx.h"
 # include "libft.h"
 # include "raytracer.h"
-# include "info.h"
 # include "rt_math.h"
+# include "info.h"
 # include "memory.h"
 # include "parse.h"
 # include "window.h"

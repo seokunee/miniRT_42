@@ -6,12 +6,11 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 09:44:06 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 21:32:36 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:03:04 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <stdlib.h>
+#include "libft.h"
 
 static size_t	count_word(const char *str)
 {
@@ -58,7 +57,7 @@ static char	*each_word_malloc(const char **word_start)
 	char	*pa_word;
 
 	cnt = 0;
-	len = get_word_len(*word_start, c);
+	len = get_word_len(*word_start);
 	pa_word = malloc((sizeof(*pa_word) * len) + 1);
 	if (!pa_word)
 		return (NULL);

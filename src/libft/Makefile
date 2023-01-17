@@ -6,7 +6,7 @@
 #    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 15:31:26 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/16 16:46:52 by seokchoi         ###   ########.fr        #
+#    Updated: 2023/01/17 15:01:27 by seokchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC2_FILES      = ft_isspace ft_nbrlen ft_putnbr_uint_fd ft_nbrlen_uint \
                   ft_convert_nbr_base_malloc ft_nputstr_fd ft_atoi_base \
 				  ft_strjoin_all ft_isinteger ft_strdup_without_newline \
 				  ft_strlcpy_without_newline ft_strjoin_without_newline \
-				  free_double_array
+				  free_double_array ft_split_is_space
 
 SRC3_FILES		= get_next_line get_next_line_utils \
 				  get_next_line_bonus get_next_line_utils_bonus

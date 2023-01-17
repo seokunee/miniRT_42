@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:49:00 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/17 01:56:49 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:41:30 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	sec_arr_len(char **arr)
 	return (len);
 }
 
-void	free_sec_arr(char *arr)
+void	free_sec_arr(char **arr)
 {
 	int	i;
 
@@ -74,10 +74,9 @@ int	check_only_num1(char *opt, char *oper)
 	return (SUCCESS);
 }
 
-int	check_only_num(char **opt, char *oper)
+int	check_only_num(char **opt, char *oper)// 이거 무슨 함수? 꼬형한테 물어보기
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (opt[i])
@@ -85,4 +84,5 @@ int	check_only_num(char **opt, char *oper)
 		check_only_num1(opt[i], oper);
 		i++;
 	}
+	return (i);
 }

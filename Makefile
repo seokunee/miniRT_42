@@ -6,7 +6,7 @@
 #    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/17 14:25:06 by seokchoi         ###   ########.fr        #
+#    Updated: 2023/01/17 15:00:00 by seokchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ WINDOW_DIR		= $(SRC_DIR)/window/
 MAIN_SRC		= main
 
 PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light\
-					normal objects parse_rt_file plane sphere utils utils2\
+					normal objects parse_rt_file plane sphere utils utils2
 MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values create_2d_3d_vector create_4d_vector normalize vector_op_2d
 ERROR_SRC		= error
 WINDOW_SRC		= init_window key_hook mouse_hook window_hooks

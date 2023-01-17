@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 20:47:34 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:31:35 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #define SUCCESS 0
 
 typedef struct s_objs t_objs;
+typedef struct s_info t_info;
+typedef enum e_type t_type;
 
 /*
 * Ambient lightning:
@@ -114,13 +116,13 @@ typedef struct s_cy
 * SP : Sphere
 * CY : Cylinder
 */
-typedef enum e_type
+enum e_type
 {
 	NO_OBJS,
 	PL,
 	SP,
 	CY,
-}	t_type;
+};
 
 /*
 * Objs:
@@ -146,7 +148,7 @@ struct s_objs
 /*
 * info
 */
-typedef struct s_info
+struct s_info
 {
 	struct s_a	*t_a;
 	struct s_c	*t_c;
@@ -154,7 +156,7 @@ typedef struct s_info
 	t_list		*t_objs;
 	int 		wid;
 	int 		hei;
-}	t_info;
+};
 
 /*
 * check_flag
