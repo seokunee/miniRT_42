@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:46:29 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 00:01:34 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:44:43 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_vec3	*v_sum(t_vec3 *v1, t_vec3 *v2)
 	return (ret_vector);
 }
 
-t_vec3	*v_mul(t_vec3 *v, float f)
+t_vec3	*v_float_mul(t_vec3 *v, float f)
 {
 	t_vec3	*ret_vector;
 
