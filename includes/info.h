@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 15:17:53 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:31:28 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,12 +167,12 @@ struct s_info
 */
 typedef struct s_check_flag
 {
-	int	a;
-	int	c;
-	int	l;
-	int	pl;
-	int	sp;
-	int	cy;
+	int	a_count;
+	int	c_count;
+	int	l_count;
+	int	pl_count;
+	int	sp_count;
+	int	cy_count;
 }	t_check_flag;
 
 void	init_info(t_info *info);

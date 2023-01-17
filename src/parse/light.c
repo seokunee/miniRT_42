@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 18:22:27 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:40:56 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	get_light(t_info *info, char **s)
 {
+	t_l	*light;
+	//ft_lstadd_back
+	light = ft_calloc(sizeof(t_l), 1);
+	if (!light)
+		error_exit("malloc error");
 	if (sec_arr_len(s) != 3 && sec_arr_len(s) != 4)
 		error_exit("Wrong argument");
 	info->t_l->coor = get_arg_coor(s[1]);
@@ -23,3 +28,16 @@ void	get_light(t_info *info, char **s)
 	if (sec_arr_len(s) == 4)
 		info->t_l->colors = get_arg_color(s[3]);
 }
+
+// void	get_obj(t_info *info, char **opt, t_type type)
+// {
+// 	t_objs *obj;
+// 	t_list *new;
+
+// 	obj = malloc(sizeof(t_objs));
+// 	if (!obj)
+// 		error_exit("malloc error");
+// 	new = ft_lstnew(obj);
+// 	ft_lstadd_back(&(info->t_objs), new);
+// 	check_obj(obj, opt, type);
+// }
