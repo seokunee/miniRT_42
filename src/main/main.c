@@ -20,8 +20,7 @@ int	main(int ac, char **av)
 		error_exit("Invalid number of arguments. Check it!");
 	init_info(&info);
 	parse_rt_file(&info, av[1]);
-	printf("%s\n", av[1]);
-	print_all_info(&info);
-	system("leaks miniRT");
+	// print_all_info(&info); 
+	// system("leaks miniRT");
 	return (0);
 }
