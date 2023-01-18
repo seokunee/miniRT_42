@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_math.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 16:30:15 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/18 09:14:53 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ typedef struct s_vec4
 * Return absolute value of float f.
 */
 float	abs_float(float f);
+
+/*
+* Return degrees to radians.
+*/
+float	degrees_to_radians_float(float degrees);
+double	degrees_to_radians_double(double degrees);
 
 /*
 * '+', '*', '-' operator of 2D-vector
