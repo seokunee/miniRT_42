@@ -72,13 +72,33 @@ int	mipng_is_type(unsigned char *ptr, char *type)
 
 
 unsigned char mipng_defilter_none(unsigned char *buff, int pos, int a, int b, int c)
-{ return (buff[pos]); }
+{
+  (void)a;
+  (void)b;
+  (void)c;
+  return (buff[pos]);
+}
+
 unsigned char mipng_defilter_sub(unsigned char *buff, int pos, int a, int b, int c)
-{ return (buff[pos]+(unsigned int)a); }
+{
+  (void)b;
+  (void)c;
+  return (buff[pos]+(unsigned int)a);
+}
+
 unsigned char mipng_defilter_up(unsigned char *buff, int pos, int a, int b, int c)
-{ return (buff[pos]+(unsigned int)b); }
+{
+  (void)a;
+  (void)c;
+  return (buff[pos]+(unsigned int)b);
+}
+
 unsigned char mipng_defilter_average(unsigned char *buff, int pos, int a, int b, int c)
-{ return (buff[pos]+((unsigned int)a+(unsigned int)b)/2); }
+{
+  (void)c;
+   return (buff[pos]+((unsigned int)a+(unsigned int)b)/2);
+}
+
 unsigned char mipng_defilter_paeth(unsigned char *buff, int pos, int a, int b, int c)
 {
   int	p;
@@ -133,7 +153,7 @@ int	mipng_fill_img(void *img, unsigned char *buf, png_info_t *pi)
 	{
 	  // printf("ipos %d iline %d pi->width %d bpos %d\n", ipos, iline, pi->width, bpos);
 	  if ((current_filter = buf[bpos++]) > 4)
-	    {  
+	    {
 	    return (ERR_DATA_FILTER);
 	    }
 	}
@@ -147,7 +167,7 @@ int	mipng_fill_img(void *img, unsigned char *buf, png_info_t *pi)
 	bpos ++;
       if (ipos % 4 == 3 && pi->color == 2)  // no alpha
 	ibuf[ipos++] = 0xFF;
-      if (ipos % iline == pi->width * 4)
+      if ((unsigned int)ipos % iline == pi->width * 4)
 	ipos += iline-pi->width*4;
     }
   if (ipos != ilen || bpos != blen)
@@ -179,6 +199,7 @@ int	mipng_data(void *img, unsigned char *dat, png_info_t *pi)
   z_stream z_strm;
   unsigned char z_out[Z_CHUNK];
 
+  (void)z_have;
   b_pos = 0;
   if (!(buffer = malloc((long long)pi->width*(long long)pi->height*(long long)pi->bpp + pi->height)))
     return (ERR_MALLOC);
@@ -223,9 +244,9 @@ int	mipng_data(void *img, unsigned char *dat, png_info_t *pi)
 	  b_pos += Z_CHUNK - z_strm.avail_out;
 	}
       dat += len + 4 + 4 + 4;
-    } 
+    }
   inflateEnd(&z_strm);
-  if (b_pos != pi->width*pi->height*pi->bpp+pi->height)
+  if ((unsigned int)b_pos != pi->width*pi->height*pi->bpp+pi->height)
     {
       //      printf("pb : bpos %d vs expected %d\n", b_pos, img->width*img->height*pi->bpp+img->height);
       free(buffer);
@@ -263,7 +284,7 @@ int	mipng_crc(unsigned char *ptr, int len)
 
   file_crc = *((unsigned int *)(ptr+4+4+len));
   file_crc = ntohl(file_crc);
-  
+
   crc = 0xffffffffL;
   i = 0;
   while (i < len+4)
@@ -292,7 +313,7 @@ int	mipng_structure(unsigned char *ptr, int size, unsigned char **hdr, unsigned 
 	{
 	  len = *((unsigned int *)ptr);
 	  len = ntohl(len);
-	  if (size < 4 + 4 + 4 + len)
+	  if ((unsigned int)size < 4 + 4 + 4 + len)
 	    return (ERR_STRUCT_INCOMPLETE);
 	  if (mipng_crc(ptr, len))
 	    return (ERR_STRUCT_CRC);
