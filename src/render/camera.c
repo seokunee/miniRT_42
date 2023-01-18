@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:55:41 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 11:52:31 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:55:58 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,40 @@ t_cam_setting	cam_setting(t_oneweek *one)
 	const t_info	*info = one->info;
 
 	set.lookfrom = create_3d_vec(info->t_c->coor->x, info->t_c->coor->y, info->t_c->coor->z);
-	set.lookat = create_3d_vec(info->t_c.)
+	set.lookat = create_3d_vec_input_same_value(0.0f);
+	set.vup = info->t_c->normal;
+	set.vfov = info->t_c->fov;
+	set.aspect_ratio = info->wid / info->hei;
+	set.aperture = 0.1;
+	set.focus_dist = 10.0;
+	set.time0 = 0;
+	set.time1 = 0;
+	return (set);
 }
 
-t_cam	*create_cam_default(t_oneweek *one)
+t_cam	create_cam_default(t_oneweek *one)
 {
-	t_cam	*cam;
+	t_cam_setting set;
+	t_cam	cam;
 	t_vec3	*lookat;
-	t_vec3	*vup;
-	const float	vfov = 40;
-	const float foc_dst = 10;
 
-	lookat = create_3d_vec_input_same_value(0.0f);
-	vup = create_3d_vec(0.0f, 1.0f, 0.0f);
-	cam = ft_malloc(sizeof(t_cam));
-	cam->origin = create_3d_vec(0.0f, 0.0f, -1.0f);
-	cam->w = unit_vector(v_sub(cam->origin, lookat));
-	cam->u = unit_vector(v_cross(vup, w));
-	cam->v = v_cross(w, u);
-	cam->horizontal = v_float_mul(cam->u, foc_dst * one->image->aspect * 2.0f * tanf(degrees_to_radians_float(vfov) / 2));
-	cam->vertical = v_float_mul(cam->v, foc_dst * 2.0f * tanf(degrees_to_radians_float(vfov) / 2)); 
-	cam->lower_left_corner = v_sub(v_sub(cam->origin, v_mul(cam->horizontal, 0.5f)), v_mul(cam->vertical, 0.5f), v_float_mul(cam->w, foc_dst));
-	cam->lens_radius = 0;
-	cam->time0 = 0;
-	cam->time1 = 0;
+	set = cam_setting(one);
+	cam.origin = set.lookfrom;
+	cam.w = unit_vector(v_sub(cam.origin, set.lookat));
+	cam.u = unit_vector(v_cross(set.vup, cam.w));
+	cam.v = v_cross(cam.w, cam.u);
+	cam.horizontal = v_float_mul(cam.u, set.focus_dist * set.aspect_ratio * 2.0f * tanf(degrees_to_radians_float(set.vfov) / 2));
+	cam.vertical = v_float_mul(cam.v, set.focus_dist * 2.0f * tanf(degrees_to_radians_float(set.vfov) / 2)); 
+	cam.lower_left_corner = v_sub(v_sub(cam.origin, v_mul(cam.horizontal, 0.5f)), v_mul(cam.vertical, 0.5f), v_float_mul(cam.w, set.focus_dist));
+	cam.lens_radius = 0;
+	cam.time0 = set.time0;
+	cam.time1 = set.time1;
+	return (cam);
 }
+
+t_ray	get_ray(t_cam cam, double s, double t)
+{
+	return (create_ray(cam.origin, v_sub(v_sum(cam.lower_left_corner, \
+		v_float_mul(cam.horizontal, s)), cam.origin)), 0);
+}
+

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
+#    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/16 17:26:52 by sunhwang         ###   ########.fr        #
+#    Updated: 2023/01/18 13:23:43 by chanwjeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ MAIN_SRC		= main
 PARSE_SRC		= init_info
 
 MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values \
-					create_2d_3d_vector create_4d_vector normalize vector_op_2d vector_op2 vector_op_2d2
+					create_2d_3d_vector create_4d_vector normalize vector_op_2d vector_op_2d2
 ERROR_SRC		= error
 WINDOW_SRC		= init_window key_hook mouse_hook window_hooks
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:52:37 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 09:53:47 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:55:58 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,12 @@ typedef struct s_cam
 	t_vec3	*u;
 	t_vec3	*v;
 	t_vec3	*w;
-	float	lens_radius;
-	float	time0;		// shutter open
-	float	time1;		// shutter close
+	double	lens_radius;
+	double	time0;		// shutter open
+	double	time1;		// shutter close
 }	t_cam;
+
+t_cam_setting	cam_setting(t_oneweek *one);
+t_cam	create_cam_default(t_oneweek *one);
 
 #endif
