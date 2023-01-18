@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:46:29 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 13:19:17 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/18 19:39:44 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,15 @@ t_vec3	v_divide(t_vec3 v, double t)
 double	v_len(t_vec3 v)
 {
 	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
+}
+
+t_vec3	vmin(t_vec3 vec1, t_vec3 vec2)
+{
+	if (vec1.x > vec2.x)
+		vec1.x = vec2.x;
+	if (vec1.y > vec2.y)
+		vec1.y = vec2.y;
+	if (vec1.z > vec2.z)
+		vec1.z = vec2.z;
+	return (vec1);
 }

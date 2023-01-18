@@ -6,7 +6,7 @@
 #    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/18 13:23:43 by chanwjeo         ###   ########.fr        #
+#    Updated: 2023/01/18 19:41:45 by chanwjeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,12 @@ MAIN_DIR		= $(SRC_DIR)/test/
 endif
 
 PARSE_DIR		= $(SRC_DIR)/parse/
-
 LIBFT_DIR		= $(SRC_DIR)/libft/
 MLX_DIR			= $(SRC_DIR)/mlx/
 MATH_DIR		= $(SRC_DIR)/math/
 ERROR_DIR		= $(SRC_DIR)/error/
 WINDOW_DIR		= $(SRC_DIR)/window/
+RENDER_DIR		= $(SRC_DIR)/render/
 
 # STRING_DIR		= $(SRC_DIR)/string/
 # ITERATOR_DIR	= $(SRC_DIR)/iterator/
@@ -47,14 +47,16 @@ WINDOW_DIR		= $(SRC_DIR)/window/
 # NOTE : Add Source files here
 # ------------------------------------------------------ #
 MAIN_SRC		= main
-PARSE_SRC		= init_info
+# PARSE_SRC		= init_info parse_rt_file set_a set_c set_cy set_l set_pl set_sp
 
-MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values \
-					create_2d_3d_vector create_4d_vector normalize vector_op_2d vector_op_2d2
+MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values normalize
 ERROR_SRC		= error
 WINDOW_SRC		= init_window key_hook mouse_hook window_hooks
 
-MEMORY_SRC		= free_raytracer free_vector 
+MEMORY_SRC		= free_raytracer free_vector
+
+RENDER_SRC		= camera material
+
 # LEXER_SRC		= token_create token_modify \
 # 				  scanner_main scanner_create scanner_function_ptr \
 # 				  scanner_helper scanner_helper2 scanner_get_token_1 scanner_get_token_2
@@ -73,11 +75,11 @@ MEMORY_SRC		= free_raytracer free_vector
 # NOTE : Add to SRC here
 # ------------------------------------------------------ #
 SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
-		$(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
 		$(addsuffix .c, $(addprefix $(MATH_DIR), $(MATH_SRC))) \
 		$(addsuffix .c, $(addprefix $(ERROR_DIR), $(ERROR_SRC))) \
 		$(addsuffix .c, $(addprefix $(WINDOW_DIR), $(WINDOW_SRC))) \
-	#   $(addsuffix .c, $(addprefix $(LEXER_DIR), $(LEXER_SRC))) \
+		$(addsuffix .c, $(addprefix $(RENDER_DIR), $(RENDER_SRC))) \
+		# $(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(EXECUTER_DIR), $(EXECUTER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(BUILTIN_DIR), $(BUILTIN_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(STRING_DIR), $(STRING_SRC))) \

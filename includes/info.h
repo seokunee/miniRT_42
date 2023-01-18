@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 13:26:25 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:18:47 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define INFO_H
 
 #include "minirt.h"
+#include "libft.h"
 
 #define ERR 1
 #define SUCCESS 0

@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:33:01 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 08:39:40 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:00:16 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,5 @@ typedef struct s_material
 	struct s_material *next;
 }	t_material;
 
-
-typedef struct s_oneweek
-{
-	struct s_info	*info;
-	struct s_image	*image;
-
-}	t_oneweek;
 
 #endif
