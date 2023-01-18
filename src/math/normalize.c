@@ -6,11 +6,11 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 23:10:51 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:32:02 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:08:51 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/rt_math.h"
+#include "rt_math.h"
 #include <stdlib.h>
 
 // t_vec3	norm_3d_vec(t_vec3 v)

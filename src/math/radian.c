@@ -6,11 +6,11 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 09:09:16 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 09:14:48 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:06:51 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/rt_math.h"
+#include <math.h>
 
 float	degrees_to_radians_float(float degrees)
 {

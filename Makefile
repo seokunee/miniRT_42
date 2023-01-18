@@ -6,7 +6,7 @@
 #    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/18 19:56:03 by chanwjeo         ###   ########.fr        #
+#    Updated: 2023/01/18 20:14:53 by chanwjeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,17 +50,16 @@ RENDER_DIR		= $(SRC_DIR)/render/
 # NOTE : Add Source files here
 # ------------------------------------------------------ #
 MAIN_SRC		= main
-# PARSE_SRC		= init_info parse_rt_file set_a set_c set_cy set_l set_pl set_sp
 
 PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light\
 					normal objects parse_rt_file plane sphere utils utils2
-MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values normalize
+MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values normalize radian
 ERROR_SRC		= error
 WINDOW_SRC		= init_window key_hook mouse_hook window_hooks
 
 MEMORY_SRC		= free_raytracer free_vector
 
-RENDER_SRC		= camera material
+RENDER_SRC		= camera_set material
 
 # LEXER_SRC		= token_create token_modify \
 # 				  scanner_main scanner_create scanner_function_ptr \
@@ -84,7 +83,7 @@ SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
 		$(addsuffix .c, $(addprefix $(ERROR_DIR), $(ERROR_SRC))) \
 		$(addsuffix .c, $(addprefix $(WINDOW_DIR), $(WINDOW_SRC))) \
 		$(addsuffix .c, $(addprefix $(RENDER_DIR), $(RENDER_SRC))) \
-		# $(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
+		$(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(EXECUTER_DIR), $(EXECUTER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(BUILTIN_DIR), $(BUILTIN_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(STRING_DIR), $(STRING_SRC))) \

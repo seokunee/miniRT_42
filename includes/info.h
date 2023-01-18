@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:55:33 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:15:28 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "minirt.h"
 #include "libft.h"
+#include "rt_math.h"
 
 # define SUCCESS 0
 
@@ -166,7 +167,7 @@ struct s_info
 	struct s_vec3	*phong_color;
 	float	diff;
 	float	specular;
-}	t_info;
+};
 
 /*
 * check_flag

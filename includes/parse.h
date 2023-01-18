@@ -6,16 +6,15 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:54:30 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:13:53 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 #define PARSE_H
 
-<<<<<<< HEAD
-#include "minirt.h"
-#include "info.h"
+// #include "minirt.h"
+// #include "info.h"
 
 // ambient
 void	get_ambient(t_info *info, char **s);
@@ -52,7 +51,6 @@ int		check_range(int type, float ret);
 void	edit_info(t_info *info, char *s);
 bool	read_file(t_info *info, int fd);
 char	*parse_rt_file(t_info *info, char *file_name);
->>>>>>> develop
 
 //plane
 void	set_pl(t_objs *obj, char **opt);

@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:52:37 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:18:04 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:58:20 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "raytracer.h"
 #include "rt_math.h"
-#include "info.h"
+// #include "info.h"
 
 typedef struct s_cam_setting
 {

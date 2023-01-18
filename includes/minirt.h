@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:55:08 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:05:09 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,6 @@
 # include <math.h>
 # include "mlx.h"
 # include "libft.h"
-# include "raytracer.h"
-# include "rt_math.h"
-# include "info.h"
-# include "memory.h"
-# include "parse.h"
-# include "camera.h"
-# include "window.h"
 
 # define TRUE	1
 # define FALSE	0

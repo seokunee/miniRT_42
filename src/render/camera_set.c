@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.c                                           :+:      :+:    :+:   */
+/*   camera_set.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:55:41 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 18:01:35 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:59:34 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/camera.h"
+#include "camera.h"
+#include "info.h"
 
 t_cam_setting	cam_setting(t_oneweek *one)
 {
