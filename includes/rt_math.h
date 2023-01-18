@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 09:14:53 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 09:27:49 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,11 @@ t_vec4	*create_4d_vec_input_same_value(float f);
 * Return normalized 3D-vector.
 */
 t_vec3	*norm_3d_vec(t_vec3 *v);
+
+/*
+* Return unit vector.
+*/
+t_vec3	*unit_vector(t_vec3 *v);
 
 /*
 * Calculate power of float value.
