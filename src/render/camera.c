@@ -6,15 +6,19 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:55:41 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 09:53:46 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/18 11:52:31 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/camera.h"
 
-t_cam_setting	*cam_setting(t_oneweek *one)
+t_cam_setting	cam_setting(t_oneweek *one)
 {
-	
+	t_cam_setting	set;
+	const t_info	*info = one->info;
+
+	set.lookfrom = create_3d_vec(info->t_c->coor->x, info->t_c->coor->y, info->t_c->coor->z);
+	set.lookat = create_3d_vec(info->t_c.)
 }
 
 t_cam	*create_cam_default(t_oneweek *one)
