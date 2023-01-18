@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:45:16 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 16:46:53 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:35:58 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -485,6 +485,12 @@ extern t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), \
 * size: type size
 */
 extern void		*ft_malloc(size_t size);
+
+/*
+* Split string with isspace
+* s: char pointer
+*/
+extern char		**ft_split_is_space(char const *s);
 
 
 #endif	/* LIBFT_H */
