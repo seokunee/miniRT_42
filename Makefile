@@ -6,7 +6,7 @@
 #    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/16 17:26:52 by sunhwang         ###   ########.fr        #
+#    Updated: 2023/01/18 12:35:00 by sunhwang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ MLX_DIR			= $(SRC_DIR)/mlx/
 MATH_DIR		= $(SRC_DIR)/math/
 ERROR_DIR		= $(SRC_DIR)/error/
 WINDOW_DIR		= $(SRC_DIR)/window/
+THREAD_DIR		= $(SRC_DIR)/thread/
 
 # STRING_DIR		= $(SRC_DIR)/string/
 # ITERATOR_DIR	= $(SRC_DIR)/iterator/
@@ -50,7 +51,8 @@ MAIN_SRC		= main
 PARSE_SRC		= init_info
 MATH_SRC		= vector_dot_cross vector_op create_vector
 ERROR_SRC		= error
-WINDOW_SRC		= init_window key_hook mouse_hook window_hooks
+WINDOW_SRC		= draw_image init_window key_hook mouse_hook window_hooks
+THREAD_SRC		= init_thread
 
 # LEXER_SRC		= token_create token_modify \
 # 				  scanner_main scanner_create scanner_function_ptr \
@@ -74,6 +76,7 @@ SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
 		$(addsuffix .c, $(addprefix $(MATH_DIR), $(MATH_SRC))) \
 		$(addsuffix .c, $(addprefix $(ERROR_DIR), $(ERROR_SRC))) \
 		$(addsuffix .c, $(addprefix $(WINDOW_DIR), $(WINDOW_SRC))) \
+		$(addsuffix .c, $(addprefix $(THREAD_DIR), $(THREAD_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(LEXER_DIR), $(LEXER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(EXECUTER_DIR), $(EXECUTER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(BUILTIN_DIR), $(BUILTIN_SRC))) \
