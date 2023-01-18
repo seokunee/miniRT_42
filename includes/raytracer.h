@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:14:26 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:09:34 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/17 15:47:00 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_raytracer
 	// temp variables. 다른곳에서 정의될 수 있음.
 	t_list	*object;
 	int		num_of_objs;
+	t_vec3	*color;
+	t_vec3	*phong_color;
 }	t_raytracer;
 
 /*
@@ -49,9 +51,11 @@ typedef struct s_ray
 typedef struct s_hit
 {
 	float	d;
-	struct	s_vec3	*point;
-	struct	s_vec3	*normal;
-	struct	s_vec2	*uv;
+	struct s_vec3	*point;
+	struct s_vec3	*normal;
+	struct s_vec2	*uv;
+
+	struct s_objs			*obj;
 }	t_hit;
 
 /*
@@ -59,22 +63,26 @@ typedef struct s_hit
 */
 typedef struct s_tri
 {
-	struct	s_vec3	*v0;
-	struct	s_vec3	*v1;
-	struct	s_vec3	*v2;
-	struct	s_vec2	*uv0;
-	struct	s_vec2	*uv1;
-	struct	s_vec2	*uv2;
+	struct s_vec3	*v0;
+	struct s_vec3	*v1;
+	struct s_vec3	*v2;
+	struct s_vec2	*uv0;
+	struct s_vec2	*uv1;
+	struct s_vec2	*uv2;
 }	t_tri;
 
 /*
-* triangle.c
+* ray_tracer.c
 */
-int		intersect_ray_triangle(t_ray *ray, t_tri *tri, t_hit **hit);
-t_hit	*check_ray_collision(t_ray *ray, t_tri *tri);
+t_vec3	*transform_screen_to_world(t_info **info, t_vec2 *screen);
+t_hit	*find_closest_collision(t_info **info, t_ray *ray);
+t_vec3	*trace_ray(t_info **info, t_ray *ray, const int recurse_level);
 
-
-
-
+/*
+* sphere.c
+*/
+t_hit	*check_ray_collision_sphere(t_ray *ray, t_objs *sphere);
+int		calculate_pixel_color(t_info **info, int x, int y);
+int		create_trgb(int t, int r, int g, int b);
 
 #endif

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
 /*   Updated: 2023/01/17 18:31:28 by seokchoi         ###   ########.fr       */
@@ -156,10 +156,17 @@ struct s_info
 	struct s_a	*t_a;
 	struct s_c	*t_c;
 	struct s_l	*t_l;
-	t_list		*t_objs;
+	struct s_objs	*t_objs;
 	int 		wid;
 	int 		hei;
-};
+
+	// tmp
+	struct s_hit	*hit;
+	struct s_vec3	*color;
+	struct s_vec3	*phong_color;
+	float	diff;
+	float	specular;
+}	t_info;
 
 /*
 * check_flag

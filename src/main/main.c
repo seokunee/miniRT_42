@@ -18,7 +18,6 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		error_exit("Invalid number of arguments. Check it!");
-	init_info(&info);
 	parse_rt_file(&info, av[1]);
 	// print_all_info(&info);
 	// system("leaks miniRT");
