@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 09:56:02 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:23:40 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct s_info
 	struct s_pl	*t_pl;
 	struct s_sp	*t_sp;
 	struct s_cy	*t_cy;
+	struct s_window	*win;
 }	t_info;
 
 void	init_info(t_info *info);
