@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:45:16 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 13:00:37 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/18 19:54:14 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -485,6 +485,12 @@ extern t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), \
 * size: type size
 */
 extern void		*ft_malloc(size_t size);
+
+/*
+* Split string with isspace
+* s: char pointer
+*/
+extern char		**ft_split_is_space(char const *s);
 
 
 #endif	/* LIBFT_H */

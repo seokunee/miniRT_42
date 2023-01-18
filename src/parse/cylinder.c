@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_l.c                                            :+:      :+:    :+:   */
+/*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 21:18:48 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:22:27 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "minirt.h"
 
-void	get_light(t_info *info, char **s)
+void	set_cy(t_objs *obj, char **opt)
 {
-	if (sec_arr_len(s) != 4)
-		error_exit("wrong argument");
-	info->t_l->coor = get_arg_coor(s[1]);
-	info->t_l->colors = get_arg_color(s[2]);
-	info->t_l->light_brightness_ratio = ft_atof(s[3]);
-	if (check_range(1, info->t_l->light_brightness_ratio) == ERR)
-		error_exit("wrong argument");
+	if (sec_arr_len(opt) != 6)
+		error_exit("Wrong cylinder argument");
+	check_coordinates(obj, opt[1]);
+	obj->normal = get_arg_normal(opt[2]);
+	check_diameter(obj, ft_atof(opt[3]));
+	obj->cy_hei = ft_atof(opt[4]);
+	if (obj->cy_hei <= 0)
+	obj->colors = get_arg_color(opt[5]);
 }

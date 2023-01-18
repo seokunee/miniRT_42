@@ -6,7 +6,7 @@
 #    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/18 19:41:45 by chanwjeo         ###   ########.fr        #
+#    Updated: 2023/01/18 19:56:03 by chanwjeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,9 @@ PARSE_DIR		= $(SRC_DIR)/parse/
 LIBFT_DIR		= $(SRC_DIR)/libft/
 MLX_DIR			= $(SRC_DIR)/mlx/
 MATH_DIR		= $(SRC_DIR)/math/
+
+TEST_DIR		= $(SRC_DIR)/test/
+MEMORY_DIR		= $(SRC_DIR)/memory/
 ERROR_DIR		= $(SRC_DIR)/error/
 WINDOW_DIR		= $(SRC_DIR)/window/
 RENDER_DIR		= $(SRC_DIR)/render/
@@ -49,6 +52,8 @@ RENDER_DIR		= $(SRC_DIR)/render/
 MAIN_SRC		= main
 # PARSE_SRC		= init_info parse_rt_file set_a set_c set_cy set_l set_pl set_sp
 
+PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light\
+					normal objects parse_rt_file plane sphere utils utils2
 MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values normalize
 ERROR_SRC		= error
 WINDOW_SRC		= init_window key_hook mouse_hook window_hooks

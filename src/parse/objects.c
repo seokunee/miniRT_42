@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 20:59:29 by seokchoi         ###   ########.fr       */
+/*   Created: 2023/01/17 01:52:00 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/17 15:18:32 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int ac, char **av)
+void	check_obj(t_objs *obj, char **opt, t_type type)
 {
-	t_info	info;
+	obj->type = type;
+	if (type == PL)
+		set_pl(obj, opt);
+	if (type == SP)
+		set_sp(obj, opt);
+	if (type == CY)
+		set_cy(obj, opt);
+}
 
-	if (ac != 2)
-		error_exit("Invalid number of arguments. Check it!");
-	parse_rt_file(&info, av[1]);
-	// print_all_info(&info);
-	// system("leaks miniRT");
-	return (0);
+void	get_obj(t_info *info, char **opt, t_type type)
+{
+	t_objs *obj;
+	t_list *new;
+
+	obj = malloc(sizeof(t_objs));
+	if (!obj)
+		error_exit("malloc error");
+	new = ft_lstnew(obj);
+	ft_lstadd_back(&(info->t_objs), new);
+	check_obj(obj, opt, type);
 }

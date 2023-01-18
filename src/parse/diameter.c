@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_pl.c                                           :+:      :+:    :+:   */
+/*   diameter.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 21:18:29 by seokchoi         ###   ########.fr       */
+/*   Created: 2023/01/17 01:50:22 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/17 18:22:27 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "minirt.h"
 
-void	set_pl(t_objs *obj, char **opt)
+void	check_diameter(t_objs *obj, float dia)
 {
-	if (sec_arr_len(opt) != 4)
-		error_exit("wrong argument");
-	check_coordinates(obj, opt[1]);
-	check_normal_vector(obj, opt[2]);
-	obj->colors = get_arg_color(opt[3]);
+	if (dia <= 0)
+		error_exit("Wrong diameter range");
+	obj->diameter = dia;
 }
