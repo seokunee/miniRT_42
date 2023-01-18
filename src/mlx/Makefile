@@ -1,37 +1,46 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/01/18 20:49:21 by sunhwang          #+#    #+#              #
+#    Updated: 2023/01/18 21:04:00 by sunhwang         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
+NAME		= libmlx.dylib
 
+OBJ_DIR = obj/
 
-MODULE_SRC= mlx_image.swift mlx_window.swift mlx_init.swift
-MODULE_OBJ=$(MODULE_SRC:.swift=.swiftmodule)
+MODULE_SRC	= mlx_image.swift mlx_window.swift mlx_init.swift
+MODULE_OBJ	= $(MODULE_SRC:%.swift=$(OBJ_DIR)%.swiftmodule)
 
-SRC= interface.swift $(MODULE_SRC)
-OBJ=$(SRC:.swift=.o)
+SRC			= interface.swift $(MODULE_SRC)
+OBJ			= $(SRC:%.swift=$(OBJ_DIR)%.o)
 
-C_SRC= mlx_xpm.c mlx_png.c mlx_string_put.c
-C_OBJ=$(C_SRC:.c=.o)
-CFLAGS=-O3
-
-NAME=libmlx.dylib
+C_SRC		= mlx_xpm.c mlx_png.c mlx_string_put.c
+C_OBJ		= $(C_SRC:%.c=$(OBJ_DIR)%.o)
+#CFLAGS		= -Wall -Wextra -Werror -O3
 
 INC=-I.
-#OPTI=-Ounchecked
 
 all: $(NAME)
 
 $(NAME): $(MODULE_OBJ) $(OBJ) $(C_OBJ)
-	@swiftc $(OPTI) $(INC) -o $(NAME) -emit-library $(OBJ) $(C_OBJ) -lz
-	@mv *.o obj/
+	@swiftc $(OPTI) $(INC) -o $@ -emit-library $(OBJ) $(C_OBJ) -lz
+	# @mv *.o obj/
 	@echo "$(MAGENTA)╔══════════════════════════════════════════╗$(DEF_COLOR)"
 	@echo "$(MAGENTA)║        Minilibx compile finished.        ║$(DEF_COLOR)"
 	@echo "$(MAGENTA)╚══════════════════════════════════════════╝$(DEF_COLOR)"
 
 %.o: %.c
-	@${CC} ${CFLAGS} -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(MAGENTA)Compiling... \t$< $(DEF_COLOR)"
 
 %.o: %.swift
 	@swiftc $(OPTI) $(INC) -parse-as-library -c $< -o $@
-	@mkdir -p obj
 	@echo "$(MAGENTA)Compiling... \t$< $(DEF_COLOR)"
 
 %.swiftmodule: %.swift
