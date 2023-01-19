@@ -6,7 +6,7 @@
 #    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 20:49:21 by sunhwang          #+#    #+#              #
-#    Updated: 2023/01/18 21:32:40 by sunhwang         ###   ########.fr        #
+#    Updated: 2023/01/19 20:59:06 by sunhwang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJ			= $(SRC:%.swift=$(OBJ_DIR)%.o)
 
 C_SRC		= mlx_xpm.c mlx_png.c mlx_string_put.c
 C_OBJ		= $(C_SRC:%.c=$(OBJ_DIR)%.o)
-CFLAGS		= -Wall -Wextra -Werror -O3
+CFLAGS		= -O3
 
 INC			= -Iobj
 
