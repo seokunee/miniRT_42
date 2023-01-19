@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 20:13:53 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/19 09:42:18 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define PARSE_H
 
 // #include "minirt.h"
-// #include "info.h"
+#include "info.h"
 
 // ambient
 void	get_ambient(t_info *info, char **s);
@@ -23,10 +23,10 @@ void	get_ambient(t_info *info, char **s);
 void	get_camera(t_info *info, char **s);
 
 // colors
-t_vec3	*get_arg_color(char *s);
+t_vec3	get_arg_color(char *s);
 
 // coordinate
-t_vec3	*get_arg_coor(char *s);
+t_vec3	get_arg_coor(char *s);
 void	check_coordinates(t_objs *obj, char *str);
 
 // cylinder
@@ -39,7 +39,7 @@ void	check_diameter(t_objs *obj, float dia);
 void	get_light(t_info *info, char **s);
 
 // normal
-t_vec3	*get_arg_normal(char *s);
+t_vec3	get_arg_normal(char *s);
 
 // objects
 void	check_obj(t_objs *obj, char **opt, t_type type);

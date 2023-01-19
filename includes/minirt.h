@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 20:05:09 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/19 09:33:14 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 # define TRUE	1
 # define FALSE	0
+# define SUCCESS 0
+# define ERR	 1
 
 /*
 * error/error.c

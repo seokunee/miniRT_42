@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 02:03:23 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/17 18:22:27 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/19 08:41:24 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+// #include "minirt.h"
+#include "parse.h"
+#include "info.h"
 
 void	get_camera(t_info *info, char **s)
 {

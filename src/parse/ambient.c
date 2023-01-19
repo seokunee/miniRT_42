@@ -6,13 +6,14 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:48:21 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 20:17:25 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/19 08:42:10 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "minirt.h"
-#include "info.h"
 #include "parse.h"
+#include "info.h"
+#include "rt_math.h"
 
 void	get_ambient(t_info *info, char **s)
 {

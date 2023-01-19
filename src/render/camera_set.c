@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:55:41 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:59:34 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/19 10:43:07 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,3 @@ void	create_cam_default(t_oneweek *one)
 	cam.time1 = set.time1;
 	one->cam = cam;
 }
-
-// t_ray	get_ray(t_cam cam, double s, double t)
-// {
-// 	return (create_ray(cam.origin, v_sub(v_sum(cam.lower_left_corner, \
-// 		v_float_mul(cam.horizontal, s)), cam.origin)), 0);
-// }
-

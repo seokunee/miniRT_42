@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   coordinate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:49:25 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/17 18:22:27 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/19 09:41:36 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "rt_math.h"
+#include "parse.h"
 
-t_vec3	*get_arg_coor(char *s)
+t_vec3	get_arg_coor(char *s)
 {
 	char	**tmp;
 	float	color[3];
@@ -25,7 +27,7 @@ t_vec3	*get_arg_coor(char *s)
 	color[1] = ft_atof(tmp[1]);
 	color[2] = ft_atof(tmp[2]);
 	free_double_array((void**)tmp);
-	return (create_3d_vec(color[0],color[1], color[2]));
+	return (vec3(color[0],color[1], color[2]));
 }
 
 void	check_coordinates(t_objs *obj, char *str) // 모든 coor을 체크 할 수 있음.
@@ -40,7 +42,7 @@ void	check_coordinates(t_objs *obj, char *str) // 모든 coor을 체크 할 수 
 	check_only_num1(coor[0], "."); // 숫자와 . 으로 이루어졌는지는 체크.
 	check_only_num1(coor[1], ".");
 	check_only_num1(coor[2], ".");
-	obj->coor = create_3d_vec(ft_atof(coor[0]),\
+	obj->coor = vec3(ft_atof(coor[0]),\
 	ft_atof(coor[1]), ft_atof(coor[2]));
 	free_double_array((void **)coor);
 }

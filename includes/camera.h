@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:52:37 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:58:20 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/19 10:47:08 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,6 @@ typedef struct s_cam
 	double	time0;		// shutter open
 	double	time1;		// shutter close
 }	t_cam;
-
-typedef struct s_oneweek
-{
-	struct s_info	*info;
-	struct s_image	*image;
-	struct s_cam	cam;
-
-}	t_oneweek;
 
 t_cam_setting	cam_setting(t_oneweek *one);
 void	create_cam_default(t_oneweek *one);
