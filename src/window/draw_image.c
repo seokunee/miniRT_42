@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:08:40 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/17 17:10:44 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:27:28 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ static int	get_offset(t_data *data, int x, int y)
 {
 	const int	line_length = data->line_length;
 	const int	bits_per_pixel = data->bits_per_pixel;
-	const int	offset = (y * line_length + x * (bits_per_pixel / 8));
 
-	return (offset);
+	return (y * line_length + x * (bits_per_pixel / 8));
 }
 
 void	put_pixel(t_data *data, int x, int y, int color)
