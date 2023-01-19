@@ -6,7 +6,7 @@
 #    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/18 12:35:00 by sunhwang         ###   ########.fr        #
+#    Updated: 2023/01/19 16:25:43 by sunhwang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,7 +121,7 @@ CUSTOM = \033[38;5;135m
 #    Mac compile option                                                |
 #-----------------------------------------------------------------------
 $(NAME): $(OBJ)
-	@$(MAKE) -C $(LIBFT_DIR) bonus
+	@$(MAKE) -j -C $(LIBFT_DIR) bonus
 	@$(MAKE) -C $(MLX_DIR) all
 	@cp ./src/mlx/libmlx.dylib ./
 	@$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $@
