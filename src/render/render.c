@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:04:42 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 15:17:20 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:30:03 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../includes/minirt.h"
+// #include "minirt.h"
 #include "raytracer.h"
 #include "rt_math.h"
 #include "info.h"

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_vector.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 08:41:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 08:44:10 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:29:53 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/memory.h"
+#include "memory.h"
 
 void	free_vec_2d(t_vec2 *v)
 {

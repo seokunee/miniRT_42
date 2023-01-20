@@ -3,25 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:52:37 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/19 10:47:08 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:07:16 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAMERA_H
-#define CAMERA_H
+# define CAMERA_H
 
-#include "raytracer.h"
-#include "rt_math.h"
-// #include "info.h"
+# include "raytracer.h"
+# include "rt_math.h"
 
 typedef struct s_cam_setting
 {
 	t_vec3	lookfrom;
 	t_vec3	lookat;
-	struct s_vec3	vup;
+	t_vec3	vup;
 	double	vfov;
 	double	aspect_ratio;
 	double	aperture;
@@ -44,7 +43,7 @@ typedef struct s_cam
 	double	time1;		// shutter close
 }	t_cam;
 
-t_cam_setting	cam_setting(t_oneweek *one);
-void	create_cam_default(t_oneweek *one);
+// t_cam_setting	cam_setting(t_oneweek *one);
+// void	create_cam_default(t_oneweek *one);
 
 #endif

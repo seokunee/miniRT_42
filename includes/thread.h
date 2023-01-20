@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:14:00 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/20 14:25:01 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:06:44 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include <unistd.h>
 # include <pthread.h>
-# include "libft.h"
 # include "info.h"
-# include "window.h"
 
 typedef struct s_drawer
 {
@@ -27,9 +25,9 @@ typedef struct s_drawer
 	int			size;
 	pthread_t	thread;
 	t_data		data;
-	struct s_info	*info;
+	t_info		*info;
 }	t_drawer;
 
-void	start_drawing(struct s_info *info);
+void	start_drawing(t_info *info);
 
 #endif

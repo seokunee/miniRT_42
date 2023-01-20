@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   vector_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:46:29 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 14:44:02 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:36:56 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/rt_math.h"
+#include "rt_math.h"
 
 t_vec3	vec3(double x, double y, double z)
 {
 	t_vec3 vec;
-	
+
 	vec.x = x;
 	vec.y = y;
 	vec.z = z;
@@ -25,7 +25,7 @@ t_vec3	vec3(double x, double y, double z)
 t_point3	point3(double x, double y, double z)
 {
 	t_point3 point;
-	
+
 	point.x = x;
 	point.y = y;
 	point.z = z;
@@ -35,7 +35,7 @@ t_point3	point3(double x, double y, double z)
 t_point3	color3(double r, double g, double b)
 {
 	t_color3	color3;
-	
+
 	color3.x = r;
 	color3.y = g;
 	color3.z = b;
@@ -44,9 +44,9 @@ t_point3	color3(double r, double g, double b)
 
 void	vset(t_vec3 *v, double x, double y, double z)
 {
-    v->x = x;
-    v->y = y;
-    v->z = z;
+	v->x = x;
+	v->y = y;
+	v->z = z;
 }
 
 t_vec3	v_sum(t_vec3 v1, t_vec3 v2)

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rt_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 12:44:14 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:34:24 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include "info.h"
+#include "minirt.h"
 
 void	check_file_name(char *file_name)
 {
@@ -67,7 +67,7 @@ void	edit_info(t_info *info, char *s)
 bool read_file(t_info *info, int fd)
 {
 	char *tmp;
-	
+
 	tmp = get_next_line(fd);
 	if (!tmp)
 	{

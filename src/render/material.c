@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   material.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 21:56:46 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 08:39:26 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:29:07 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/material.h"
+#include "material.h"
 
 int	scatter_lambertian();
 

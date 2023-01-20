@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:05:07 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 13:10:45 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:31:30 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,5 @@
 # include "info.h"
 # include "window.h"
 # include "thread.h"
-
-/*
-* error/error.c
-*/
-void	error_exit(char *msg);
 
 #endif

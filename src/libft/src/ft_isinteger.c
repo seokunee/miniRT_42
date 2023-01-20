@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isinteger.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:25:27 by chanwjeo          #+#    #+#             */
-/*   Updated: 2022/11/16 20:20:21 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:38:06 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
-#include "../include/libft.h"
+#include "libft.h"
 
 bool	ft_isinteger(char *s)
 {

@@ -3,22 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 15:31:26 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/17 15:01:27 by seokchoi         ###   ########.fr        #
+#    Updated: 2023/01/20 16:37:44 by sunhwang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME            = libft.a
 
-CC              = cc
-CFLAGS          = -Werror -Wextra -Wall -I 
+CFLAGS          = -Werror -Wextra -Wall -I
 INCLUDE         = include
 SRC_DIR         = src/
 OBJ_DIR         = obj/
 
-RM              = rm -f
 AR              = ar rcs
 
 SRC_FILES       = ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha \
@@ -79,7 +77,7 @@ CYAN            = \033[0;96m
 WHITE           = \033[0;97m
 
 
-# Rules 
+# Rules
 all: $(NAME)
 
 $(NAME): $(OBJ_RESULT)

@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 12:19:33 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:38:44 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
-#define PARSE_H
+# define PARSE_H
 
-// #include "minirt.h"
-#include "info.h"
+# include <stdio.h>
+# include "error.h"
+# include "info.h"
 
 // ambient
 void	get_ambient(t_info *info, char **s);
@@ -50,7 +51,7 @@ void	check_file_name(char *file_name);
 int		check_range(int type, float ret);
 void	edit_info(t_info *info, char *s);
 bool	read_file(t_info *info, int fd);
-void  parse_rt_file(t_info *info, char *file_name);
+void	parse_rt_file(t_info *info, char *file_name);
 
 //plane
 void	set_pl(t_objs *obj, char **opt);

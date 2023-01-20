@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   diameter.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:50:22 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/19 09:43:24 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:38:50 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include "info.h"
+#include "parse.h"
 
 void	check_diameter(t_objs *obj, float dia)
 {

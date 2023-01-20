@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/20 14:46:30 by seokchoi         ###   ########.fr        #
+#    Updated: 2023/01/20 16:10:39 by sunhwang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,6 @@ CFLAGS			= -Wall -Wextra -Werror $(INC_DIR) -g3 -fsanitize=address
 # CFLAGS			= -Wall -Wextra -Werror $(INC_DIR)
 LDFLAGS			= -L$(LIBFT_DIR) -lft -L. -lmlx
 
-# NOTE : Add Source directory here
-# ------------------------------------------------------ #
 SRC_DIR			= src
 
 ifeq (,$(findstring test,$(MAKECMDGOALS)))
@@ -27,45 +25,41 @@ else
 MAIN_DIR		= $(SRC_DIR)/test/
 endif
 
-PARSE_DIR		= $(SRC_DIR)/parse/
+# LIBRARY DIR
 LIBFT_DIR		= $(SRC_DIR)/libft/
 MLX_DIR			= $(SRC_DIR)/mlx/
-MATH_DIR		= $(SRC_DIR)/math/
 
-TEST_DIR		= $(SRC_DIR)/test/
+# SRCS DIR
+PARSE_DIR		= $(SRC_DIR)/parse/
+MATH_DIR		= $(SRC_DIR)/math/
 MEMORY_DIR		= $(SRC_DIR)/memory/
 ERROR_DIR		= $(SRC_DIR)/error/
 WINDOW_DIR		= $(SRC_DIR)/window/
 RENDER_DIR		= $(SRC_DIR)/render/
 THREAD_DIR		= $(SRC_DIR)/thread/
+
 # Use MLX library
 # MLX				= -L./$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 # NOTE : Add Source files here
-# ------------------------------------------------------ #
 MAIN_SRC		= main
-
-PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light\
-					normal objects parse_rt_file plane sphere utils utils2
+PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2
 MATH_SRC		= vector_dot_cross vector_op vector_op2 absolute clamp compare_values normalize radian
+MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
 WINDOW_SRC		= draw_image init_window key_hook mouse_hook window_hooks
-THREAD_SRC		= init_thread
-
-MEMORY_SRC		= free_raytracer free_vector
-
 RENDER_SRC		= ray_tracer ray render hit sphere
-
+THREAD_SRC		= init_thread
 
 # NOTE : Add to SRC here
 # ------------------------------------------------------ #
-SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
-		$(addsuffix .c, $(addprefix $(MATH_DIR), $(MATH_SRC))) \
-		$(addsuffix .c, $(addprefix $(ERROR_DIR), $(ERROR_SRC))) \
-		$(addsuffix .c, $(addprefix $(WINDOW_DIR), $(WINDOW_SRC))) \
-		$(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
-		$(addsuffix .c, $(addprefix $(THREAD_DIR), $(THREAD_SRC))) \
-	  $(addsuffix .c, $(addprefix $(RENDER_DIR), $(RENDER_SRC))) \
+SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR),	$(MAIN_SRC)))	\
+		$(addsuffix .c, $(addprefix $(MATH_DIR),	$(MATH_SRC)))	\
+		$(addsuffix .c, $(addprefix $(ERROR_DIR),	$(ERROR_SRC)))	\
+		$(addsuffix .c, $(addprefix $(WINDOW_DIR),	$(WINDOW_SRC)))	\
+		$(addsuffix .c, $(addprefix $(PARSE_DIR),	$(PARSE_SRC)))	\
+		$(addsuffix .c, $(addprefix $(THREAD_DIR),	$(THREAD_SRC)))	\
+		$(addsuffix .c, $(addprefix $(RENDER_DIR),	$(RENDER_SRC)))	\
 # ------------------------------------------------------ #
 
 OBJ_DIR = obj/

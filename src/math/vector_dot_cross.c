@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_dot_cross.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:14:35 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:39:46 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:29:23 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/rt_math.h"
+#include "rt_math.h"
 
 double	v_dot(t_vec3 v1, t_vec3 v2)
 {

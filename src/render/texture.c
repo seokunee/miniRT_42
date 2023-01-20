@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 21:30:20 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/19 21:36:53 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:14:13 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,4 @@ t_color3	get_solid_color(t_texture *texture)
 	return (color);
 }
 
-t_color3	get_
+// t_color3	get_

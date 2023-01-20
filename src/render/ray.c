@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:43:51 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 14:37:17 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:29:59 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../includes/ray.h"
+// #include "ray.h"
 
 // t_vec3	create_ray(t_vec3 ori, t_vec3 dir, float t)
 // {

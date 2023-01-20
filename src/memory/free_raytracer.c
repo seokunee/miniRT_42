@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_raytracer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 08:43:04 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:19:41 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/20 16:29:12 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/memory.h"
+#include "memory.h"
 
 // void	free_raytracer(t_raytracer *rt)
 // {

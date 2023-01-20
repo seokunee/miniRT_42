@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:22:31 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 12:51:40 by kko              ###   ########.fr       */
+/*   Updated: 2023/01/20 17:11:17 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>  
+#include <stdbool.h>
 #include <stddef.h>
 #include <limits.h>
 

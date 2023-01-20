@@ -3,25 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 14:18:00 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:03:35 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INFO_H
-#define INFO_H
+# define INFO_H
 
-#include "minirt.h"
-#include "libft.h"
-#include "rt_math.h"
-#include "window.h"
-
-typedef struct s_objs t_objs;
-typedef struct s_info t_info;
-typedef struct s_l t_l;
-typedef enum e_type t_type;
+# include "libft.h"
+# include "rt_math.h"
+# include "window.h"
+# include "hit.h"
 
 /*
 * Ambient lightning:
@@ -56,15 +51,15 @@ typedef struct s_c
 * the light brightness ratio in range [0.0,1.0]: 0.6
 * (unused in mandatory part)R,G,B colors in range [0-255]: 10, 0, 255
 */
-struct s_l
+typedef struct s_l
 {
-	struct s_vec3	coor;
-	float			light_brightness_ratio;
+	t_vec3		coor;
+	float		light_brightness_ratio;
 	/* unsued in mand part */
-	struct s_vec3	colors;
-	t_l	*next;
-	t_l	*prev;
-};
+	t_vec3		colors;
+	struct s_l	*next;
+	struct s_l	*prev;
+}	t_l;
 
 /*
 * Plane:
@@ -117,13 +112,13 @@ typedef struct s_cy
 * SP : Sphere
 * CY : Cylinder
 */
-enum e_type
+typedef enum e_type
 {
 	NO_OBJS,
 	PL,
 	SP,
 	CY,
-};
+}	t_type;
 
 /*
 * Objs:
@@ -134,38 +129,37 @@ enum e_type
 * the cylinder height: 21.42
 * R,G,B colors in range [0,255]: 10, 0, 255
 */
-struct s_objs
+typedef struct s_objs
 {
 	enum e_type		type;
-	struct s_vec3	coor;
-	struct s_vec3	normal;
-	float	diameter;
-	float	cy_hei;
-	struct s_vec3	colors;
-	struct t_objs	*next;
-	struct t_objs	*prev;
-};
- 
+	t_vec3			coor;
+	t_vec3			normal;
+	float			diameter;
+	float			cy_hei;
+	t_vec3			colors;
+	struct s_objs	*next;
+	struct s_objs	*prev;
+}	t_objs;
+
 /*
 * info
 */
-struct s_info
+typedef struct s_info
 {
-	struct s_a	t_a;
-	struct s_c	t_c;
-	struct s_l	*t_l;
+	t_a			t_a;
+	t_c			t_c;
+	t_l			*t_l;
 	t_list		*t_objs;
-	int 		wid;
-	int 		hei;
-
+	int			wid;
+	int			hei;
 	// tmp
-	struct s_window	win;
-	struct s_hit	*hit;
-	struct s_vec3	color;
-	struct s_vec3	phong_color;
-	float	diff;
-	float	specular;
-};
+	t_window	win;
+	t_hit		*hit;
+	t_vec3		color;
+	t_vec3		phong_color;
+	float		diff;
+	float		specular;
+}	t_info;
 
 /*
 * check_flag
