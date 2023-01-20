@@ -169,6 +169,7 @@ char	*mlx_int_static_line(char **xpm_data,int *pos,int size)
   int		len2;
   char		*str;
 
+  (void)size;
   str = xpm_data[(*pos)++];
   if ((len2 = strlen(str))>len)
     {
@@ -219,6 +220,7 @@ int	mlx_int_get_text_rgb(char *name, char *end)
 
 void	mlx_int_xpm_set_pixel(char *data, int opp, int col, int x)
 {
+  (void)opp;
   *((unsigned int *)(data+4*x)) = col;
 }
 
