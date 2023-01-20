@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/20 16:10:39 by sunhwang         ###   ########.fr        #
+#    Updated: 2023/01/20 17:27:27 by seokchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,5 +133,9 @@ fclean:
 
 re: fclean all
 	@echo "$(CUSTOM)Cleaned and rebuilt miniRT.$(DEF_COLOR)"
+
+norm:
+	norminette $(PARSE_DIR) $(MATH_DIR) $(MEMORY_DIR) $(ERROR_DIR) \
+	$(WINDOW_DIR) $(RENDER_DIR) $(THREAD_DIR)
 
 .PHONY: all clean fclean re
