@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_window.c                                      :+:      :+:    :+:   */
+/*   thread.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 16:33:26 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/20 13:06:54 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/16 19:14:00 by sunhwang          #+#    #+#             */
+/*   Updated: 2023/01/19 16:25:54 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window.h"
+#ifndef THREAD_H
+# define THREAD_H
 
-void	init_window(t_window *win)
+# include <unistd.h>
+# include <pthread.h>
+# include "libft.h"
+# include "info.h"
+# include "window.h"
+
+typedef struct s_drawer
 {
-	win->mlx = mlx_init();
-	// mlx_get_screen_size(win->mlx, &win->width, &win->height);
-	win->width = 2560;
-	win->height = 1440;
-	win->width /= 2;
-	win->height /= 2;
-	win->mlx_win = mlx_new_window(win->mlx, win->width, win->height, TITLE);
-}
+	int			i;
+	int			width;
+	int			height;
+	int			size;
+	pthread_t	thread;
+	t_data		data;
+}	t_drawer;
+
+void	start_drawing(t_window *win);
+
+#endif

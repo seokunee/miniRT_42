@@ -14,10 +14,10 @@ void mlx_int_fill(unsigned char *data, int sl)
 {
   int i, j;
   j = 0;
-  while (j < font_atlas.height)
+  while ((unsigned int)j < font_atlas.height)
     {
       i = 0;
-      while (i < font_atlas.width)
+      while ((unsigned int)i < font_atlas.width)
 	{
 	  data[j*sl+i*4] = font_atlas.pixel_data[j*font_atlas.width*font_atlas.bytes_per_pixel+i*4+2];
 	  data[j*sl+i*4+1] = font_atlas.pixel_data[j*font_atlas.width*font_atlas.bytes_per_pixel+i*4+1];
@@ -27,7 +27,7 @@ void mlx_int_fill(unsigned char *data, int sl)
 	}
       j ++;
     }
-    
+
 }
 
 int mlx_string_put(void *mlx_ptr, void *win_ptr, int x, int y, int color, char *string)

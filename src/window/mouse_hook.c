@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:44:25 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/16 17:48:16 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:16:41 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 static int	is_inside_of_window(int x, int y, t_window *win)
 {
-	if ((x < 0 || y < 0) || (win->sizex < x || win->sizey < y))
+	if ((x < 0 || y < 0) || (win->width < x || win->height < y))
 		return (1);
 	return (0);
 }

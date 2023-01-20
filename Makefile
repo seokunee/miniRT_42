@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/20 12:48:18 by seokchoi         ###   ########.fr        #
+#    Updated: 2023/01/20 13:12:46 by sunhwang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ MEMORY_DIR		= $(SRC_DIR)/memory/
 ERROR_DIR		= $(SRC_DIR)/error/
 WINDOW_DIR		= $(SRC_DIR)/window/
 RENDER_DIR		= $(SRC_DIR)/render/
+THREAD_DIR		= $(SRC_DIR)/thread/
 
 # STRING_DIR		= $(SRC_DIR)/string/
 # ITERATOR_DIR	= $(SRC_DIR)/iterator/
@@ -55,7 +56,8 @@ PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light\
 					normal objects parse_rt_file plane sphere utils utils2
 MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values normalize radian
 ERROR_SRC		= error
-WINDOW_SRC		= init_window key_hook mouse_hook window_hooks
+WINDOW_SRC		= draw_image init_window key_hook mouse_hook window_hooks
+THREAD_SRC		= init_thread
 
 MEMORY_SRC		= free_raytracer free_vector
 
@@ -83,7 +85,10 @@ SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
 		$(addsuffix .c, $(addprefix $(ERROR_DIR), $(ERROR_SRC))) \
 		$(addsuffix .c, $(addprefix $(WINDOW_DIR), $(WINDOW_SRC))) \
 		$(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
-		# $(addsuffix .c, $(addprefix $(RENDER_DIR), $(RENDER_SRC))) \
+		$(addsuffix .c, $(addprefix $(THREAD_DIR), $(THREAD_SRC))) \
+	#   $(addsuffix .c, $(addprefix $(RENDER_DIR), $(RENDER_SRC))) \
+	#   $(addsuffix .c, $(addprefix $(THREAD_DIR), $(THREAD_SRC))) \
+	#   $(addsuffix .c, $(addprefix $(LEXER_DIR), $(LEXER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(EXECUTER_DIR), $(EXECUTER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(BUILTIN_DIR), $(BUILTIN_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(STRING_DIR), $(STRING_SRC))) \
@@ -127,7 +132,7 @@ CUSTOM = \033[38;5;135m
 #    Mac compile option                                                |
 #-----------------------------------------------------------------------
 $(NAME): $(OBJ)
-	@$(MAKE) -C $(LIBFT_DIR) bonus
+	@$(MAKE) -j -C $(LIBFT_DIR) bonus
 	@$(MAKE) -C $(MLX_DIR) all
 	@cp ./src/mlx/libmlx.dylib ./
 	@$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $@
