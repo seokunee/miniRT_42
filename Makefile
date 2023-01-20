@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/20 13:12:46 by sunhwang         ###   ########.fr        #
+#    Updated: 2023/01/20 14:46:30 by seokchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,13 +38,6 @@ ERROR_DIR		= $(SRC_DIR)/error/
 WINDOW_DIR		= $(SRC_DIR)/window/
 RENDER_DIR		= $(SRC_DIR)/render/
 THREAD_DIR		= $(SRC_DIR)/thread/
-
-# STRING_DIR		= $(SRC_DIR)/string/
-# ITERATOR_DIR	= $(SRC_DIR)/iterator/
-# LEXER_DIR		= $(SRC_DIR)/lexer/
-# EXECUTER_DIR	= $(SRC_DIR)/executer/
-# BUILTIN_DIR		= $(SRC_DIR)/builtin/
-
 # Use MLX library
 # MLX				= -L./$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
@@ -54,29 +47,15 @@ MAIN_SRC		= main
 
 PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light\
 					normal objects parse_rt_file plane sphere utils utils2
-MATH_SRC		= vector_dot_cross vector_op absolute clamp compare_values normalize radian
+MATH_SRC		= vector_dot_cross vector_op vector_op2 absolute clamp compare_values normalize radian
 ERROR_SRC		= error
 WINDOW_SRC		= draw_image init_window key_hook mouse_hook window_hooks
 THREAD_SRC		= init_thread
 
 MEMORY_SRC		= free_raytracer free_vector
 
-RENDER_SRC		= camera_set material
+RENDER_SRC		= ray_tracer ray render hit sphere
 
-# LEXER_SRC		= token_create token_modify \
-# 				  scanner_main scanner_create scanner_function_ptr \
-# 				  scanner_helper scanner_helper2 scanner_get_token_1 scanner_get_token_2
-
-# EXECUTER_SRC	= executer token_expand token_expand_utils get_full_path subshell \
-# 				  redirection redirection_utils exec_command exec_command_utils \
-# 				  token_expand_wildcard_main token_expand_wildcard_pattern \
-# 				  token_expand_wildcard_helper token_expand_wildcard_helper2
-
-# BUILTIN_SRC		= environ environ_utils environ_helper environ_helper2 cd echo pwd exit
-
-# STRING_SRC		= string_create string_modify string_modify2 string_utils
-
-# ITERATOR_SRC	= iterator_create iterator_modify
 
 # NOTE : Add to SRC here
 # ------------------------------------------------------ #
@@ -86,13 +65,7 @@ SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
 		$(addsuffix .c, $(addprefix $(WINDOW_DIR), $(WINDOW_SRC))) \
 		$(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
 		$(addsuffix .c, $(addprefix $(THREAD_DIR), $(THREAD_SRC))) \
-	#   $(addsuffix .c, $(addprefix $(RENDER_DIR), $(RENDER_SRC))) \
-	#   $(addsuffix .c, $(addprefix $(THREAD_DIR), $(THREAD_SRC))) \
-	#   $(addsuffix .c, $(addprefix $(LEXER_DIR), $(LEXER_SRC))) \
-	#   $(addsuffix .c, $(addprefix $(EXECUTER_DIR), $(EXECUTER_SRC))) \
-	#   $(addsuffix .c, $(addprefix $(BUILTIN_DIR), $(BUILTIN_SRC))) \
-	#   $(addsuffix .c, $(addprefix $(STRING_DIR), $(STRING_SRC))) \
-	#   $(addsuffix .c, $(addprefix $(ITERATOR_DIR), $(ITERATOR_SRC)))
+	  $(addsuffix .c, $(addprefix $(RENDER_DIR), $(RENDER_SRC))) \
 # ------------------------------------------------------ #
 
 OBJ_DIR = obj/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 10:48:44 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/19 12:54:48 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:12:18 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,38 @@
 #include "hit.h"
 #include "raytracer.h"
 
-void	set_face_normal(t_hit *hit, t_ray ray, t_vec3 outward_normal)
-{
-	hit->front_face = v_dot(ray.dir, outward_normal);
-	if (hit->front_face < 0)
-		hit->front_face = TRUE;
-	else
-		hit->front_face = FALSE;
-	if (hit->front_face)
-		hit->normal = vec3(outward_normal.x, outward_normal.y, outward_normal.z);
-	else
-		hit->normal = vec3(-(outward_normal.x), -(outward_normal.y), -(outward_normal.z));
-}
+// void	set_face_normal(t_hit *hit, t_ray ray, t_vec3 outward_normal)
+// {
+// 	hit->front_face = v_dot(ray.dir, outward_normal);
+// 	if (hit->front_face < 0)
+// 		hit->front_face = TRUE;
+// 	else
+// 		hit->front_face = FALSE;
+// 	if (hit->front_face)
+// 		hit->normal = vec3(outward_normal.x, outward_normal.y, outward_normal.z);
+// 	else
+// 		hit->normal = vec3(-(outward_normal.x), -(outward_normal.y), -(outward_normal.z));
+// }
 
-void	*set_hit_lst(t_oneweek *oneweek)
-{
+// void	*set_hit_lst(t_oneweek *oneweek)
+// {
 
-	oneweek->hit_lst = ft_malloc(sizeof(t_list));
-	while (oneweek->info->t_objs)		// 여기서 objs 돌리면서 hit_lst를 채워야할듯
-	{
+// 	oneweek->hit_lst = ft_malloc(sizeof(t_list));
+// 	while (oneweek->info->t_objs)		// 여기서 objs 돌리면서 hit_lst를 채워야할듯
+// 	{
 		
-	}
+// 	}
+// }
+
+void    copy_hit(t_hit *hit_a, t_hit *hit_b)
+{
+    hit_a->d = hit_b->d;
+    hit_a->normal.x = hit_b->normal.x;
+    hit_a->normal.y = hit_b->normal.y;
+    hit_a->normal.z = hit_b->normal.z;
+    hit_a->point.x = hit_b->point.x;
+    hit_a->point.y = hit_b->point.y;
+    hit_a->point.z = hit_b->point.z;
 }
 
 

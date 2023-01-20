@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:46:29 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 13:16:38 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:44:02 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	vset(t_vec3 *v, double x, double y, double z)
     v->z = z;
 }
 
-t_vec3	vplus(t_vec3 v1, t_vec3 v2)
+t_vec3	v_sum(t_vec3 v1, t_vec3 v2)
 {
 	v1.x += v2.x;
 	v1.y += v2.y;
@@ -57,7 +57,7 @@ t_vec3	vplus(t_vec3 v1, t_vec3 v2)
 	return (v1);
 }
 
-t_vec3	vplus_double(t_vec3 v, double x, double y, double z)
+t_vec3	v_sum_double(t_vec3 v, double x, double y, double z)
 {
 	v.x += x;
 	v.y += y;
@@ -72,6 +72,17 @@ t_vec3	v_minus(t_vec3 v1, t_vec3 v2)
 	v1.z -= v2.z;
 	return (v1);
 }
+
+t_vec3	v_change_minus(t_vec3 v1)
+{
+	t_vec3 v;
+
+	v.x = -v1.x;
+	v.y = -v1.y;
+	v.z = -v1.z;
+	return (v);
+}
+
 
 t_vec3	v_minus_double(t_vec3 v, double x, double y, double z)
 {
