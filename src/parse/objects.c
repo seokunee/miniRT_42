@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:52:00 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/17 15:18:32 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/19 09:48:53 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "info.h"
+#include "parse.h"
 
 void	check_obj(t_objs *obj, char **opt, t_type type)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_math.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 16:30:15 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/20 12:59:34 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,127 +14,78 @@
 #define RT_MATH_H
 
 // #include "minirt.h"
-#include "../src/libft/include/libft.h"
 #include <math.h>
 
-typedef struct s_vec2
+typedef struct s_vec2 t_vec2;
+typedef struct s_vec2 t_point2;
+typedef struct s_vec2 t_color2;
+
+typedef struct s_vec3 t_vec3;
+typedef struct s_vec3 t_point3;
+typedef struct s_vec3 t_color3;
+
+typedef struct s_vec4 t_vec4;
+typedef struct s_vec4 t_point4;
+typedef struct s_vec4 t_color4;
+
+struct s_vec2
 {
-	float	x;
-	float	y;
-}	t_vec2;
+	double	x;
+	double	y;
+} ;
 
-typedef struct s_vec3
+struct s_vec3
 {
-	float	x;
-	float	y;
-	float	z;
-}	t_vec3;
+	
+	double	x;
+	double	y;
+	double	z;
+} ;
 
-typedef struct s_vec4
+struct s_vec4
 {
-	float	x1;
-	float	x2;
-	float	x3;
-	float	x4;
-}	t_vec4;
+	double	x1;
+	double	x2;
+	double	x3;
+	double	x4;
+} ;
 
 /*
-* Return absolute value of float f.
+* '+', '*', '-' operator of vector
 */
-float	abs_float(float f);
+
+/* vector Generator */
+t_vec3	vec3(double x, double y, double z);
+t_point3	point3(double x, double y, double z);
+t_point3	color3(double r, double g, double b);
+void	vset(t_vec3 *v, double x, double y, double z);
+
+t_vec3	vplus(t_vec3 v1, t_vec3 v2);
+t_vec3	vplus_double(t_vec3 v, double x, double y, double z);
+t_vec3	v_minus(t_vec3 v1, t_vec3 v2);
+t_vec3	v_minus_double(t_vec3 v, double x, double y, double z);
+t_vec3	v_mul(t_vec3 v1, t_vec3 v2);
+t_vec3	v_mul_double(t_vec3 v, double t);
+t_vec3	v_divide(t_vec3 v, double t);
+t_vec3 	vunit(t_vec3 v);
+
+
+// t_vec3	*vec_multiple(t_vec3 *v1, t_vec3 *v2);
+// t_vec3	*vec_subtract(t_vec3 *v1, t_vec3 *v2);
 
 /*
-* '+', '*', '-' operator of 2D-vector
-*/
-t_vec2	*v_sum_2d(t_vec2 *v1, t_vec2 *v2);
-t_vec2	*v_sub_2d(t_vec2 *v1, t_vec2 *v2);
-t_vec2	*v_float_mul_2d(t_vec2 *v, float f);
-t_vec2	*v_mul_2d(t_vec2 *v1, t_vec2 *v2);
 
-/*
-* '+', '*', '-' operator of 3D-vector
-*/
-t_vec3	*v_sum(t_vec3 *v1, t_vec3 *v2);
-t_vec3	*v_sub(t_vec3 *v1, t_vec3 *v2);
-t_vec3	*v_float_mul(t_vec3 *v, float f);
-t_vec3	*v_mul(t_vec3 *v1, t_vec3 *v2);
-
-/*
-* Convert each element to minus element.
-*/
-t_vec2	*v_minus_2d(t_vec2 *v);
-t_vec3	*v_minus(t_vec3 *v);
-
-/*
 * Return a length of vector
 */
-float	v_len(t_vec3 *v);
-
+double	v_len(t_vec3 v);
 /*
+
 * dot and cross product of vector
 */
-float	v_dot(t_vec3 *v1, t_vec3 *v2);
-t_vec3	*v_cross(t_vec3 *v1, t_vec3 *v2);
+double	v_dot(t_vec3 v1, t_vec3 v2);
+t_vec3	v_cross(t_vec3 v1, t_vec3 v2);
 
-/* Create 2D-vector functions
-* 1. Input 2 float values into arguments.
-* 2. Input a float value into arguments.
-	* Then, The vector will be returned that elements will get same value.
-*/
-t_vec2	*create_2d_vec(float f1, float f2);
-t_vec2	*create_2d_vec_input_same_value(float f);
-
-/*
-* Create 3D-vector functions
-* 1. Input 3 float values into arguments.
-* 2. Input a float value into arguments.
-	* Then, The vector will be returned that elements will get same value.
-* 3. Input a 2D-vector and a float value into arguments.
-*/
-t_vec3	*create_3d_vec(float f1, float f2, float f3);
-t_vec3	*create_3d_vec_input_same_value(float f);
-t_vec3	*create_3d_vec_input_2d_vector(t_vec2 *v, float f);
-
-/*
-* Create 4D-vector functions.
-* 1. Input 2D-vector and 2 float values into arguments.
-* 2. Input 3D-vector and a float value into arguments.
-* 3. Input 4 float values into arguments.
-* 4. Input a float value into arguments.
-	* Then, The vector will be returned that elements will get same value.
-*/
-t_vec4	*create_4d_vec_input_2d_vector(t_vec2 *v, float f1, float f2);
-t_vec4	*create_4d_vec_input_3d_vector(t_vec3 *v1, float f);
-t_vec4	*create_4d_vec_input_4fs(float f1, float f2, float f3, float f4);
-t_vec4	*create_4d_vec_input_same_value(float f);
-
-/*
-* Return normalized 3D-vector.
-*/
-t_vec3	*norm_3d_vec(t_vec3 *v);
-
-/*
-* Calculate power of float value.
-* Input 2 float numbers, base and exp.
-*/
-float	float_pow(float base, float exp);
-
-/*
-* compare_value.c
-* Implement funcions that are comparing 2 float values.
-* Return a float value that is suitable for the condition of the function.
-*/
-float	max_float(float f1, float f2);
-float	min_float(float f1, float f2);
-
-/*
-* clamp.c
-* Constrain a value to lie between two further values.
-* clamp returns the vector of v constrained to the range min_val to max_val.
-	* The returned vector is computed as min(max(v->element, minVal), maxVal).
-*/
-t_vec2	*clamp_2d(t_vec2 *v, float min_val, float max_val);
-t_vec3	*clamp_3d(t_vec3 *v, float min_val, float max_val);
-t_vec4	*clamp_4d(t_vec4 *v, float min_val, float max_val);
+float	degrees_to_radians_float(float degrees);
+double	degrees_to_radians_double(double degrees);
 
 #endif

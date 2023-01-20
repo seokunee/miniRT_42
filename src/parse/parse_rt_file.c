@@ -6,11 +6,12 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 20:58:34 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:44:14 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "parse.h"
+#include "info.h"
 
 void	check_file_name(char *file_name)
 {
@@ -83,7 +84,7 @@ bool read_file(t_info *info, int fd)
 	return (true);
 }
 
-char	*parse_rt_file(t_info *info, char *file_name)
+void	parse_rt_file(t_info *info, char *file_name)
 {
 	int fd;
 
@@ -91,10 +92,10 @@ char	*parse_rt_file(t_info *info, char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		error_exit("File open failed");
+	init_info(info);
 	while (1)
 	{
 		if (!read_file(info, fd))
 			break ;
 	}
-	return (NULL);
 }

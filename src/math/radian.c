@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_dot_cross.c                                 :+:      :+:    :+:   */
+/*   radian.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 15:14:35 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:39:46 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/01/18 09:09:16 by chanwjeo          #+#    #+#             */
+/*   Updated: 2023/01/18 20:06:51 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/rt_math.h"
+#include <math.h>
 
-double	v_dot(t_vec3 v1, t_vec3 v2)
+float	degrees_to_radians_float(float degrees)
 {
-	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
+	const double	pi = 3.1415926535897932385;
+
+	return (degrees * (float)pi / 180.0f);
 }
 
-t_vec3	v_cross(t_vec3 v1, t_vec3 v2)
+double	degrees_to_radians_double(double degrees)
 {
-	t_vec3	ret_vector;
+	const double	pi = 3.1415926535897932385;
 
-	ret_vector.x = v1.y * v2.z - v1.z * v2.y;
-	ret_vector.y = v1.z * v2.x - v1.x * v2.z;
-	ret_vector.z = v1.x * v2.y - v1.y * v2.x;
-	return (ret_vector);
+	return (degrees * pi / 180.0);
 }

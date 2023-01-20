@@ -6,11 +6,12 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:49:00 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/17 18:22:27 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:52:03 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "parse.h"
 
 int	sec_arr_len(char **arr)
 {

@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_dot_cross.c                                 :+:      :+:    :+:   */
+/*   texture.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 15:14:35 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:39:46 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/01/19 21:20:39 by chanwjeo          #+#    #+#             */
+/*   Updated: 2023/01/19 21:30:04 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/rt_math.h"
+#include "minirt.h"
+#include "info.h"
+#include "rt_math.h"
 
-double	v_dot(t_vec3 v1, t_vec3 v2)
+typedef struct s_texture
 {
-	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
-}
-
-t_vec3	v_cross(t_vec3 v1, t_vec3 v2)
-{
-	t_vec3	ret_vector;
-
-	ret_vector.x = v1.y * v2.z - v1.z * v2.y;
-	ret_vector.y = v1.z * v2.x - v1.x * v2.z;
-	ret_vector.z = v1.x * v2.y - v1.y * v2.x;
-	return (ret_vector);
-}
+	char	*type;
+	struct s_color	color_value;
+	struct s_color	even;
+	struct s_color	odd;
+	struct s_perlin	noise;
+	double			scale;
+	unsigned char	*data;
+	int				wid;
+	int				hei;
+	int				byte_per_scanline;
+}	t_texture;

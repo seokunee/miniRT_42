@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 18:31:28 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:43:53 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INFO_H
 #define INFO_H
 
-# include "minirt.h"
-
-# define ERR 1
-# define SUCCESS 0
+#include "minirt.h"
+#include "libft.h"
+#include "rt_math.h"
 
 typedef struct s_objs t_objs;
 typedef struct s_info t_info;
@@ -31,9 +30,8 @@ typedef enum e_type t_type;
 */
 typedef struct s_a
 {
-	//char			*identifier;	// 일단 넣어봤는데, 없어도 될것같습니다.
 	float			amb_light_ratio;
-	t_vec3	*colors;
+	struct s_vec3	colors;
 }	t_a;
 
 /*
@@ -45,9 +43,8 @@ typedef struct s_a
 */
 typedef struct s_c
 {
-	// char			*identifier;
-	t_vec3	*coor;
-	t_vec3	*normal;
+	struct s_vec3	coor;
+	struct s_vec3	normal;
 	int				fov;
 }	t_c;
 
@@ -60,10 +57,10 @@ typedef struct s_c
 */
 struct s_l
 {
-	t_vec3	*coor;
+	struct s_vec3	coor;
 	float			light_brightness_ratio;
 	/* unsued in mand part */
-	t_vec3	*colors;
+	struct s_vec3	colors;
 	t_l	*next;
 	t_l	*prev;
 };
@@ -107,9 +104,9 @@ typedef struct s_sp
 */
 typedef struct s_cy
 {
-	t_vec3	*coor;
-	t_vec3	*normal;
-	t_vec3	*colors;
+	struct s_vec3	coor;
+	struct s_vec3	normal;
+	struct s_vec3	colors;
 	float			cylinder_diameter;
 	float			cylinder_height;
 }	t_cy;
@@ -139,13 +136,13 @@ enum e_type
 struct s_objs
 {
 	enum e_type		type;
-	t_vec3	*coor;
-	t_vec3	*normal;
+	struct s_vec3	coor;
+	struct s_vec3	normal;
 	float	diameter;
 	float	cy_hei;
-	t_vec3	*colors;
-	t_objs	*next;
-	t_objs	*prev;
+	struct s_vec3	colors;
+	struct t_objs	*next;
+	struct t_objs	*prev;
 };
 
 /*
@@ -153,20 +150,20 @@ struct s_objs
 */
 struct s_info
 {
-	struct s_a	*t_a;
-	struct s_c	*t_c;
+	struct s_a	t_a;
+	struct s_c	t_c;
 	struct s_l	*t_l;
-	struct s_objs	*t_objs;
+	t_list		*t_objs;
 	int 		wid;
 	int 		hei;
 
 	// tmp
 	struct s_hit	*hit;
-	struct s_vec3	*color;
-	struct s_vec3	*phong_color;
+	struct s_vec3	color;
+	struct s_vec3	phong_color;
 	float	diff;
 	float	specular;
-}	t_info;
+};
 
 /*
 * check_flag

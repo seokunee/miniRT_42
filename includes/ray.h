@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_dot_cross.c                                 :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 15:14:35 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:39:46 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/01/18 08:38:00 by chanwjeo          #+#    #+#             */
+/*   Updated: 2023/01/19 10:42:56 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/rt_math.h"
+#ifndef RAY_H
+#define RAY_H
 
-double	v_dot(t_vec3 v1, t_vec3 v2)
+#include "raytracer.h"
+
+typedef struct s_ray
 {
-	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
-}
+	t_vec3	orig;	//point
+	t_vec3	dir;
+	float	tm;
+}	t_ray;
 
-t_vec3	v_cross(t_vec3 v1, t_vec3 v2)
-{
-	t_vec3	ret_vector;
+t_vec3	create_ray(t_vec3 *ori, t_vec3 *dir, float t);
+t_ray	get_ray(t_cam cam, double s, double t);
+t_vec3	ray_at(t_ray *ray, float t);
 
-	ret_vector.x = v1.y * v2.z - v1.z * v2.y;
-	ret_vector.y = v1.z * v2.x - v1.x * v2.z;
-	ret_vector.z = v1.x * v2.y - v1.y * v2.x;
-	return (ret_vector);
-}
+#endif
