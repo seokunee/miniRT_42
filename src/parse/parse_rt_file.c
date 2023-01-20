@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rt_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 20:08:20 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:44:14 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ bool read_file(t_info *info, int fd)
 	return (true);
 }
 
-char	*parse_rt_file(t_info *info, char *file_name)
+void	parse_rt_file(t_info *info, char *file_name)
 {
 	int fd;
 
@@ -92,10 +92,10 @@ char	*parse_rt_file(t_info *info, char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		error_exit("File open failed");
+	init_info(info);
 	while (1)
 	{
 		if (!read_file(info, fd))
 			break ;
 	}
-	return (NULL);
 }

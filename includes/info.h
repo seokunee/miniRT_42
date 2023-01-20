@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/19 11:50:22 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:43:53 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef enum e_type t_type;
 */
 typedef struct s_a
 {
-	//char			*identifier;	// 일단 넣어봤는데, 없어도 될것같습니다.
 	float			amb_light_ratio;
 	struct s_vec3	colors;
 }	t_a;
@@ -44,7 +43,6 @@ typedef struct s_a
 */
 typedef struct s_c
 {
-	// char			*identifier;
 	struct s_vec3	coor;
 	struct s_vec3	normal;
 	int				fov;
@@ -152,10 +150,10 @@ struct s_objs
 */
 struct s_info
 {
-	struct s_a	*t_a;
-	struct s_c	*t_c;
+	struct s_a	t_a;
+	struct s_c	t_c;
 	struct s_l	*t_l;
-	struct s_objs	*t_objs;
+	t_list		*t_objs;
 	int 		wid;
 	int 		hei;
 

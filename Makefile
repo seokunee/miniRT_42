@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/18 20:14:53 by chanwjeo         ###   ########.fr        #
+#    Updated: 2023/01/20 12:48:18 by seokchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,8 +82,8 @@ SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) \
 		$(addsuffix .c, $(addprefix $(MATH_DIR), $(MATH_SRC))) \
 		$(addsuffix .c, $(addprefix $(ERROR_DIR), $(ERROR_SRC))) \
 		$(addsuffix .c, $(addprefix $(WINDOW_DIR), $(WINDOW_SRC))) \
-		$(addsuffix .c, $(addprefix $(RENDER_DIR), $(RENDER_SRC))) \
 		$(addsuffix .c, $(addprefix $(PARSE_DIR), $(PARSE_SRC))) \
+		# $(addsuffix .c, $(addprefix $(RENDER_DIR), $(RENDER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(EXECUTER_DIR), $(EXECUTER_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(BUILTIN_DIR), $(BUILTIN_SRC))) \
 	#   $(addsuffix .c, $(addprefix $(STRING_DIR), $(STRING_SRC))) \

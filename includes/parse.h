@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/19 09:42:18 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:19:33 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	check_file_name(char *file_name);
 int		check_range(int type, float ret);
 void	edit_info(t_info *info, char *s);
 bool	read_file(t_info *info, int fd);
-char	*parse_rt_file(t_info *info, char *file_name);
+void  parse_rt_file(t_info *info, char *file_name);
 
 //plane
 void	set_pl(t_objs *obj, char **opt);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_math.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/18 19:41:29 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:34:12 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_vec3	v_minus_double(t_vec3 v, double x, double y, double z);
 t_vec3	v_mul(t_vec3 v1, t_vec3 v2);
 t_vec3	v_mul_double(t_vec3 v, double t);
 t_vec3	v_divide(t_vec3 v, double t);
-t_vec3      vunit(t_vec3 v);
+t_vec3 	vunit(t_vec3 v);
 
 
 // t_vec3	*vec_multiple(t_vec3 *v1, t_vec3 *v2);

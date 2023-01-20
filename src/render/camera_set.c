@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_set.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:55:41 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/19 10:43:07 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:44:19 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ t_cam_setting	cam_setting(t_oneweek *one)
 	t_cam_setting	set;
 	const t_info	*info = one->info;
 
-	set.lookfrom = vec3(info->t_c->coor->x, info->t_c->coor->y, info->t_c->coor->z);
+	set.lookfrom = vec3(info->t_c.coor.x, info->t_c.coor.y, info->t_c.coor.z);
 	set.lookat = vec3(0.0, 0.0, 0.0);
-	set.vup = vec3(info->t_c->normal->x, info->t_c->normal->y, info->t_c->normal->z); //info->t_c->normal;
-	set.vfov = info->t_c->fov;
+	set.vup = vec3(info->t_c.normal.x, info->t_c.normal.y, info->t_c.normal.z); //info->t_c.normal;
+	set.vfov = info->t_c.fov;
 	set.aspect_ratio = info->wid / info->hei;
 	set.aperture = 0.1;
 	set.focus_dist = 10.0;
