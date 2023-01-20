@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:04:42 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 20:49:12 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 13:13:29 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+// #include "../../includes/minirt.h"
+#include "rt_math.h"
+#include "info.h"
 
 int	create_trgb(int t, int r, int g, int b)
 {
@@ -33,13 +35,13 @@ int	draw_pixel(t_info **info, t_vec3 *pixel)
 	return (pixel_color);
 }
 
-int	calculate_pixel_color(t_info **info, int x, int y)
+int	calculate_pixel_color(t_info *info, int x, int y)
 {
-	t_vec2	*pos;
-	t_vec3	*pixel;
+	t_vec2	pos;
+	t_vec3	pixel;
 	int		pixel_color;
 
-	pos = create_2d_vec((float)x, (float)y);
+	pos = vec2((double)x, (double)y);
 	pixel = transform_screen_to_world(info, pos);
 	pixel_color = draw_pixel(info, pixel);
 	free(pos);

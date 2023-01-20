@@ -3,22 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 00:10:23 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/17 16:19:16 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 13:16:37 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/raytracer.h"
+#include "raytracer.h"
+#include "info.h"
+#include "rt_math.h"
 
-t_vec3	*transform_screen_to_world(t_info **info, t_vec2 *screen)
+t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 {
-	t_vec3	*world;
+	t_vec3	world;
 
-	world = ft_malloc(sizeof(t_vec3));
-	world->x = (screen->x * 2.0f / (float)(*info)->wid - 1.0f) * \
-		(float)((*info)->wid) / (float)((*info)->hei);
+	world = vec3(screen.x * 2.0 / (double)(info->wid) - 1.0 * (double)(info->wid) / (double)(info->hei), 
+		);
+	// world->x = (screen->x * 2.0f / (float)(*info)->wid - 1.0f) * \
+	// 	(float)((*info)->wid) / (float)((*info)->hei);
 	world->y = (-(screen->y) * 2.0f / (float)(*info)->hei + 1.0f);
 	world->z = 0.0f;
 	return (world);

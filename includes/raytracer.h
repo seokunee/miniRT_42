@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:39:59 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 12:48:00 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 13:12:10 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 #define RAYTRACER_H
 
 // #include "minirt.h"
-#include "camera.h"
-#include "info.h"
-#include "material.h"
 
-typedef struct s_oneweek
-{
-	struct s_info	*info;
-	struct s_image	*image;
-	struct s_cam	cam;
-	struct s_list	*hit_lst;
-}	t_oneweek;
+t_vec3	*transform_screen_to_world(t_info **info, t_vec2 *screen);
+t_hit	*find_closest_collision(t_info **info, t_ray *ray);
+t_vec3	*trace_ray(t_info **info, t_ray *ray, const int recurse_level);
+int		calculate_pixel_color(t_info **info, int x, int y);
+
+
 
 
 #endif
