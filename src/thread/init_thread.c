@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_thread.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:13:44 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/20 13:08:31 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:13:19 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "thread.h"
+#include "raytracer.h"
+#include "info.h"
 
 static int	is_last_img(t_drawer *drawer)
 {
@@ -25,6 +27,7 @@ static void	*thread_routine(void *data)
 	int			color;
 
 	drawer = (t_drawer *)data;
+	t_info *info = drawer->info; 
 	x = 0;
 	while (x < drawer->width)
 	{
@@ -32,27 +35,31 @@ static void	*thread_routine(void *data)
 		while (y < drawer->height)
 		{
 			// TODO render(info, x, y); 계산함수 호출
-			color = create_trgb(0, 0, 200, 200);
+			// color = create_trgb(0, 0, 200, 200);
+			color = calculate_pixel_color(info, x, y);
+			// printf("%d ", color);
 			put_pixel(&drawer->data, x, y, color);
 			y++;
 		}
+		printf("\n");
 		x++;
 	}
 	return (NULL);
 }
 
-static void	create_thread(int i, int size, t_drawer *drawer, t_window *win)
+static void	create_thread(int i, int size, t_drawer *drawer, t_info *info)
 {
 	t_data	*d;
 
 	drawer->i = i;
 	drawer->size = size;
-	drawer->width = win->width / size;
-	drawer->height = win->height;
+	drawer->width = info->win.width / size;
+	drawer->height = info->win.height;
+	drawer->info = info;
 	d = &drawer->data;
 	if (is_last_img(drawer))
-		drawer->width += win->width - (win->width / size) * size;
-	d->img = mlx_new_image(win->mlx, drawer->width, drawer->height);
+		drawer->width += info->win.width - (info->win.width / size) * size;
+	d->img = mlx_new_image(info->win.mlx, drawer->width, drawer->height);
 	d->addr = mlx_get_data_addr(d->img, &d->bits_per_pixel, &d->line_length, \
 	&d->endian);
 	pthread_create(&drawer->thread, NULL, thread_routine, drawer);
@@ -67,9 +74,11 @@ static void	attach_thread(int width, t_drawer *drawer, t_window *win)
 	free(drawer);
 }
 
-void	start_drawing(t_window *win)
+void	start_drawing(t_info *info)
 {
-	const int	procs = sysconf(_SC_NPROCESSORS_ONLN);
+	// const int	procs = sysconf(_SC_NPROCESSORS_ONLN);
+	const int	procs = 1;
+
 	int			i;
 	t_drawer	**drawers;
 
@@ -78,13 +87,13 @@ void	start_drawing(t_window *win)
 	while (i < procs)
 	{
 		drawers[i] = ft_malloc(sizeof(t_drawer));
-		create_thread(i, procs, drawers[i], win);
+		create_thread(i, procs, drawers[i], info);
 		i++;
 	}
 	i = 0;
 	while (i < procs)
 	{
-		attach_thread(win->width / procs * i, drawers[i], win);
+		attach_thread(info->win.width / procs * i, drawers[i], &info->win);
 		i++;
 	}
 	free(drawers);

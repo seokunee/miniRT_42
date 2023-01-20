@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:14:00 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/19 16:25:54 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:25:01 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ typedef struct s_drawer
 	int			size;
 	pthread_t	thread;
 	t_data		data;
+	struct s_info	*info;
 }	t_drawer;
 
-void	start_drawing(t_window *win);
+void	start_drawing(struct s_info *info);
 
 #endif

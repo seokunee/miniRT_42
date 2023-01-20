@@ -6,7 +6,7 @@
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 12:59:34 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:26:06 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,31 @@ struct s_vec4
 */
 
 /* vector Generator */
-t_vec3	vec3(double x, double y, double z);
+t_vec2		vec2(double x, double y);
+t_vec3		vec3(double x, double y, double z);
+t_vec4		vec4(double x1, double x2, double x3, double x4);
+t_vec4		vec4_input_3d(t_vec3 v, double x);
 t_point3	point3(double x, double y, double z);
 t_point3	color3(double r, double g, double b);
-void	vset(t_vec3 *v, double x, double y, double z);
+void		vset(t_vec3 *v, double x, double y, double z);
 
-t_vec3	vplus(t_vec3 v1, t_vec3 v2);
-t_vec3	vplus_double(t_vec3 v, double x, double y, double z);
+t_vec3	v_sum(t_vec3 v1, t_vec3 v2);
+t_vec3	v_sum_double(t_vec3 v, double x, double y, double z);
+t_vec3	v_change_minus(t_vec3 v1);
 t_vec3	v_minus(t_vec3 v1, t_vec3 v2);
 t_vec3	v_minus_double(t_vec3 v, double x, double y, double z);
 t_vec3	v_mul(t_vec3 v1, t_vec3 v2);
 t_vec3	v_mul_double(t_vec3 v, double t);
 t_vec3	v_divide(t_vec3 v, double t);
 t_vec3 	vunit(t_vec3 v);
+t_vec3	norm_3d_vec(t_vec3 v);
 
+float	min_float(float f1, float f2);
+float	max_float(float f1, float f2);
 
+// t_vec2	clamp_2d(t_vec2 v, float min_val, float max_val);
+t_vec3	clamp_3d(t_vec3 v, float min_val, float max_val);
+// t_vec4	clamp_4d(t_vec4 v, float min_val, float max_val);
 // t_vec3	*vec_multiple(t_vec3 *v1, t_vec3 *v2);
 // t_vec3	*vec_subtract(t_vec3 *v1, t_vec3 *v2);
 

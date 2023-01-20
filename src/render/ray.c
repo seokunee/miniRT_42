@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:43:51 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/19 10:44:52 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:37:17 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ray.h"
+// #include "../../includes/ray.h"
 
-t_vec3	create_ray(t_vec3 ori, t_vec3 dir, float t)
-{
-	t_ray	ray;
+// t_vec3	create_ray(t_vec3 ori, t_vec3 dir, float t)
+// {
+// 	t_ray	ray;
 
-	ray.orig = ori;
-	ray.dir = dir;
-	ray.tm = t;
-	return (ray);
-}
+// 	ray.orig = ori;
+// 	ray.dir = dir;
+// 	ray.tm = t;
+// 	return (ray);
+// }
 
-t_ray	get_ray(t_cam cam, double s, double t)
-{
-	return (create_ray(cam.origin, v_sub(v_sum(cam.lower_left_corner, \
-		v_float_mul(cam.horizontal, s)), cam.origin)), 0);
-}
+// t_ray	get_ray(t_cam cam, double s, double t)
+// {
+// 	return (create_ray(cam.origin, v_minus(v_sum(cam.lower_left_corner, \
+// 		v_mul_double(cam.horizontal, s)), cam.origin)), 0);
+// }
 
-t_vec3	ray_at(t_ray ray, float t)
-{
-	return (v_sum(ray.orig, v_float_mul(ray.dir, t)));
-}
+// t_vec3	ray_at(t_ray ray, float t)
+// {
+// 	return (v_sum(ray.orig, v_mul_double(ray.dir, t)));
+// }
 
 // t_color3	ray_color(t_ray ray, const )
 

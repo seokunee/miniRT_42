@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 13:15:11 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:18:00 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "minirt.h"
 #include "libft.h"
 #include "rt_math.h"
+#include "window.h"
 
 typedef struct s_objs t_objs;
 typedef struct s_info t_info;
@@ -144,7 +145,7 @@ struct s_objs
 	struct t_objs	*next;
 	struct t_objs	*prev;
 };
-
+ 
 /*
 * info
 */
@@ -158,6 +159,7 @@ struct s_info
 	int 		hei;
 
 	// tmp
+	struct s_window	win;
 	struct s_hit	*hit;
 	struct s_vec3	color;
 	struct s_vec3	phong_color;
