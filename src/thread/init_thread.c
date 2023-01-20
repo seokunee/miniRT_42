@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:13:44 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/19 20:50:35 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/20 13:08:31 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	is_last_img(t_drawer *drawer)
 	return (drawer->i == drawer->size - 1);
 }
 
-void	*thread_routine(void *data)
+static void	*thread_routine(void *data)
 {
 	int			x;
 	int			y;
@@ -33,10 +33,6 @@ void	*thread_routine(void *data)
 		{
 			// TODO render(info, x, y); 계산함수 호출
 			color = create_trgb(0, 0, 200, 200);
-			if (x == drawer->width - 1)
-			{
-				// color = create_trgb(0, 0, 0, 200);
-			}
 			put_pixel(&drawer->data, x, y, color);
 			y++;
 		}
@@ -45,7 +41,7 @@ void	*thread_routine(void *data)
 	return (NULL);
 }
 
-void	create_thread(int i, int size, t_drawer *drawer, t_window *win)
+static void	create_thread(int i, int size, t_drawer *drawer, t_window *win)
 {
 	t_data	*d;
 
@@ -62,7 +58,7 @@ void	create_thread(int i, int size, t_drawer *drawer, t_window *win)
 	pthread_create(&drawer->thread, NULL, thread_routine, drawer);
 }
 
-void	attach_thread(int width, t_drawer *drawer, t_window *win)
+static void	attach_thread(int width, t_drawer *drawer, t_window *win)
 {
 	pthread_join(drawer->thread, NULL);
 	printf("i: %d width: %d\n", drawer->i, width);
