@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:49:25 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/19 09:41:36 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:56:42 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,27 @@ t_vec3	get_arg_coor(char *s)
 	color[0] = ft_atof(tmp[0]);
 	color[1] = ft_atof(tmp[1]);
 	color[2] = ft_atof(tmp[2]);
-	free_double_array((void**)tmp);
-	return (vec3(color[0],color[1], color[2]));
+	free_double_array((void **)tmp);
+	return (vec3(color[0], color[1], color[2]));
 }
 
-void	check_coordinates(t_objs *obj, char *str) // 모든 coor을 체크 할 수 있음.
+/*
+* 모든 coordinates를 체크 할 수 있음
+* vector가 3인지 체크
+* 숫자와 . 으로 이루어졌는지 체크
+*/
+void	check_coordinates(t_objs *obj, char *str)
 {
-	char **coor;
+	char	**coor;
 
 	coor = ft_split(str, ',');
 	if (!coor)
 		error_exit("Malloc Error");
-	if (sec_arr_len(coor) != 3) // vector 3인지 체크
+	if (sec_arr_len(coor) != 3)
 		error_exit("Wrong coor argument num");
-	check_only_num1(coor[0], "."); // 숫자와 . 으로 이루어졌는지는 체크.
+	check_only_num1(coor[0], ".");
 	check_only_num1(coor[1], ".");
 	check_only_num1(coor[2], ".");
-	obj->coor = vec3(ft_atof(coor[0]),\
-	ft_atof(coor[1]), ft_atof(coor[2]));
+	obj->coor = vec3(ft_atof(coor[0]), ft_atof(coor[1]), ft_atof(coor[2]));
 	free_double_array((void **)coor);
 }

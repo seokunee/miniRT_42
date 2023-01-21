@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ambient.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:48:21 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/20 12:39:45 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:49:53 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "parse.h"
 #include "info.h"
-// #include "rt_math.h"
 
 void	get_ambient(t_info *info, char **s)
 {
