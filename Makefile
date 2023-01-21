@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/21 23:25:29 by chanwjeo         ###   ########.fr        #
+#    Updated: 2023/01/22 00:15:21 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= miniRT
 
 INC_DIR			= -Iincludes -I$(LIBFT_DIR)/include -I$(MLX_DIR)
-CFLAGS			= -Wall -Wextra -Werror $(INC_DIR) -g3 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror $(INC_DIR) -g3 #-fsanitize=address
 # CFLAGS			= -Wall -Wextra -Werror $(INC_DIR)
 LDFLAGS			= -L$(LIBFT_DIR) -lft -L. -lmlx
 MBFLAGS			= -L$(LIBFT_DIR) -lft -L.

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 00:10:23 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/21 23:29:17 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/22 00:15:21 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,14 @@ t_hit	find_closest_collision(t_info *info, t_ray ray)
 			tmp_hit = check_ray_collision_sphere(ray, tmp_obj);
 		if (tmp_hit.d >= 0.0f && tmp_hit.d < closest_d)
 		{
+			closest_d = tmp_hit.d;
 			closest_hit.d = tmp_hit.d;
 			closest_hit.normal = vec3(tmp_hit.normal.x, tmp_hit.normal.y, tmp_hit.normal.z);
 			closest_hit.point = vec3(tmp_hit.point.x, tmp_hit.point.y, tmp_hit.point.z);
+			printf("closest_hit.d : %f, clost_hit.normal : [%f, %f, %f], clost_hit.point : [%f, %f, %f]\n", closest_hit.d, closest_hit.normal.x, closest_hit.normal.y, closest_hit.normal.z, closest_hit.point.x, closest_hit.point.y, closest_hit.point.z);
 		}
 		tmp_list = tmp_list->next;
+		tmp_hit.d = -1.0f;
 	}
 	return (closest_hit);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:02:41 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 14:44:00 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/22 00:15:21 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_hit	check_ray_collision_sphere(t_ray ray, t_objs *sphere)
 	c = v_dot(v_minus(ray.orig, sphere->coor), \
 		v_minus(ray.orig, sphere->coor)) - powf((sphere->diameter / 2), 2.0f);
 	det = (b * b) - (4.0f * c);
+	printf("b, c, det : [%f, %f, %f]\n", b, c, det);
 	if (det >= 0.0f)
 	{
 		hit.d = min_float((-b - sqrtf(det)) / 2.0f, (-b + sqrtf(det)) / 2.0f);
