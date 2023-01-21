@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:04:42 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 16:30:03 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/21 23:34:24 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 
 	pos = vec2((double)x, (double)y);
 	pixel = transform_screen_to_world(info, pos);
-	printf("x: %d, y: %d, pos.x: %f, pos.y: %f", x, y, pos.x, pos.y);
+	// printf("pixel - [%f, %f, %f]\n", pixel.x, pixel.y, pixel.z);
 	pixel_color = draw_pixel(info, pixel);
 	return (pixel_color);
 }
