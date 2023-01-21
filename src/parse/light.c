@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 12:45:34 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:56:58 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_light_add(t_info *info, t_l *light)
 void	get_light(t_info *info, char **s)
 {
 	t_l	*light;
-	
+
 	light = ft_calloc(sizeof(t_l), 1);
 	if (!light)
 		error_exit("malloc error");

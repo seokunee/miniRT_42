@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:54:05 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/20 12:54:32 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/21 23:25:23 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	check_oper(char c, char *s)
 	}
 	return (ERR);
 }
-
 
 /*
 * print는 test용도라서 나중에 지움.
@@ -55,7 +54,7 @@ void	print_l(t_l *l)
 
 void	print_objs(t_list *objs)
 {
-	t_objs *obj;
+	t_objs	*obj;
 
 	obj = (t_objs *)objs->content;
 	if (obj->type == PL)
@@ -103,7 +102,7 @@ void	print_all_info(t_info *info)
 
 	printf("info of objs\n");
 	print_objs(info->t_objs);
-	
+
 	printf("\n");
 	printf("window width  = %d\n", info->wid);
 	printf("window height = %d\n", info->hei);

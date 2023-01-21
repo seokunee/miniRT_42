@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:52:00 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/19 09:48:53 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:50:53 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	check_obj(t_objs *obj, char **opt, t_type type)
 
 void	get_obj(t_info *info, char **opt, t_type type)
 {
-	t_objs *obj;
-	t_list *new;
+	t_objs	*obj;
+	t_list	*new;
 
 	obj = malloc(sizeof(t_objs));
 	if (!obj)

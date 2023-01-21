@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:49:00 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/20 12:52:03 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/21 23:28:22 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,11 @@ float	ft_atof(char *s)
 	return ((float)(sign * ret));
 }
 
-/*
-* 
-*/
 int	check_only_num1(char *opt, char *oper)
 {
 	while (*opt)
 	{
-		if (*opt >= '0' && *opt <= '9')
-			opt++;
-		else if (check_oper(*opt, oper) == SUCCESS)
+		if ((*opt >= '0' && *opt <= '9') || check_oper(*opt, oper) == SUCCESS)
 			opt++;
 		else
 			error_exit("Wrong argument");
