@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_thread.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:13:44 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/20 17:05:29 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/21 23:16:32 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	start_drawing(t_info *info)
 {
 	// const int	procs = sysconf(_SC_NPROCESSORS_ONLN);
 	const int	procs = 1;
-
 	int			i;
 	t_drawer	**drawers;
 

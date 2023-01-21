@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/20 19:57:29 by seokchoi         ###   ########.fr        #
+#    Updated: 2023/01/21 23:25:23 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ THREAD_DIR		= $(SRC_DIR)/thread/
 # NOTE : Add Source files here
 MAIN_SRC		= main
 PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2
-MATH_SRC		= vector_dot_cross vector_op vector_op2 absolute clamp compare_values normalize radian
+MATH_SRC		= vector_dot_cross vector_op vector_op2 vector_op3 vector_op_2 absolute clamp compare_values normalize radian
 MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
 WINDOW_SRC		= draw_image init_window key_hook mouse_hook window_hooks

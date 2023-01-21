@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 23:10:51 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/21 21:03:00 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/21 23:23:09 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "rt_math.h"
+#include "error.h"
 
 t_vec3	norm_3d_vec(t_vec3 v)
 {
