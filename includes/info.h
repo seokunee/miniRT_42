@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 17:03:35 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/24 01:05:34 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,32 @@ typedef struct s_c
 	struct s_vec3	coor;
 	struct s_vec3	normal;
 	int				fov;
+	struct s_vec3	horizontal;
+	struct s_vec3	vertical;
+	struct s_point3	left_bottom;
 }	t_c;
+
+typedef struct s_cam_set
+{
+	double		theta;
+	double		half_width;
+	double		viewport_height;
+	double		viewport_width;
+	t_vec3		w;
+	t_vec3		u;
+	t_vec3		v;
+	t_vec3		vup;
+	t_vec3		lookat;
+}	t_cam_set;
+
+/*
+* camera member
+* - orig = origin
+* - dir = dir
+* - horizontal = 수평방향 벡터
+* - vertical = 수직방향 벡터
+* - left_bottom = lower left corner;
+*/
 
 /*
 * Light:

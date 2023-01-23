@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:04:42 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/23 23:01:56 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/24 00:51:40 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,12 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 	// t_vec3	pixel;
 	// int		pixel_color;
 	double	uv[2];
+	t_ray	ray;
 
-	uv[0] = (double)i[0] / ()
+	uv[0] = (double)x / (info->hei - 1);
+	uv[1] = (double)y / (info->wid - 1);
+	ray.orig = info->t_c.coor;
+	ray.dir = vunit(v_minus(v_sum()))
 
 
 
