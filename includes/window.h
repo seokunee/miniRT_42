@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/21 23:11:54 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:29:01 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		width;
+	int		height;
 }	t_data;
 
 typedef struct s_window
@@ -31,6 +33,7 @@ typedef struct s_window
 	void	*mlx_win;
 	int		width;
 	int		height;
+	double	aspect_ratio;
 }	t_window;
 
 void	init_window(t_window *win);

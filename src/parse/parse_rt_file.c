@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rt_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 16:34:24 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:25:18 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_file_name(char *file_name)
 	if (name_len < 3)
 		error_exit("Invalid file type");
 	if (file_name[name_len - 3] != '.' || file_name[name_len - 2] != 'r' \
-	||file_name[name_len - 1] != 't')
+	|| file_name[name_len - 1] != 't')
 		error_exit("Invalid file type");
 }
 
@@ -98,4 +98,5 @@ void	parse_rt_file(t_info *info, char *file_name)
 		if (!read_file(info, fd))
 			break ;
 	}
+	camera_set(info);
 }

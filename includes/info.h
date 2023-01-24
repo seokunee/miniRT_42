@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/24 01:05:34 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:37:38 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 # include "rt_math.h"
 # include "window.h"
 # include "hit.h"
+
+typedef int t_filter;
+
+# define FILT_D 0
+# define FILT_S 1
+# define FILT_R 2
+# define FILT_G 3
+# define FILT_B 4
+
 
 /*
 * Ambient lightning:
@@ -42,9 +51,9 @@ typedef struct s_c
 	struct s_vec3	coor;
 	struct s_vec3	normal;
 	int				fov;
-	struct s_vec3	horizontal;
-	struct s_vec3	vertical;
-	struct s_point3	left_bottom;
+	t_vec3	horizontal;
+	t_vec3	vertical;
+	t_vec3	left_bottom;
 }	t_c;
 
 typedef struct s_cam_set

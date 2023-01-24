@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
+#    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/22 00:15:21 by yje              ###   ########.fr        #
+#    Updated: 2023/01/24 09:29:53 by chanwjeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light 
 MATH_SRC		= vector_dot_cross vector_op vector_op2 absolute clamp compare_values normalize radian
 MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
-WINDOW_SRC		= draw_image init_window key_hook mouse_hook window_hooks
+WINDOW_SRC		= init_window #draw_image init_window key_hook mouse_hook window_hooks
 RENDER_SRC		= ray_tracer ray render hit sphere
 THREAD_SRC		= init_thread
 
@@ -59,8 +59,8 @@ SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR),	$(MAIN_SRC)))	\
 		$(addsuffix .c, $(addprefix $(ERROR_DIR),	$(ERROR_SRC)))	\
 		$(addsuffix .c, $(addprefix $(PARSE_DIR),	$(PARSE_SRC)))	\
 		$(addsuffix .c, $(addprefix $(RENDER_DIR),	$(RENDER_SRC)))	\
+		$(addsuffix .c, $(addprefix $(WINDOW_DIR),	$(WINDOW_SRC)))	\
 		# $(addsuffix .c, $(addprefix $(THREAD_DIR),	$(THREAD_SRC)))	\
-		# $(addsuffix .c, $(addprefix $(WINDOW_DIR),	$(WINDOW_SRC)))	\
 # ------------------------------------------------------ #
 
 OBJ_DIR = obj/

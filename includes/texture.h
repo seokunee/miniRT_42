@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 21:20:39 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 16:59:27 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:37:03 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,24 @@
 # include "minirt.h"
 # include "info.h"
 # include "rt_math.h"
+# include "window.h"
 
-typedef struct s_color
-{
-	int	tmp;
-}	t_color;
+typedef int					t_tex_type;
 
-typedef struct s_perlin
-{
-	int	tmp;
-}	t_perlin;
-
+# define SOLID 0
+# define CHECKER 1
+# define CHECKER_UV 2
+# define RAINBOW 3
+# define IMAGE 4
+# define WAVE 5
 typedef struct s_texture
 {
-	char			*type;
-	t_color			color_value;
-	t_color			even;
-	t_color			odd;
-	t_perlin		noise;
-	double			scale;
-	unsigned char	*data;
-	int				wid;
-	int				hei;
-	int				byte_per_scanline;
+	t_color3	albedo1;
+	t_color3	albedo2;
+	double		option1;
+	t_data		*img;
+	t_tex_type	type;
 }	t_texture;
+
 
 #endif

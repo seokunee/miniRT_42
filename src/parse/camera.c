@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 02:03:23 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/24 01:11:37 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:02:16 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,26 @@
 #include "parse.h"
 #include "info.h"
 
-void		camera_set(t_info *info)
+void	camera_set(t_info *info)
 {
 	t_cam_set	s;
-	t_c			cam;
 
-	cam = info->t_c;
-	if (cam.normal.x == 0 && cam.normal.z == 0)
-		cam.normal.z = 0.00001;
-	s.lookat = v_sum(cam.coor, cam.normal);
+	if (info->t_c.normal.x == 0 && info->t_c.normal.z == 0)
+		info->t_c.normal.z = 0.00001;
+	s.lookat = v_sum(info->t_c.coor, info->t_c.normal);
 	s.vup = vec3(0.0, 1.0, 0.0);
-	s.theta = deg_to_rad(cam.fov);
+	s.theta = degrees_to_radians_double((double)(info->t_c.fov));
 	s.half_width = tan(s.theta / 2);
 	s.viewport_width = 2.0 * s.half_width;
-	s.viewport_height = s.viewport_width / info->aspect_ratio;	// aspect_ratio 해야함
-	s.w = vunit(v_mul(cam.normal, -1));
+	s.viewport_height = s.viewport_width / info->win.aspect_ratio;
+	s.w = vunit(v_mul_double(info->t_c.normal, -1));
 	s.u = vunit(v_cross(s.vup, s.w));
 	s.v = v_cross(s.w, s.u);
-	cam.horizontal = v_mul_double(s.u, s.viewport_width);
-	cam.vertical = v_mul_double(s.v, s.viewport_height);
-	cam.left_bottom = vminus(v_minus(v_minus(cam.coor,
-			vdivide(cam.horizontal, 2)), vdivide(cam.vertical, 2)), s.w);
+	info->t_c.horizontal = v_mul_double(s.u, s.viewport_width);
+	info->t_c.vertical = v_mul_double(s.v, s.viewport_height);
+	info->t_c.left_bottom = v_minus(v_minus(v_minus(info->t_c.coor,	\
+		v_divide(info->t_c.horizontal, 2)), \
+		v_divide(info->t_c.vertical, 2)), s.w);
 }
 
 void	get_camera(t_info *info, char **s)

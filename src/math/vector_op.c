@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:46:29 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 16:36:56 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:41:37 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,12 @@ t_vec3	v_mul(t_vec3 v1, t_vec3 v2)
 
 t_vec3	v_mul_double(t_vec3 v, double t)
 {
-	v.x *= t;
-	v.y *= t;
-	v.z *= t;
+	if (v.x != 0.0)
+		v.x *= t;
+	if (v.y != 0.0)
+		v.y *= t;
+	if (v.z != 0.0)
+		v.z *= t;
 	return (v);
 }
 

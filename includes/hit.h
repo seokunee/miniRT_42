@@ -3,17 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   hit.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 10:49:04 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 17:03:09 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:25:01 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HIT_H
 # define HIT_H
 
-# include "rt_math.h"
+#include "rt_math.h"
+#include "minirt.h"
+
+typedef struct	s_hit_record
+{
+	t_point3	p;
+	t_vec3		normal;
+	t_objects	*obj;
+	t_material	*material;
+	t_texture	*texture;
+	double		tmin;
+	double		tmax;
+	double		t;
+	double		u;
+	double		v;
+	bool		front_face;
+}	t_hit_record;
 
 typedef struct s_hit
 {

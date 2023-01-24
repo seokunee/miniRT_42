@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:54:05 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/20 12:54:32 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/24 09:06:42 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void	print_c(t_c *c)
 	printf("coor = %f %f %f\n", c->coor.x, c->coor.y, c->coor.z);
 	printf("normal = %f %f %f\n", c->normal.x, c->normal.y, c->normal.z);
 	printf("fov = %d\n", c->fov);
+	printf("horizontal = %f %f %f\n", c->horizontal.x, c->horizontal.y, c->horizontal.z);
+	printf("vertical = %f %f %f\n", c->vertical.x, c->vertical.y, c->vertical.z);
+	printf("left_bottom = %f %f %f\n", c->left_bottom.x, c->left_bottom.y, c->left_bottom.z);
 }
 
 void	print_l(t_l *l)
