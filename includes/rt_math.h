@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/24 10:47:45 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:35:30 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_vec4	t_vec4;
 typedef struct s_vec4	t_point4;
 typedef struct s_vec4	t_color4;
 
+typedef struct s_mat44	t_mat44;
+
 struct s_vec2
 {
 	double	x;
@@ -48,6 +50,12 @@ struct s_vec4
 	double	x2;
 	double	x3;
 	double	x4;
+};
+
+struct s_mat44
+{
+	double	x[4][4];
+	t_vec3	rotate_deg;
 };
 
 /*
@@ -85,12 +93,11 @@ t_vec3		clamp_3d(t_vec3 v, float min_val, float max_val);
 // t_vec3	*vec_subtract(t_vec3 *v1, t_vec3 *v2);
 
 /*
-
 * Return a length of vector
 */
 double		v_len(t_vec3 v);
-/*
 
+/*
 * dot and cross product of vector
 */
 double		v_dot(t_vec3 v1, t_vec3 v2);
@@ -98,5 +105,19 @@ t_vec3		v_cross(t_vec3 v1, t_vec3 v2);
 
 float		degrees_to_radians_float(float degrees);
 double		degrees_to_radians_double(double degrees);
+
+/*
+* Matrix of 4x4
+*/
+t_mat44		*munit(void);
+t_mat44		*mrotate_x(double degree);
+t_mat44		*mrotate_y(double degree);
+t_mat44		*mrotate_z(double degree);
+t_mat44		*rotate(t_vec3 rotate);
+t_vec3		mmult_v(t_vec3 vec, double h, t_mat44 *mtx);
+void		mmult_m(t_mat44 *dst, t_mat44 *src);
+t_mat44		*inverse(t_mat44 a);
+t_mat44		transpose(t_mat44 *orig);
+t_mat44		*rotate_normal(t_mat44 *rotate);
 
 #endif

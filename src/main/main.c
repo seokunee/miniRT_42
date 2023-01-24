@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/24 09:14:34 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:59:37 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int	main(int ac, char **av)
 	// info.wid = 100;
 	// info.hei = 100;
 	print_all_info(&info); // info 내용 프린트
-	// test_drawing(&info);
-	// binding_events(&info.win);
-	// start_drawing(&info);
-	// mlx_loop(info.win.mlx);
+	test_drawing(&info);
+	binding_events(&info.win);
+	start_drawing(&info);
+	mlx_loop(info.win.mlx);
 	// while
 	// int	color = calculate_pixel_color(&info, 300, 300);
 	// system("leaks miniRT");

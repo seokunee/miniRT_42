@@ -6,7 +6,7 @@
 #    By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/24 09:29:53 by chanwjeo         ###   ########.fr        #
+#    Updated: 2023/01/24 15:50:32 by chanwjeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ MATH_SRC		= vector_dot_cross vector_op vector_op2 absolute clamp compare_values 
 MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
 WINDOW_SRC		= init_window #draw_image init_window key_hook mouse_hook window_hooks
-RENDER_SRC		= ray_tracer ray render hit sphere
+RENDER_SRC		= ray_tracer ray render hit sphere direct_lighting
 THREAD_SRC		= init_thread
 
 # NOTE : Add to SRC here

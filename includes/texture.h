@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 21:20:39 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/24 10:37:03 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:40:37 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef int					t_tex_type;
 # define RAINBOW 3
 # define IMAGE 4
 # define WAVE 5
+
 typedef struct s_texture
 {
 	t_color3	albedo1;

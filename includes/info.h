@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/24 10:37:38 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:02:38 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "rt_math.h"
 # include "window.h"
 # include "hit.h"
+# include "material.h"
+# include "texture.h"
 
 typedef int t_filter;
 
@@ -163,6 +165,19 @@ typedef enum e_type
 * the cylinder height: 21.42
 * R,G,B colors in range [0,255]: 10, 0, 255
 */
+
+typedef int					t_obj_type;
+
+// # define SP 0
+// # define LIGHT 1
+// # define PL	2
+// # define SQ 3
+// # define CY 4
+// # define TR 5
+// # define CB 6
+// # define PM 7
+// # define CAM 11
+
 typedef struct s_objs
 {
 	enum e_type		type;
@@ -173,6 +188,10 @@ typedef struct s_objs
 	t_vec3			colors;
 	struct s_objs	*next;
 	struct s_objs	*prev;
+	t_mat44			*rotate;
+	t_mat44			*rotate_normal;
+	t_material		*material;
+	t_texture		*texture;
 }	t_objs;
 
 /*

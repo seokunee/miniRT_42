@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 10:48:44 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 16:12:54 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:03:44 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,7 @@
 #include "ray.h"
 #include "hit.h"
 #include "raytracer.h"
-
-// void	set_face_normal(t_hit *hit, t_ray ray, t_vec3 outward_normal)
-// {
-// 	hit->front_face = v_dot(ray.dir, outward_normal);
-// 	if (hit->front_face < 0)
-// 		hit->front_face = TRUE;
-// 	else
-// 		hit->front_face = FALSE;
-// 	if (hit->front_face)
-// 		hit->normal = vec3(outward_normal.x, outward_normal.y, outward_normal.z);
-// 	else
-// 		hit->normal = vec3(-(outward_normal.x), -(outward_normal.y), -(outward_normal.z));
-// }
-
-// void	*set_hit_lst(t_oneweek *oneweek)
-// {
-
-// 	oneweek->hit_lst = ft_malloc(sizeof(t_list));
-// 	while (oneweek->info->t_objs)		// 여기서 objs 돌리면서 hit_lst를 채워야할듯
-// 	{
-
-// 	}
-// }
+#include "info.h"
 
 void	copy_hit(t_hit *hit_a, t_hit *hit_b)
 {
@@ -50,37 +28,47 @@ void	copy_hit(t_hit *hit_a, t_hit *hit_b)
 	hit_a->point.z = hit_b->point.z;
 }
 
-/*
+bool		hit(t_list *obj, t_ray *ray, t_hit_record *rec)
+{
+	bool			hit_anything;
+	t_hit_record	temp_rec;
 
-class hittable_list : public hittable  {
-	public:
-		hittable_list() {}
-		hittable_list(shared_ptr<hittable> object) { add(object); }
-
-		void clear() { objects.clear(); }
-		void add(shared_ptr<hittable> object) { objects.push_back(object); }
-
-		virtual bool hit(
-			const ray& r, double t_min, double t_max, hit_record& rec) const override;
-
-	public:
-		std::vector<shared_ptr<hittable>> objects;
-};
-
-
-bool hittable_list::hit(const ray& r, double t_min, double t_max, hit_record& rec) const {
-	hit_record temp_rec;
-	auto hit_anything = false;
-	auto closest_so_far = t_max;
-
-	for (const auto& object : objects) {
-		if (object->hit(r, t_min, closest_so_far, temp_rec)) {
+	temp_rec = *rec;
+	hit_anything = false;
+	while (obj->content)
+	{
+		if (hit_obj(obj->content, ray, &temp_rec))
+		{
 			hit_anything = true;
-			closest_so_far = temp_rec.t;
-			rec = temp_rec;
+			temp_rec.tmax = temp_rec.t;
+			*rec = temp_rec;
+			rec->obj = obj->content;
 		}
+		obj = obj->next;
 	}
-
-	return hit_anything;
+	return (hit_anything);
 }
-*/
+
+bool		hit_obj(t_objs *obj, t_ray *ray, t_hit_record *rec)
+{
+	bool	hit_result;
+
+	hit_result = false;
+	if (obj->type == SP)
+		hit_result = hit_sphere(obj, ray, rec);
+	// else if (obj->type == LIGHT)
+	// 	hit_result = (false);
+	// else if (obj->type == PL)
+	// 	hit_result = hit_pl_rotate_check(obj, ray, rec);
+	// else if (obj->type == SQ)
+	// 	hit_result = hit_sq_rotate_check(obj, ray, rec);
+	// else if (obj->type == CY)
+	// 	hit_result = hit_cy_rotate_check(obj, ray, rec);
+	// else if (obj->type == TR)
+	// 	hit_result = hit_triangle(obj, ray, rec);
+	// else if (obj->type == CB)
+	// 	hit_result = hit_cb_rotate_check(obj, ray, rec);
+	// else if (obj->type == PM)
+	// 	hit_result = hit_pm_rotate_check(obj, ray, rec);
+	return (hit_result);
+}

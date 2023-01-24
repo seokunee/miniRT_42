@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 10:49:04 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/24 10:25:01 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:03:15 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 #include "rt_math.h"
 #include "minirt.h"
+#include "info.h"
 
 typedef struct	s_hit_record
 {
 	t_point3	p;
 	t_vec3		normal;
-	t_objects	*obj;
+	t_objs	*obj;
 	t_material	*material;
 	t_texture	*texture;
 	double		tmin;

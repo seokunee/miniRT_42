@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:04:42 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/24 10:48:09 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:59:14 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,6 @@ static int	draw_pixel(t_info *info, t_vec3 pixel)
 	return (pixel_color);
 }
 
-// void	filter(t_color3 *pixel_color, t_info *info)
-// {
-// 	// if (global->f_type == FILT_S)
-// 	// 	filter_sepia(pixel_color);
-// 	// else if (global->f_type == FILT_R)
-// 	// 	filter_red(pixel_color);
-// 	// else if (global->f_type == FILT_G)
-// 	// 	filter_green(pixel_color);
-// 	// else if (global->f_type == FILT_B)
-// 	// 	filter_blue(pixel_color);
-// 	*pixel_color = vmin(*pixel_color, vec3(1.0, 1.0, 1.0));
-// }
-
-void	my_mlx_pixel_put(t_info *info, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->size_line + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
 int		create_rgb(t_color3 *color)
 {
 	int r;
@@ -81,28 +60,30 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 	uv[1] = (double)y / (info->wid - 1);
 	ray.orig = info->t_c.coor;
 	ray.dir = vunit(v_minus(v_sum(v_sum(info->t_c.left_bottom, v_mul_double(info->t_c.horizontal, uv[1])), v_mul_double(info->t_c.vertical, uv[0])), info->t_c.coor));
-	pixel_color = v_sum(pixel_color, ray_color_preview(ray, info));
+	pixel_color = v_sum(pixel_color, ray_color_preview(ray, info, 1));
 	pixel_color = v_sum(pixel_color, v_mul_double(v_divide(info->t_a.colors, 255.0), info->t_a.amb_light_ratio));
 	// filter(&pixel_color, info);
 	pixel_color = vmin(pixel_color, vec3(1.0, 1.0, 1.0));
 	return (create_rgb(&pixel_color));
 }
 
-t_color3	ray_color_preview(t_ray *r, t_scene *s, int light_on)
+t_color3	ray_color_preview(t_ray *r, t_info *info, int light_on)
 {
 	t_hit_record	rec;
 
 	rec.tmin = 0.0001;
 	rec.tmax = INFINITY;
-	if (hit(s->world, r, &rec))
+	if (hit(info->t_objs, r, &rec))
 	{
-		if (light_on == 0)
-			return (direct_lighting(s->world, r, &rec));
-		else
-			return (rec.texture->albedo1);
+		// if (light_on == 0)
+		// 	return (direct_lighting(info->t_l, r, &rec));
+		// else
+		// 	return (rec.texture->albedo1);
+		return (rec.texture->albedo1);
 	}
-	else if (light_on == 0)
-		return (color_background(r, s, &rec));
+	// else if (light_on == 0)
+	// 	return (color_background(r, s, &rec));
 	else
 		return (color3(0.5, 0.7, 1.0));
 }
+
