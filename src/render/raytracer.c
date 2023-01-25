@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yjeeokcoi <yjeeokcoi@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:13:55 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/25 14:15:47 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:599:46 by yje     eokcoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ static t_hit	check_ray_collision_sphere(t_ray ray, t_objs *sphere)
 	hit.normal = vec3(0.0, 0.0, 0.0); // 충돌 지점에서 구의 단위 법선 벡터(unit normal vector)
 	b = 2.0 * v_dot(ray.normal, v_minus(ray.orig, sphere->coor)); // 근의 공식을 위한 변수
 	c = v_dot(v_minus(ray.orig, sphere->coor), \
-		v_minus(ray.orig, sphere->coor)) - powf((sphere->diameter / 2), 2.0); // 근의 공식을 위한 변수
+		v_minus(ray.orig, sphere->coor)) - pow((sphere->diameter / 2.0), 2.0); // 근의 공식을 위한 변수
+	// det = v_dot(ray.normal, v_minus(ray.orig, sphere->coor));
 	det = (b * b) - (4.0 * c);
 	if (det >= 0.0)
 	{
-		hit.d = min_double((-b - sqrtf(det)) / 2.0, (-b + sqrtf(det)) / 2.0);
+		hit.d = min_double((-b - sqrt(det)) / 2.0, (-b + sqrt(det)) / 2.0);
 		hit.point = v_sum(ray.orig, v_mul_double(ray.normal, hit.d));
 		hit.normal = norm_3d_vec(v_minus(hit.point, sphere->coor));
 	}
@@ -71,9 +72,11 @@ static t_hit	check_ray_collision_sphere(t_ray ray, t_objs *sphere)
 
 static t_vec3	trace_ray(t_info *info, t_ray ray)
 {
-	t_objs	*sphere = (t_objs *)(info->t_objs->content);
-	t_hit	hit = check_ray_collision_sphere(ray, sphere);
+	t_objs	*sphere;
+	t_hit	hit;
 
+	sphere = (t_objs *)(info->t_objs->content);
+	hit = check_ray_collision_sphere(ray, sphere);
 	if (hit.d < 0.0)
 	{
 		return (vec3(0.0, 0.0, 0.0));
@@ -91,7 +94,7 @@ static t_vec3	trace_ray(t_info *info, t_ray ray)
 * calculate_pixel_color
 * 모니터에 그려질 2차원 (x, y) 좌표를 3차원으로 표현하기 위해서 모니터 비율에 맞춰서 3차원 벡터로 만들어줌.
 */
-int calculate_pixel_color(t_info *info, int x, int y)
+int	calculate_pixel_color(t_info *info, int x, int y)
 {
 	t_vec3	pixel_pos_world;
 	t_vec3	ray_norm;
@@ -101,8 +104,7 @@ int calculate_pixel_color(t_info *info, int x, int y)
 	ray_norm = vec3(0.0, 0.0, 1.0);
 	pixel_ray.orig = pixel_pos_world;
 	pixel_ray.normal = ray_norm;
-	t_vec3 color = trace_ray(info, pixel_ray);
-	// printf("x: %d, y: %d, color.x: %f, color.y: %f color.z: %f\n", x, y, color.x, color.y, color.z);
+	t_vec3 color = clamp_3d(trace_ray(info, pixel_ray), 0.0, 255.0);
 	return (create_trgb_int(1.0f, color.x, color.y, color.z));
 }
 

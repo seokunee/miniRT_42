@@ -13,7 +13,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "parse.h"
-#include "minirt.h"
 
 void	check_file_name(char *file_name)
 {
