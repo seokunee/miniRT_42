@@ -19,6 +19,6 @@ void	set_sp(t_objs *obj, char **opt)
 	if (sec_arr_len(opt) != 4)
 		error_exit("Wrong argument");
 	check_coordinates(obj, opt[1]);
-	check_diameter(obj, ft_atof(opt[2]));
+	check_diameter(obj, ft_atod(opt[2]));
 	obj->colors = get_arg_color(opt[3]);
 }

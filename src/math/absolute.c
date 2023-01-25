@@ -12,9 +12,9 @@
 
 #include "rt_math.h"
 
-float	abs_float(float f)
+double	abs_double(double d)
 {
-	if (f < 0.0f)
-		return (-f);
-	return (f);
+	if (d < 0.0)
+		return (-d);
+	return (d);
 }

@@ -48,7 +48,7 @@ MATH_SRC		= vector_dot_cross vector_op vector_op2 vector_op3 vector_op_2 absolut
 MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
 WINDOW_SRC		= draw_image init_window key_hook mouse_hook window_hooks
-RENDER_SRC		= ray_tracer ray render hit sphere
+RENDER_SRC		= raytracer #ray render hit sphere
 THREAD_SRC		= init_thread
 
 # NOTE : Add to SRC here

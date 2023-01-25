@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 16:38:44 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:15:47 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <stdio.h>
 # include "error.h"
 # include "info.h"
+
+# define SUCCESS 0
+# define ERR	 1
 
 // ambient
 void	get_ambient(t_info *info, char **s);
@@ -60,7 +63,7 @@ void	set_sp(t_objs *obj, char **opt);
 
 // utils
 int		sec_arr_len(char **arr);
-float	ft_atof(char *s);
+float	ft_atod(char *s);
 int		check_only_num1(char *opt, char *oper);
 int		check_only_num(char **opt, char *oper);
 

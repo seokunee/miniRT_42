@@ -20,8 +20,8 @@ void	set_cy(t_objs *obj, char **opt)
 		error_exit("Wrong cylinder argument");
 	check_coordinates(obj, opt[1]);
 	obj->normal = get_arg_normal(opt[2]);
-	check_diameter(obj, ft_atof(opt[3]));
-	obj->cy_hei = ft_atof(opt[4]);
+	check_diameter(obj, ft_atod(opt[3]));
+	obj->cy_hei = ft_atod(opt[4]);
 	if (obj->cy_hei <= 0)
 	obj->colors = get_arg_color(opt[5]);
 }

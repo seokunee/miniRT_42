@@ -23,7 +23,7 @@ int	sec_arr_len(char **arr)
 	return (len);
 }
 
-float	ft_atof(char *s)
+float	ft_atod(char *s)
 {
 	double	ret;
 	double	i;

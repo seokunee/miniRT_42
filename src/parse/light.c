@@ -40,7 +40,7 @@ void	get_light(t_info *info, char **s)
 	if (sec_arr_len(s) != 3 && sec_arr_len(s) != 4)
 		error_exit("Wrong 1 argument");
 	light->coor = get_arg_coor(s[1]);
-	light->light_brightness_ratio = ft_atof(s[2]);
+	light->light_brightness_ratio = ft_atod(s[2]);
 	if (check_range(1, light->light_brightness_ratio) == ERR)
 		error_exit("Wrong 2 argument");
 	if (sec_arr_len(s) == 4)

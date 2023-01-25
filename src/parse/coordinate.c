@@ -23,9 +23,9 @@ t_vec3	get_arg_coor(char *s)
 	if (sec_arr_len(tmp) != 3)
 		error_exit("Wrong coor argument num");
 	check_only_num(tmp, "-.");
-	color[0] = ft_atof(tmp[0]);
-	color[1] = ft_atof(tmp[1]);
-	color[2] = ft_atof(tmp[2]);
+	color[0] = ft_atod(tmp[0]);
+	color[1] = ft_atod(tmp[1]);
+	color[2] = ft_atod(tmp[2]);
 	free_double_array((void **)tmp);
 	return (vec3(color[0], color[1], color[2]));
 }
@@ -47,6 +47,6 @@ void	check_coordinates(t_objs *obj, char *str)
 	check_only_num1(coor[0], ".");
 	check_only_num1(coor[1], ".");
 	check_only_num1(coor[2], ".");
-	obj->coor = vec3(ft_atof(coor[0]), ft_atof(coor[1]), ft_atof(coor[2]));
+	obj->coor = vec3(ft_atod(coor[0]), ft_atod(coor[1]), ft_atod(coor[2]));
 	free_double_array((void **)coor);
 }

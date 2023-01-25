@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "parse.h"
 #include "info.h"
 
 int	check_oper(char c, char *s)

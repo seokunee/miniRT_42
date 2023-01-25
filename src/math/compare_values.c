@@ -12,14 +12,14 @@
 
 #include "rt_math.h"
 
-float	max_float(float f1, float f2)
+double	max_double(double f1, double f2)
 {
 	if (f1 > f2)
 		return (f1);
 	return (f2);
 }
 
-float	min_float(float f1, float f2)
+double	min_double(double f1, double f2)
 {
 	if (f1 > f2)
 		return (f2);

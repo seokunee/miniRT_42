@@ -12,6 +12,7 @@
 
 #include "thread.h"
 #include "raytracer.h"
+#include "window.h"
 
 static int	is_last_img(t_drawer *drawer)
 {

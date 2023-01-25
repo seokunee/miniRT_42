@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/20 13:09:14 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:15:47 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,8 @@
 # define WINDOW_H
 
 # include "mlx.h"
+# include "structs.h"
 # define TITLE "Hello miniRT!"
-
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
-
-typedef struct s_window
-{
-	void	*mlx;
-	void	*mlx_win;
-	int		width;
-	int		height;
-}	t_window;
 
 void	init_window(t_window *win);
 void	binding_events(t_window *win);

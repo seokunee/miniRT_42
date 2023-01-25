@@ -6,13 +6,14 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 17:00:29 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:15:47 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 #include "error.h"
 #include "parse.h"
+#include "window.h"
 #include "thread.h"
 
 int	main(int ac, char **av)
