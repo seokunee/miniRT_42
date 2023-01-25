@@ -85,9 +85,10 @@ typedef struct s_cam
 
 typedef struct s_hit
 {
-	double	d;		// 광선의 시작부터 충돌 지점까지의 거리
-	t_vec3	point;	// 충돌한 위치
-	t_vec3	normal;	// 충돌한 위치에서 표면의 수직 벡터
+	double	d;
+	t_vec3	point;
+	t_vec3	normal;
+	// std::shared_ptr<Object> obj; // 나중에 물체의 재질 등을 가져오기 위한 포인터
 }	t_hit;
 
 /*
@@ -155,7 +156,7 @@ typedef enum e_type
 * the cylinder height: 21.42
 * R,G,B colors in range [0,255]: 10, 0, 255
 */
-typedef struct s_objs
+typedef struct s_obj
 {
 	enum e_type		type;
 	t_vec3			coor;
@@ -163,9 +164,15 @@ typedef struct s_objs
 	double			diameter;
 	double			cy_hei;
 	t_vec3			colors;
-	struct s_objs	*next;
-	struct s_objs	*prev;
-}	t_objs;
+	struct s_obj	*next;
+	struct s_obj	*prev;
+	// test
+	t_vec3 			amb;
+	t_vec3			diff;
+	t_vec3			spec;
+	float			ks;
+	float			alpha; // 투명도
+}	t_obj;
 
 typedef struct s_data
 {
@@ -192,7 +199,7 @@ typedef struct s_info
 	t_a			t_a;
 	t_c			t_c;
 	t_l			*t_l;
-	t_list		*t_objs;
+	t_list		*objs;
 	int			wid;
 	int			hei;
 	// tmp

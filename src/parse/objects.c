@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:52:00 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 19:50:53 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:39:37 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 #include "parse.h"
 
-void	check_obj(t_objs *obj, char **opt, t_type type)
+void	check_obj(t_obj *obj, char **opt, t_type type)
 {
 	obj->type = type;
 	if (type == PL)
@@ -26,13 +26,13 @@ void	check_obj(t_objs *obj, char **opt, t_type type)
 
 void	get_obj(t_info *info, char **opt, t_type type)
 {
-	t_objs	*obj;
+	t_obj	*obj;
 	t_list	*new;
 
-	obj = malloc(sizeof(t_objs));
+	obj = malloc(sizeof(t_obj));
 	if (!obj)
 		error_exit("malloc error");
 	new = ft_lstnew(obj);
-	ft_lstadd_back(&(info->t_objs), new);
+	ft_lstadd_back(&(info->objs), new);
 	check_obj(obj, opt, type);
 }

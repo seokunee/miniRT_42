@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 12:51:17 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:39:37 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "info.h"
 
-void	set_sp(t_objs *obj, char **opt)
+void	set_sp(t_obj *obj, char **opt)
 {
 	if (sec_arr_len(opt) != 4)
 		error_exit("Wrong argument");

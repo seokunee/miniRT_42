@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:54:05 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 23:25:23 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/25 17:39:37 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	print_l(t_l *l)
 
 void	print_objs(t_list *objs)
 {
-	t_objs	*obj;
+	t_obj	*obj;
 
-	obj = (t_objs *)objs->content;
+	obj = (t_obj *)objs->content;
 	if (obj->type == PL)
 	{
 		printf("PL\n");
@@ -101,7 +101,7 @@ void	print_all_info(t_info *info)
 	printf("\n");
 
 	printf("info of objs\n");
-	print_objs(info->t_objs);
+	print_objs(info->objs);
 
 	printf("\n");
 	printf("window width  = %d\n", info->wid);

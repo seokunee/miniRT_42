@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane.c                                            :+:      :+:    :+:   */
+/*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/25 17:39:37 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/25 17:52:28 by sunhwang          #+#    #+#             */
+/*   Updated: 2023/01/25 19:17:38 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
-#include "info.h"
+#include "structs.h"
 
-void	set_pl(t_obj *obj, char **opt)
+/// @brief
+/// @param d 광선의 시작부터 충돌 지점까지의 거리
+/// @param point 충돌한 위치
+/// @param normal 충돌한 위치에서 표면의 수직 벡터
+/// @return
+t_hit	get_hit(double d, t_vec3 point, t_vec3 normal)
 {
-	if (sec_arr_len(opt) != 4)
-		error_exit("Wrong plane argument num");
-	check_coordinates(obj, opt[1]);
-	obj->normal = get_arg_normal(opt[2]);
-	obj->colors = get_arg_color(opt[3]);
+	t_hit	hit;
+
+	hit.d = d;
+	hit.point = point;
+	hit.normal = normal;
+	return (hit);
 }

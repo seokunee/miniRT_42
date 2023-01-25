@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/19 09:41:58 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:39:37 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "info.h"
 
-void	set_cy(t_objs *obj, char **opt)
+void	set_cy(t_obj *obj, char **opt)
 {
 	if (sec_arr_len(opt) != 6)
 		error_exit("Wrong cylinder argument");

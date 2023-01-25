@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coordinate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:49:25 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 19:56:42 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:39:37 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_vec3	get_arg_coor(char *s)
 * vector가 3인지 체크
 * 숫자와 . 으로 이루어졌는지 체크
 */
-void	check_coordinates(t_objs *obj, char *str)
+void	check_coordinates(t_obj *obj, char *str)
 {
 	char	**coor;
 

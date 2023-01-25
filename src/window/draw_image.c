@@ -6,17 +6,11 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:12:52 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/25 14:15:47 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:07:28 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
-
-int	create_trgb(unsigned char t, unsigned char r, unsigned char g, \
-unsigned char b)
-{
-	return (*(int *)(unsigned char [4]){b, g, r, t});
-}
 
 static int	get_offset(t_data *data, int x, int y)
 {

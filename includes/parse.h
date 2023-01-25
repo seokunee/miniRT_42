@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/25 14:15:47 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:39:37 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ t_vec3	get_arg_color(char *s);
 
 // coordinate
 t_vec3	get_arg_coor(char *s);
-void	check_coordinates(t_objs *obj, char *str);
+void	check_coordinates(t_obj *obj, char *str);
 
 // cylinder
-void	set_cy(t_objs *obj, char **opt);
+void	set_cy(t_obj *obj, char **opt);
 
 // diameter
-void	check_diameter(t_objs *obj, float dia);
+void	check_diameter(t_obj *obj, float dia);
 
 // light
 void	get_light(t_info *info, char **s);
@@ -46,7 +46,7 @@ void	get_light(t_info *info, char **s);
 t_vec3	get_arg_normal(char *s);
 
 // objects
-void	check_obj(t_objs *obj, char **opt, t_type type);
+void	check_obj(t_obj *obj, char **opt, t_type type);
 void	get_obj(t_info *info, char **opt, t_type type);
 
 // parse_rt_file
@@ -57,9 +57,9 @@ bool	read_file(t_info *info, int fd);
 void	parse_rt_file(t_info *info, char *file_name);
 
 //plane
-void	set_pl(t_objs *obj, char **opt);
+void	set_pl(t_obj *obj, char **opt);
 //sphere
-void	set_sp(t_objs *obj, char **opt);
+void	set_sp(t_obj *obj, char **opt);
 
 // utils
 int		sec_arr_len(char **arr);
