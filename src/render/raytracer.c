@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/26 19:52:47 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:10:06 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ unsigned char b)
 
 /*
 * transform_screen_to_world (카메라 적용 버전)
+*
 */
 static t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 {
@@ -127,7 +128,8 @@ static t_vec3	trace_ray(t_list *objs, t_ray ray)
 
 		// Diffuse + Specular
 		// return sphere->amb + sphere->diff * diff + sphere->spec * specular * sphere->ks;
-		return (v_mul_double(v_sum(v_sum(v_mul_double(closest_obj->diff, diff), closest_obj->amb), v_mul_double(v_mul_double(closest_obj->spec, specular), closest_obj->ks)), 255.0));
+		// return (v_mul_double(v_sum(v_sum(v_mul_double(closest_obj->diff, diff), closest_obj->amb), v_mul_double(v_mul_double(closest_obj->spec, specular), closest_obj->ks)), 255.0));
+		return (v_mul_double(v_sum(closest_obj->colors, v_sum(v_sum(v_mul_double(closest_obj->diff, diff), closest_obj->amb), v_mul_double(v_mul_double(closest_obj->spec, specular), closest_obj->ks))), 255.0));
 	}
 	return (vec3(0.0, 0.0, 0.0));
 }
