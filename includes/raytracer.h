@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:39:59 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/25 19:19:35 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:32:31 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RAYTRACER_H
 
 # include <stdio.h>
-# include "info.h"
+# include "structs.h"
 
 t_ray	get_ray(t_vec3 start, t_vec3 dir);
 t_hit	get_hit(double d, t_vec3 point, t_vec3 normal);
