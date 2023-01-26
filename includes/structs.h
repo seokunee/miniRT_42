@@ -109,12 +109,14 @@ typedef struct s_a
 * x,y,z coordinates of the view point: 0.0,0.0,20.6
 * 3d normalized orientation vector. In range [-1,1] for each x,y,z axis: 0.0,0.0,1.0
 * FOV : Horizontal field of view in degrees in range [0,180]
+* length : Distance from camera to monitor
 */
 typedef struct s_c
 {
 	struct s_vec3	coor;
 	struct s_vec3	normal;
 	int				fov;
+	double			length;
 }	t_c;
 
 /*

@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:46:53 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 19:57:58 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/26 13:48:53 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_vec3	get_arg_normal(char *s)
 		error_exit("Wrong argument");
 	free_double_array((void **)tmp);
 	v3 = vec3(normal[0], normal[1], normal[2]);
-	if (v_dot(v3, v3) != 1)
-		error_exit("Wrong normal argument");
+	// if (v_dot(v3, v3) != 1)
+	// 	error_exit("Wrong normal argument");
 	return (v3);
 }
