@@ -118,15 +118,15 @@ $(OBJ): $(OBJ_DIR)%.o: %.c
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	# @$(MAKE) -C $(MLX_DIR) clean
-	# @$(RM) libmlx.dylib
+	@$(MAKE) -C $(MLX_DIR) clean
+	@$(RM) libmlx.dylib
 	@$(RM) -r $(OBJ_DIR)
 	@echo "$(CUSTOM)miniRT obj files has been deleted.$(DEF_COLOR)"
 
 fclean:
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	# @$(MAKE) -C $(MLX_DIR) clean
-	# @$(RM) libmlx.dylib
+	@$(MAKE) -C $(MLX_DIR) clean
+	@$(RM) libmlx.dylib
 	@$(RM) -r $(OBJ_DIR)
 	@$(RM) $(NAME)
 	@echo "$(CUSTOM)miniRT archive files has been deleted.$(DEF_COLOR)"
