@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:37:50 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/27 13:48:20 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:07:16 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,12 @@ static void	create_thread(int i, int size, t_drawer *drawer, t_info *info)
 	d->img = mlx_new_image(info->win.mlx, drawer->width, drawer->height);
 	d->addr = mlx_get_data_addr(d->img, &d->bits_per_pixel, &d->line_length, \
 	&d->endian);
-	printf("i: %d width: %d data: %p \n", drawer->i, drawer->width, &drawer->data);
 	pthread_create(&drawer->thread, NULL, thread_routine, drawer);
 }
 
 static void	attach_thread(int width, t_drawer *drawer, t_window *win)
 {
 	pthread_join(drawer->thread, NULL);
-	printf("i: %d width: %d data: %p \n", drawer->i, drawer->width, &drawer->data);
 	mlx_put_image_to_window(win->mlx, win->mlx_win, drawer->data.img, width, 0);
 	mlx_destroy_image(win->mlx, drawer->data.img);
 	free(drawer);
