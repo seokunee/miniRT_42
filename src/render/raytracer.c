@@ -42,40 +42,68 @@ static t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 	return (vec3(x_scale, y_scale, info->cam.length));
 }
 
-
-/// @brief ray가 object의 어디에서 부딪히는지 계산한 hit 구조체를 반환한다.
-/// @param ray
-/// @param sphere 구체에 대한 정보를 가진 구조체
-/// @return
-static t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
+void	get_closest_hit_obj(t_list *objs, t_hit	*closest_hit, t_ray ray, t_obj **closest_obj)
 {
-	const double	b = 2.0 * v_dot(ray.normal, \
-	v_minus(ray.orig, sphere->coor));
-	const double	c = v_dot(v_minus(ray.orig, sphere->coor), \
-	v_minus(ray.orig, sphere->coor)) - pow(sphere->diameter / 2.0, 2.0);
-	const double	det = (b * b) - (4.0 * c);
-	t_hit			hit;
+	t_hit	hit;
+	t_obj	*obj;
+	double	closest;
 
-	hit = get_hit(-1.0, vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0));
-	if (det >= 0.0)
+	closest = 100000;
+	closest_hit->d = -1;
+	while (objs)
 	{
-		hit.d = min_double((-b - sqrt(det)) / 2.0, (-b + sqrt(det)) / 2.0);
-		hit.point = v_sum(ray.orig, v_mul_double(ray.normal, hit.d));
-		hit.normal = norm_3d_vec(v_minus(hit.point, sphere->coor));
+		obj = (t_obj *)(objs->content);
+		if (obj->type == CY)
+			hit = check_ray_collision_cylinder(ray, obj);
+		else if (obj->type == SP)
+			hit = check_ray_collision_sphere(ray, obj);
+		// else if (obj->type == CY)
+			// (void)hit;
+		if (hit.d >= 0 && closest > hit.d)
+		{
+			closest = hit.d;
+			closest_hit->d = hit.d;
+			closest_hit->normal = hit.normal;
+			closest_hit->point = hit.point;
+			*closest_obj = obj;
+			if (obj->type == CY)
+			{
+				printf("color : [%f, %f, %f]\n", obj->colors.x, obj->colors.y, obj->colors.z);
+			}
+		}
+		objs = objs->next;
 	}
-	return (hit);
 }
 
-t_color3	point_light_get(t_hit *hit, t_l *light, t_obj *closest_obj)
+bool	in_shadow(t_list *objs, t_hit *hit, t_ray light_ray, double light_len)
+{
+	t_hit_record	rec;
+	t_hit			closest_hit;
+	t_obj			*closest_obj;
+
+	(void)hit;
+	rec.tmin = 0.001;
+	rec.tmax = light_len;
+	get_closest_hit_obj(objs, &closest_hit, light_ray, &closest_obj);
+	if (closest_hit.d >= 0.0)
+		return (true);
+	return (false);
+}
+
+t_color3	point_light_get(t_list *objs, t_hit *hit, t_l *light, t_obj *closest_obj)
 {
 	t_color3	diffuse;
 	t_vec3		light_dir;
 	double		kd; // diffuse의 강도
 	double		light_len;
+	t_ray		light_ray;
 
 	light_dir = v_minus(light->coor, hit->point); //교점에서 출발하여 광원을 향하는 벡터(정규화 됨)
 	light_len = v_len(light_dir);
 	light_dir = vunit(light_dir);
+	light_ray = get_ray(v_sum(hit->point, v_mul_double(hit->normal, 0.001)), light_dir);
+	if (in_shadow(objs, hit, light_ray, light_len))
+		return (color3(0, 0, 0));
 	// cosΘ는 Θ 값이 90도 일 때 0이고 Θ가 둔각이 되면 음수가 되므로 0.0보다 작은 경우는 0.0으로 대체한다.
 	kd = fmax(v_dot(hit->normal, light_dir), 0.0);// (교점에서 출발하여 광원을 향하는 벡터)와 (교점에서의 법선벡터)의 내적값. --> 0.몇값이 나옴.
 	// fmax 함수는 두 개의 인자 중 큰 값을 리턴한다. 만약 코사인세타가 둔각이 될 경우 음수가 되기에 0을 리턴하도록 한다.
@@ -95,58 +123,28 @@ t_color3	point_light_get(t_hit *hit, t_l *light, t_obj *closest_obj)
 /// @return
 static t_vec3	trace_ray(t_info *info, t_list *objs, t_ray ray)
 {
-	t_obj	*obj;
-	t_hit	hit;
-	double	closest;
-	t_hit	closest_hit;
-	t_obj	*closest_obj;
+	t_hit		closest_hit;
+	t_obj		*closest_obj;
+	t_color3	ambient_color;
+	t_vec3		light_color;
+	t_l			*lights;
 
-	closest = 100000;
-	closest_hit.d = -1;
-	while (objs)
-	{
-		obj = (t_obj *)(objs->content);
-		// if (obj->type == PL)
-			// (void)hit;
-		// else if (obj->type == SP)
-		// {
-		hit = check_ray_collision_sphere(ray, obj);
-		// }
-		// else if (obj->type == CY)
-			// (void)hit;
-		if (hit.d >= 0 && closest > hit.d)
-		{
-			closest = hit.d;
-			closest_hit.d = hit.d;
-			closest_hit.normal = hit.normal;
-			closest_hit.point = hit.point;
-			closest_obj = obj;
-		}
-		objs = objs->next;
-	}
+	get_closest_hit_obj(objs, &closest_hit, ray, &closest_obj);
 	if (closest_hit.d >= 0.0)
 	{
-		// TODO 각 변수는 상황에 맞게 변경되어야 함.
-		// closest_obj->amb = vec3(0.0, 0.0, 1.0); // 기본 조명 색깔? ==> 하나로 통일
-		// closest_obj->diff = vec3(1.0, 0.0, 0.0); // 빛 퍼짐 정도
-		// closest_obj->spec = vec3(1.0, 1.0, 1.0); // 반짝거림
-		// closest_obj->ks = 1.0f; //
-		// closest_obj->alpha = 1.0f; //
-
-		t_vec3 light_color = color3(0, 0, 0);
-		t_l *lights = info->lights;
+		light_color = color3(0, 0, 0);
+		lights = info->lights;
 		while (lights) // 존재하는 모든 광원들에 대한 정반사, 난반사 값을 연결리스트로 돌아가면서 구해준다.
 		{
-			// if (lights->type == LIGHT_POINT)
-			light_color = v_sum(light_color, point_light_get(&closest_hit, lights, closest_obj)); // light들을 모아준다.
+			light_color = v_sum(light_color, point_light_get(objs, &closest_hit, lights, closest_obj)); // light들을 모아준다.
 			lights = lights->next;
 		}
-		t_color3 ambient_color = v_divide(v_mul_double(info->amb.colors, pow(info->amb.amb_light_ratio, 2)), 255); // abient_color를 0~1.0사이 크기로 만듬. - 마지막에 우리가 mlx 이벤트로 amb를 0-1까지 조절할 수 있게 한다면, 그 때 변화 폭을 봐서 제곱을 할지 말지 정해도 될듯.
+		ambient_color = v_divide(v_mul_double(info->amb.colors, \
+			pow(info->amb.amb_light_ratio, 2)), 255); // abient_color를 0~1.0사이 크기로 만듬. - 마지막에 우리가 mlx 이벤트로 amb를 0-1까지 조절할 수 있게 한다면, 그 때 변화 폭을 봐서 제곱을 할지 말지 정해도 될듯.
 		ambient_color = v_mul(ambient_color, closest_obj->colors);
-		return (vmin(v_sum(light_color, ambient_color),
-			color3(255, 255, 255)));
+		return (vmin(v_sum(light_color, ambient_color), color3(255, 255, 255)));
 	}
-	// return (vec3(0, 0, 0));	// background : black
+	// return (vec3(0, 0,3 0));	// background : black
 	return (vec3(255.0, 255.0, 255.0));	// background : white
 }
 
@@ -162,10 +160,8 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 	t_vec3	color;
 	t_ray	pixel_ray;
 
-	// printf("coor:[%f, %f, %f], x, y : [%d, %d]", info->cam.coor.x, info->cam.coor.y, info->cam.coor.z, x, y);
+	printf("x, y : [%d, %d], ", x, y);
 	pixel_pos_world = transform_screen_to_world(info, vec2(x, y));
-
-	// 지금은 정투영. 원근투영으로 해야 원근법이 적용됨
 	ray_dir = norm_3d_vec(v_minus(pixel_pos_world, info->cam.coor)); // 카메라에 모니터를 보는 각도가 적용된 광선
 	pixel_ray = get_ray(info->cam.coor, ray_dir);	// info of cam
 	color = clamp_3d(trace_ray(info, info->objs, pixel_ray), 0.0, 255.0); // 최소의 거리의 오브젝트에서 나온 hit 정보를 가지고 색을 반환.

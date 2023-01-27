@@ -91,6 +91,21 @@ typedef struct s_hit
 	// std::shared_ptr<Object> obj; // 나중에 물체의 재질 등을 가져오기 위한 포인터
 }	t_hit;
 
+typedef struct s_cy_settings
+{
+	t_vec3			u;
+	t_vec3			o;
+	t_vec3			delta_p;
+	double			a;
+	double			half_b;
+	double			c;
+	double			r;
+	double			discriminant;
+	double			sqrtd;
+	double			root;
+	double			hit_height;
+}	t_cy_settings;
+
 /*
 * Ambient lightning:
 * identifier: A
@@ -278,11 +293,13 @@ typedef struct s_material
 
 typedef struct s_hit_record
 {
-	t_vec3		p;	// point
+	t_point3	p;
 	t_vec3		normal;
-	t_material	*mat_ptr;
+	double		tmin;
+	double		tmax;
 	double		t;
-	int			front_face;	// bool
+	bool		front_face;
+	t_color3	color;
 }	t_hit_record;
 
 #endif

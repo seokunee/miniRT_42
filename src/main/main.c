@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/27 15:47:05 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:38:25 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	main(int ac, char **av)
 	camera_setting(&info);
 	binding_events(&info.win);
 	start_drawing(&info);
+	system("leaks miniRT");
 	mlx_loop(info.win.mlx);
 	// while
 	// int	color = calculate_pixel_color(&info, 300, 300);
-	// system("leaks miniRT");
 	return (0);
 }
