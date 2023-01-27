@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/27 13:13:32 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:28:47 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_vec3		v_minus_double(t_vec3 v, double x, double y, double z);
 t_vec3		v_mul(t_vec3 v1, t_vec3 v2);
 t_vec3		v_mul_double(t_vec3 v, double t);
 t_vec3		v_divide(t_vec3 v, double t);
+t_vec3		vmin(t_vec3 vec1, t_vec3 vec2);
 t_vec3		vunit(t_vec3 v);
 t_vec3		norm_3d_vec(t_vec3 v);
 
