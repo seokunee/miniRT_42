@@ -6,7 +6,7 @@
 #    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 20:49:21 by sunhwang          #+#    #+#              #
-#    Updated: 2023/01/19 20:59:06 by sunhwang         ###   ########.fr        #
+#    Updated: 2023/01/27 13:31:14 by sunhwang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,9 @@ $(MODULE_OBJ): $(OBJ_DIR)%.swiftmodule: %.swift
 clean:
 	@$(RM) -r $(OBJ_DIR)
 	@echo "$(MAGENTA)MLX archive files has been deleted.$(DEF_COLOR)"
+
+fclean: clean
+	@$(RM) $(NAME)
 
 # Colors
 DEF_COLOR = \033[0;39m
