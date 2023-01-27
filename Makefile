@@ -13,10 +13,11 @@
 NAME			= miniRT
 
 INC_DIR			= -Iincludes -I$(LIBFT_DIR)/include -I$(MLX_DIR)
+# INC_DIR			= -Iincludes -I$(LIBFT_DIR)/include -I/usr/local/include
 CFLAGS			= -Wall -Wextra -Werror $(INC_DIR) -g3 -fsanitize=address
 # CFLAGS			= -Wall -Wextra -Werror $(INC_DIR)
-LDFLAGS			= -L$(LIBFT_DIR) -lft -L. -lmlx
-
+LDFLAGS			= -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx
+# LDFLAGS			= -L$(LIBFT_DIR) -lft -L/usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
 SRC_DIR			= src
 
 ifeq (,$(findstring test,$(MAKECMDGOALS)))
@@ -51,6 +52,13 @@ WINDOW_SRC		= draw_image init_window key_hook mouse_hook window_hooks
 RENDER_SRC		= raytracer hit ray #render sphere
 THREAD_SRC		= init_thread
 
+# BONUS SRC
+ifeq (,$(findstring bonus,$(MAKECMDGOALS)))
+THREAD_SRC		= init_thread
+else
+THREAD_SRC		= init_thread_bonus
+endif
+
 # NOTE : Add to SRC here
 # ------------------------------------------------------ #
 SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR),	$(MAIN_SRC)))	\
@@ -66,6 +74,8 @@ OBJ_DIR = obj/
 OBJ = $(SRC:%.c=$(OBJ_DIR)%.o)
 
 all: $(NAME)
+
+bonus: $(NAME)
 
 test: $(NAME)
 
@@ -113,19 +123,18 @@ $(NAME): $(OBJ)
 $(OBJ): $(OBJ_DIR)%.o: %.c
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$(CUSTOM)Compiling... \t$< $(DEF_COLOR)"
+	@echo "$(CUSTOM)Compiling... \t$(word 1,$^) $(DEF_COLOR)"
 # #-----------------------------------------------------------------------
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@$(MAKE) -C $(MLX_DIR) clean
-	@$(RM) libmlx.dylib
 	@$(RM) -r $(OBJ_DIR)
 	@echo "$(CUSTOM)miniRT obj files has been deleted.$(DEF_COLOR)"
 
 fclean:
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@$(MAKE) -C $(MLX_DIR) clean
+	@$(MAKE) -C $(MLX_DIR) fclean
 	@$(RM) libmlx.dylib
 	@$(RM) -r $(OBJ_DIR)
 	@$(RM) $(NAME)
