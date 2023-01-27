@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:54:05 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/27 14:15:54 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:48:33 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	print_objs(t_list *objs)
 		printf("normal = %f %f %f\n", obj->normal.x, obj->normal.y, obj->normal.z);
 		printf("cylinder_diameter = %f\n", obj->diameter);
 		printf("cylinder_height = %f\n", obj->cy_hei);
+		printf("cylinder_colors = %f %f %f\n", obj->colors.x, obj->colors.y, obj->colors.z);
 	}
 	if (objs->next)
 	{
