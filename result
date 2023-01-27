@@ -1,14 +1,37 @@
+Process:         miniRT [10081]
+Path:            /Volumes/VOLUME/*/miniRT
+Load Address:    0x1069a7000
+Identifier:      miniRT
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [89661]
+
+Date/Time:       2023-01-27 16:48:40.285 +0900
+Launch Time:     2023-01-27 16:48:38.084 +0900
+OS Version:      Mac OS X 10.15.7 (19H15)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.3 (12C33)
+
+Physical footprint:         23.1M
+Physical footprint (peak):  23.1M
+----
+
+leaks Report Version: 4.0
+Process 10081: 12062 nodes malloced for 2470 KB
+Process 10081: 0 leaks for 0 total leaked bytes.
+
 info of a
-amb_light_ratio = 0.300000
+amb_light_ratio = 0.500000
 colors = 255.000000 255.000000 255.000000
 
 info of c
 coor = 0.000000 0.000000 0.000000
-normal = 0.000000 0.000000 1.000000
+normal = 0.000000 0.000000 -1.000000
 fov = 90
 
 info of l
-coor = 50.000000 0.000000 50.000000
+coor = 50.000000 0.000000 0.000000
 light_brightness_ratio = 0.700000
 colors = 255.000000 255.000000 255.000000
 

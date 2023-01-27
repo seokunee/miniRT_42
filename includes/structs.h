@@ -278,11 +278,13 @@ typedef struct s_material
 
 typedef struct s_hit_record
 {
-	t_vec3		p;	// point
+	t_point3	p;
 	t_vec3		normal;
-	t_material	*mat_ptr;
+	double		tmin;
+	double		tmax;
 	double		t;
-	int			front_face;	// bool
+	bool		front_face;
+	t_color3	color;
 }	t_hit_record;
 
 #endif
