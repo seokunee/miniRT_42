@@ -198,14 +198,13 @@ typedef struct s_window
 */
 typedef struct s_info
 {
-	t_a			t_a;
-	t_c			t_c;
-	t_l			*t_l;
+	t_a			amb;
+	t_c			cam;
+	t_l			*lights;
 	t_list		*objs;
-	int			wid;
-	int			hei;
-	// tmp
 	t_window	win;
+
+	// tmp
 	t_hit		*hit;
 	t_vec3		color;
 	t_vec3		phong_color;

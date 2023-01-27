@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:54:05 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/25 17:39:37 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:15:54 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,21 +89,17 @@ void	print_objs(t_list *objs)
 void	print_all_info(t_info *info)
 {
 	printf("info of a\n");
-	print_a(&info->t_a);
+	print_a(&info->amb);
 	printf("\n");
 
 	printf("info of c\n");
-	print_c(&info->t_c);
+	print_c(&info->cam);
 	printf("\n");
 
 	printf("info of l\n");
-	print_l(info->t_l);
+	print_l(info->lights);
 	printf("\n");
 
 	printf("info of objs\n");
 	print_objs(info->objs);
-
-	printf("\n");
-	printf("window width  = %d\n", info->wid);
-	printf("window height = %d\n", info->hei);
 }
