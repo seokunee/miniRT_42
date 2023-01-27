@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:48:40 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/25 17:39:19 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:14:54 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	init_info(t_info *info)
 {
-	info->t_l = 0;
+	info->lights = 0;
 	info->objs = 0;
 }

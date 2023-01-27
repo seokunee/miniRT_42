@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_thread.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:13:44 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/27 12:44:55 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:18:00 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	*thread_routine(void *data)
 		y = 0;
 		while (y < drawer->height)
 		{
-			color = calculate_pixel_color(drawer->info, x, y);
+			color = calculate_pixel_color(drawer->info, drawer->width * drawer->i + x, y);
 			put_pixel(&drawer->data, x, y, color);
 			y++;
 		}

@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/21 19:56:58 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:14:54 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	ft_light_add(t_info *info, t_l *light)
 {
 	t_l	*tmp;
 
-	if (!info->t_l)
-		info->t_l = light;
+	if (!info->lights)
+		info->lights = light;
 	else
 	{
-		tmp = info->t_l;
+		tmp = info->lights;
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = light;
