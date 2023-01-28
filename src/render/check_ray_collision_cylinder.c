@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:16:53 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/28 14:48:54 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:45:07 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ static void	hit_cylinder_cap(t_ray ray, t_obj *cy, t_hit *hit, double hei)
 	r = cy->diameter / 2;
 	circle_center = v_sum(cy->coor, v_mul_double(cy->normal, hei)); // 실린더 좌표에서 nor 방향으로 hei만큼 이동하면 실린더의 끝 원 중심이 된다.
 	root = v_dot(v_minus(circle_center, ray.orig), cy->normal) / \
-		v_dot(ray.normal, cy->normal); // 광선에서 뚜껑 원 중심점으로 가는 벡터와 cy.nor를 dot하면 ray의
-	if (fabs(r) < fabs(v_len(v_minus(circle_center, ray_at(ray, root)))))
+		v_dot(ray.normal, cy->normal); // ray에서 cap까지의 거리
+	if (fabs(r) < fabs(v_len(v_minus(circle_center, ray_at(ray, root))))) // 반지름 안에 있는지 확인
 		return ;
-	if (root < 0.001 || root > 1000) // 0.001 = tmin , 1000 = tmax??
+	if (root < 0.001 || root > 1000) // 빛이 영향은 무한대가 아니므로 영향 거리를 정해줌.
 		return ;
 	hit->point = ray_at(ray, root);
 	hit->d = root;
 	if (0 < hei)
-		hit->normal = cy->normal;
+		hit->normal = cy->normal; // 위 cap 인경우
 	else
-		hit->normal = v_mul_double(cy->normal, -1);
+		hit->normal = v_mul_double(cy->normal, -1); // 아래 cap인 경우
 	if (v_dot(ray.normal, hit->normal) >= 0)
-		hit->normal = v_mul_double(hit->normal, -1);
+		hit->normal = v_mul_double(hit->normal, -1); // 아래
 }
 
 static bool	cy_boundary(t_obj *cy, t_vec3 at_point, t_cy_settings *set)
@@ -44,7 +44,7 @@ static bool	cy_boundary(t_obj *cy, t_vec3 at_point, t_cy_settings *set)
 
 	set->hit_height = v_dot(v_minus(at_point, cy->coor), cy->normal);
 	max_height = cy->cy_hei / 2;
-	if (fabs(set->hit_height) > max_height)
+	if (fabs(set->hit_height) > max_height) // 원기둥 높이 안에 있는 확인
 		return (false);
 	return (true);
 }
@@ -54,8 +54,8 @@ static bool	valid_cy_hit(t_cy_settings *set, t_obj *cy, t_ray ray)
 	set->u = ray.normal;
 	set->o = cy->normal;
 	set->r = cy->diameter / 2;
-	set->delta_p = v_minus(ray.orig, cy->coor);
-	set->a = pow(v_len(v_cross(set->u, set->o)), 2);
+	set->delta_p = v_minus(ray.orig, cy->coor); // 원기둥 중심에서 ray 시작점으로 향하는 벡터
+	set->a = pow(v_len(v_cross(set->u, set->o)), 2); //
 	set->half_b = v_dot(v_cross(set->u, set->o), v_cross(set->delta_p, set->o));
 	set->c = pow(v_len(v_cross(set->delta_p, set->o)), 2) - pow(set->r, 2);
 	set->discriminant = set->half_b * set->half_b - set->a * set->c;
@@ -63,9 +63,9 @@ static bool	valid_cy_hit(t_cy_settings *set, t_obj *cy, t_ray ray)
 		return (false);
 	set->sqrtd = sqrt(set->discriminant);
 	set->root = (-set->half_b - set->sqrtd) / set->a;
-	if (set->root < 0.001 || set->root > 10000)
+	if (set->root < 0.001 || set->root > 10000) // 고민해야할 부분 우리 원기둥은 거리 측정하는데 sphere은 측정하지 않음 모순쓰.
 	{
-		set->root = (-set->half_b + set->sqrtd) / set->a;
+		set->root = (-set->half_b + set->sqrtd) / set->a; // 이거 왜 한번 더 한거지?
 		if (set->root < 0.001 || set->root > 10000)
 			return (false);
 	}

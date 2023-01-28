@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/28 14:48:54 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:39:18 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	check_file_name(char *file_name)
 
 int	check_range(int type, float ret)
 {
-	if ((type == 255 || (ret >= 0 && ret <= 255)) || \
-		(type == -1 || (ret >= -1 && ret <= 1)) || \
-		(type == 1 || (ret >= 0 && ret <= 1)) || \
-		(type == 180 || (ret >= 0 && ret <= 180)))
+	if ((type == 255 && (ret >= 0 && ret <= 255)) || \
+		(type == -1 && (ret >= -1 && ret <= 1)) || \
+		(type == 1 && (ret >= 0 && ret <= 1)) || \
+		(type == 180 && (ret >= 0.0 && ret <= 180.0)))
 		return (SUCCESS);
 	return (ERR);
 }

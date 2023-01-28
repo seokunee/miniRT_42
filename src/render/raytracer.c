@@ -156,7 +156,7 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 	t_vec3	color;
 	t_ray	pixel_ray;
 
-	printf("x, y : [%d, %d], ", x, y);
+	// printf("x, y : [%d, %d], ", x, y);
 	pixel_pos_world = transform_screen_to_world(info, vec2(x, y));
 	ray_dir = norm_3d_vec(v_minus(pixel_pos_world, info->cam.coor)); // 카메라에 모니터를 보는 각도가 적용된 광선
 	pixel_ray = get_ray(info->cam.coor, ray_dir);	// info of cam
