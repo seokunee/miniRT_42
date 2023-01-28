@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/27 19:51:05 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:50:02 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	set_cy(t_obj *obj, char **opt)
 	check_diameter(obj, ft_atod(opt[3]));
 	obj->cy_hei = ft_atod(opt[4]);
 	if (obj->cy_hei <= 0)
+		error_exit("Wrong cylinder argument");
 	obj->colors.x = get_arg_color(opt[5]).x;
 	obj->colors.y = get_arg_color(opt[5]).y;
 	obj->colors.z = get_arg_color(opt[5]).z;

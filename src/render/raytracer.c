@@ -57,8 +57,8 @@ void	get_closest_hit_obj(t_list *objs, t_hit	*closest_hit, t_ray ray, t_obj **cl
 			hit = check_ray_collision_cylinder(ray, obj);
 		else if (obj->type == SP)
 			hit = check_ray_collision_sphere(ray, obj);
-		// else if (obj->type == CY)
-			// (void)hit;
+		else if (obj->type == PL)
+			hit = check_ray_collision_plane(ray, obj);
 		if (hit.d >= 0 && closest > hit.d)
 		{
 			closest = hit.d;
@@ -66,10 +66,6 @@ void	get_closest_hit_obj(t_list *objs, t_hit	*closest_hit, t_ray ray, t_obj **cl
 			closest_hit->normal = hit.normal;
 			closest_hit->point = hit.point;
 			*closest_obj = obj;
-			if (obj->type == CY)
-			{
-				printf("color : [%f, %f, %f]\n", obj->colors.x, obj->colors.y, obj->colors.z);
-			}
 		}
 		objs = objs->next;
 	}

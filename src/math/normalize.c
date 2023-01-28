@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 23:10:51 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/21 23:23:09 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/28 14:48:54 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,9 @@ t_vec3	vunit(t_vec3 v)
 	v.y /= len;
 	v.z /= len;
 	return (v);
+}
+
+t_vec3	vscale(t_vec3 v, double s)
+{
+	return (vec3((v.x * s), (v.y * s), (v.z * s)));
 }
