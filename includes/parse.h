@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/26 15:15:44 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/28 21:13:56 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	check_diameter(t_obj *obj, float dia);
 
 // light
 void	get_light(t_info *info, char **s);
+void	ft_light_add(t_info *info, t_l *light);
 
 // normal
 t_vec3	get_arg_normal(char *s);
@@ -71,5 +72,6 @@ int		check_only_num(char **opt, char *oper);
 // utils2
 int		check_oper(char c, char *s);
 void	print_all_info(t_info *info);
+void	printf_befor_after(t_info *info, t_info *rota);
 
 #endif

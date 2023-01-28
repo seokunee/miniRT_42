@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/27 14:28:47 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:45:07 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_vec3		vmin(t_vec3 vec1, t_vec3 vec2);
 t_vec3		vunit(t_vec3 v);
 t_vec3		norm_3d_vec(t_vec3 v);
 
+double	v_element_sum(t_vec3 v);
+
 double		min_double(double f1, double f2);
 double		max_double(double f1, double f2);
 
@@ -52,6 +54,7 @@ t_vec3		clamp_3d(t_vec3 v, double min_val, double max_val);
 // t_vec3	*vec_subtract(t_vec3 *v1, t_vec3 *v2);
 
 double    abs_double(double d);
+t_vec3	vscale(t_vec3 v, double s);
 
 /*
 * Return a length of vector

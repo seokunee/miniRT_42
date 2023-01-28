@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:46:29 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/21 23:25:23 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/28 18:45:07 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,9 @@ void	vset(t_vec3 *v, double x, double y, double z)
 	v->x = x;
 	v->y = y;
 	v->z = z;
+}
+
+double	v_element_sum(t_vec3 v)
+{
+	return (v.x + v.y + v.z);
 }

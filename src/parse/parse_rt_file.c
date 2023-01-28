@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rt_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/25 14:15:47 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:39:18 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	check_file_name(char *file_name)
 
 int	check_range(int type, float ret)
 {
-	if ((type == 255 || (ret >= 0 && ret <= 255)) || \
-		(type == -1 || (ret >= -1 && ret <= 1)) || \
-		(type == 1 || (ret >= 0 && ret <= 1)) || \
-		(type == 180 || (ret >= 0 && ret <= 180)))
+	if ((type == 255 && (ret >= 0 && ret <= 255)) || \
+		(type == -1 && (ret >= -1 && ret <= 1)) || \
+		(type == 1 && (ret >= 0 && ret <= 1)) || \
+		(type == 180 && (ret >= 0.0 && ret <= 180.0)))
 		return (SUCCESS);
 	return (ERR);
 }
@@ -43,6 +43,8 @@ void	edit_info(t_info *info, char *s)
 	options = ft_split_is_space(s);
 	if (!options)
 		error_exit("Malloc error");
+	if (ft_strncmp(options[0], "#", 2) == 0)
+		return (free_double_array((void **)options));
 	if (sec_arr_len(options) < 3)
 		error_exit("Wrong identifier");
 	if (ft_strncmp(options[0], "A", 2) == 0)
