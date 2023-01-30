@@ -13,19 +13,7 @@
 #include "raytracer.h"
 #include "structs.h"
 #include "rt_math.h"
-
-/// @brief 한 픽셀에 대한 색상 정보
-/// @param t Transparency 투명도, 0 불투명 ~ 255 투명함
-/// @param r Red
-/// @param g Green
-/// @param b Blue
-/// @return
-static int	create_trgb(unsigned char t, unsigned char r, unsigned char g, \
-unsigned char b)
-{
-	// return (*(int *)(unsigned char [4]){b, g, r, t});
-	return (t << 24 | r << 16 | g << 8 | b);
-}
+#include "window.h"
 
 /*
 * transform_screen_to_world (카메라 적용 버전)
@@ -159,15 +147,13 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 {
 	t_vec3	pixel_pos_world;
 	t_vec3	ray_dir;
-	t_vec3	color;
 	t_ray	pixel_ray;
 
 	// printf("coor:[%f, %f, %f], x, y : [%d, %d]", info->cam.coor.x, info->cam.coor.y, info->cam.coor.z, x, y);
 	pixel_pos_world = transform_screen_to_world(info, vec2(x, y));
-
 	// 지금은 정투영. 원근투영으로 해야 원근법이 적용됨
 	ray_dir = norm_3d_vec(v_minus(pixel_pos_world, info->cam.coor)); // 카메라에 모니터를 보는 각도가 적용된 광선
 	pixel_ray = get_ray(info->cam.coor, ray_dir);	// info of cam
-	color = clamp_3d(trace_ray(info, info->objs, pixel_ray), 0.0, 255.0); // 최소의 거리의 오브젝트에서 나온 hit 정보를 가지고 색을 반환.
-	return (create_trgb(0, color.x, color.y, color.z));
+	// 최소의 거리의 오브젝트에서 나온 hit 정보를 가지고 색을 반환.
+	return (get_color(trace_ray(info, info->objs, pixel_ray)));
 }
