@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/30 14:17:21 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:40:22 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,11 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 	t_vec3	pixel_pos_world;
 	t_vec3	ray_dir;
 	t_ray	pixel_ray;
+	// t_vec3	eye_pos;
 
 	pixel_pos_world = transform_screen_to_world(info, vec2(x, y));
+	// eye_pos = vec3(0.0, 0.0, -1.5);
+	// ray_dir = norm_3d_vec(v_minus(pixel_pos_world, eye_pos)); // 카메라에 모니터를 보는 각도가 적용된 광선
 	ray_dir = norm_3d_vec(v_minus(pixel_pos_world, info->cam.coor)); // 카메라에 모니터를 보는 각도가 적용된 광선
 	pixel_ray = get_ray(info->cam.coor, ray_dir); // info of cam
 	// 최소의 거리의 오브젝트에서 나온 hit 정보를 가지고 색을 반환.
