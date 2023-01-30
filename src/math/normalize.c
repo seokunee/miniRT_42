@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 23:10:51 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/28 14:48:54 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:05:41 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ t_vec3	vunit(t_vec3 v)
 
 	len = v_len(v);
 	if (len == 0)
-		error_exit("Invalid number of arguments. Check it!");
+	{
+		printf("[%f, %f, %f]\n", v.x, v.y, v.z);
+		error_exit("11 Invalid number of arguments. Check it!");
+	}
 	v.x /= len;
 	v.y /= len;
 	v.z /= len;

@@ -37,6 +37,7 @@ ERROR_DIR		= $(SRC_DIR)/error/
 WINDOW_DIR		= $(SRC_DIR)/window/
 RENDER_DIR		= $(SRC_DIR)/render/
 THREAD_DIR		= $(SRC_DIR)/thread/
+ROTATE_DIR		= $(SRC_DIR)/rotate/
 
 # Use MLX library
 # MLX				= -L./$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
@@ -48,6 +49,7 @@ MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
 WINDOW_SRC		= color draw_image init_window key_hook mouse_hook window_hooks
 RENDER_SRC		= raytracer hit ray check_ray_collision check_ray_collision_cylinder #render sphere
+ROTATE_SRC		= rotate
 
 # BONUS SRC
 ifeq (,$(findstring bonus,$(MAKECMDGOALS)))
@@ -69,6 +71,7 @@ SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR),	$(MAIN_SRC)))	\
 		$(addsuffix .c, $(addprefix $(PARSE_DIR),	$(PARSE_SRC)))	\
 		$(addsuffix .c, $(addprefix $(THREAD_DIR),	$(THREAD_SRC)))	\
 		$(addsuffix .c, $(addprefix $(RENDER_DIR),	$(RENDER_SRC)))	\
+		$(addsuffix .c, $(addprefix $(ROTATE_DIR),	$(ROTATE_SRC)))	\
 # ------------------------------------------------------ #
 
 OBJ_DIR = obj/

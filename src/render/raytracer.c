@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/27 14:58:17 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/30 18:56:16 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ bool	in_shadow(t_list *objs, t_ray light_ray)
 }
 
 t_color3	point_light_get(\
-	t_list *objs, t_hit *hit, t_l *light, t_obj *closest_obj)
+	t_list *objs, t_hit *hit, t_l *light, t_obj *closest_obj, t_ray ray)
 {
 	const t_vec3	light_dir = vunit(v_minus(light->coor, hit->point));
 	t_color3		diffuse;
@@ -90,6 +90,10 @@ t_color3	point_light_get(\
 	diffuse = v_mul_double(diffuse, light->light_brightness_ratio);
 	diffuse = v_mul_double(diffuse, kd);
 	diffuse = v_mul(diffuse, closest_obj->colors);
+
+	// const t_vec3 reflect = v_minus(v_mul_double(v_mul_double(hit->normal, v_dot(hit->normal, light_dir)), 2), light_dir);
+	// const double specular = fmax(v_dot(v_minus(ray.normal, v_sum(ray.normal, ray.normal)), reflect), 0.0f);
+	// diffuse = v_mul_double(diffuse, pow(specular, 4));
 	return (diffuse);
 }
 
@@ -115,16 +119,18 @@ static t_vec3	trace_ray(t_info *info, t_list *objs, t_ray ray)
 		lights = info->lights;
 		while (lights) // 존재하는 모든 광원들에 대한 정반사, 난반사 값을 연결리스트로 돌아가면서 구해준다.
 		{
-			light_color = v_sum(light_color, point_light_get(objs, &closest_hit, lights, closest_obj)); // light들을 모아준다.
+			light_color = v_sum(light_color, point_light_get(objs, &closest_hit, lights, closest_obj, ray)); // light들을 모아준다.
 			lights = lights->next;
 		}
 		ambient_color = v_divide(v_mul_double(info->amb.colors, \
 			pow(info->amb.amb_light_ratio, 2)), 255);
 		ambient_color = v_mul(ambient_color, closest_obj->colors);
+
 		return (vmin(v_sum(light_color, ambient_color), color3(255, 255, 255)));
 	}
-	// return (vec3(0, 0,3 0));	// background : black
-	return (vec3(255.0, 255.0, 255.0));	// background : white
+
+	return (vec3(0, 0, 0));	// background : black
+	// return (vec3(255.0, 255.0, 255.0));	// background : white
 }
 
 /// @brief 모니터에 그려질 2차원 (x, y) 좌표를 3차원으로 표현하기 위해서 모니터 비율에 맞춰서 3차원 벡터로 만들어줌.

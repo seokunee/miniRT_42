@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/28 19:20:44 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:06:29 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,24 +140,31 @@ int	main(int ac, char **av)
 		error_exit("Invalid number of arguments. Check it!");
 	parse_rt_file(&info, av[1]);
 	init_window(&info.win);
-
-	if (1)	// 회전시키고 싶을때 : 1, 그냥 하려면 : 0
-	{
-		set_rotate_info(&rotate_info, &info);
-		printf_befor_after(&info, &rotate_info);
-		camera_setting(&rotate_info);
-		binding_events(&rotate_info.win);
-		start_drawing(&rotate_info);
-		system("leaks miniRT");
-		mlx_loop(rotate_info.win.mlx);
-	}
-	else
-	{
-		camera_setting(&info);
-		binding_events(&info.win);
-		start_drawing(&info);
-		system("leaks miniRT");
-		mlx_loop(info.win.mlx);
-	}
+	camera_setting(&rotate_info);
+	rotate(&rotate_info, &info);
+	printf_befor_after(&info, &rotate_info);
+	printf("here1\n\n");
+	binding_events(&rotate_info.win);
+	start_drawing(&rotate_info);
+	system("leaks miniRT");
+	mlx_loop(rotate_info.win.mlx);
+	// if (1)	// 회전시키고 싶을때 : 1, 그냥 하려면 : 0
+	// {
+	// 	set_rotate_info(&rotate_info, &info);
+	// 	printf_befor_after(&info, &rotate_info);
+	// 	camera_setting(&rotate_info);
+	// 	binding_events(&rotate_info.win);
+	// 	start_drawing(&rotate_info);
+	// 	system("leaks miniRT");
+	// 	mlx_loop(rotate_info.win.mlx);
+	// }
+	// else
+	// {
+	// 	camera_setting(&info);
+	// 	binding_events(&info.win);
+	// 	start_drawing(&info);
+	// 	system("leaks miniRT");
+	// 	mlx_loop(info.win.mlx);
+	// }
 	return (0);
 }
