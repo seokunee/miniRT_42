@@ -206,6 +206,9 @@ typedef struct s_window
 	void	*mlx_win;
 	int		width;
 	int		height;
+	double	x_scale;
+	double	y_scale;
+	double	aspect_ratio;
 }	t_window;
 
 /*

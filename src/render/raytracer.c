@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/27 14:58:177 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:17:21 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@
 */
 static t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 {
-	const double	x_scale = screen.x - (info->win.width / 2);
-	const double	y_scale = -(screen.y) + (info->win.height / 2);
+	const t_window	win = info->win;
+	const double	x = (screen.x * win.x_scale - 1.0) * win.aspect_ratio;
+	const double	y = -screen.y * win.y_scale + 1.0;
+	const double	z = (double)info->cam.fov / 180.0;
 
-	return (vec3(x_scale, y_scale, info->cam.length));
+	return (vec3(x, y, z));
 }
 
 void	get_closest_hit_obj(t_list *objs, t_hit	*closest_hit, t_ray ray, t_obj **closest_obj)
@@ -143,11 +145,9 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 	t_vec3	ray_dir;
 	t_ray	pixel_ray;
 
-	// printf("x, y : [%d, %d], ", x, y);
 	pixel_pos_world = transform_screen_to_world(info, vec2(x, y));
-	// 지금은 정투영. 원근투영으로 해야 원근법이 적용됨
 	ray_dir = norm_3d_vec(v_minus(pixel_pos_world, info->cam.coor)); // 카메라에 모니터를 보는 각도가 적용된 광선
-	pixel_ray = get_ray(info->cam.coor, ray_dir);	// info of cam
+	pixel_ray = get_ray(info->cam.coor, ray_dir); // info of cam
 	// 최소의 거리의 오브젝트에서 나온 hit 정보를 가지고 색을 반환.
 	return (get_color(trace_ray(info, info->objs, pixel_ray)));
 }
