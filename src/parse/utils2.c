@@ -105,7 +105,7 @@ void	print_all_info(t_info *info)
 	print_objs(info->objs);
 }
 
-void	printf_befor_after(t_info *info, t_info *rota)
+void	printf_before_after(t_info *info, t_info *rota)
 {
 	{
 		printf("info of a\n");

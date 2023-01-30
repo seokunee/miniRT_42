@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/30 18:56:16 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/30 21:10:51 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,19 @@ t_color3	point_light_get(\
 	diffuse = v_mul_double(diffuse, kd);
 	diffuse = v_mul(diffuse, closest_obj->colors);
 
-	// const t_vec3 reflect = v_minus(v_mul_double(v_mul_double(hit->normal, v_dot(hit->normal, light_dir)), 2), light_dir);
-	// const double specular = fmax(v_dot(v_minus(ray.normal, v_sum(ray.normal, ray.normal)), reflect), 0.0f);
-	// diffuse = v_mul_double(diffuse, pow(specular, 4));
-	return (diffuse);
+	const t_vec3 reflect = v_minus(v_mul_double(v_mul_double(hit->normal, v_dot(hit->normal, light_dir)), 2), light_dir);
+	// const double specular = fmax(v_dot(vunit(v_minus(ray.orig, hit->point)), reflect), 0.0f);
+	// const double specular = fmax(v_dot(v_mul_double(ray.orig, -1)), reflect), 0.0f);
+	// diffuse = v_mul_double(diffuse, pow(specular, 0.1)); // specular의 제곱을 늘릴 수록 점이 모인다.
+	t_vec3 view_dir = vunit(v_mul_double(ray.normal, -1));
+	// t_vec3 reflect;
+	// copy_vector_value(&reflect, reflect(v_mul_double(light_dir, -1), hit->normal));
+	double ksn = 64; // shininess value
+	double ks = 0.5; // specular strength
+	double spec = pow(fmax(v_dot(view_dir, reflect), 0.0), ksn);
+	t_color3 specular = v_mul_double(v_mul_double(light->colors, ks), spec);
+	// return (diffuse);
+	return (v_sum(diffuse, specular));
 }
 
 /// @brief 광선이 물체에 닿으면 그 물체의 색 반환. ray를 쏴서 hit된 부분을 찾고 hit의 유효성을 판단.
@@ -113,6 +122,7 @@ static t_vec3	trace_ray(t_info *info, t_list *objs, t_ray ray)
 	t_l			*lights;
 
 	get_closest_hit_obj(objs, &closest_hit, ray, &closest_obj);
+	printf("close_hit.d : %f\n", closest_hit.d);
 	if (closest_hit.d >= 0.0)
 	{
 		light_color = color3(0, 0, 0);
@@ -128,7 +138,6 @@ static t_vec3	trace_ray(t_info *info, t_list *objs, t_ray ray)
 
 		return (vmin(v_sum(light_color, ambient_color), color3(255, 255, 255)));
 	}
-
 	return (vec3(0, 0, 0));	// background : black
 	// return (vec3(255.0, 255.0, 255.0));	// background : white
 }
