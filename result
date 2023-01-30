@@ -1,23 +1,52 @@
-Process:         miniRT [19590]
+Process:         miniRT [19936]
 Path:            /Volumes/VOLUME/*/miniRT
-Load Address:    0x10c36f000
+Load Address:    0x10a710000
 Identifier:      miniRT
 Version:         ???
 Code Type:       X86-64
 Parent Process:  zsh [7689]
 
-Date/Time:       2023-01-30 16:26:30.377 +0900
-Launch Time:     2023-01-30 16:26:29.622 +0900
+Date/Time:       2023-01-30 16:29:24.255 +0900
+Launch Time:     2023-01-30 16:29:23.391 +0900
 OS Version:      Mac OS X 10.15.7 (19H15)
 Report Version:  7
 Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
 Analysis Tool Version:  Xcode 12.3 (12C33)
 
-Physical footprint:         10.7M
-Physical footprint (peak):  10.7M
+Physical footprint:         10.6M
+Physical footprint (peak):  10.6M
 ----
 
 leaks Report Version: 4.0
-Process 19590: 12050 nodes malloced for 2467 KB
-Process 19590: 0 leaks for 0 total leaked bytes.
+Process 19936: 12050 nodes malloced for 2455 KB
+Process 19936: 0 leaks for 0 total leaked bytes.
+
+dir_x : [-0.333333, -0.333333, 0.666667]
+dir_y : [-0.577350, 0.577350, 0.000000]
+dir_z : [-0.577350, -0.577350, -0.577350]
+rotate_obj.normal : [1.000000, 0.000000, 0.000000]
+tmp_vec3_normal : [-0.333333, -0.577350, -0.577350]
+rotate_obj.normal : [0.000000, 1.000000, 0.000000]
+tmp_vec3_normal : [-0.333333, 0.577350, -0.577350]
+rotate_obj.normal : [0.000000, 0.000000, 1.000000]
+tmp_vec3_normal : [0.666667, 0.000000, -0.577350]
+info of a
+amb_light_ratio = 0.100000 -> 0.100000
+colors = 255.000000 255.000000 255.000000 -> 255.000000 255.000000 255.000000
+
+info of c
+coor = 10.000000 10.000000 10.000000 -> 0.000000 0.000000 0.000000
+normal = -0.577350 -0.577350 -0.577350 -> 0.000000 0.000000 1.000000
+fov = 70 -> 70
+
+info of l
+coor = 5.000000 5.000000 5.000000 -> 0.000000 0.000000 8.660254
+light_brightness_ratio = 1.000000 -> 1.000000
+colors = 255.000000 255.000000 255.000000 -> 255.000000 255.000000 255.000000
+
+info of objs
+PL
+coor = 0.000000 0.000000 0.000000 -> 0.000000 0.000000 17.320508
+normal = 1.000000 0.000000 0.000000 -> -0.333333 -0.577350 -0.577350
+colors = 255.000000 0.000000 0.000000 -> 255.000000 0.000000 0.000000
 

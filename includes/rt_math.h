@@ -51,6 +51,7 @@ t_vec3		clamp_3d(t_vec3 v, double min_val, double max_val);
 
 double		abs_double(double d);
 t_vec3		vscale(t_vec3 v, double s);
+void		copy_vector_value(t_vec3 *dst, t_vec3 src);
 
 /*
 * Return a length of vector

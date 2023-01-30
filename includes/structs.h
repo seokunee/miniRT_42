@@ -53,7 +53,6 @@ typedef struct s_ray
 {
 	t_vec3	orig;
 	t_vec3	normal;
-	double	tm;
 }	t_ray;
 
 typedef struct s_hit
@@ -214,10 +213,5 @@ typedef struct s_drawer
 	t_data		data;
 	t_info		*info;
 }	t_drawer;
-
-// typedef struct s_color
-// {
-// 	int	tmp;
-// }	t_color;
 
 #endif
