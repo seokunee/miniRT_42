@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/28 19:17:29 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/30 16:40:40 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int		binding_mouse_events(int button, int x, int y, t_window *win);
 int		exit_event(t_window *win);
 void	put_pixel(t_data *data, int x, int y, int color);
 int		get_color(t_vec3 vec);
+t_vec3	white_v3(void);
+t_vec3	black_v3(void);
 
 #endif
