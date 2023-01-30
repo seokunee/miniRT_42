@@ -89,7 +89,9 @@ void	parse_rt_file(t_info *info, char *file_name)
 	t_check_flag	check_count;
 
 	check_file_name(file_name);
-
+	check_count.a_count = 0;
+	check_count.c_count = 0;
+	check_count.l_count = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		error_exit("File open failed");

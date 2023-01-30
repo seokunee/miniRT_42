@@ -74,4 +74,7 @@ int		check_oper(char c, char *s);
 void	print_all_info(t_info *info);
 void	printf_befor_after(t_info *info, t_info *rota);
 
+// check_option_count.c
+void	check_option_count(char *s, t_check_flag *check_count);
+
 #endif
