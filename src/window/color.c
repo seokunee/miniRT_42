@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:08 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/30 12:49:24 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/30 21:23:17 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ unsigned char b)
 /// @return
 int	get_color(t_vec3 vec)
 {
-	t_vec3	color;
+	t_color3	color;
 
 	color = clamp_3d(vec, 0.0, 255.0);
 	return (create_trgb(0, color.x, color.y, color.z));
@@ -44,7 +44,12 @@ int	get_color(t_vec3 vec)
 // 	return (create_trgb(color.x4, color.x1, color.x2, color.x3));
 // }
 
-int	white(void)
+t_color3	white_v3(void)
 {
-	return (create_trgb(0, 255, 255, 255));
+	return (vec3(255, 255, 255));
+}
+
+t_color3	black_v3(void)
+{
+	return (vec3(0, 0, 0));
 }
