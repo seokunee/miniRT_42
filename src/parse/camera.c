@@ -28,5 +28,6 @@ void	get_camera(t_info *info, char **s)
 
 void	camera_setting(t_info *info)
 {
-	info->cam.length = info->win.width / (2 * tan(degrees_to_radians_double(info->cam.fov / 2 )));
+	info->cam.length = info->win.width / \
+		(2 * tan(degrees_to_radians_double(info->cam.fov / 2)));
 }

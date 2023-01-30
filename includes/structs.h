@@ -51,44 +51,16 @@ struct s_vec4
 
 typedef struct s_ray
 {
-	t_vec3	orig;	//point
+	t_vec3	orig;
 	t_vec3	normal;
 	double	tm;
 }	t_ray;
-
-typedef struct s_cam_setting
-{
-	t_vec3	lookfrom;
-	t_vec3	lookat;
-	t_vec3	vup;
-	double	vfov;
-	double	aspect_ratio;
-	double	aperture;
-	double	focus_dist;
-	double	time0;
-	double	time1;
-}	t_cam_setting;
-
-typedef struct s_cam
-{
-	t_vec3	origin;				//point
-	t_vec3	lower_left_corner;		//point
-	t_vec3	horizontal;
-	t_vec3	vertical;
-	t_vec3	u;
-	t_vec3	v;
-	t_vec3	w;
-	double	lens_radius;
-	double	time0;		// shutter open
-	double	time1;		// shutter close
-}	t_cam;
 
 typedef struct s_hit
 {
 	double	d;
 	t_vec3	point;
 	t_vec3	normal;
-	// std::shared_ptr<Object> obj; // 나중에 물체의 재질 등을 가져오기 위한 포인터
 }	t_hit;
 
 typedef struct s_cy_settings
@@ -183,12 +155,6 @@ typedef struct s_obj
 	t_vec3			colors;
 	struct s_obj	*next;
 	struct s_obj	*prev;
-	// test
-	t_vec3 			amb;
-	t_vec3			diff;
-	t_vec3			spec;
-	float			ks;
-	float			alpha; // 투명도
 }	t_obj;
 
 typedef struct s_data
@@ -252,54 +218,9 @@ typedef struct s_drawer
 	t_info		*info;
 }	t_drawer;
 
-typedef struct s_color
-{
-	int	tmp;
-}	t_color;
-
-typedef struct s_perlin
-{
-	int	tmp;
-}	t_perlin;
-
-typedef struct s_texture
-{
-	char			*type;
-	t_color			color_value;
-	t_color			even;
-	t_color			odd;
-	t_perlin		noise;
-	double			scale;
-	unsigned char	*data;
-	int				wid;
-	int				hei;
-	int				byte_per_scanline;
-}	t_texture;
-
-typedef struct s_image
-{
-	double	aspect;
-	int		sample_per_pixel;
-	int		max_depth;
-}	t_image;
-
-typedef struct s_material
-{
-	char				type[1];
-	t_vec3				*color_albedo;
-	double				fuzz_ir;
-	struct s_material	*next;
-}	t_material;
-
-typedef struct s_hit_record
-{
-	t_point3	p;
-	t_vec3		normal;
-	double		tmin;
-	double		tmax;
-	double		t;
-	bool		front_face;
-	t_color3	color;
-}	t_hit_record;
+// typedef struct s_color
+// {
+// 	int	tmp;
+// }	t_color;
 
 #endif

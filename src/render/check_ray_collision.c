@@ -40,9 +40,9 @@ t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 t_hit	check_ray_collision_plane(t_ray ray, t_obj *plane)
 {
 	const double	denom = v_dot(ray.normal, plane->normal);
-	double	numrator;
-	double	root;
-	t_hit	hit;
+	double			numrator;
+	double			root;
+	t_hit			hit;
 
 	hit = get_hit(-1.0, vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0));
 	if (fabs(denom) < 0.001)

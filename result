@@ -1,29 +1,31 @@
-Process:         miniRT [26125]
+Process:         miniRT [86064]
 Path:            /Volumes/VOLUME/*/miniRT
-Load Address:    0x109e6c000
+Load Address:    0x105fdf000
 Identifier:      miniRT
 Version:         ???
 Code Type:       X86-64
-Parent Process:  zsh [2073]
+Parent Process:  zsh [74571]
 
-Date/Time:       2023-01-28 21:08:02.727 +0900
-Launch Time:     2023-01-28 21:08:01.948 +0900
+Date/Time:       2023-01-30 12:09:20.639 +0900
+Launch Time:     2023-01-30 12:09:19.805 +0900
 OS Version:      Mac OS X 10.15.7 (19H15)
 Report Version:  7
 Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
 Analysis Tool Version:  Xcode 12.3 (12C33)
 
-Physical footprint:         10.9M
-Physical footprint (peak):  10.9M
+Physical footprint:         10.7M
+Physical footprint (peak):  10.7M
 ----
 
 leaks Report Version: 4.0
-Process 26125: 12048 nodes malloced for 2460 KB
-Process 26125: 0 leaks for 0 total leaked bytes.
+Process 86064: 12053 nodes malloced for 2465 KB
+Process 86064: 0 leaks for 0 total leaked bytes.
 
 dir_x : [0.000000, 0.000000, 1.000000]
 dir_y : [-1.000000, 0.000000, 0.000000]
 dir_z : [0.000000, -1.000000, 0.000000]
+rotate_obj.normal : [0.000000, 0.000000, 0.000000]
+tmp_vec3_normal : [0.000000, 0.000000, 0.000000]
 rotate_obj.normal : [0.000000, 0.707107, 0.707107]
 tmp_vec3_normal : [0.707107, 0.000000, -0.707107]
 info of a
@@ -41,10 +43,8 @@ light_brightness_ratio = 0.700000 -> 0.700000
 colors = 255.000000 255.000000 255.000000 -> 255.000000 255.000000 255.000000
 
 info of objs
-CY
-coor = 0.000000 0.000000 20.000000 -> 0.000000 0.000000 20.000000
-normal = 0.000000 0.707107 0.707107 -> 0.707107 0.000000 -0.707107
-cylinder_diameter = 10.000000 -> 10.000000
-cylinder_height = 16.000000 -> 16.000000
-cylinder_colors = 255.000000 0.000000 0.000000 -> 255.000000 0.000000 0.000000
+SP
+coor = 0.000000 -70.000000 0.000000 -> -20.000000 -0.000000 90.000000
+sphere_diameter = 50.000000 -> 50.000000
+colors = 0.000000 255.000000 0.000000 -> 0.000000 255.000000 0.000000
 

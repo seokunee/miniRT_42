@@ -23,5 +23,7 @@ int		binding_key_events(int key, t_window *win);
 int		binding_mouse_events(int button, int x, int y, t_window *win);
 int		exit_event(t_window *win);
 void	put_pixel(t_data *data, int x, int y, int color);
+int		create_trgb(unsigned char t, unsigned char r, unsigned char g, \
+unsigned char b);
 
 #endif

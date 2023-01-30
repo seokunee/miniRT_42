@@ -131,20 +131,6 @@ void	set_rotate_info(t_info *rotate, t_info *info)
 	}
 }
 
-// void	get_obj(t_info *info, char **opt, t_type type)
-// {
-// 	t_obj	*obj;
-// 	t_list	*new;
-
-// 	obj = malloc(sizeof(t_obj));
-// 	if (!obj)
-// 		error_exit("malloc error");
-// 	new = ft_lstnew(obj);
-// 	ft_lstadd_back(&(info->objs), new);
-// 	check_obj(obj, opt, type);
-// }
-
-
 int	main(int ac, char **av)
 {
 	t_info	info;
@@ -172,7 +158,5 @@ int	main(int ac, char **av)
 		system("leaks miniRT");
 		mlx_loop(info.win.mlx);
 	}
-	// while
-	// int	color = calculate_pixel_color(&info, 300, 300);
 	return (0);
 }
