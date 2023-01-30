@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_rt_file.c                                    :+:      :+:    :+:   */
+/*   parse_rt_file_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/30 15:36:45 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:35:46 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	edit_info(t_info *info, char *s, t_check_flag *check_count)
 		error_exit("Malloc error");
 	if (ft_strncmp(options[0], "#", 2) == 0)
 		return (free_double_array((void **)options));
-	check_option_count(options[0], check_count);
+	check_option_count_bonus(options[0], check_count);
 	if (sec_arr_len(options) < 3)
 		error_exit("Wrong identifier");
 	if (ft_strncmp(options[0], "A", 2) == 0)

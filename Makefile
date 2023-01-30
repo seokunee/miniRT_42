@@ -43,19 +43,21 @@ THREAD_DIR		= $(SRC_DIR)/thread/
 
 # NOTE : Add Source files here
 MAIN_SRC		= main
-PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2
 MATH_SRC		= vector_dot_cross vector_op vector_op2 vector_op3 vector_op_2 absolute clamp compare_values normalize radian
 MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
 WINDOW_SRC		= color draw_image init_window key_hook mouse_hook window_hooks
 RENDER_SRC		= raytracer hit ray check_ray_collision check_ray_collision_cylinder #render sphere
-THREAD_SRC		= init_thread
 
 # BONUS SRC
 ifeq (,$(findstring bonus,$(MAKECMDGOALS)))
 THREAD_SRC		= init_thread
+PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2 check_option_count
+
 else
 THREAD_SRC		= init_thread_bonus
+PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2 check_option_count_bonus
+
 endif
 
 # NOTE : Add to SRC here

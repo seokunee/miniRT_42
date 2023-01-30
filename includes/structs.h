@@ -202,9 +202,6 @@ typedef struct s_check_flag
 	int	a_count;
 	int	c_count;
 	int	l_count;
-	int	pl_count;
-	int	sp_count;
-	int	cy_count;
 }	t_check_flag;
 
 typedef struct s_drawer
