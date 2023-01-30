@@ -136,12 +136,12 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 {
 	t_vec3	pixel_pos_world;
 	t_vec3	ray_dir;
-	t_vec3	color;
 	t_ray	pixel_ray;
 
 	pixel_pos_world = transform_screen_to_world(info, vec2(x, y));
+	// 지금은 정투영. 원근투영으로 해야 원근법이 적용됨
 	ray_dir = norm_3d_vec(v_minus(pixel_pos_world, info->cam.coor)); // 카메라에 모니터를 보는 각도가 적용된 광선
 	pixel_ray = get_ray(info->cam.coor, ray_dir);	// info of cam
-	color = clamp_3d(trace_ray(info, info->objs, pixel_ray), 0.0, 255.0); // 최소의 거리의 오브젝트에서 나온 hit 정보를 가지고 색을 반환.
-	return (create_trgb(0, color.x, color.y, color.z));
+	// 최소의 거리의 오브젝트에서 나온 hit 정보를 가지고 색을 반환.
+	return (get_color(trace_ray(info, info->objs, pixel_ray)));
 }

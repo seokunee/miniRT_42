@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 02:03:23 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/27 14:13:54 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:42:03 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	get_camera(t_info *info, char **s)
 
 void	camera_setting(t_info *info)
 {
-	info->cam.length = info->win.width / \
-		(2 * tan(degrees_to_radians_double(info->cam.fov / 2)));
+	const int		width = info->win.width;
+	const int		fov = info->cam.fov;
+	const double	radian = degrees_to_radians_double(fov / 2);
+
+	info->cam.length = (double)width / (2.0 * tan(radian));
 }

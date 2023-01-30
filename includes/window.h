@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/25 19:07:41 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:42:04 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		binding_key_events(int key, t_window *win);
 int		binding_mouse_events(int button, int x, int y, t_window *win);
 int		exit_event(t_window *win);
 void	put_pixel(t_data *data, int x, int y, int color);
-int		create_trgb(unsigned char t, unsigned char r, unsigned char g, \
-unsigned char b);
+int		get_color(t_vec3 vec);
 
 #endif
