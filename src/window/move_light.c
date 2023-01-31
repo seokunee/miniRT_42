@@ -66,6 +66,15 @@ void	select_light(int key, t_info *info)
 		select_light_on_key_n(key, info);
 	else if (key == KEY_O)
 		select_light_on_key_o(key, info);
+	else if (key == KEY_2)
+	{
+		convert_color(info->lights, info->win.terminal.curr_light);
+		rotate(&rotate_info, info);
+		start_drawing(&rotate_info);
+		info->win.terminal.light_select = false;
+		info->win.terminal.light_on = false;
+		terminal_prompt();
+	}
 }
 
 void	key_hook_light(t_window *win, t_info *info)

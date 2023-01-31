@@ -40,12 +40,12 @@ int	binding_key_events(int key, t_info *info)
 	ft_printf("key - %d\n", key);
 	if (key == KEY_ESC)
 		exit_event(win);
-	else if (key == KEY_1 && win->terminal.light_on == false)
+	else if (key == KEY_1 && win->terminal.cam_on == false)
 		key_hook_camera(win);
-	else if (key == KEY_2 && win->terminal.cam_on == false)
+	else if (key == KEY_2 && win->terminal.light_on == false)
 		key_hook_light(win, info);
 	else if (win->terminal.light_on && win->terminal.light_select == false && \
-		(key == KEY_B || key == KEY_N || key == KEY_O))
+		(key == KEY_B || key == KEY_N || key == KEY_O || key == KEY_2))
 		select_light(key, info);
 	else if (win->terminal.light_select && (key == KEY_Q || key == KEY_W || \
 		key == KEY_A || key == KEY_S || key == KEY_Z || key == KEY_X))

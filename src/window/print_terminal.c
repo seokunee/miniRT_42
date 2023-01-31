@@ -13,7 +13,7 @@
 #include "window.h"
 #include <stdio.h>
 
-void	terminal_prompt()
+void	terminal_prompt(void)
 {
 	printf("Hello, miniRT!\n");
 	printf("PRESS KEY what you want to doing something on your keyboard.\n");
