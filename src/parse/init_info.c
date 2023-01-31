@@ -16,4 +16,11 @@ void	init_info(t_info *info)
 {
 	info->lights = 0;
 	info->objs = 0;
+	info->num_ele.a_count = 0;
+	info->num_ele.c_count = 0;
+	info->num_ele.l_count = 0;
+	info->num_ele.cy_count = 0;
+	info->num_ele.pl_count = 0;
+	info->num_ele.sp_count = 0;
+	info->num_ele.objs_count = 0;
 }

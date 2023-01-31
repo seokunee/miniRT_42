@@ -171,7 +171,10 @@ typedef struct s_terminal
 	bool	cam_on;
 	bool	light_on;
 	bool	light_select;
+	bool	obj_on;
+	bool	obj_select;
 	int		curr_light;
+	int		curr_obj;
 }	t_terminal;
 
 typedef struct s_window
@@ -191,6 +194,7 @@ typedef struct s_num_ele
 	int	cy_count;
 	int	sp_count;
 	int	pl_count;
+	int objs_count;
 }	t_num_ele;
 
 /*

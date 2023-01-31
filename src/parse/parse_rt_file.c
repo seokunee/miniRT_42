@@ -88,12 +88,6 @@ void	parse_rt_file(t_info *info, char *file_name)
 	int				fd;
 
 	check_file_name(file_name);
-	info->num_ele.a_count = 0;
-	info->num_ele.c_count = 0;
-	info->num_ele.l_count = 0;
-	info->num_ele.cy_count = 0;
-	info->num_ele.pl_count = 0;
-	info->num_ele.sp_count = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		error_exit("File open failed");
@@ -103,4 +97,5 @@ void	parse_rt_file(t_info *info, char *file_name)
 		if (!read_file(info, fd, &info->num_ele))
 			break ;
 	}
+	info->num_ele.objs_count = info->num_ele.cy_count + info->num_ele.pl_count + info->num_ele.sp_count;
 }

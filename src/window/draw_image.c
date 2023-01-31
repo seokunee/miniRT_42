@@ -40,7 +40,7 @@ unsigned char b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void	convert_color(t_l *light, int curr)
+void	convert_color_light(t_l *light, int curr)
 {
 	int	idx;
 
@@ -53,4 +53,22 @@ void	convert_color(t_l *light, int curr)
 	light->colors.x = 255.0 - light->colors.x;
 	light->colors.y = 255.0 - light->colors.y;
 	light->colors.z = 255.0 - light->colors.z;
+}
+
+void	convert_color_object(t_list *objs, int curr)
+{
+	int	idx;
+
+	idx = 0;
+	while (idx < curr)
+	{
+		objs = objs->next;
+		idx++;
+	}
+	((t_obj *)(objs->content))->colors.x = \
+		255.0 - ((t_obj *)(objs->content))->colors.x;
+	((t_obj *)(objs->content))->colors.y = \
+		255.0 - ((t_obj *)(objs->content))->colors.y;
+	((t_obj *)(objs->content))->colors.z = \
+		255.0 - ((t_obj *)(objs->content))->colors.z;
 }

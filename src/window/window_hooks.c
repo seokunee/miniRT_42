@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include "window.h"
 #include "structs.h"
+#include <stdio.h>
 
 #define ON_DESTROY 17
 
@@ -26,10 +27,11 @@ int	exit_event(t_window *win)
 void	binding_events(t_info *info)
 {
 	t_window	*win;
+	const char	*red = "\033[0;91m";
 
+	printf("%sHello, miniRT!\n", red);
+	printf("PRESS KEY what you want to doing something on your keyboard.\n");
 	win = &(info->win);
-	ft_printf("terminal->cam_on : %d\n", info->win.terminal.cam_on);
-	ft_printf("terminal->light_on : %d\n", info->win.terminal.light_on);
 	if (win->terminal.prompt == false)
 	{
 		win->terminal.prompt = true;

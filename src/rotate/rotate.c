@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 14:52:33 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/31 11:35:32 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/31 18:17:36 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	init_rotate_1(t_info *rotate, t_info *info)
 	rotate->win.terminal.curr_light = info->win.terminal.curr_light;
 	rotate->win.terminal.prompt = info->win.terminal.prompt;
 	rotate->amb.amb_light_ratio = info->amb.amb_light_ratio;
+
+	rotate->win.terminal.obj_on = info->win.terminal.obj_on;
+	rotate->win.terminal.obj_select = info->win.terminal.obj_select;
+	rotate->win.terminal.curr_obj = info->win.terminal.curr_obj;
+
 	copy_vector_value(&(rotate->amb.colors), info->amb.colors);
 	rotate->cam.coor.x = 0.0;
 	rotate->cam.coor.y = 0.0;
@@ -35,6 +40,13 @@ void	init_rotate_1(t_info *rotate, t_info *info)
 	rotate->cam.normal.z = 1.0;
 	rotate->cam.fov = info->cam.fov;
 	rotate->cam.length = info->cam.length;
+	rotate->num_ele.a_count = info->num_ele.a_count;
+	rotate->num_ele.c_count = info->num_ele.c_count;
+	rotate->num_ele.l_count = info->num_ele.l_count;
+	rotate->num_ele.cy_count = info->num_ele.cy_count;
+	rotate->num_ele.sp_count = info->num_ele.sp_count;
+	rotate->num_ele.pl_count = info->num_ele.pl_count;
+	// rotate->num_ele.objs_count = info->num_ele.objs_count;
 }
 
 void	init_rotate_light(t_info *rotate, t_info *info)

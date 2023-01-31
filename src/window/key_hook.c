@@ -16,18 +16,6 @@
 #include "thread.h"
 #include "parse.h"
 
-static void	key_hook_arrows(int key, t_window *win)
-{
-	if (key == KEY_ARROW_LEFT)
-		(void)win;
-	else if (key == KEY_ARROW_RIGHT)
-		(void)win;
-	else if (key == KEY_ARROW_DOWN)
-		(void)win;
-	else if (key == KEY_ARROW_UP)
-		(void)win;
-}
-
 void	move_coordinate(t_vec3 *coor, int key)
 {
 	if (key == KEY_Q)
@@ -44,28 +32,65 @@ void	move_coordinate(t_vec3 *coor, int key)
 		coor->z += 1;
 }
 
+static void	binding_key_event_camera(int key, t_info *info)
+{
+	t_window	*win;
+	t_terminal	*term;
+
+	win = &(info->win);
+	term = &(info->win.terminal);
+	if (key == KEY_1 && term->light_on == false && term->obj_on == false)
+		key_hook_camera(win);
+	else if (term->cam_on && (key == KEY_Q || key == KEY_W || \
+		key == KEY_A || key == KEY_S || key == KEY_Z || key == KEY_X))
+		move_camera(key, info);
+}
+
+static void	binding_key_event_light(int key, t_info *info)
+{
+	t_window	*win;
+	t_terminal	*term;
+
+	win = &(info->win);
+	term = &(info->win.terminal);
+	if (key == KEY_2 && term->cam_on == false && term->obj_on == false)
+		key_hook_light(win, info);
+	else if (term->light_on && term->light_select == false && \
+		(key == KEY_B || key == KEY_N || key == KEY_O || key == KEY_2))
+		select_light(key, info);
+	else if (term->light_select && (key == KEY_Q || key == KEY_W || key == \
+		KEY_A || key == KEY_S || key == KEY_Z || key == KEY_X || key == KEY_2))
+		move_light(key, info);
+}
+
+static void	binding_key_event_objs(int key, t_info *info)
+{
+	t_window	*win;
+	t_terminal	*term;
+
+	win = &(info->win);
+	term = &(info->win.terminal);
+	if (key == KEY_3 && term->cam_on == false && term->light_on == false)
+		key_hook_obj(win, info);
+	else if (term->obj_on && term->obj_select == false && \
+		(key == KEY_B || key == KEY_N || key == KEY_O || key == KEY_3))
+		select_obj(key, info);
+	else if (term->obj_select && (key == KEY_Q || key == KEY_W || key == KEY_A \
+		|| key == KEY_S || key == KEY_Z || key == KEY_X || key == KEY_3))
+		move_objs(key, info);
+}
+
 int	binding_key_events(int key, t_info *info)
 {
 	t_window	*win;
+	t_terminal	*term;
 
 	win = &(info->win);
-	ft_printf("key - %d\n", key);
+	term = &(info->win.terminal);
 	if (key == KEY_ESC)
 		exit_event(win);
-	else if (key == KEY_1 && win->terminal.cam_on == false)
-		key_hook_camera(win);
-	else if (key == KEY_2 && win->terminal.light_on == false)
-		key_hook_light(win, info);
-	else if (win->terminal.light_on && win->terminal.light_select == false && \
-		(key == KEY_B || key == KEY_N || key == KEY_O || key == KEY_2))
-		select_light(key, info);
-	else if (win->terminal.light_select && (key == KEY_Q || key == KEY_W || \
-		key == KEY_A || key == KEY_S || key == KEY_Z || key == KEY_X))
-		move_light(key, info);
-	else if (win->terminal.cam_on && (key == KEY_Q || key == KEY_W || \
-		key == KEY_A || key == KEY_S || key == KEY_Z || key == KEY_X))
-		move_camera(key, info);
-	else if (KEY_ARROW_LEFT <= key && key <= KEY_ARROW_UP)
-		key_hook_arrows(key, win);
+	binding_key_event_camera(key, info);
+	binding_key_event_light(key, info);
+	binding_key_event_objs(key, info);
 	return (0);
 }

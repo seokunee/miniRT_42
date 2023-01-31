@@ -29,6 +29,7 @@
 # define KEY_ARROW_UP 126
 # define KEY_1		18
 # define KEY_2		19
+# define KEY_3		20
 # define KEY_Q		12
 # define KEY_W		13
 # define KEY_A		0
@@ -54,9 +55,15 @@ void		move_coordinate(t_vec3 *coor, int key);
 void		key_hook_camera(t_window *win);
 int			move_camera(int key, t_info *info);
 void		key_hook_light(t_window *win, t_info *info);
-void		convert_color(t_l *light, int curr);
+void		convert_color_light(t_l *light, int curr);
+void		convert_color_object(t_list *objs, int curr);
 void		select_light(int key, t_info *info);
 void		move_light(int key, t_info *info);
 void		light_selector(void);
+void		obj_selector(void);
+void		move_objs(int key, t_info *info);
+void		key_hook_obj(t_window *win, t_info *info);
+void		select_obj(int key, t_info *info);
+void		print_turn_off(char *input);
 
 #endif

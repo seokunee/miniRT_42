@@ -28,9 +28,7 @@ void	key_hook_camera(t_window *win)
 	}
 	else
 	{
-		ft_printf("╔═══════════════════════════════════════════╗\n");
-		ft_printf("║             CAMERA : TURN OFF             ║\n");
-		ft_printf("╚═══════════════════════════════════════════╝\n");
+		print_turn_off("CAMERA");
 		win->terminal.cam_on = false;
 		terminal_prompt();
 	}

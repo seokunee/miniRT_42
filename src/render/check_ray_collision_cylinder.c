@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ray_collision_cylinder.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:16:53 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/31 18:25:05 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:45:07 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,21 @@ static void	hit_cylinder_cap(t_ray ray, t_obj *cy, t_hit *hit, double hei)
 	double	root;
 
 	r = cy->diameter / 2;
-	// 실린더 좌표에서 nor 방향으로 hei만큼 이동하면 실린더의 끝 원 중심이 된다.
-	circle_center = v_sum(cy->coor, v_mul_double(cy->normal, hei));
-	// ray에서 cap까지의 거리
+	circle_center = v_sum(cy->coor, v_mul_double(cy->normal, hei)); // 실린더 좌표에서 nor 방향으로 hei만큼 이동하면 실린더의 끝 원 중심이 된다.
 	root = v_dot(v_minus(circle_center, ray.orig), cy->normal) / \
-	v_dot(ray.normal, cy->normal);
-	// 반지름 안에 있는지 확인
-	if (fabs(r) < fabs(v_len(v_minus(circle_center, ray_at(ray, root)))))
+		v_dot(ray.normal, cy->normal); // ray에서 cap까지의 거리
+	if (fabs(r) < fabs(v_len(v_minus(circle_center, ray_at(ray, root))))) // 반지름 안에 있는지 확인
 		return ;
-	// 빛이 영향은 무한대가 아니므로 영향 거리를 정해줌.
-	if (root < 0.001 || root > 1000)
+	if (root < 0.001 || root > 1000) // 빛이 영향은 무한대가 아니므로 영향 거리를 정해줌.
 		return ;
 	hit->point = ray_at(ray, root);
 	hit->d = root;
-	if (0 < hei) // 위 cap 인경우
-		hit->normal = cy->normal;
-	else // 아래 cap인 경우
-		hit->normal = v_mul_double(cy->normal, -1);
-	if (v_dot(ray.normal, hit->normal) >= 0) // 아래
-		hit->normal = v_mul_double(hit->normal, -1);
+	if (0 < hei)
+		hit->normal = cy->normal; // 위 cap 인경우
+	else
+		hit->normal = v_mul_double(cy->normal, -1); // 아래 cap인 경우
+	if (v_dot(ray.normal, hit->normal) >= 0)
+		hit->normal = v_mul_double(hit->normal, -1); // 아래
 }
 
 static bool	cy_boundary(t_obj *cy, t_vec3 at_point, t_cy_settings *set)
@@ -48,8 +44,7 @@ static bool	cy_boundary(t_obj *cy, t_vec3 at_point, t_cy_settings *set)
 
 	set->hit_height = v_dot(v_minus(at_point, cy->coor), cy->normal);
 	max_height = cy->cy_hei / 2;
-	// 원기둥 높이 안에 있는 확인
-	if (fabs(set->hit_height) > max_height)
+	if (fabs(set->hit_height) > max_height) // 원기둥 높이 안에 있는 확인
 		return (false);
 	return (true);
 }
@@ -68,8 +63,7 @@ static bool	valid_cy_hit(t_cy_settings *set, t_obj *cy, t_ray ray)
 		return (false);
 	set->sqrtd = sqrt(set->discriminant);
 	set->root = (-set->half_b - set->sqrtd) / set->a;
-	// 고민해야할 부분 우리 원기둥은 거리 측정하는데 sphere은 측정하지 않음 모순쓰.
-	if (set->root < 0.001 || set->root > 10000)
+	if (set->root < 0.001 || set->root > 10000) // 고민해야할 부분 우리 원기둥은 거리 측정하는데 sphere은 측정하지 않음 모순쓰.
 	{
 		set->root = (-set->half_b + set->sqrtd) / set->a; // 이거 왜 한번 더 한거지?
 		if (set->root < 0.001 || set->root > 10000)
@@ -86,8 +80,7 @@ static void	hit_cylinder_side(t_ray ray, t_obj *cy, t_hit *hit)
 		return ;
 	hit->d = cy_set.root;
 	hit->point = ray_at(ray, cy_set.root);
-	hit->normal = vunit(v_minus(hit->point, \
-	v_sum(cy->coor, v_mul_double(cy->normal, cy_set.hit_height))));
+	hit->normal = vunit(v_minus(hit->point, v_sum(cy->coor, v_mul_double(cy->normal, cy_set.hit_height))));
 	if (v_dot(ray.normal, hit->normal) >= 0)
 		hit->normal = v_mul_double(hit->normal, -1);
 }
@@ -96,7 +89,7 @@ t_hit	check_ray_collision_cylinder(t_ray ray, t_obj *cylinder)
 {
 	t_hit	hit;
 
-	hit = get_hit(-1.0, vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0));
+	hit = get_hit(-1.0, vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0)); // hit 초기화
 	hit_cylinder_cap(ray, cylinder, &hit, cylinder->cy_hei / 2);
 	hit_cylinder_cap(ray, cylinder, &hit, -(cylinder->cy_hei / 2));
 	hit_cylinder_side(ray, cylinder, &hit);

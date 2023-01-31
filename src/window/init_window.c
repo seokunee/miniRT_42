@@ -15,8 +15,8 @@
 void	init_window(t_window *win)
 {
 	win->mlx = mlx_init();
-	win->width = 1200;
-	win->height = 1200;
+	win->width = 800;
+	win->height = 800;
 	win->width /= 2;
 	win->height /= 2;
 	win->mlx_win = mlx_new_window(win->mlx, win->width, win->height, TITLE);
@@ -24,5 +24,8 @@ void	init_window(t_window *win)
 	win->terminal.cam_on = false;
 	win->terminal.light_on = false;
 	win->terminal.light_select = false;
+	win->terminal.obj_on = false;
+	win->terminal.obj_select = false;
 	win->terminal.curr_light = 0;
+	win->terminal.curr_obj = 0;
 }
