@@ -42,7 +42,7 @@ void		put_pixel(t_data *data, int x, int y, int color);
 int			get_color(t_vec3 vec);
 t_color3	white_v3(void);
 t_color3	black_v3(void);
-void		terminal_prompt();
+void		terminal_prompt(void);
 void		remote_controler(char *input);
 void		move_coordinate(t_vec3 *coor, int key);
 void		key_hook_camera(t_window *win);
