@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_terminal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:08:49 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/31 16:18:04 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/31 18:29:04 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	remote_controler(char *input)
 	printf("╚═══════╩═══════════════════════════════════╝\n");
 }
 
-void	light_selector()
+void	light_selector(void)
 {
 	printf("╔═══════════════════════════════════════════╗\n");
 	printf("║              LIGHT : TURN ON              ║\n");

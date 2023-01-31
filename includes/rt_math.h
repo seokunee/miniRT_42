@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_math.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/28 18:45:07 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/31 18:30:08 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_vec4		vec4(double x1, double x2, double x3, double x4);
 t_vec4		vec4_input_3d(t_vec3 v, double x);
 t_point3	point3(double x, double y, double z);
 t_point3	color3(double r, double g, double b);
-void	  	vset(t_vec3 *v, double x, double y, double z);
+void		vset(t_vec3 *v, double x, double y, double z);
 
 t_vec3		v_sum(t_vec3 v1, t_vec3 v2);
 t_vec3		v_sum_double(t_vec3 v, double x, double y, double z);

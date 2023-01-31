@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/31 16:18:04 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/31 18:28:38 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include "mlx.h"
 # include "structs.h"
 # define TITLE "Hello miniRT!"
+
+// Size
+# define MAX_WIDTH 2560
+# define MAX_HEIGHT 1400
+
+// Keys
 # define KEY_ESC 53
 # define KEY_ARROW_LEFT 123
 # define KEY_ARROW_RIGHT 124
@@ -51,6 +57,6 @@ void		key_hook_light(t_window *win, t_info *info);
 void		convert_color(t_l *light, int curr);
 void		select_light(int key, t_info *info);
 void		move_light(int key, t_info *info);
-void		light_selector();
+void		light_selector(void);
 
 #endif
