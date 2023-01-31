@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/31 16:56:10 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/31 18:42:14 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 	return (vec3(x_scale, y_scale, info->cam.length));
 }
 
-void	set_closest_hit_obj(t_hit *closest_hit, t_hit hit, t_obj **closest_obj, t_obj *obj)
+void	set_closest_hit_obj(t_hit *closest_hit, \
+t_hit hit, t_obj **closest_obj, t_obj *obj)
 {
 	closest_hit->d = hit.d;
 	closest_hit->normal = hit.normal;
@@ -38,8 +39,8 @@ void	set_closest_hit_obj(t_hit *closest_hit, t_hit hit, t_obj **closest_obj, t_o
 	*closest_obj = obj;
 }
 
-void	get_closest_hit_obj(\
-	t_list *objs, t_hit *closest_hit, t_ray ray, t_obj **closest_obj)
+void	get_closest_hit_obj(t_list *objs, \
+t_hit *closest_hit, t_ray ray, t_obj **closest_obj)
 {
 	t_hit	hit;
 	t_obj	*obj;
@@ -60,10 +61,6 @@ void	get_closest_hit_obj(\
 		{
 			set_closest_hit_obj(closest_hit, hit, closest_obj, obj);
 			closest = hit.d;
-			// closest_hit->d = hit.d;
-			// closest_hit->normal = hit.normal;
-			// closest_hit->point = hit.point;
-			// *closest_obj = obj;
 		}
 		objs = objs->next;
 	}
@@ -82,21 +79,18 @@ static t_vec3	trace_ray(t_info *info, t_ray ray)
 	{
 		light_color = black_v3();
 		lights = info->lights;
-		// 존재하는 모든 광원들에 대한 정반사, 난반사 값을 연결리스트로 돌아가면서 구해준다.
 		while (lights)
 		{
-			// light_color = v_sum(light_color, point_light_get(info->objs, &closest_hit, lights, closest_obj, ray)); // light들을 모아준다.
-			light_color = v_sum(light_color, point_light_get(info, &closest_hit, lights, closest_obj));
+			light_color = v_sum(light_color, \
+			point_light_get(info, &closest_hit, lights, closest_obj));
 			lights = lights->next;
 		}
 		ambient_color = v_divide(v_mul_double(info->amb.colors, \
 			pow(info->amb.amb_light_ratio, 2)), 255);
 		ambient_color = v_mul(ambient_color, closest_obj->colors);
-
 		return (vmin(v_sum(light_color, ambient_color), white_v3()));
 	}
 	return (black_v3());
-	// return (white_v3());
 }
 
 /// @brief 모니터에 그려질 2차원 (x, y) 좌표를 3차원으로 표현하기 위해서 모니터 비율에 맞춰서 3차원 벡터로 만들어줌.
@@ -109,13 +103,9 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 	t_vec3	pixel_pos_world;
 	t_vec3	ray_dir;
 	t_ray	pixel_ray;
-	// t_vec3	eye_pos;
 
 	pixel_pos_world = transform_screen_to_world(info, vec2(x, y));
-	// 카메라에서 모니터를 보는 각도를 갖는 광선
 	ray_dir = norm_3d_vec(v_minus(pixel_pos_world, info->cam.coor));
-	// pixel_ray = get_ray(info->cam.coor, ray_dir);
 	info->ray = get_ray(info->cam.coor, ray_dir);
-	// 최소의 거리의 오브젝트에서 나온 hit 정보를 가지고 색을 반환.
 	return (get_color(trace_ray(info, info->ray)));
 }
