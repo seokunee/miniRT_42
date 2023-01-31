@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/30 19:06:29 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/31 11:01:11 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	main(int ac, char **av)
 	init_window(&info.win);
 	camera_setting(&info);
 	rotate(&rotate_info, &info);
-	printf_before_after(&info, &rotate_info);
-	binding_events(&rotate_info.win);
+	// printf_before_after(&info, &rotate_info);
+	binding_events(&rotate_info);
 	start_drawing(&rotate_info);
-	system("leaks miniRT");
+	// system("leaks miniRT");
 	mlx_loop(rotate_info.win.mlx);
 	return (0);
 }

@@ -47,7 +47,7 @@ MAIN_SRC		= main
 MATH_SRC		= vector_dot_cross vector_op vector_op2 vector_op3 vector_op_2 absolute clamp compare_values normalize radian
 MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
-WINDOW_SRC		= color draw_image init_window key_hook mouse_hook window_hooks
+WINDOW_SRC		= color draw_image init_window key_hook mouse_hook window_hooks print_terminal move_camera move_light
 RENDER_SRC		= raytracer hit ray check_ray_collision check_ray_collision_cylinder #render sphere
 ROTATE_SRC		= rotate
 

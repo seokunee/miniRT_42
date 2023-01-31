@@ -165,12 +165,21 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
+typedef struct s_terminal
+{
+	bool	prompt;
+	bool	cam_on;
+	bool	light_on;
+	bool	light_select;
+}	t_terminal;
+
 typedef struct s_window
 {
-	void	*mlx;
-	void	*mlx_win;
-	int		width;
-	int		height;
+	void		*mlx;
+	void		*mlx_win;
+	int			width;
+	int			height;
+	t_terminal	terminal;
 }	t_window;
 
 /*

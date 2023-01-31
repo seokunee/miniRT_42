@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:33:26 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/27 19:40:27 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:35:10 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,8 @@ void	init_window(t_window *win)
 	// win->width /= 2;
 	// win->height /= 2;
 	win->mlx_win = mlx_new_window(win->mlx, win->width, win->height, TITLE);
+	win->terminal.prompt = false;
+	win->terminal.cam_on = false;
+	win->terminal.light_on = false;
+	win->terminal.light_select = false;
 }
