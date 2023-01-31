@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/30 22:57:43 by kko              ###   ########.fr       */
+/*   Updated: 2023/01/31 12:31:37 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@
 */
 static t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 {
-	const t_window	win = info->win;
-	const double	x = (screen.x * win.x_scale - 1.0) * win.aspect_ratio;
-	const double	y = -screen.y * win.y_scale + 1.0;
-	const double	z = (double)info->cam.fov / 180.0;
+	const double	x_scale = screen.x - (info->win.width / 2);
+	const double	y_scale = -(screen.y) + (info->win.height / 2);
 
-	return (vec3(x, y, z));
+	return (vec3(x_scale, y_scale, info->cam.length));
 }
 
 void	get_closest_hit_obj(\
@@ -95,7 +93,7 @@ t_color3	point_light_get(\
 
 	const t_vec3 reflect = v_minus(v_mul_double(v_mul_double(hit->normal, v_dot(hit->normal, light_dir)), 2), light_dir);
 	t_vec3 view_dir = vunit(v_mul_double(ray.normal, -1));
-	double ksn = 64; // shininess value 임의로 설정해줄값. 값을 제곱하기때문에 값이 클수록 빛이 더 한점으로 모이게된다. 
+	double ksn = 64; // shininess value 임의로 설정해줄값. 값을 제곱하기때문에 값이 클수록 빛이 더 한점으로 모이게된다.
 	double ks = 0.5; // specular strength 각 물체가 가지는 반사의 정도.
 	double spec = pow(fmax(v_dot(view_dir, reflect), 0.0), ksn);
 	t_color3 specular = v_mul_double(v_mul_double(light->colors, ks), spec);

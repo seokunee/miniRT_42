@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:33:26 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/31 11:35:10 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:30:08 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ void	init_window(t_window *win)
 	// win->height = 1400;
 	win->width /= 2;
 	win->height /= 2;
-	win->x_scale = 2.0 / win->width;
-	win->y_scale = 2.0 / win->height;
-	win->aspect_ratio = (double)win->width / (double)win->height;
 	win->mlx_win = mlx_new_window(win->mlx, win->width, win->height, TITLE);
 	win->terminal.prompt = false;
 	win->terminal.cam_on = false;
