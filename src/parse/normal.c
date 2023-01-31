@@ -34,7 +34,5 @@ t_vec3	get_arg_normal(char *s)
 		error_exit("Wrong argument");
 	free_double_array((void **)tmp);
 	v3 = vunit(vec3(normal[0], normal[1], normal[2]));
-	// if (v_dot(v3, v3) != 1)
-	// 	error_exit("Wrong normal argument");
 	return (v3);
 }

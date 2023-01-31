@@ -42,19 +42,16 @@ t_vec3		vmin(t_vec3 vec1, t_vec3 vec2);
 t_vec3		vunit(t_vec3 v);
 t_vec3		norm_3d_vec(t_vec3 v);
 
-double	v_element_sum(t_vec3 v);
+double		v_element_sum(t_vec3 v);
 
 double		min_double(double f1, double f2);
 double		max_double(double f1, double f2);
 
-// t_vec2	clamp_2d(t_vec2 v, double min_val, double max_val);
 t_vec3		clamp_3d(t_vec3 v, double min_val, double max_val);
-// t_vec4	clamp_4d(t_vec4 v, double min_val, double max_val);
-// t_vec3	*vec_multiple(t_vec3 *v1, t_vec3 *v2);
-// t_vec3	*vec_subtract(t_vec3 *v1, t_vec3 *v2);
 
-double    abs_double(double d);
-t_vec3	vscale(t_vec3 v, double s);
+double		abs_double(double d);
+t_vec3		vscale(t_vec3 v, double s);
+void		copy_vector_value(t_vec3 *dst, t_vec3 src);
 
 /*
 * Return a length of vector

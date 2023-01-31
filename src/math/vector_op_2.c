@@ -42,3 +42,10 @@ t_vec4	vec4_input_3d(t_vec3 v, double x)
 	v1.x4 = x;
 	return (v1);
 }
+
+void	copy_vector_value(t_vec3 *dst, t_vec3 src)
+{
+	dst->x = src.x;
+	dst->y = src.y;
+	dst->z = src.z;
+}

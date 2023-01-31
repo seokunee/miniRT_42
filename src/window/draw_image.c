@@ -27,3 +27,15 @@ void	put_pixel(t_data *data, int x, int y, int color)
 	dst = data->addr + get_offset(data, x, y);
 	*(unsigned int *)dst = color;
 }
+
+/// @brief 한 픽셀에 대한 색상 정보
+/// @param t Transparency 투명도, 0 불투명 ~ 255 투명함
+/// @param r Red
+/// @param g Green
+/// @param b Blue
+/// @return
+int	create_trgb(unsigned char t, unsigned char r, unsigned char g, \
+unsigned char b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}

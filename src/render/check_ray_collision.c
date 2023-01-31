@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ray_collision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:54:17 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/28 14:48:54 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:58:47 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 /// @return
 t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 {
-	const double	b = 2.0 * v_dot(ray.normal, \
+	const double	b = v_dot(ray.normal, \
 	v_minus(ray.orig, sphere->coor));
 	const double	c = v_dot(v_minus(ray.orig, sphere->coor), \
 	v_minus(ray.orig, sphere->coor)) - pow(sphere->diameter / 2.0, 2.0);
-	const double	det = (b * b) - (4.0 * c);
+	const double	det = (b * b) - (c);
 	t_hit			hit;
 
 	hit = get_hit(-1.0, vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0));
 	if (det >= 0.0)
 	{
-		hit.d = min_double((-b - sqrt(det)) / 2.0, (-b + sqrt(det)) / 2.0);
+		hit.d = min_double((-b - sqrt(det)), (-b + sqrt(det)));
 		hit.point = v_sum(ray.orig, v_mul_double(ray.normal, hit.d));
 		hit.normal = norm_3d_vec(v_minus(hit.point, sphere->coor));
 	}
@@ -40,9 +40,9 @@ t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 t_hit	check_ray_collision_plane(t_ray ray, t_obj *plane)
 {
 	const double	denom = v_dot(ray.normal, plane->normal);
-	double	numrator;
-	double	root;
-	t_hit	hit;
+	double			numrator;
+	double			root;
+	t_hit			hit;
 
 	hit = get_hit(-1.0, vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0));
 	if (fabs(denom) < 0.001)

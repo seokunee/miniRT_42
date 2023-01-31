@@ -13,7 +13,7 @@
 NAME			= miniRT
 
 INC_DIR			= -Iincludes -I$(LIBFT_DIR)/include -I$(MLX_DIR)
-CFLAGS			= -Wall -Wextra -Werror $(INC_DIR) #-g3 -fsanitize=address
+CFLAGS			=  $(INC_DIR) #-g3 -fsanitize=address -Wall -Wextra -Werror
 # CFLAGS			= -Wall -Wextra -Werror $(INC_DIR)
 LDFLAGS			= -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx
 # LDFLAGS			= -L$(LIBFT_DIR) -lft -L/usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
@@ -37,25 +37,29 @@ ERROR_DIR		= $(SRC_DIR)/error/
 WINDOW_DIR		= $(SRC_DIR)/window/
 RENDER_DIR		= $(SRC_DIR)/render/
 THREAD_DIR		= $(SRC_DIR)/thread/
+ROTATE_DIR		= $(SRC_DIR)/rotate/
 
 # Use MLX library
 # MLX				= -L./$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 # NOTE : Add Source files here
 MAIN_SRC		= main
-PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2
 MATH_SRC		= vector_dot_cross vector_op vector_op2 vector_op3 vector_op_2 absolute clamp compare_values normalize radian
 MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
-WINDOW_SRC		= color draw_image init_window key_hook mouse_hook window_hooks
+WINDOW_SRC		= color draw_image init_window key_hook mouse_hook window_hooks print_terminal move_camera move_light
 RENDER_SRC		= raytracer hit ray check_ray_collision check_ray_collision_cylinder #render sphere
-THREAD_SRC		= init_thread
+ROTATE_SRC		= rotate
 
 # BONUS SRC
 ifeq (,$(findstring bonus,$(MAKECMDGOALS)))
 THREAD_SRC		= init_thread
+PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2 check_option_count
+
 else
 THREAD_SRC		= init_thread_bonus
+PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2 check_option_count_bonus
+
 endif
 
 # NOTE : Add to SRC here
@@ -67,6 +71,7 @@ SRC =	$(addsuffix .c, $(addprefix $(MAIN_DIR),	$(MAIN_SRC)))	\
 		$(addsuffix .c, $(addprefix $(PARSE_DIR),	$(PARSE_SRC)))	\
 		$(addsuffix .c, $(addprefix $(THREAD_DIR),	$(THREAD_SRC)))	\
 		$(addsuffix .c, $(addprefix $(RENDER_DIR),	$(RENDER_SRC)))	\
+		$(addsuffix .c, $(addprefix $(ROTATE_DIR),	$(ROTATE_SRC)))	\
 # ------------------------------------------------------ #
 
 OBJ_DIR = obj/

@@ -28,7 +28,8 @@ static void	*thread_routine(void *data)
 		y = 0;
 		while (y < drawer->height)
 		{
-			color = calculate_pixel_color(drawer->info, drawer->width * drawer->i + x, y);
+			color = calculate_pixel_color(\
+				drawer->info, drawer->width * drawer->i + x, y);
 			put_pixel(&drawer->data, x, y, color);
 			y++;
 		}
