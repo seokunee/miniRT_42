@@ -54,8 +54,8 @@ void	get_obj(t_info *info, char **opt, t_type type);
 // parse_rt_file
 void	check_file_name(char *file_name);
 int		check_range(int type, float ret);
-void	edit_info(t_info *info, char *s, t_check_flag *check_count);
-bool	read_file(t_info *info, int fd, t_check_flag *check_count);
+void	edit_info(t_info *info, char *s, t_num_ele *check_count);
+bool	read_file(t_info *info, int fd, t_num_ele *check_count);
 void	parse_rt_file(t_info *info, char *file_name);
 
 //plane
@@ -75,6 +75,6 @@ void	print_all_info(t_info *info);
 void	printf_before_after(t_info *info, t_info *rota);
 
 // check_option_count.c
-void	check_option_count(char *s, t_check_flag *check_count);
+void	check_option_count(char *s, t_num_ele *check_count);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_camera.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:04:48 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/31 11:29:54 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/31 16:18:04 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,7 @@ int	move_camera(int key, t_info *info)
 {
 	t_info	rotate_info;
 
-	if (key == KEY_Q)
-		info->cam.coor.x -= 1;
-	else if (key == KEY_W)
-		info->cam.coor.x += 1;
-	else if (key == KEY_A)
-		info->cam.coor.y -= 1;
-	else if (key == KEY_S)
-		info->cam.coor.y += 1;
-	else if (key == KEY_Z)
-		info->cam.coor.z -= 1;
-	else if (key == KEY_X)
-		info->cam.coor.z += 1;
+	move_coordinate(&(info->cam.coor), key);
 	rotate(&rotate_info, info);
 	start_drawing(&rotate_info);
 	return (0);

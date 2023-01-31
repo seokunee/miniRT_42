@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:12:52 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/25 19:07:28 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/31 16:18:04 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,19 @@ int	create_trgb(unsigned char t, unsigned char r, unsigned char g, \
 unsigned char b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+void	convert_color(t_l *light, int curr)
+{
+	int	idx;
+
+	idx = 0;
+	while (idx < curr)
+	{
+		light = light->next;
+		idx++;
+	}
+	light->colors.x = 255.0 - light->colors.x;
+	light->colors.y = 255.0 - light->colors.y;
+	light->colors.z = 255.0 - light->colors.z;
 }

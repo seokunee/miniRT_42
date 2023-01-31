@@ -38,7 +38,7 @@ int	check_range(int type, float ret)
 	return (ERR);
 }
 
-void	edit_info(t_info *info, char *s, t_check_flag *check_count)
+void	edit_info(t_info *info, char *s, t_num_ele *check_count)
 {
 	char	**options;
 
@@ -67,7 +67,7 @@ void	edit_info(t_info *info, char *s, t_check_flag *check_count)
 	free_double_array((void **)options);
 }
 
-bool	read_file(t_info *info, int fd, t_check_flag *check_count)
+bool	read_file(t_info *info, int fd, t_num_ele *check_count)
 {
 	char	*tmp;
 
@@ -86,7 +86,7 @@ bool	read_file(t_info *info, int fd, t_check_flag *check_count)
 void	parse_rt_file(t_info *info, char *file_name)
 {
 	int				fd;
-	t_check_flag	check_count;
+	t_num_ele	check_count;
 
 	check_file_name(file_name);
 

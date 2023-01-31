@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/31 12:31:37 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/01/31 16:18:04 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,15 @@ static t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 	return (vec3(x_scale, y_scale, info->cam.length));
 }
 
+void	set_closest_hit_obj(t_hit *closest_hit, t_hit	hit)
+{
+	closest_hit->d = hit.d;
+	closest_hit->normal = hit.normal;
+	closest_hit->point = hit.point;
+}
+
 void	get_closest_hit_obj(\
-	t_list *objs, t_hit	*closest_hit, t_ray ray, t_obj **closest_obj)
+	t_list *objs, t_hit *closest_hit, t_ray ray, t_obj **closest_obj)
 {
 	t_hit	hit;
 	t_obj	*obj;
@@ -50,6 +57,7 @@ void	get_closest_hit_obj(\
 			hit = check_ray_collision_plane(ray, obj);
 		if (hit.d >= 0 && closest > hit.d)
 		{
+			set_closest_hit_obj(closest_hit, hit);
 			closest = hit.d;
 			closest_hit->d = hit.d;
 			closest_hit->normal = hit.normal;
@@ -58,46 +66,6 @@ void	get_closest_hit_obj(\
 		}
 		objs = objs->next;
 	}
-}
-
-bool	in_shadow(t_list *objs, t_ray light_ray)
-{
-	t_hit			closest_hit;
-	t_obj			*closest_obj;
-
-	get_closest_hit_obj(objs, &closest_hit, light_ray, &closest_obj);
-	if (closest_hit.d >= 0.0)
-		return (true);
-	return (false);
-}
-
-t_color3	point_light_get(\
-	t_list *objs, t_hit *hit, t_l *light, t_obj *closest_obj, t_ray ray)
-{
-	const t_vec3	light_dir = vunit(v_minus(light->coor, hit->point));
-	t_color3		diffuse;
-	t_ray			light_ray;
-	double			kd;
-
-	light_ray = get_ray(\
-		v_sum(hit->point, v_mul_double(hit->normal, 0.001)), light_dir);
-	if (in_shadow(objs, light_ray))
-		return (black_v3());
-	// cosΘ는 Θ 값이 90도 일 때 0이고 Θ가 둔각이 되면 음수가 되므로 0.0보다 작은 경우는 0.0으로 대체한다.
-	kd = fmax(v_dot(hit->normal, light_dir), 0.0);// (교점에서 출발하여 광원을 향하는 벡터)와 (교점에서의 법선벡터)의 내적값. --> 0.몇값이 나옴.
-	// fmax 함수는 두 개의 인자 중 큰 값을 리턴한다. 만약 코사인세타가 둔각이 될 경우 음수가 되기에 0을 리턴하도록 한다.
-	diffuse = v_divide(light->colors, 255.0);
-	diffuse = v_mul_double(diffuse, light->light_brightness_ratio);
-	diffuse = v_mul_double(diffuse, kd);
-	diffuse = v_mul(diffuse, closest_obj->colors);
-
-	const t_vec3 reflect = v_minus(v_mul_double(v_mul_double(hit->normal, v_dot(hit->normal, light_dir)), 2), light_dir);
-	t_vec3 view_dir = vunit(v_mul_double(ray.normal, -1));
-	double ksn = 64; // shininess value 임의로 설정해줄값. 값을 제곱하기때문에 값이 클수록 빛이 더 한점으로 모이게된다.
-	double ks = 0.5; // specular strength 각 물체가 가지는 반사의 정도.
-	double spec = pow(fmax(v_dot(view_dir, reflect), 0.0), ksn);
-	t_color3 specular = v_mul_double(v_mul_double(light->colors, ks), spec);
-	return (v_sum(diffuse, specular));
 }
 
 static t_vec3	trace_ray(t_info *info, t_ray ray)
@@ -116,7 +84,8 @@ static t_vec3	trace_ray(t_info *info, t_ray ray)
 		// 존재하는 모든 광원들에 대한 정반사, 난반사 값을 연결리스트로 돌아가면서 구해준다.
 		while (lights)
 		{
-			light_color = v_sum(light_color, point_light_get(info->objs, &closest_hit, lights, closest_obj, ray)); // light들을 모아준다.
+			// light_color = v_sum(light_color, point_light_get(info->objs, &closest_hit, lights, closest_obj, ray)); // light들을 모아준다.
+			light_color = v_sum(light_color, point_light_get(info, &closest_hit, lights, closest_obj));
 			lights = lights->next;
 		}
 		ambient_color = v_divide(v_mul_double(info->amb.colors, \
@@ -144,7 +113,8 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 	pixel_pos_world = transform_screen_to_world(info, vec2(x, y));
 	// 카메라에서 모니터를 보는 각도를 갖는 광선
 	ray_dir = norm_3d_vec(v_minus(pixel_pos_world, info->cam.coor));
-	pixel_ray = get_ray(info->cam.coor, ray_dir);
+	// pixel_ray = get_ray(info->cam.coor, ray_dir);
+	info->ray = get_ray(info->cam.coor, ray_dir);
 	// 최소의 거리의 오브젝트에서 나온 hit 정보를 가지고 색을 반환.
-	return (get_color(trace_ray(info, pixel_ray)));
+	return (get_color(trace_ray(info, info->ray)));
 }

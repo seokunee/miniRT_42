@@ -27,4 +27,5 @@ void	init_window(t_window *win)
 	win->terminal.cam_on = false;
 	win->terminal.light_on = false;
 	win->terminal.light_select = false;
+	win->terminal.curr_light = 0;
 }

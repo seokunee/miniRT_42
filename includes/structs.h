@@ -171,6 +171,7 @@ typedef struct s_terminal
 	bool	cam_on;
 	bool	light_on;
 	bool	light_select;
+	int		curr_light;
 }	t_terminal;
 
 typedef struct s_window
@@ -182,35 +183,42 @@ typedef struct s_window
 	t_terminal	terminal;
 }	t_window;
 
+typedef struct s_num_ele
+{
+	int	a_count;
+	int	c_count;
+	int	l_count;
+	int	cy_count;
+	int	sp_count;
+	int	pl_count;
+}	t_num_ele;
+
 /*
 * info
 */
 typedef struct s_info
 {
-	t_a			amb;
-	t_c			cam;
-	t_l			*lights;
-	t_list		*objs;
-	t_window	win;
+	t_a				amb;
+	t_c				cam;
+	t_l				*lights;
+	t_list			*objs;
+	t_window		win;
 
 	// tmp
-	t_hit		*hit;
-	t_vec3		color;
-	t_vec3		phong_color;
-	double		diff;
-	double		specular;
+	t_hit			*hit;
+	t_vec3			color;
+	t_vec3			phong_color;
+	double			diff;
+	double			specular;
+	t_num_ele		num_ele;
+
+	t_ray			ray;
 }	t_info;
 
 /*
 * check_flag
 * explaination : check number of flags in '.rt file'
 */
-typedef struct s_check_flag
-{
-	int	a_count;
-	int	c_count;
-	int	l_count;
-}	t_check_flag;
 
 typedef struct s_drawer
 {
