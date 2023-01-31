@@ -57,6 +57,8 @@ t_hit *closest_hit, t_ray ray, t_obj **closest_obj)
 			hit = check_ray_collision_sphere(ray, obj);
 		else if (obj->type == PL)
 			hit = check_ray_collision_plane(ray, obj);
+		else if (obj->type == CN)
+			hit = check_ray_collision_cone(ray, obj);
 		if (hit.d >= 0 && closest > hit.d)
 		{
 			set_closest_hit_obj(closest_hit, hit, closest_obj, obj);

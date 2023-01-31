@@ -54,11 +54,11 @@ ROTATE_SRC		= rotate
 # BONUS SRC
 ifeq (,$(findstring bonus,$(MAKECMDGOALS)))
 THREAD_SRC		= init_thread
-PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2 check_option_count
+PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2 check_option_count cone
 
 else
 THREAD_SRC		= init_thread_bonus
-PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2 check_option_count_bonus
+PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2 check_option_count_bonus cone
 
 endif
 

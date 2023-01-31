@@ -80,6 +80,15 @@ void	print_objs(t_list *objs)
 		printf("cylinder_height = %f\n", obj->cy_hei);
 		printf("cylinder_colors = %f %f %f\n", obj->colors.x, obj->colors.y, obj->colors.z);
 	}
+	if (obj->type == CN)
+	{
+		printf("CN\n");
+		printf("coor = %f %f %f\n", obj->coor.x, obj->coor.y, obj->coor.z);
+		printf("normal = %f %f %f\n", obj->normal.x, obj->normal.y, obj->normal.z);
+		printf("cylinder_diameter = %f\n", obj->diameter);
+		printf("cylinder_height = %f\n", obj->cy_hei);
+		printf("cylinder_colors = %f %f %f\n", obj->colors.x, obj->colors.y, obj->colors.z);
+	}
 	if (objs->next)
 	{
 		printf("\n");
@@ -171,6 +180,15 @@ void	printf_before_after(t_info *info, t_info *rota)
 				printf("cylinder_diameter = %f -> %f\n", obj_a->diameter, obj_b->diameter);
 				printf("cylinder_height = %f -> %f\n", obj_a->cy_hei, obj_b->cy_hei);
 				printf("cylinder_colors = %f %f %f -> %f %f %f\n", obj_a->colors.x, obj_a->colors.y, obj_a->colors.z, obj_b->colors.x, obj_b->colors.y, obj_b->colors.z);
+			}
+			if (obj_a->type == CN)
+			{
+				printf("CN\n");
+				printf("coor = %f %f %f -> %f %f %f\n", obj_a->coor.x, obj_a->coor.y, obj_a->coor.z, obj_b->coor.x, obj_b->coor.y, obj_b->coor.z);
+				printf("normal = %f %f %f -> %f %f %f\n", obj_a->normal.x, obj_a->normal.y, obj_a->normal.z, obj_b->normal.x, obj_b->normal.y, obj_b->normal.z);
+				printf("cone_diameter = %f -> %f\n", obj_a->diameter, obj_b->diameter);
+				printf("cone_height = %f -> %f\n", obj_a->cy_hei, obj_b->cy_hei);
+				printf("cone_colors = %f %f %f -> %f %f %f\n", obj_a->colors.x, obj_a->colors.y, obj_a->colors.z, obj_b->colors.x, obj_b->colors.y, obj_b->colors.z);
 			}
 			obj_a = obj_a->next;
 			obj_b = obj_b->next;

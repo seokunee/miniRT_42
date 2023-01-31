@@ -62,6 +62,8 @@ void	edit_info(t_info *info, char *s, t_num_ele *num_ele)
 		get_obj(info, options, SP);
 	else if (ft_strncmp(options[0], "cy", 3) == 0)
 		get_obj(info, options, CY);
+	else if (ft_strncmp(options[0], "cn", 3) == 0)
+		get_obj(info, options, CN);
 	else
 		error_exit("Wrong identifier");
 	free_double_array((void **)options);

@@ -14,7 +14,7 @@
 #include "raytracer.h"
 #include "rt_math.h"
 
-static void	hit_cylinder_cap(t_ray ray, t_obj *cy, t_hit *hit, double hei)
+void	hit_cylinder_cap(t_ray ray, t_obj *cy, t_hit *hit, double hei)
 {
 	t_vec3	circle_center;
 	double	r;

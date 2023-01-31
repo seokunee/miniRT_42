@@ -21,6 +21,10 @@ t_point3	ray_at(t_ray ray, double t);
 t_hit		get_hit(double d, t_vec3 point, t_vec3 normal);
 t_hit		check_ray_collision_sphere(t_ray ray, t_obj *sphere);
 t_hit		check_ray_collision_plane(t_ray ray, t_obj *plane);
+t_hit	check_ray_collision_cone(t_ray ray, t_obj *cone);
+void	hit_cylinder_cap(t_ray ray, t_obj *cy, t_hit *hit, double hei);
+t_hit	check_ray_collision_cone(t_ray ray, t_obj *cone);
+void	check_ray_collision_cone_side(t_ray ray, t_obj *cone, t_hit *hit);
 
 //check_ray_collision_cylinder
 t_hit		check_ray_collision_cylinder(t_ray ray, t_obj *cylinder);

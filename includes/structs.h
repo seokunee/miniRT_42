@@ -133,6 +133,7 @@ typedef enum e_type
 	PL,
 	SP,
 	CY,
+	CN,
 }	t_type;
 
 /*

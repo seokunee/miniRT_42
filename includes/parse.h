@@ -62,6 +62,8 @@ void	parse_rt_file(t_info *info, char *file_name);
 void	set_pl(t_obj *obj, char **opt);
 //sphere
 void	set_sp(t_obj *obj, char **opt);
+//cone
+void	set_cn(t_obj *obj, char **opt);
 
 // utils
 int		sec_arr_len(char **arr);

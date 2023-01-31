@@ -58,3 +58,35 @@ t_hit	check_ray_collision_plane(t_ray ray, t_obj *plane)
 		hit.normal = v_mul_double(hit.normal, -1);
 	return (hit);
 }
+
+void	check_ray_collision_cone_side(t_ray ray, t_obj *cone, t_hit *hit)
+{
+	t_vec3	H = v_sum(cone->coor, v_mul_double(cone->normal, cone->cy_hei));
+	t_vec3	h = v_minus(cone->coor, H);
+	t_vec3	uh = vunit(h);
+	double	m = pow(cone->diameter / 2, 2) / pow(v_len(h), 2);
+	t_vec3	w = v_minus(ray.orig, H);
+	double	a = v_dot(ray.normal, ray.normal) - (m * pow(v_dot(ray.normal, uh), 2)) - pow(v_dot(ray.normal, uh), 2);
+	double	b = 2 * (v_dot(ray.normal, w) - (m * v_dot(ray.normal, uh) * v_dot(w, uh)) - v_dot(ray.normal, uh) * v_dot(w, uh));
+	double	c = v_dot(w, w) - (m * pow(v_dot(w, uh), 2)) - pow(v_dot(w, uh), 2);
+	double	det = b * b - (4 * a * c);
+
+	if (v_len(v_minus(cone->coor, v_sum(ray.orig, v_mul_double(ray.normal, min_double((-b - sqrt(det)), (-b + sqrt(det))) / (2 * a))))) > cone->cy_hei)
+		return ;
+	if (det >= 0)
+	{
+		hit->d = min_double((-b - sqrt(det)), (-b + sqrt(det))) / (2 * a);
+		hit->point = v_sum(ray.orig, v_mul_double(ray.normal, hit->d));
+		hit->normal = norm_3d_vec(v_minus(hit->point, cone->coor));
+	}
+}
+
+t_hit	check_ray_collision_cone(t_ray ray, t_obj *cone)
+{
+	t_hit	hit;
+
+	hit = get_hit(-1.0, vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0));
+	hit_cylinder_cap(ray, cone, &hit, 0);
+	check_ray_collision_cone_side(ray, cone, &hit);
+	return (hit);
+}

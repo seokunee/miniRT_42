@@ -22,6 +22,8 @@ void	check_obj(t_obj *obj, char **opt, t_type type)
 		set_sp(obj, opt);
 	if (type == CY)
 		set_cy(obj, opt);
+	if (type == CN)
+		set_cn(obj, opt);
 }
 
 void	get_obj(t_info *info, char **opt, t_type type)

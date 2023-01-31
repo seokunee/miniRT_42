@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/31 11:01:11 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:50:02 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
-#include "error.h"
 #include "parse.h"
-#include "window.h"
-#include "thread.h"
+#include "info.h"
+#include "rt_math.h"
 
-int	main(int ac, char **av)
+void	set_cn(t_obj *obj, char **opt)
 {
-	t_info	info;
-	t_info	rotate_info;
-
-	if (ac != 2)
-		error_exit("Invalid number of arguments. Check it!");
-	parse_rt_file(&info, av[1]);
-	init_window(&info.win);
-	camera_setting(&info);
-	rotate(&rotate_info, &info);
-	printf_before_after(&info, &rotate_info);
-	binding_events(&rotate_info);
-	start_drawing(&rotate_info);
-	// system("leaks miniRT");
-	mlx_loop(rotate_info.win.mlx);
-	return (0);
+	if (sec_arr_len(opt) != 6)
+		error_exit("Wrong cone argument");
+	check_coordinates(obj, opt[1]);
+	obj->normal = get_arg_normal(opt[2]);
+	check_diameter(obj, ft_atod(opt[3]));
+	obj->cy_hei = ft_atod(opt[4]);
+	if (obj->cy_hei <= 0)
+		error_exit("Wrong cone argument");
+	obj->colors.x = get_arg_color(opt[5]).x;
+	obj->colors.y = get_arg_color(opt[5]).y;
+	obj->colors.z = get_arg_color(opt[5]).z;
 }
