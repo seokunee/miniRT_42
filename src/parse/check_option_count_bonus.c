@@ -12,13 +12,19 @@
 
 #include "parse.h"
 
-void	check_option_count_bonus(char *s, t_check_flag *check_count)
+void	check_option_count_bonus(char *s, t_num_ele *check_count)
 {
 	if (ft_strncmp(s, "A", 2) == 0)
 		check_count->a_count++;
 	else if (ft_strncmp(s, "C", 2) == 0)
 		check_count->c_count++;
 	else if (ft_strncmp(s, "L", 2) == 0)
+		check_count->l_count++;
+	else if (ft_strncmp(s, "cy", 2) == 0)
+		check_count->++;
+	else if (ft_strncmp(s, "pl", 2) == 0)
+		check_count->l_count++;
+	else if (ft_strncmp(s, "sp", 2) == 0)
 		check_count->l_count++;
 	if (check_count->a_count > 1 || check_count->c_count > 1)
 		error_exit("Invalid number of options");

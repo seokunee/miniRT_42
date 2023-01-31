@@ -23,6 +23,7 @@ void	init_rotate_1(t_info *rotate, t_info *info)
 	rotate->win.terminal.cam_on = info->win.terminal.cam_on;
 	rotate->win.terminal.light_on = info->win.terminal.light_on;
 	rotate->win.terminal.light_select = info->win.terminal.light_select;
+	rotate->win.terminal.curr_light = info->win.terminal.curr_light;
 	rotate->win.terminal.prompt = info->win.terminal.prompt;
 	rotate->amb.amb_light_ratio = info->amb.amb_light_ratio;
 	copy_vector_value(&(rotate->amb.colors), info->amb.colors);

@@ -22,12 +22,10 @@ void	init_window(t_window *win)
 	// win->height = 1400;
 	win->width /= 2;
 	win->height /= 2;
-	win->x_scale = 2.0 / win->width;
-	win->y_scale = 2.0 / win->height;
-	win->aspect_ratio = (double)win->width / (double)win->height;
 	win->mlx_win = mlx_new_window(win->mlx, win->width, win->height, TITLE);
 	win->terminal.prompt = false;
 	win->terminal.cam_on = false;
 	win->terminal.light_on = false;
 	win->terminal.light_select = false;
+	win->terminal.curr_light = 0;
 }
