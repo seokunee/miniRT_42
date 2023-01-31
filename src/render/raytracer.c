@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/31 16:18:04 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/01/31 16:56:10 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ static t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 	return (vec3(x_scale, y_scale, info->cam.length));
 }
 
-void	set_closest_hit_obj(t_hit *closest_hit, t_hit	hit)
+void	set_closest_hit_obj(t_hit *closest_hit, t_hit hit, t_obj **closest_obj, t_obj *obj)
 {
 	closest_hit->d = hit.d;
 	closest_hit->normal = hit.normal;
 	closest_hit->point = hit.point;
+	*closest_obj = obj;
 }
 
 void	get_closest_hit_obj(\
@@ -57,12 +58,12 @@ void	get_closest_hit_obj(\
 			hit = check_ray_collision_plane(ray, obj);
 		if (hit.d >= 0 && closest > hit.d)
 		{
-			set_closest_hit_obj(closest_hit, hit);
+			set_closest_hit_obj(closest_hit, hit, closest_obj, obj);
 			closest = hit.d;
-			closest_hit->d = hit.d;
-			closest_hit->normal = hit.normal;
-			closest_hit->point = hit.point;
-			*closest_obj = obj;
+			// closest_hit->d = hit.d;
+			// closest_hit->normal = hit.normal;
+			// closest_hit->point = hit.point;
+			// *closest_obj = obj;
 		}
 		objs = objs->next;
 	}
