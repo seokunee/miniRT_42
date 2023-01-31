@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:17:44 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/27 19:25:40 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:11:40 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "rt_math.h"
 
-/// @brief
+/// @brief 모니터 좌표 start와 dir로 향하는 방향을 갖는 구조체
 /// @param start start position of the ray
 /// @param dir direction of the ray
 /// @return

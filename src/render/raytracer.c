@@ -24,10 +24,12 @@
 */
 static t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 {
-	const double	x_scale = screen.x - (info->win.width / 2);
-	const double	y_scale = -(screen.y) + (info->win.height / 2);
+	const t_window	win = info->win;
+	const double	x = (screen.x * win.x_scale - 1.0) * win.aspect_ratio;
+	const double	y = -screen.y * win.y_scale + 1.0;
+	const double	z = (double)info->cam.fov / 180.0;
 
-	return (vec3(x_scale, y_scale, info->cam.length));
+	return (vec3(x, y, z));
 }
 
 void	get_closest_hit_obj(\
@@ -139,6 +141,7 @@ int	calculate_pixel_color(t_info *info, int x, int y)
 	t_vec3	pixel_pos_world;
 	t_vec3	ray_dir;
 	t_ray	pixel_ray;
+	// t_vec3	eye_pos;
 
 	pixel_pos_world = transform_screen_to_world(info, vec2(x, y));
 	// 카메라에서 모니터를 보는 각도를 갖는 광선
