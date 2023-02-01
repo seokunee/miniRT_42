@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:04:48 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/01 16:27:04 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:20:06 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	key_hook_camera(t_window *win)
 		printf("╚═══════════════════════════════════════════╝\n");
 		win->terminal.cam_on = true;
 		remote_controler("CAMERA");
+		rotation_controler();
 		printf("To exit the camera controler, PRESS the 1 key\n");
 	}
 	else
@@ -167,79 +168,170 @@ void	move_camera(int key, t_info *info)
 	start_drawing(info);
 }
 
+void	test(t_info *rotate, t_vec3 normal)
+{
+	const t_vec3	dir_z = vec3(normal.x, normal.y, normal.z);
+	const t_vec3	dir_y = v_cross(dir_z, vec3(0, 0, 1));
+	const t_vec3	dir_x = v_cross(dir_y, dir_z);
+	t_list			*rotate_list;
+	t_obj			*rotate_obj;
+
+	rotate_list = rotate->objs;
+	while (rotate_list)
+	{
+		rotate_obj = (t_obj *)(rotate_list->content);
+		copy_vector_value(&(rotate_obj->coor), vec3(\
+			v_element_sum(v_mul(dir_x, rotate_obj->coor)),
+			v_element_sum(v_mul(dir_y, rotate_obj->coor)),
+			v_element_sum(v_mul(dir_z, rotate_obj->coor))));
+		copy_vector_value(&(rotate_obj->normal), vec3(\
+			v_element_sum(v_mul(dir_x, rotate_obj->normal)),
+			v_element_sum(v_mul(dir_y, rotate_obj->normal)),
+			v_element_sum(v_mul(dir_z, rotate_obj->normal))));
+		rotate_list = rotate_list->next;
+	}
+}
+
 void	move_camera_rotation(int key, t_info *info)
 {
-	t_info	rotate_info;
-	t_list	*objs;
-	int		idx;
+	double radian;
+	double sin_theta;
+	double cos_theta;
+	t_vec3	dir_x;
+	t_vec3	dir_y;
+	t_vec3	dir_z;
 
-	// rotate(&rotate_info, info);
-	// idx = -1;
-	// objs = info->objs;
-	// while (++idx < 2)
-	// {
-	// 	printf("info.objs[%d] : [%f, %f, %f]\n", idx, ((t_obj *)(objs->content))->coor.x, ((t_obj *)(objs->content))->coor.y, ((t_obj *)(objs->content))->coor.z);
-	// 	objs = objs->next;
-	// }
-	// if (key == KEY_ARROW_DOWN)
-	// {
-	// 	// info->cam.normal.y -= 0.05;
-	// 	test(info, vunit(vec3(0, -0.05, 1)));
-	// 	// const t_vec3	dir_z = vec3(info->cam.normal.x, info->cam.normal.y, info->cam.normal.z);
-	// 	// const t_vec3	dir_y = v_cross(dir_z, vec3(0, 0, 1));
-	// 	// const t_vec3	dir_x = v_cross(dir_y, dir_z);
-	// }
-
-	// start_drawing(info);
-	idx = -1;
-	objs = info->objs;
-	while (++idx < 2)
+	if (key == KEY_ARROW_RIGHT)
 	{
-		printf("info.objs[%d] : [%f, %f, %f]\n", idx, ((t_obj *)(objs->content))->coor.x, ((t_obj *)(objs->content))->coor.y, ((t_obj *)(objs->content))->coor.z);
-		objs = objs->next;
+		radian = degrees_to_radians_double(15);
+		sin_theta = sin(radian);
+		cos_theta = cos(radian);
+		dir_x = vec3(cos_theta, 0, sin_theta);
+		dir_y = vec3(0, 1, 0);
+		dir_z = vec3(-sin_theta, 0, cos_theta);
+		t_list *objs = info->objs;
+		int idx = -1;
+		while (++idx < info->num_ele.objs_count)
+		{
+			copy_vector_value(&(((t_obj *)(objs->content))->coor),
+				vec3(v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->coor)), \
+					v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->coor)), \
+					v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->coor))));
+			copy_vector_value(&(((t_obj *)(objs->content))->normal),
+				vec3(v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)), \
+					v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)), \
+					v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
+			objs = objs->next;
+		}
+		t_l *light = info->lights;
+		idx = -1;
+		while (++idx < info->num_ele.l_count)
+		{
+			copy_vector_value(&(light->coor),
+				vec3(v_element_sum(v_mul(dir_x, light->coor)), \
+					v_element_sum(v_mul(dir_y, light->coor)), \
+					v_element_sum(v_mul(dir_z, light->coor))));
+			light = light->next;
+		}
 	}
-
-	if (key == KEY_ARROW_DOWN)
-		info->cam.normal.y -= 1;
-	else if (key == KEY_ARROW_UP)
-		info->cam.normal.y += 1;
 	else if (key == KEY_ARROW_LEFT)
-		info->cam.normal.x -= 1;
-	else if (key == KEY_ARROW_RIGHT)
-		info->cam.normal.x += 1;
-	printf("1\n");
-	copy_vector_value(&(info->cam.normal), vunit(info->cam.normal));
-	printf("2\n");
-
-	rotate(&rotate_info, info);
-	printf("3\n");
-
-	start_drawing(&rotate_info);
-	printf("4\n");
-
-	// printf("info->cam.coor = [%f, %f, %f]\n", info->cam.coor.x, info->cam.coor.y, info->cam.coor.z);
-	// copy_vector_value(&(info->cam.normal), vunit(info->cam.normal));
-	// printf("info->cam.normal = [%f, %f, %f]\n", info->cam.normal.x, info->cam.normal.y, info->cam.normal.z);
-	idx = -1;
-	objs = rotate_info.objs;
-	while (++idx < 2)
 	{
-		printf("info.objs[%d] : [%f, %f, %f]\n", idx, ((t_obj *)(objs->content))->coor.x, ((t_obj *)(objs->content))->coor.y, ((t_obj *)(objs->content))->coor.z);
-		objs = objs->next;
+		radian = degrees_to_radians_double(15);
+		sin_theta = sin(-radian);
+		cos_theta = cos(-radian);
+		dir_x = vec3(cos_theta, 0, sin_theta);
+		dir_y = vec3(0, 1, 0);
+		dir_z = vec3(-sin_theta, 0, cos_theta);
+		t_list *objs = info->objs;
+		int idx = -1;
+		while (++idx < info->num_ele.objs_count)
+		{
+			copy_vector_value(&(((t_obj *)(objs->content))->coor),
+				vec3(v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->coor)), \
+					v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->coor)), \
+					v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->coor))));
+			copy_vector_value(&(((t_obj *)(objs->content))->normal),
+				vec3(v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)), \
+					v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)), \
+					v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
+			objs = objs->next;
+		}
+		t_l *light = info->lights;
+		idx = -1;
+		while (++idx < info->num_ele.l_count)
+		{
+			copy_vector_value(&(light->coor),
+				vec3(v_element_sum(v_mul(dir_x, light->coor)), \
+					v_element_sum(v_mul(dir_y, light->coor)), \
+					v_element_sum(v_mul(dir_z, light->coor))));
+			light = light->next;
+		}
 	}
-	// rotate(&rotate_info, info);
-	// printf("info->cam.normal = [%f, %f, %f]\n", info->cam.coor.x, info->cam.coor.y, info->cam.coor.z);
-	// idx = -1;
-	// objs = rotate_info.objs;
-	// while (++idx < 2)
-	// {
-	// 	printf("rotate.objs[%d] : [%f, %f, %f]\n", idx, ((t_obj *)(objs->content))->coor.x, ((t_obj *)(objs->content))->coor.y, ((t_obj *)(objs->content))->coor.z);
-	// 	objs = objs->next;
-	// }
-	// printf("rotate_info.cam.normal = [%f, %f, %f]\n", rotate_info.cam.normal.x, rotate_info.cam.normal.y, rotate_info.cam.normal.z);
-	// copy_vector_value(&(info->cam).coor, rotate_info.cam.coor);
-	// info->cam.coor.x = rotate_info.cam.coor.x;
-	// info->cam.coor.y = rotate_info.cam.coor.y;
-	// info->cam.coor.z = rotate_info.cam.coor.z;
-	printf("3333\n");
+	else if (key == KEY_ARROW_UP)
+	{
+		radian = degrees_to_radians_double(15);
+		sin_theta = sin(-radian);
+		cos_theta = cos(-radian);
+		dir_x = vec3(1, 0, 0);
+		dir_y = vec3(0, cos_theta, -sin_theta);
+		dir_z = vec3(0, sin_theta, cos_theta);
+		t_list *objs = info->objs;
+		int idx = -1;
+		while (++idx < info->num_ele.objs_count)
+		{
+			copy_vector_value(&(((t_obj *)(objs->content))->coor),
+				vec3(v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->coor)), \
+					v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->coor)), \
+					v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->coor))));
+			copy_vector_value(&(((t_obj *)(objs->content))->normal),
+				vec3(v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)), \
+					v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)), \
+					v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
+			objs = objs->next;
+		}
+		t_l *light = info->lights;
+		idx = -1;
+		while (++idx < info->num_ele.l_count)
+		{
+			copy_vector_value(&(light->coor),
+				vec3(v_element_sum(v_mul(dir_x, light->coor)), \
+					v_element_sum(v_mul(dir_y, light->coor)), \
+					v_element_sum(v_mul(dir_z, light->coor))));
+			light = light->next;
+		}
+	}
+	else if (key == KEY_ARROW_DOWN)
+	{
+		radian = degrees_to_radians_double(15);
+		sin_theta = sin(radian);
+		cos_theta = cos(radian);
+		dir_x = vec3(1, 0, 0);
+		dir_y = vec3(0, cos_theta, -sin_theta);
+		dir_z = vec3(0, sin_theta, cos_theta);
+		t_list *objs = info->objs;
+		int idx = -1;
+		while (++idx < info->num_ele.objs_count)
+		{
+			copy_vector_value(&(((t_obj *)(objs->content))->coor),
+				vec3(v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->coor)), \
+					v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->coor)), \
+					v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->coor))));
+			copy_vector_value(&(((t_obj *)(objs->content))->normal),
+				vec3(v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)), \
+					v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)), \
+					v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
+			objs = objs->next;
+		}
+		t_l *light = info->lights;
+		idx = -1;
+		while (++idx < info->num_ele.l_count)
+		{
+			copy_vector_value(&(light->coor),
+				vec3(v_element_sum(v_mul(dir_x, light->coor)), \
+					v_element_sum(v_mul(dir_y, light->coor)), \
+					v_element_sum(v_mul(dir_z, light->coor))));
+			light = light->next;
+		}
+	}
+	start_drawing(info);
 }

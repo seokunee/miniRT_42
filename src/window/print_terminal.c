@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_terminal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:08:49 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/31 18:29:04 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:00:53 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	remote_controler(char *input)
 	const char	*orange = "\033[38;5;208m";
 
 	printf("%s╔═══════════════════════════════════════════╗\n", orange);
-	printf("║         %s remote controler         ║\n", input);
+	printf("║          %s remote controler          ║\n", input);
 	printf("╠═══════╦═══════════════════════════════════╣\n");
 	printf("║ PRESS ║              CONTROL              ║\n");
 	printf("╠═══════╬═══════════════════════════════════╣\n");
