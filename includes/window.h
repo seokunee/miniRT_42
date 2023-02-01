@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/01 15:10:19 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:13:43 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ void		binding_events(t_info *info);
 int			binding_key_events(int key, t_info *info);
 int			binding_mouse_events(int button, int x, int y, t_window *win);
 int			exit_event(t_window *win);
+int			get_offset(t_data *data, int x, int y);
 void		put_pixel(t_data *data, int x, int y, int color);
 int			get_color(t_vec3 vec);
+t_vec4		get_v_color(int color);
 t_color3	white_v3(void);
 t_color3	black_v3(void);
 void		terminal_prompt(void);
@@ -67,6 +69,8 @@ void		key_hook_obj(t_window *win, t_info *info);
 void		select_obj(int key, t_info *info);
 void		move_object_rotation(int key, t_info *info);
 void		print_turn_off(char *input);
-void	rotation_objs(t_info *rotate, t_c cam);
+void		rotation_objs(t_info *rotate, t_c cam);
+void		init_image(t_info *info, t_obj *obj, char *file);
+t_vec4		sample_point(t_texture *texture, const t_vec2 uv, int is_raw);
 
 #endif

@@ -36,14 +36,6 @@ int	get_color(t_vec3 vec)
 	return (create_trgb(0, color.x, color.y, color.z));
 }
 
-// int	get_color(t_vec4 vec)
-// {
-// 	t_vec4	color;
-
-// 	color = clamp_4d(vec, 0.0, 255.0);
-// 	return (create_trgb(color.x4, color.x1, color.x2, color.x3));
-// }
-
 t_color3	white_v3(void)
 {
 	return (vec3(255, 255, 255));
@@ -52,4 +44,14 @@ t_color3	white_v3(void)
 t_color3	black_v3(void)
 {
 	return (vec3(0, 0, 0));
+}
+
+t_vec4	get_v_color(int trgb)
+{
+	const int t = ((trgb >> 24) & 0xFF);
+	const int r = ((trgb >> 16) & 0xFF);
+	const int g = ((trgb >> 8) & 0xFF);
+	const int b = ((trgb) & 0xFF);
+
+	return (vec4(t, r, g, b));
 }

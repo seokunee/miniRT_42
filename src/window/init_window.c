@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "window.h"
+#include "structs.h"
 
 void	init_window(t_window *win)
 {

@@ -13,10 +13,11 @@
 #include "parse.h"
 #include "info.h"
 #include "rt_math.h"
+#include "window.h"
 
-void	set_cy(t_obj *obj, char **opt)
+void	set_cy(t_info *info, t_obj *obj, char **opt)
 {
-	if (sec_arr_len(opt) != 6)
+	if (sec_arr_len(opt) != 6 && sec_arr_len(opt) != 7)
 		error_exit("Wrong cylinder argument");
 	check_coordinates(obj, opt[1]);
 	obj->normal = get_arg_normal(opt[2]);
@@ -27,4 +28,6 @@ void	set_cy(t_obj *obj, char **opt)
 	obj->colors.x = get_arg_color(opt[5]).x;
 	obj->colors.y = get_arg_color(opt[5]).y;
 	obj->colors.z = get_arg_color(opt[5]).z;
+	if (sec_arr_len(opt) ==	7)
+		init_image(info, obj, opt[6]);
 }

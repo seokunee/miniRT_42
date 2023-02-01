@@ -12,7 +12,7 @@
 
 #include "window.h"
 
-static int	get_offset(t_data *data, int x, int y)
+int	get_offset(t_data *data, int x, int y)
 {
 	const int	line_length = data->line_length;
 	const int	bits_per_pixel = data->bits_per_pixel;

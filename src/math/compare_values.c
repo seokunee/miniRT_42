@@ -25,3 +25,17 @@ double	min_double(double f1, double f2)
 		return (f2);
 	return (f1);
 }
+
+int	max_int(int i1, int i2)
+{
+	if (i1 > i2)
+		return (i1);
+	return (i2);
+}
+
+int	min_int(int i1, int i2)
+{
+	if (i1 > i2)
+		return (i2);
+	return (i1);
+}

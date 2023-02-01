@@ -13,17 +13,17 @@
 #include "info.h"
 #include "parse.h"
 
-void	check_obj(t_obj *obj, char **opt, t_type type)
+static void	check_obj(t_info *info, t_obj *obj, char **opt, t_type type)
 {
 	obj->type = type;
 	if (type == PL)
-		set_pl(obj, opt);
+		set_pl(info, obj, opt);
 	if (type == SP)
-		set_sp(obj, opt);
+		set_sp(info, obj, opt);
 	if (type == CY)
-		set_cy(obj, opt);
+		set_cy(info, obj, opt);
 	if (type == CN)
-		set_cn(obj, opt);
+		set_cn(info, obj, opt);
 }
 
 void	get_obj(t_info *info, char **opt, t_type type)
@@ -36,5 +36,5 @@ void	get_obj(t_info *info, char **opt, t_type type)
 		error_exit("malloc error");
 	new = ft_lstnew(obj);
 	ft_lstadd_back(&(info->objs), new);
-	check_obj(obj, opt, type);
+	check_obj(info, obj, opt, type);
 }

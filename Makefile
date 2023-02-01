@@ -13,7 +13,7 @@
 NAME			= miniRT
 
 INC_DIR			= -Iincludes -I$(LIBFT_DIR)/include -I$(MLX_DIR)
-CFLAGS			=  $(INC_DIR) -g3 #-fsanitize=address -Wall -Wextra -Werror
+CFLAGS			=  $(INC_DIR) -g3 -fsanitize=address #-Wall -Wextra -Werror
 # CFLAGS			= -Wall -Wextra -Werror $(INC_DIR)
 LDFLAGS			= -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx
 # LDFLAGS			= -L$(LIBFT_DIR) -lft -L/usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
@@ -47,7 +47,7 @@ MAIN_SRC		= main
 MATH_SRC		= vector_dot_cross vector_op vector_op2 vector_op3 vector_op_2 absolute clamp compare_values normalize radian
 MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
-WINDOW_SRC		= color draw_image init_window key_hook mouse_hook window_hooks print_terminal move_camera move_light move_object
+WINDOW_SRC		= color draw_image draw_xpm init_window init_xpm key_hook mouse_hook window_hooks print_terminal move_camera move_light move_object
 RENDER_SRC		= raytracer hit ray check_ray_collision check_ray_collision_cylinder phong #render sphere
 ROTATE_SRC		= rotate
 
@@ -59,7 +59,6 @@ PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light 
 else
 THREAD_SRC		= init_thread_bonus
 PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2 check_option_count_bonus cone
-
 endif
 
 # NOTE : Add to SRC here

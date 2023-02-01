@@ -122,6 +122,30 @@ typedef struct s_l
 	struct s_l	*prev;
 }	t_l;
 
+typedef enum e_texture_type
+{
+	NONE,
+	CHECK,
+
+}	t_texture_type;
+
+typedef struct s_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
+
+typedef struct s_texture
+{
+	int		type;
+	int		width;
+	int		height;
+	t_data	data;
+}	t_texture;
+
 /*
 * PL : Plane
 * SP : Sphere
@@ -153,18 +177,10 @@ typedef struct s_obj
 	double			diameter;
 	double			cy_hei;
 	t_vec3			colors;
+	t_texture		texture;
 	struct s_obj	*next;
 	struct s_obj	*prev;
 }	t_obj;
-
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
 
 typedef struct s_terminal
 {

@@ -35,7 +35,7 @@ t_vec3	get_arg_coor(char *s);
 void	check_coordinates(t_obj *obj, char *str);
 
 // cylinder
-void	set_cy(t_obj *obj, char **opt);
+void	set_cy(t_info *info, t_obj *obj, char **opt);
 
 // diameter
 void	check_diameter(t_obj *obj, float dia);
@@ -48,7 +48,6 @@ void	ft_light_add(t_info *info, t_l *light);
 t_vec3	get_arg_normal(char *s);
 
 // objects
-void	check_obj(t_obj *obj, char **opt, t_type type);
 void	get_obj(t_info *info, char **opt, t_type type);
 
 // parse_rt_file
@@ -59,11 +58,11 @@ bool	read_file(t_info *info, int fd, t_num_ele *check_count);
 void	parse_rt_file(t_info *info, char *file_name);
 
 //plane
-void	set_pl(t_obj *obj, char **opt);
+void	set_pl(t_info *info, t_obj *obj, char **opt);
 //sphere
-void	set_sp(t_obj *obj, char **opt);
+void	set_sp(t_info *info, t_obj *obj, char **opt);
 //cone
-void	set_cn(t_obj *obj, char **opt);
+void	set_cn(t_info *info, t_obj *obj, char **opt);
 
 // utils
 int		sec_arr_len(char **arr);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/01 12:40:02 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:23:16 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		error_exit("Invalid number of arguments. Check it!");
-	parse_rt_file(&info, av[1]);
 	init_window(&info.win);
+	parse_rt_file(&info, av[1]);
 	camera_setting(&info);
 	rotate(&rotate_info, &info);
 	binding_events(&rotate_info);

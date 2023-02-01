@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:24 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/31 18:30:08 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:18:29 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <math.h>
 # include "structs.h"
 
+# define PI 3.1415926535897932385
 /*
 * '+', '*', '-' operator of vector
 */
@@ -46,8 +47,11 @@ double		v_element_sum(t_vec3 v);
 
 double		min_double(double f1, double f2);
 double		max_double(double f1, double f2);
-
 t_vec3		clamp_3d(t_vec3 v, double min_val, double max_val);
+
+int			min_int(int i1, int i2);
+int			max_int(int i1, int i2);
+int			clamp_int(int val, int min_val, int max_val);
 
 double		abs_double(double d);
 t_vec3		vscale(t_vec3 v, double s);
