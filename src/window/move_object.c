@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:19:20 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/01 12:35:32 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:27:02 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	select_obj_on_key_n(int key, t_info *info)
 
 void	select_obj(int key, t_info *info)
 {
-	t_info	rotate_info;
+	t_info		rotate_info;
 	t_window	*win;
 
 	win = &info->win;
