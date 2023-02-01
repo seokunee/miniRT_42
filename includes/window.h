@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/01 11:57:46 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/01 15:10:19 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void		key_hook_obj(t_window *win, t_info *info);
 void		select_obj(int key, t_info *info);
 void		move_object_rotation(int key, t_info *info);
 void		print_turn_off(char *input);
+void	rotation_objs(t_info *rotate, t_c cam);
 
 #endif
