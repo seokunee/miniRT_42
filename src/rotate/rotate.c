@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 14:52:33 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/31 18:17:36 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/01 12:42:58 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 #include "rt_math.h"
 #include "parse.h"
+#include "thread.h"
 
 void	init_rotate_1(t_info *rotate, t_info *info)
 {
@@ -43,10 +44,7 @@ void	init_rotate_1(t_info *rotate, t_info *info)
 	rotate->num_ele.a_count = info->num_ele.a_count;
 	rotate->num_ele.c_count = info->num_ele.c_count;
 	rotate->num_ele.l_count = info->num_ele.l_count;
-	rotate->num_ele.cy_count = info->num_ele.cy_count;
-	rotate->num_ele.sp_count = info->num_ele.sp_count;
-	rotate->num_ele.pl_count = info->num_ele.pl_count;
-	// rotate->num_ele.objs_count = info->num_ele.objs_count;
+	rotate->num_ele.objs_count = info->num_ele.objs_count;
 }
 
 void	init_rotate_light(t_info *rotate, t_info *info)
@@ -143,6 +141,19 @@ void	rotation_light(t_info *rotate, t_c cam)
 		v_element_sum(v_mul(dir_y, rotate_light->coor)), v_element_sum(v_mul(dir_z, rotate_light->coor))));
 		rotate_light = rotate_light->next;
 	}
+
+	// const t_vec3	dir_z1 = vec3(cam.normal.x, cam.normal.y, cam.normal.z);
+	// const t_vec3	dir_y1 = v_cross(dir_z1, vec3(0, 0, 1));
+	// const t_vec3	dir_x1 = v_cross(dir_y1, dir_z1);
+	// t_l				*rotate_light;
+
+	// rotate_light = rotate->lights;
+	// while (rotate_light)
+	// {
+	// 	copy_vector_value(&(rotate_light->coor), vec3(v_element_sum(v_mul(dir_x1, rotate_light->coor)),\
+	// 	v_element_sum(v_mul(dir_y1, rotate_light->coor)), v_element_sum(v_mul(dir_z1, rotate_light->coor))));
+	// 	rotate_light = rotate_light->next;
+	// }
 }
 
 void	rotation_objs(t_info *rotate, t_c cam)
@@ -192,4 +203,5 @@ void	rotate(t_info *rotate, t_info *info)
 		rotation_minus(rotate);
 	else if (info->cam.normal.z != 1)
 		rotation(rotate, info);
+	start_drawing(rotate);
 }

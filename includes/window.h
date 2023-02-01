@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/31 18:28:38 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/01 11:57:46 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void		terminal_prompt(void);
 void		remote_controler(char *input);
 void		move_coordinate(t_vec3 *coor, int key);
 void		key_hook_camera(t_window *win);
-int			move_camera(int key, t_info *info);
+void		move_camera(int key, t_info *info);
+void		move_camera_rotation(int key, t_info *info);
 void		key_hook_light(t_window *win, t_info *info);
 void		convert_color_light(t_l *light, int curr);
 void		convert_color_object(t_list *objs, int curr);
@@ -64,6 +65,7 @@ void		obj_selector(void);
 void		move_objs(int key, t_info *info);
 void		key_hook_obj(t_window *win, t_info *info);
 void		select_obj(int key, t_info *info);
+void		move_object_rotation(int key, t_info *info);
 void		print_turn_off(char *input);
 
 #endif

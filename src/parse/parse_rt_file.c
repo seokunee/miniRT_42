@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rt_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/30 15:36:45 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/02/01 12:08:13 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,4 @@ void	parse_rt_file(t_info *info, char *file_name)
 		if (!read_file(info, fd, &info->num_ele))
 			break ;
 	}
-	info->num_ele.objs_count = info->num_ele.cy_count + info->num_ele.pl_count + info->num_ele.sp_count;
 }

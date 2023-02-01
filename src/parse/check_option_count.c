@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_option_count.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:36:33 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/01/30 15:17:41 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/02/01 12:07:06 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	check_option_count(char *s, t_num_ele *check_count)
 	else if (ft_strncmp(s, "L", 2) == 0)
 		check_count->l_count++;
 	else if (ft_strncmp(s, "sp", 3) == 0)
-		check_count->sp_count++;
+		check_count->objs_count++;
 	else if (ft_strncmp(s, "pl", 3) == 0)
-		check_count->pl_count++;
+		check_count->objs_count++;
 	else if (ft_strncmp(s, "cy", 3) == 0)
-		check_count->cy_count++;
+		check_count->objs_count++;
 	if (check_count->a_count > 1 || check_count->c_count > 1)
 		error_exit("Invalid number of options");
 }

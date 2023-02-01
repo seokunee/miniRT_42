@@ -192,9 +192,6 @@ typedef struct s_num_ele
 	int	a_count;
 	int	c_count;
 	int	l_count;
-	int	cy_count;
-	int	sp_count;
-	int	pl_count;
 	int objs_count;
 }	t_num_ele;
 

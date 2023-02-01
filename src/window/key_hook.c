@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:27:30 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/31 18:27:31 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/01 12:34:17 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static void	binding_key_event_camera(int key, t_info *info)
 	else if (term->cam_on && (key == KEY_Q || key == KEY_W || \
 		key == KEY_A || key == KEY_S || key == KEY_Z || key == KEY_X))
 		move_camera(key, info);
+	else if (term->cam_on && (key >= KEY_ARROW_LEFT && key <= KEY_ARROW_UP))
+		move_camera_rotation(key, info);
 }
 
 static void	binding_key_event_light(int key, t_info *info)
@@ -78,6 +80,8 @@ static void	binding_key_event_objs(int key, t_info *info)
 	else if (term->obj_select && (key == KEY_Q || key == KEY_W || key == KEY_A \
 		|| key == KEY_S || key == KEY_Z || key == KEY_X || key == KEY_3))
 		move_objs(key, info);
+	else if (term->obj_select && (key >= KEY_ARROW_LEFT && key <= KEY_ARROW_UP))
+		move_object_rotation(key, info);
 }
 
 int	binding_key_events(int key, t_info *info)

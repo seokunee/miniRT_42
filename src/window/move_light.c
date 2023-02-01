@@ -27,7 +27,6 @@ void	select_light_on_key_b(int key, t_info *info)
 		convert_color_light(info->lights, info->win.terminal.curr_light + 1);
 		convert_color_light(info->lights, info->win.terminal.curr_light);
 		rotate(&rotate_info, info);
-		start_drawing(&rotate_info);
 	}
 }
 
@@ -41,14 +40,15 @@ void	select_light_on_key_n(int key, t_info *info)
 		convert_color_light(info->lights, info->win.terminal.curr_light - 1);
 		convert_color_light(info->lights, info->win.terminal.curr_light);
 		rotate(&rotate_info, info);
-		start_drawing(&rotate_info);
 	}
 }
 
 void	select_light(int key, t_info *info)
 {
 	t_info	rotate_info;
+	t_window	*win;
 
+	win = &info->win;
 	if (key == KEY_B)
 		select_light_on_key_b(key, info);
 	else if (key == KEY_N)
@@ -57,15 +57,13 @@ void	select_light(int key, t_info *info)
 	{
 		convert_color_light(info->lights, info->win.terminal.curr_light);
 		rotate(&rotate_info, info);
-		start_drawing(&rotate_info);
-		info->win.terminal.light_select = true;
+		win->terminal.light_select = true;
 		remote_controler("Light ");
 	}
 	else if (key == KEY_2)
 	{
 		convert_color_light(info->lights, info->win.terminal.curr_light);
 		rotate(&rotate_info, info);
-		start_drawing(&rotate_info);
 		info->win.terminal.light_select = false;
 		info->win.terminal.light_on = false;
 		terminal_prompt();
@@ -86,7 +84,6 @@ void	key_hook_light(t_window *win, t_info *info)
 		light_selector();
 		convert_color_light(light, win->terminal.curr_light);
 		rotate(&rotate_info, info);
-		start_drawing(&rotate_info);
 		convert_color_light(rotate_info.lights, win->terminal.curr_light);
 	}
 	else
@@ -121,5 +118,4 @@ void	move_light(int key, t_info *info)
 		terminal_prompt();
 	}
 	rotate(&rotate_info, info);
-	start_drawing(&rotate_info);
 }
