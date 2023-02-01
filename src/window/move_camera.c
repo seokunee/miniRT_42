@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:04:48 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/01 21:17:23 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:20:06 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	key_hook_camera(t_window *win)
 		printf("╚═══════════════════════════════════════════╝\n");
 		win->terminal.cam_on = true;
 		remote_controler("CAMERA");
+		rotation_controler();
 		printf("To exit the camera controler, PRESS the 1 key\n");
 	}
 	else
