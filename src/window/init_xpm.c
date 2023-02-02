@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:12:52 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/01 21:23:36 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:38:50 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_image(t_info *info, t_obj *obj, char *file)
 	int		img_height;
 	char	*file_path;
 
-	obj->texture.type = 0; // 만약 type을 쓴다면 바꿔주는 부분이 필요 지금은 일단 0으로 통일
+	obj->texture.type = 0;
 	file_path = ft_strjoin("./src/images/", file);
 	obj->texture.data.img = mlx_xpm_file_to_image(info->win.mlx, \
 	file_path, &img_width, &img_height);

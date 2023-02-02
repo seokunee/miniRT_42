@@ -6,7 +6,7 @@
 /*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:54:17 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/02 13:44:53 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/02 14:38:16 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 		hit.point = v_sum(ray.orig, v_mul_double(ray.normal, hit.d));
 		hit.normal = norm_3d_vec(v_minus(hit.point, sphere->coor));
 		// checker(sphere, hit);
-		get_texture_color(sphere, hit);
+		// get_texture_color(sphere, hit);
 	}
 	return (hit);
 }

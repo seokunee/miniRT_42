@@ -45,7 +45,7 @@ void	select_light_on_key_n(int key, t_info *info)
 
 void	select_light(int key, t_info *info)
 {
-	t_info	rotate_info;
+	t_info		rotate_info;
 	t_window	*win;
 
 	win = &info->win;

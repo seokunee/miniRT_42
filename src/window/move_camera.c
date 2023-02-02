@@ -6,7 +6,7 @@
 /*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:04:48 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/02 13:00:39 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/02 14:38:13 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 #include "rt_math.h"
 #include <stdio.h>
 
-static void	rotation_controler(void)
+void	rotation_controler(char *input)
 {
 	const char	*orange = "\033[38;5;208m";
 
 	printf("%s╔═══════════════════════════════════════════╗\n", orange);
-	printf("║         CAMERA rotation controler         ║\n");
+	printf("║         %s rotation controler         ║\n", input);
 	printf("╠═══════╦═══════════════════════════════════╣\n");
 	printf("║ PRESS ║              CONTROL              ║\n");
 	printf("╠═══════╬═══════════════════════════════════╣\n");
@@ -45,7 +45,7 @@ void	key_hook_camera(t_window *win)
 		printf("╚═══════════════════════════════════════════╝\n");
 		win->terminal.cam_on = true;
 		remote_controler("CAMERA");
-		rotation_controler();
+		rotation_controler("CAMERA");
 		printf("To exit the camera controler, PRESS the 1 key\n");
 	}
 	else

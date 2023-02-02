@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rt_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/01 12:08:13 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:55:05 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,10 @@ void	edit_info(t_info *info, char *s, t_num_ele *num_ele)
 		get_camera(info, options);
 	else if (ft_strncmp(options[0], "L", 2) == 0)
 		get_light(info, options);
-	else if (ft_strncmp(options[0], "pl", 3) == 0)
-		get_obj(info, options, PL);
-	else if (ft_strncmp(options[0], "sp", 3) == 0)
-		get_obj(info, options, SP);
-	else if (ft_strncmp(options[0], "cy", 3) == 0)
-		get_obj(info, options, CY);
-	else if (ft_strncmp(options[0], "cn", 3) == 0)
-		get_obj(info, options, CN);
+	else if (ft_strncmp(options[0], "pl", 3) == 0 || ft_strncmp(options[0], \
+		"sp", 3) == 0 || ft_strncmp(options[0], "cy", 3) == 0 || ft_strncmp(\
+		options[0], "cn", 3) == 0)
+		get_obj(info, options, options[0]);
 	else
 		error_exit("Wrong identifier");
 	free_double_array((void **)options);

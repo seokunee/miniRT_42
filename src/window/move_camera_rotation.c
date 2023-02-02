@@ -6,7 +6,7 @@
 /*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:57:37 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/02 13:05:31 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/02 14:38:50 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,39 +16,41 @@
 #include "thread.h"
 #include "rt_math.h"
 
-static void	move_cam_rotation_light(t_info *info, t_vec3 dx, t_vec3 dy, t_vec3 dz)
+static void	move_cam_rotation_light(\
+	t_info *info, t_vec3 dx, t_vec3 dy, t_vec3 dz)
 {
 	t_l		*light;
 	int		idx;
-	
+
 	light = info->lights;
 	idx = -1;
 	while (++idx < info->num_ele.l_count)
 	{
 		copy_vector_value(&(light->coor), vec3(\
-			v_element_sum(v_mul(dx, light->coor)),\
-			v_element_sum(v_mul(dy, light->coor)),\
+			v_element_sum(v_mul(dx, light->coor)), \
+			v_element_sum(v_mul(dy, light->coor)), \
 			v_element_sum(v_mul(dz, light->coor))));
 		light = light->next;
 	}
 }
 
-static void	move_cam_rotation_object(t_info *info, t_vec3 dx, t_vec3 dy, t_vec3 dz)
+static void	move_cam_rotation_object(\
+	t_info *info, t_vec3 dx, t_vec3 dy, t_vec3 dz)
 {
 	t_list	*objs;
 	int		idx;
-	
+
 	objs = info->objs;
 	idx = -1;
 	while (++idx < info->num_ele.objs_count)
 	{
 		copy_vector_value(&(((t_obj *)(objs->content))->coor), vec3(\
-			v_element_sum(v_mul(dx, ((t_obj *)(objs->content))->coor)),\
-			v_element_sum(v_mul(dy, ((t_obj *)(objs->content))->coor)),\
+			v_element_sum(v_mul(dx, ((t_obj *)(objs->content))->coor)), \
+			v_element_sum(v_mul(dy, ((t_obj *)(objs->content))->coor)), \
 			v_element_sum(v_mul(dz, ((t_obj *)(objs->content))->coor))));
 		copy_vector_value(&(((t_obj *)(objs->content))->normal), vec3(\
-			v_element_sum(v_mul(dx, ((t_obj *)(objs->content))->normal)),\
-			v_element_sum(v_mul(dy, ((t_obj *)(objs->content))->normal)),\
+			v_element_sum(v_mul(dx, ((t_obj *)(objs->content))->normal)), \
+			v_element_sum(v_mul(dy, ((t_obj *)(objs->content))->normal)), \
 			v_element_sum(v_mul(dz, ((t_obj *)(objs->content))->normal))));
 		objs = objs->next;
 	}

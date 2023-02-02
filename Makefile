@@ -47,9 +47,9 @@ MAIN_SRC		= main
 MATH_SRC		= vector_dot_cross vector_op vector_op2 vector_op3 vector_op_2 absolute clamp compare_values normalize radian
 MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
-WINDOW_SRC		= color draw_image draw_xpm init_window init_xpm key_hook mouse_hook window_hooks print_terminal move_camera move_camera_rotation move_light move_object
+WINDOW_SRC		= color draw_image draw_xpm init_window init_xpm key_hook mouse_hook window_hooks print_terminal move_camera move_camera_rotation move_light move_object move_object_rotation
 RENDER_SRC		= raytracer hit ray check_ray_collision check_ray_collision_cylinder phong #render sphere
-ROTATE_SRC		= rotate parallel_move
+ROTATE_SRC		= rotate parallel_move rotate_minus
 
 # BONUS SRC
 ifeq (,$(findstring bonus,$(MAKECMDGOALS)))

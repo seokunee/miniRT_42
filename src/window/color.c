@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:10:08 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/30 21:23:17 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:55:05 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ t_color3	black_v3(void)
 
 t_vec4	get_v_color(int trgb)
 {
-	const int t = ((trgb >> 24) & 0xFF);
-	const int r = ((trgb >> 16) & 0xFF);
-	const int g = ((trgb >> 8) & 0xFF);
-	const int b = ((trgb) & 0xFF);
+	const int	t = ((trgb >> 24) & 0xFF);
+	const int	r = ((trgb >> 16) & 0xFF);
+	const int	g = ((trgb >> 8) & 0xFF);
+	const int	b = ((trgb) & 0xFF);
 
 	return (vec4(t, r, g, b));
 }

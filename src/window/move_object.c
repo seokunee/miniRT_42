@@ -6,7 +6,7 @@
 /*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:19:20 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/02 13:16:37 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/02 14:38:50 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	select_obj(int key, t_info *info)
 		rotate(&rotate_info, info);
 		win->terminal.obj_select = true;
 		remote_controler("Object");
+		rotation_controler("OBJECT");
+		printf("To exit the object controler, PRESS the 3 key\n");
 	}
 	else if (key == KEY_2)
 	{
@@ -119,84 +121,4 @@ void	move_objs(int key, t_info *info)
 		terminal_prompt();
 	}
 	rotate(&rotate_info, info);
-}
-
-// void	move_object_rotation_xy(t_info *info, double radian, char flag)
-// {
-// 	t_list	*objs;
-// 	int		idx;
-
-// 	idx = -1;
-// 	objs = info->objs;
-// 	while (++idx < info->win.terminal.curr_obj)
-// 		objs = objs->next;
-// 	double	radian = degrees_to_radians_double(15);
-// 	t_vec3	dir_x = vec3(1, 0, 0);
-// 	t_vec3	dir_y = vec3(0, cos(radian), -sin(radian));
-// 	t_vec3	dir_z = vec3(0, sin(radian), cos(radian));
-
-// 	copy_vector_value(&(((t_obj *)(objs->content))->normal), vec3(\
-// 		v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)),\
-// 		v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)),\
-// 		v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
-// }
-
-void	move_object_rotation(int key, t_info *info)
-{
-	t_list	*objs;
-	int		idx;
-
-	idx = -1;
-	objs = info->objs;
-	while (++idx < info->win.terminal.curr_obj)
-		objs = objs->next;
-	if (key == KEY_ARROW_UP)
-	{
-		double	radian = degrees_to_radians_double(15);
-		t_vec3	dir_x = vec3(1, 0, 0);
-		t_vec3	dir_y = vec3(0, cos(radian), -sin(radian));
-		t_vec3	dir_z = vec3(0, sin(radian), cos(radian));
-
-		copy_vector_value(&(((t_obj *)(objs->content))->normal), vec3(\
-			v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)),\
-			v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)),\
-			v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
-	}
-	else if (key == KEY_ARROW_DOWN)
-	{
-		double	radian = -degrees_to_radians_double(15);
-		t_vec3	dir_x = vec3(1, 0, 0);
-		t_vec3	dir_y = vec3(0, cos(radian), -sin(radian));
-		t_vec3	dir_z = vec3(0, sin(radian), cos(radian));
-
-		copy_vector_value(&(((t_obj *)(objs->content))->normal), vec3(\
-			v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)),\
-			v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)),\
-			v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
-	}
-	else if (key == KEY_ARROW_LEFT)
-	{
-		double	radian = degrees_to_radians_double(15);
-		t_vec3	dir_x = vec3(cos(radian), 0, sin(radian));
-		t_vec3	dir_y = vec3(0, 1, 0);
-		t_vec3	dir_z = vec3(-sin(radian), 0, cos(radian));
-
-		copy_vector_value(&(((t_obj *)(objs->content))->normal), vec3(\
-			v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)),\
-			v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)),\
-			v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
-	}
-	else if (key == KEY_ARROW_RIGHT)
-	{
-		double	radian = -degrees_to_radians_double(15);
-		t_vec3	dir_x = vec3(cos(radian), 0, sin(radian));
-		t_vec3	dir_y = vec3(0, 1, 0);
-		t_vec3	dir_z = vec3(-sin(radian), 0, cos(radian));
-
-		copy_vector_value(&(((t_obj *)(objs->content))->normal), vec3(\
-			v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)),\
-			v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)),\
-			v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
-	}
-	start_drawing(info);
 }

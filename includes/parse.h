@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:50:10 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/30 14:31:04 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:48:08 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_light_add(t_info *info, t_l *light);
 t_vec3	get_arg_normal(char *s);
 
 // objects
-void	get_obj(t_info *info, char **opt, t_type type);
+void	get_obj(t_info *info, char **opt, char *t);
 
 // parse_rt_file
 void	check_file_name(char *file_name);
