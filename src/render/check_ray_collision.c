@@ -13,6 +13,7 @@
 #include "structs.h"
 #include "raytracer.h"
 #include "rt_math.h"
+#include "window.h"
 
 #define BLACK 0
 #define WHITE 1
@@ -79,9 +80,9 @@ void	get_texture_color(t_obj *sphere, t_hit hit)
 	t_vec3 d = v_change_minus(hit.normal);
 	double u = spherical_map_u(hit);
 	double v = spherical_map_v(hit);
-	sample_point(sphere->texture, vec2(u, v), false);
+	t_vec4 color4 = sample_point(&(sphere->texture), vec2(u, v), false);
 	t_vec3 color = uv_pattern_at(checkers, u, v);
-	sphere->colors = color;
+	sphere->colors = vec3(color4.x2, color4.x3, color4.x4);
 }
 
 /// @brief ray가 sphere의 어디에서 부딪히는지 계산한 hit 구조체를 반환한다.
@@ -104,7 +105,7 @@ t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 		hit.point = v_sum(ray.orig, v_mul_double(ray.normal, hit.d));
 		hit.normal = norm_3d_vec(v_minus(hit.point, sphere->coor));
 		// checker(sphere, hit);
-		get_texture_color(sphere, hit)
+		get_texture_color(sphere, hit);
 	}
 	return (hit);
 }

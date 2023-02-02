@@ -16,6 +16,11 @@
 # include "structs.h"
 
 void	init_info(t_info *info);
+
+//rotate
 void	rotate(t_info *rotate, t_info *info);
+
+//parallel_move
+void	init_parallel_movement(t_info *rotate, t_info *info);
 
 #endif

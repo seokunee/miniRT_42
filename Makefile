@@ -49,7 +49,7 @@ MEMORY_SRC		= free_raytracer free_vector
 ERROR_SRC		= error
 WINDOW_SRC		= color draw_image draw_xpm init_window init_xpm key_hook mouse_hook window_hooks print_terminal move_camera move_camera_rotation move_light move_object
 RENDER_SRC		= raytracer hit ray check_ray_collision check_ray_collision_cylinder phong #render sphere
-ROTATE_SRC		= rotate
+ROTATE_SRC		= rotate parallel_move
 
 # BONUS SRC
 ifeq (,$(findstring bonus,$(MAKECMDGOALS)))

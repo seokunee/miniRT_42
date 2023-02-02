@@ -80,6 +80,8 @@ static void	binding_key_event_objs(int key, t_info *info)
 	else if (term->obj_select && (key == KEY_Q || key == KEY_W || key == KEY_A \
 		|| key == KEY_S || key == KEY_Z || key == KEY_X || key == KEY_3))
 		move_objs(key, info);
+	else if (term->obj_select && (key >= KEY_ARROW_LEFT && key <= KEY_ARROW_UP))
+		move_object_rotation(key, info);
 }
 
 int	binding_key_events(int key, t_info *info)
