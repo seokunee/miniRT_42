@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/01 21:24:12 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/02 17:58:20 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ t_hit *closest_hit, t_ray ray, t_obj **closest_obj)
 	while (objs)
 	{
 		obj = (t_obj *)(objs->content);
-		// if (obj->texture.type != NONE)
-		// 	(void)obj;
 		if (obj->type == CY)
 			hit = check_ray_collision_cylinder(ray, obj);
 		else if (obj->type == SP)

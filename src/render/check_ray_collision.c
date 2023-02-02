@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:54:17 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/02 17:08:24 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/02 17:50:34 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,16 @@ void	checker(t_obj *sphere, t_hit hit)
 	sphere->colors = color;
 }
 
-void	get_texture_color(t_obj *sphere, t_hit hit)
+/// @brief object의 color를 texture color로 바꿀 수 있다..
+/// @param obj 바꾸고 싶은 object
+/// @param hit obj에 부딪힌 hit
+/// @return
+void	get_texture_color(t_obj *obj, t_hit hit)
 {
 	t_vec3 d = v_change_minus(hit.normal);
 	double u = spherical_map_u(hit);
 	double v = spherical_map_v(hit);
-	// t_vec4 color4 = sample_point(&(sphere->texture), vec2(u, v), false);
-	// sphere->colors = vec3(color4.x2, color4.x3, color4.x4);
-	// t_vec3 color4 = sample_linear(&(sphere->texture), vec2(u, v), false);
-	// sphere->colors = vec3(color4.x, color4.y, color4.z);
-	sphere->colors = get_texture_image_color(&sphere->texture, vec2(u, v));
+	obj->colors = get_texture_image_color(&obj->texture, vec2(u, v));
 }
 
 /// @brief ray가 sphere의 어디에서 부딪히는지 계산한 hit 구조체를 반환한다.
