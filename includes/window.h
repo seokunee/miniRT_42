@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/01 21:13:43 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:00:39 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void		terminal_prompt(void);
 void		remote_controler(char *input);
 void		move_coordinate(t_vec3 *coor, int key);
 void		key_hook_camera(t_window *win);
+
+// 
 void		move_camera(int key, t_info *info);
 void		move_camera_rotation(int key, t_info *info);
 void		key_hook_light(t_window *win, t_info *info);

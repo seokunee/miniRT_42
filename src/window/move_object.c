@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_object.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:19:20 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/01 16:27:04 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:16:37 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,30 +124,79 @@ void	move_objs(int key, t_info *info)
 void	move_object_rotation(int key, t_info *info)
 {
 	t_info	rotate_info;
-	t_list	*curr_objs;
+	t_list	*objs;
 	t_list	*rotate_objs;
 	int		idx;
 
 	idx = -1;
-	curr_objs = info->objs;
+	objs = info->objs;
 	while (++idx < info->win.terminal.curr_obj)
-		curr_objs = curr_objs->next;
-	printf("here1\n");
-	if (key == KEY_ARROW_DOWN)
-		((t_obj *)(curr_objs->content))->normal.y -= 0.05;
-	else if (key == KEY_ARROW_UP)
-		((t_obj *)(curr_objs->content))->normal.y += 0.05;
+		objs = objs->next;
+	if (key == KEY_ARROW_UP)
+	{
+		double	radian = degrees_to_radians_double(15);
+		t_vec3	dir_x = vec3(1, 0, 0);
+		t_vec3	dir_y = vec3(0, cos(radian), -sin(radian));
+		t_vec3	dir_z = vec3(0, sin(radian), cos(radian));
+
+		copy_vector_value(&(((t_obj *)(objs->content))->normal), vec3(\
+			v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)),\
+			v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)),\
+			v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
+	}
+	else if (key == KEY_ARROW_DOWN)
+	{
+		double	radian = -degrees_to_radians_double(15);
+		t_vec3	dir_x = vec3(1, 0, 0);
+		t_vec3	dir_y = vec3(0, cos(radian), -sin(radian));
+		t_vec3	dir_z = vec3(0, sin(radian), cos(radian));
+
+		copy_vector_value(&(((t_obj *)(objs->content))->normal), vec3(\
+			v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)),\
+			v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)),\
+			v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
+	}
 	else if (key == KEY_ARROW_LEFT)
-		((t_obj *)(curr_objs->content))->normal.x -= 0.05;
+	{
+		double	radian = degrees_to_radians_double(15);
+		t_vec3	dir_x = vec3(cos(radian), 0, sin(radian));
+		t_vec3	dir_y = vec3(0, 1, 0);
+		t_vec3	dir_z = vec3(-sin(radian), 0, cos(radian));
+
+		copy_vector_value(&(((t_obj *)(objs->content))->normal), vec3(\
+			v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)),\
+			v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)),\
+			v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
+	}
 	else if (key == KEY_ARROW_RIGHT)
-		((t_obj *)(curr_objs->content))->normal.x += 0.05;
-	printf("here2\n");
-	copy_vector_value(&(((t_obj *)(curr_objs->content))->normal), vunit(((t_obj *)(curr_objs->content))->normal));
-	rotate(&rotate_info, info);
-	idx = -1;
-	rotate_objs = rotate_info.objs;
-	while (++idx < info->win.terminal.curr_obj)
-		rotate_objs = rotate_objs->next;
-	printf("here3\n");
-	copy_vector_value(&(((t_obj *)(curr_objs->content))->normal), ((t_obj *)(rotate_objs->content))->normal);
+	{
+		double	radian = -degrees_to_radians_double(15);
+		t_vec3	dir_x = vec3(cos(radian), 0, sin(radian));
+		t_vec3	dir_y = vec3(0, 1, 0);
+		t_vec3	dir_z = vec3(-sin(radian), 0, cos(radian));
+
+		copy_vector_value(&(((t_obj *)(objs->content))->normal), vec3(\
+			v_element_sum(v_mul(dir_x, ((t_obj *)(objs->content))->normal)),\
+			v_element_sum(v_mul(dir_y, ((t_obj *)(objs->content))->normal)),\
+			v_element_sum(v_mul(dir_z, ((t_obj *)(objs->content))->normal))));
+	}
+	start_drawing(info);
+	// printf("here1\n");
+	// if (key == KEY_ARROW_DOWN)
+	// 	((t_obj *)(curr_objs->content))->normal.y -= 0.05;
+	// else if (key == KEY_ARROW_UP)
+	// 	((t_obj *)(curr_objs->content))->normal.y += 0.05;
+	// else if (key == KEY_ARROW_LEFT)
+	// 	((t_obj *)(curr_objs->content))->normal.x -= 0.05;
+	// else if (key == KEY_ARROW_RIGHT)
+	// 	((t_obj *)(curr_objs->content))->normal.x += 0.05;
+	// printf("here2\n");
+	// copy_vector_value(&(((t_obj *)(curr_objs->content))->normal), vunit(((t_obj *)(curr_objs->content))->normal));
+	// rotate(&rotate_info, info);
+	// idx = -1;
+	// rotate_objs = rotate_info.objs;
+	// while (++idx < info->win.terminal.curr_obj)
+	// 	rotate_objs = rotate_objs->next;
+	// printf("here3\n");
+	// copy_vector_value(&(((t_obj *)(curr_objs->content))->normal), ((t_obj *)(rotate_objs->content))->normal);
 }

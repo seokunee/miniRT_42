@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 14:52:33 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/02/01 20:59:12 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:00:41 by kko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,10 @@
 #include "parse.h"
 #include "thread.h"
 
-void	init_rotate_1(t_info *rotate, t_info *info)
+void	init_rotate_from_info_other(t_info *rotate, t_info *info)
 {
-	rotate->win.height = info->win.height;
-	rotate->win.width = info->win.width;
-	rotate->win.mlx = info->win.mlx;
-	rotate->win.mlx_win = info->win.mlx_win;
-	rotate->win.terminal.cam_on = info->win.terminal.cam_on;
-	rotate->win.terminal.light_on = info->win.terminal.light_on;
-	rotate->win.terminal.light_select = info->win.terminal.light_select;
-	rotate->win.terminal.curr_light = info->win.terminal.curr_light;
-	rotate->win.terminal.prompt = info->win.terminal.prompt;
-	rotate->amb.amb_light_ratio = info->amb.amb_light_ratio;
-
-	rotate->win.terminal.obj_on = info->win.terminal.obj_on;
-	rotate->win.terminal.obj_select = info->win.terminal.obj_select;
-	rotate->win.terminal.curr_obj = info->win.terminal.curr_obj;
-
 	copy_vector_value(&(rotate->amb.colors), info->amb.colors);
+	rotate->amb.amb_light_ratio = info->amb.amb_light_ratio;
 	rotate->cam.coor.x = 0.0;
 	rotate->cam.coor.y = 0.0;
 	rotate->cam.coor.z = 0.0;
@@ -47,17 +33,35 @@ void	init_rotate_1(t_info *rotate, t_info *info)
 	rotate->num_ele.objs_count = info->num_ele.objs_count;
 }
 
+void	init_rotate_from_info_win(t_info *rotate, t_info *info)
+{
+	rotate->win.height = info->win.height;
+	rotate->win.width = info->win.width;
+	rotate->win.mlx = info->win.mlx;
+	rotate->win.mlx_win = info->win.mlx_win;
+	rotate->win.terminal.cam_on = info->win.terminal.cam_on;
+	rotate->win.terminal.light_on = info->win.terminal.light_on;
+	rotate->win.terminal.light_select = info->win.terminal.light_select;
+	rotate->win.terminal.curr_light = info->win.terminal.curr_light;
+	rotate->win.terminal.prompt = info->win.terminal.prompt;
+	rotate->win.terminal.obj_on = info->win.terminal.obj_on;
+	rotate->win.terminal.obj_select = info->win.terminal.obj_select;
+	rotate->win.terminal.curr_obj = info->win.terminal.curr_obj;
+	init_rotate_from_info_other(rotatem, info);
+}
+
 void	init_rotate_light(t_info *rotate, t_info *info)
 {
 	t_l	*info_light;
-	t_l *tmp_light;
+	t_l	*tmp_light;
 
 	rotate->lights = 0;
 	info_light = info->lights;
 	while (info_light)
 	{
 		tmp_light = ft_malloc(sizeof(t_l));
-		copy_vector_value(&(tmp_light->coor), v_minus(info_light->coor, info->cam.coor));
+		copy_vector_value(&(tmp_light->coor), \
+		v_minus(info_light->coor, info->cam.coor));
 		copy_vector_value(&(tmp_light->colors), info_light->colors);
 		tmp_light->light_brightness_ratio = info_light->light_brightness_ratio;
 		ft_light_add(rotate, tmp_light);
@@ -95,20 +99,21 @@ void	init_rotate_objs(t_info *rotate, t_info *info)
 // info에서 rotate로 먼저 옮길만한 것들 옮겨주기 (값 복사)
 void	init_parallel_movement(t_info *rotate, t_info *info)
 {
-	init_rotate_1(rotate, info);
+	init_rotate_from_info(rotate, info);
 	init_rotate_light(rotate, info);
 	init_rotate_objs(rotate, info);
 }
 
 void	rotation_minus_light(t_info *rotate)
 {
-	t_l				*rotate_light;
+	t_l				*rota_light;
 
-	rotate_light = rotate->lights;
-	while (rotate_light)
+	rota_light = rotate->lights;
+	while (rota_light)
 	{
-		copy_vector_value(&(rotate_light->coor), vec3(rotate_light->coor.x, rotate_light->coor.y, -(rotate_light->coor.z)));
-		rotate_light = rotate_light->next;
+		copy_vector_value(&(rota_light->coor), \
+		vec3(rota_light->coor.x, rota_light->coor.y, -(rota_light->coor.z)));
+		rota_light = rota_light->next;
 	}
 }
 
@@ -121,8 +126,10 @@ void	rotation_minus_objs(t_info *rotate)
 	while (rotate_list)
 	{
 		rotate_obj = (t_obj *)(rotate_list->content);
-		copy_vector_value(&(rotate_obj->coor), vec3(rotate_obj->coor.x, rotate_obj->coor.y, -(rotate_obj->coor.z)));
-		copy_vector_value(&(rotate_obj->normal), vec3(rotate_obj->normal.x, rotate_obj->normal.y, -(rotate_obj->normal.z)));
+		copy_vector_value(&(rotate_obj->coor), \
+		vec3(rotate_obj->coor.x, rotate_obj->coor.y, -(rotate_obj->coor.z)));
+		copy_vector_value(&(rotate_obj->normal), vec3(rotate_obj->normal.x, \
+		rotate_obj->normal.y, -(rotate_obj->normal.z)));
 		rotate_list = rotate_list->next;
 	}
 }
@@ -130,37 +137,27 @@ void	rotation_minus_objs(t_info *rotate)
 void	rotation_light(t_info *rotate, t_c cam)
 {
 	const t_vec3	dir_z = vec3(cam.normal.x, cam.normal.y, cam.normal.z);
-	const t_vec3	dir_y = v_cross(dir_z, vec3(0, 0, 1));
-	const t_vec3	dir_x = v_cross(dir_y, dir_z);
+	const t_vec3	dir_x = v_cross(dir_z, vec3(0, 0, 1));
+	const t_vec3	dir_y = v_cross(dir_x, dir_z);
 	t_l				*rotate_light;
 
 	rotate_light = rotate->lights;
 	while (rotate_light)
 	{
-		copy_vector_value(&(rotate_light->coor), vec3(v_element_sum(v_mul(dir_x, rotate_light->coor)),\
-		v_element_sum(v_mul(dir_y, rotate_light->coor)), v_element_sum(v_mul(dir_z, rotate_light->coor))));
+		copy_vector_value(&(rotate_light->coor), vec3( \
+			v_element_sum(v_mul(dir_x, rotate_light->coor)),\
+			v_element_sum(v_mul(dir_y, rotate_light->coor)),\
+			v_element_sum(v_mul(dir_z, rotate_light->coor))));
 		rotate_light = rotate_light->next;
 	}
-
-	// const t_vec3	dir_z1 = vec3(cam.normal.x, cam.normal.y, cam.normal.z);
-	// const t_vec3	dir_y1 = v_cross(dir_z1, vec3(0, 0, 1));
-	// const t_vec3	dir_x1 = v_cross(dir_y1, dir_z1);
-	// t_l				*rotate_light;
-
-	// rotate_light = rotate->lights;
-	// while (rotate_light)
-	// {
-	// 	copy_vector_value(&(rotate_light->coor), vec3(v_element_sum(v_mul(dir_x1, rotate_light->coor)),\
-	// 	v_element_sum(v_mul(dir_y1, rotate_light->coor)), v_element_sum(v_mul(dir_z1, rotate_light->coor))));
-	// 	rotate_light = rotate_light->next;
-	// }
 }
 
 void	rotation_objs(t_info *rotate, t_c cam)
 {
 	const t_vec3	dir_z = vec3(cam.normal.x, cam.normal.y, cam.normal.z);
-	const t_vec3	dir_y = v_cross(dir_z, vec3(0, 0, 1));
-	const t_vec3	dir_x = v_cross(dir_y, dir_z);
+	const t_vec3	dir_x = v_cross(dir_z, vec3(0, 0, 1));
+	const t_vec3	dir_y = v_cross(dir_x, dir_z);
+
 	t_list			*rotate_list;
 	t_obj			*rotate_obj;
 
@@ -169,12 +166,12 @@ void	rotation_objs(t_info *rotate, t_c cam)
 	{
 		rotate_obj = (t_obj *)(rotate_list->content);
 		copy_vector_value(&(rotate_obj->coor), vec3(\
-			v_element_sum(v_mul(dir_x, rotate_obj->coor)),
-			v_element_sum(v_mul(dir_y, rotate_obj->coor)),
+			v_element_sum(v_mul(dir_x, rotate_obj->coor)), \
+			v_element_sum(v_mul(dir_y, rotate_obj->coor)), \
 			v_element_sum(v_mul(dir_z, rotate_obj->coor))));
 		copy_vector_value(&(rotate_obj->normal), vec3(\
-			v_element_sum(v_mul(dir_x, rotate_obj->normal)),
-			v_element_sum(v_mul(dir_y, rotate_obj->normal)),
+			v_element_sum(v_mul(dir_x, rotate_obj->normal)), \
+			v_element_sum(v_mul(dir_y, rotate_obj->normal)), \
 			v_element_sum(v_mul(dir_z, rotate_obj->normal))));
 		rotate_list = rotate_list->next;
 	}
