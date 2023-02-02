@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   parallel_move.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 14:52:33 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/02/02 13:00:41 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/02 15:12:57 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,14 @@ void	init_rotate_objs(t_info *rotate, t_info *info)
 		tmp_obj->cy_hei = obj->cy_hei;
 		ft_lstadd_back(&(rotate->objs), tmp_objs);
 		objs = objs->next;
+		tmp_obj->texture.type = obj->texture.type;
+		tmp_obj->texture.width = obj->texture.width;
+		tmp_obj->texture.height = obj->texture.height;
+		tmp_obj->texture.data.addr = obj->texture.data.addr;
+		tmp_obj->texture.data.bits_per_pixel = obj->texture.data.bits_per_pixel;
+		tmp_obj->texture.data.endian = obj->texture.data.endian;
+		tmp_obj->texture.data.img = obj->texture.data.img;
+		tmp_obj->texture.data.line_length = obj->texture.data.line_length;
 	}
 }
 

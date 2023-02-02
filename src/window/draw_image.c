@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:12:52 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/31 16:18:04 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/02/02 17:18:06 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
 
-int	get_offset(t_data *data, int x, int y)
+static int	get_offset(t_data *data, int x, int y)
 {
 	const int	line_length = data->line_length;
 	const int	bits_per_pixel = data->bits_per_pixel;
@@ -20,11 +20,16 @@ int	get_offset(t_data *data, int x, int y)
 	return (y * line_length + x * (bits_per_pixel / 8));
 }
 
+char	*get_pixel(t_data *data, int x, int y)
+{
+	return (data->addr + get_offset(data, x, y));
+}
+
 void	put_pixel(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + get_offset(data, x, y);
+	dst = get_pixel(data, x, y);
 	*(unsigned int *)dst = color;
 }
 

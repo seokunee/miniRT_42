@@ -93,13 +93,13 @@ static t_vec3	trace_ray(t_info *info, t_ray ray)
 			pow(info->amb.amb_light_ratio, 2)), 255);
 		ambient_color = v_mul(ambient_color, closest_obj->colors);
 		// TODO 체크보드
-		if (closest_obj->texture.type != NONE)
-		{
-			t_vec3 d = v_change_minus(closest_hit.normal);
-			t_vec2 uv = vec2(atan2(d.x, -d.z) / (2 * PI) + 0.5f, asin(d.y) / (PI) + 0.5f);
-			t_color4 color = sample_point(&closest_obj->texture, uv, false);
-			ambient_color = vec3(color.x2, color.x3, color.x4);
-		}
+		// if (closest_obj->texture.type != NONE)
+		// {
+		// 	t_vec3 d = v_change_minus(closest_hit.normal);
+		// 	t_vec2 uv = vec2(atan2(d.x, -d.z) / (2 * PI) + 0.5f, asin(d.y) / (PI) + 0.5f);
+		// 	t_color4 color = sample_point(&closest_obj->texture, uv, false);
+		// 	ambient_color = vec3(color.x2, color.x3, color.x4);
+		// }
 		return (vmin(v_sum(light_color, ambient_color), white_v3()));
 	}
 	return (black_v3());

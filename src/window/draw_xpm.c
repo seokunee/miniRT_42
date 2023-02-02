@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_window.c                                      :+:      :+:    :+:   */
+/*   draw_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:33:26 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/31 18:27:53 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/02 17:32:08 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,42 @@
 #include "structs.h"
 #include "rt_math.h"
 #include "window.h"
+#include <stdio.h>
 
 static t_vec4	get_image_pixel_color(t_texture *texture, int x, int y)
 {
-	int	color;
-
 	x = clamp_int(x, 0, texture->width - 1);
 	y = clamp_int(y, 0, texture->height - 1);
-	color = get_offset(&texture->data, x, y);
-	return get_v_color(color);
+	return get_v_color(*(int *)get_pixel(&texture->data, x, y));
 }
 
-static t_vec4 get_clamped(t_texture *texture, int x, int y)
+int	get_t(int trgb)
 {
-	t_vec4	point;
-
-	x = clamp_int(x, 0, texture->width - 1);
-	y = clamp_int(y, 0, texture->height - 1);
-	point = get_image_pixel_color(texture, x, y);
-	return (vec4(point.x1, point.x2 / 255.0, point.x3 / 255.0, point.x3 / 255.0));
+	return ((trgb >> 24) & 0xFF);
 }
 
-static t_vec4	get_clamped_raw(t_texture *texture, int x, int y)
+int	get_r(int trgb)
 {
-	t_vec4	point;
-
-	x = clamp_int(x, 0, texture->width - 1);
-	y = clamp_int(y, 0, texture->height - 1);
-	point = get_image_pixel_color(texture, x, y);
-	return (vec4(point.x1, point.x2, point.x3, point.x4));
+	return ((trgb >> 16) & 0xFF);
 }
 
-t_vec4 sample_point(t_texture *texture, const t_vec2 uv, int is_raw)
+int	get_g(int trgb)
 {
-	t_vec3	xy;
-	int		x;
-	int		y;
+	return ((trgb >> 8) & 0xFF);
+}
 
-	xy = vec3(uv.x * texture->width, uv.y * texture->height, 0.0);
-	xy = v_sum_double(xy, -0.5, -0.5, -0.5);
-	x = round(xy.x);
-	y = round(xy.y);
-	if (is_raw != true)
-		return (get_clamped(texture, x, y));
-	else
-		return (get_clamped_raw(texture, x, y));
+int	get_b(int trgb)
+{
+	return (trgb & 0xFF);
+}
+
+t_vec3	get_texture_image_color(t_texture *texture, const t_vec2 uv)
+{
+	const double v = 1 - uv.y;
+	const double x = uv.x * (texture->width - 1);
+	const double y = uv.y * (texture->height - 1);
+	t_vec4		color;
+
+	color = get_v_color(*(int *)get_pixel(&texture->data, round(x), round(y)));
+	return vec3(color.x2, color.x3, color.x4);
 }

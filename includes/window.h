@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/02 13:00:39 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/02 17:19:25 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		binding_events(t_info *info);
 int			binding_key_events(int key, t_info *info);
 int			binding_mouse_events(int button, int x, int y, t_window *win);
 int			exit_event(t_window *win);
-int			get_offset(t_data *data, int x, int y);
+char		*get_pixel(t_data *data, int x, int y);
 void		put_pixel(t_data *data, int x, int y, int color);
 int			get_color(t_vec3 vec);
 t_vec4		get_v_color(int color);
@@ -56,7 +56,7 @@ void		remote_controler(char *input);
 void		move_coordinate(t_vec3 *coor, int key);
 void		key_hook_camera(t_window *win);
 
-// 
+//
 void		move_camera(int key, t_info *info);
 void		move_camera_rotation(int key, t_info *info);
 void		key_hook_light(t_window *win, t_info *info);
@@ -74,5 +74,7 @@ void		print_turn_off(char *input);
 void		rotation_objs(t_info *rotate, t_c cam);
 void		init_image(t_info *info, t_obj *obj, char *file);
 t_vec4		sample_point(t_texture *texture, const t_vec2 uv, int is_raw);
+t_vec3		sample_linear(t_texture *texture, const t_vec2 uv, int is_raw);
+t_vec3		get_texture_image_color(t_texture *texture, const t_vec2 uv);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ray_collision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:54:17 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/02 13:44:53 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/02 17:08:24 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_vec3	uv_pattern_at(t_vec4 checkers, double u, double v) // 체커보드용
 		return (vec3(255, 255, 255));
 }
 
-t_vec3	uv_pattern_at_texture(t_vec4 checkers, double u, double v) // 체커보드용
+t_vec3	uv_pattern_at_texture(t_vec4 checkers, double u, double v) // 맵핑용
 {
 	const double	u2 = floor(u * checkers.x1);
 	const double	v2 = floor(v * checkers.x1);
@@ -76,13 +76,14 @@ void	checker(t_obj *sphere, t_hit hit)
 
 void	get_texture_color(t_obj *sphere, t_hit hit)
 {
-	t_vec4 checkers = vec4(8, 2, BLACK, WHITE);
 	t_vec3 d = v_change_minus(hit.normal);
 	double u = spherical_map_u(hit);
 	double v = spherical_map_v(hit);
-	t_vec4 color4 = sample_point(&(sphere->texture), vec2(u, v), false);
-	t_vec3 color = uv_pattern_at(checkers, u, v);
-	sphere->colors = vec3(color4.x2, color4.x3, color4.x4);
+	// t_vec4 color4 = sample_point(&(sphere->texture), vec2(u, v), false);
+	// sphere->colors = vec3(color4.x2, color4.x3, color4.x4);
+	// t_vec3 color4 = sample_linear(&(sphere->texture), vec2(u, v), false);
+	// sphere->colors = vec3(color4.x, color4.y, color4.z);
+	sphere->colors = get_texture_image_color(&sphere->texture, vec2(u, v));
 }
 
 /// @brief ray가 sphere의 어디에서 부딪히는지 계산한 hit 구조체를 반환한다.
