@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/31 18:43:59 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/02 18:55:01 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 bool	in_shadow(t_list *objs, t_ray light_ray)
 {
-	t_hit			closest_hit;
-	t_obj			*closest_obj;
+	t_hit	closest_hit;
+	t_obj	*closest_obj;
 
 	get_closest_hit_obj(objs, &closest_hit, light_ray, &closest_obj);
 	if (closest_hit.d >= 0.0)

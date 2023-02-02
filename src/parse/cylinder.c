@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/28 12:50:02 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/02 20:25:18 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	set_cy(t_info *info, t_obj *obj, char **opt)
 	obj->colors.y = get_arg_color(opt[5]).y;
 	obj->colors.z = get_arg_color(opt[5]).z;
 	if (sec_arr_len(opt) ==	7)
-		init_image(info, obj, opt[6]);
+		init_image(&info->win, &obj->texture, opt[6], DIFFUSE);
 }

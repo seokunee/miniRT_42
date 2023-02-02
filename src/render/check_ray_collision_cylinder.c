@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ray_collision_cylinder.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:16:53 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/28 18:45:07 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:54:56 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static bool	valid_cy_hit(t_cy_settings *set, t_obj *cy, t_ray ray)
 	set->o = cy->normal;
 	set->r = cy->diameter / 2;
 	set->delta_p = v_minus(ray.orig, cy->coor); // 원기둥 중심에서 ray 시작점으로 향하는 벡터
-	set->a = pow(v_len(v_cross(set->u, set->o)), 2); //
+	set->a = pow(v_len(v_cross(set->u, set->o)), 2);
 	set->half_b = v_dot(v_cross(set->u, set->o), v_cross(set->delta_p, set->o));
 	set->c = pow(v_len(v_cross(set->delta_p, set->o)), 2) - pow(set->r, 2);
 	set->discriminant = set->half_b * set->half_b - set->a * set->c;

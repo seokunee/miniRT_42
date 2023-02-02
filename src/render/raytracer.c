@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/02 17:58:20 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:57:16 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_hit *closest_hit, t_ray ray, t_obj **closest_obj)
 	closest_hit->d = -1;
 	while (objs)
 	{
-		obj = (t_obj *)(objs->content);
+		obj = (t_obj *)objs->content;
 		if (obj->type == CY)
 			hit = check_ray_collision_cylinder(ray, obj);
 		else if (obj->type == SP)
@@ -90,14 +90,6 @@ static t_vec3	trace_ray(t_info *info, t_ray ray)
 		ambient_color = v_divide(v_mul_double(info->amb.colors, \
 			pow(info->amb.amb_light_ratio, 2)), 255);
 		ambient_color = v_mul(ambient_color, closest_obj->colors);
-		// TODO 체크보드
-		// if (closest_obj->texture.type != NONE)
-		// {
-		// 	t_vec3 d = v_change_minus(closest_hit.normal);
-		// 	t_vec2 uv = vec2(atan2(d.x, -d.z) / (2 * PI) + 0.5f, asin(d.y) / (PI) + 0.5f);
-		// 	t_color4 color = sample_point(&closest_obj->texture, uv, false);
-		// 	ambient_color = vec3(color.x2, color.x3, color.x4);
-		// }
 		return (vmin(v_sum(light_color, ambient_color), white_v3()));
 	}
 	return (black_v3());

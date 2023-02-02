@@ -10,12 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "structs.h"
 #include "info.h"
 #include "parse.h"
 
-static void	check_obj(t_info *info, t_obj *obj, char **opt, t_type type)
+static void	check_obj(t_info *info, t_obj *obj, char **opt)
 {
-	obj->type = type;
+	const t_type type = obj->type;
+
 	if (type == PL)
 		set_pl(info, obj, opt);
 	if (type == SP)
@@ -32,7 +34,8 @@ void	get_obj(t_info *info, char **opt, t_type type)
 	t_list	*new;
 
 	obj = ft_malloc(sizeof(t_obj));
+	obj->type = type;
+	check_obj(info, obj, opt);
 	new = ft_lstnew(obj);
 	ft_lstadd_back(&(info->objs), new);
-	check_obj(info, obj, opt, type);
 }
