@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:54:17 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/02 14:38:49 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:44:25 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,8 @@ void	check_ray_collision_cone_side(t_ray ray, t_obj *cone, t_hit *hit)
 
 	if (v_len(v_minus(cone->coor, v_sum(ray.orig, v_mul_double(ray.normal, min_double((-b - sqrt(det)), (-b + sqrt(det))) / (2 * a))))) > cone->cy_hei)
 		return ;
-	if (det >= 0)
+	double	tmp = v_len(v_minus(H, v_sum(ray.orig, v_mul_double(ray.normal,  min_double((-b - sqrt(det)), (-b + sqrt(det))) / (2 * a)))));
+	if (det >= 0 && sqrt(pow(cone->diameter / 2, 2) + pow(v_len(h), 2)) >= tmp)
 	{
 		hit->d = min_double((-b - sqrt(det)), (-b + sqrt(det))) / (2 * a);
 		hit->point = v_sum(ray.orig, v_mul_double(ray.normal, hit->d));
