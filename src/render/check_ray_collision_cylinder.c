@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:16:53 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/28 18:45:07 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/03 13:58:20 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ void	hit_cylinder_cap(t_ray ray, t_obj *cy, t_hit *hit, double hei)
 		return ;
 	if (root < 0.001 || root > 1000) // 빛이 영향은 무한대가 아니므로 영향 거리를 정해줌.
 		return ;
-	hit->point = ray_at(ray, root);
+	if (hit->d != -1.0 && hit->d <= root)
+		return ;
 	hit->d = root;
+	hit->point = ray_at(ray, root);
 	if (0 < hei)
 		hit->normal = cy->normal; // 위 cap 인경우
 	else
@@ -78,6 +80,8 @@ static void	hit_cylinder_side(t_ray ray, t_obj *cy, t_hit *hit)
 
 	if (valid_cy_hit(&cy_set, cy, ray) == false)
 		return ;
+	if (hit->d != -1.0 && hit->d <= cy_set.root)
+		return ;
 	hit->d = cy_set.root;
 	hit->point = ray_at(ray, cy_set.root);
 	hit->normal = vunit(v_minus(hit->point, v_sum(cy->coor, v_mul_double(cy->normal, cy_set.hit_height))));
@@ -89,7 +93,7 @@ t_hit	check_ray_collision_cylinder(t_ray ray, t_obj *cylinder)
 {
 	t_hit	hit;
 
-	hit = get_hit(-1.0, vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0)); // hit 초기화
+	hit = get_hit(-1.0, vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0));
 	hit_cylinder_cap(ray, cylinder, &hit, cylinder->cy_hei / 2);
 	hit_cylinder_cap(ray, cylinder, &hit, -(cylinder->cy_hei / 2));
 	hit_cylinder_side(ray, cylinder, &hit);
