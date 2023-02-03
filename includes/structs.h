@@ -77,6 +77,32 @@ typedef struct s_cy_settings
 	double			hit_height;
 }	t_cy_settings;
 
+
+/// @brief 원뿔 렌더링에 필요한 요소들의 구조체
+/// @param H 원뿔의 정점 좌표
+/// @param h 원뿔의 방향벡터
+/// @param uh 원뿔의 방향벡터의 유닛벡터
+/// @param w ray의 점과 원뿔의 정점간의 방향벡터
+/// @param m 원뿔의 비율 (반지름^2 / 높이^2)
+/// @param a 근의 공식의 해를 구하기 위한 요소
+/// @param b 근의 공식의 해를 구하기 위한 요소
+/// @param c 근의 공식의 해를 구하기 위한 요소
+/// @param d 근의 공식의 해
+/// @param s 원뿔의 빗면 길이
+typedef struct s_cone_setting
+{
+	t_vec3	H;
+	t_vec3	h;
+	t_vec3	uh;
+	t_vec3	w;
+	double	m;
+	double	a;
+	double	b;
+	double	c;
+	double	d;
+	double	s;
+}	t_cone_setting;
+
 /*
 * Ambient lightning:
 * identifier: A
