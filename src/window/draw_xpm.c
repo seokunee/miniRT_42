@@ -46,6 +46,9 @@ t_vec3	sample_normal_map(t_texture *texture_normal, const t_vec2 uv, t_hit *hit,
 	derivative.x = rgb.x / 255.0 * 2.0 - 1.0;
 	derivative.y = rgb.y / 255.0 * 2.0 - 1.0;
 	derivative.z = rgb.z / 255.0 * 2.0 - 1.0;
+	// r_tangent_result = v_mul_double(tangent, derivative.x);
+	// g_bitangent_result = v_mul_double(v_cross(hit->normal, tangent), derivative.y);
+	// b_normal_result = v_mul_double(hit->normal, derivative.z);
 	r_tangent_result = v_mul_double(tangent, derivative.x);
 	g_bitangent_result = v_mul_double(v_cross(hit->normal, tangent), derivative.y);
 	b_normal_result = v_mul_double(hit->normal, derivative.z);

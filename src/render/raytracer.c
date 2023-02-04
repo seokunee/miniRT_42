@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/02 18:57:16 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/04 18:06:34 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,25 @@ void	set_closest_hit_obj(t_hit *closest_hit, \
 t_hit hit, t_obj **closest_obj, t_obj *obj)
 {
 	closest_hit->d = hit.d;
-	closest_hit->normal = hit.normal;
-	closest_hit->point = hit.point;
+	copy_vector_value(&closest_hit->normal, hit.normal);
+	copy_vector_value(&closest_hit->point, hit.point);
+
+	// closest_hit->normal = hit.normal;
+	// closest_hit->point = hit.point;
 	*closest_obj = obj;
 }
+
+void copy_hit_value(t_hit *dst, t_hit src)
+{
+	dst->d = src.d;
+	dst->normal.x = src.normal.x;
+	dst->normal.y = src.normal.y;
+	dst->normal.z = src.normal.z;
+	dst->point.x = src.point.x;
+	dst->point.y = src.point.y;
+	dst->point.z = src.point.z;
+}
+
 
 void	get_closest_hit_obj(t_list *objs, \
 t_hit *closest_hit, t_ray ray, t_obj **closest_obj)
@@ -54,7 +69,7 @@ t_hit *closest_hit, t_ray ray, t_obj **closest_obj)
 		if (obj->type == CY)
 			hit = check_ray_collision_cylinder(ray, obj);
 		else if (obj->type == SP)
-			hit = check_ray_collision_sphere(ray, obj);
+			copy_hit_value(&hit, check_ray_collision_sphere(ray, obj));
 		else if (obj->type == PL)
 			hit = check_ray_collision_plane(ray, obj);
 		else if (obj->type == CN)
@@ -90,6 +105,21 @@ static t_vec3	trace_ray(t_info *info, t_ray ray)
 		ambient_color = v_divide(v_mul_double(info->amb.colors, \
 			pow(info->amb.amb_light_ratio, 2)), 255);
 		ambient_color = v_mul(ambient_color, closest_obj->colors);
+
+		// t_vec3			b_normal_result;
+		// t_vec3			g_bitangent_result;
+		// t_vec3			r_tangent_result;
+		// t_vec3			derivative;
+		// t_vec3			result;
+		// // tamgent = v_cross(ray.normal, hit->normal)
+
+
+		// r_tangent_result = v_mul_double(v_cross(ray.normal, closest_hit.normal), derivative.x);
+		// g_bitangent_result = v_mul_double(v_cross(closest_hit.normal, v_cross(ray.normal, closest_hit.normal)), derivative.y);
+		// b_normal_result = v_mul_double(closest_hit.normal, derivative.z);
+		// result = v_sum(b_normal_result, g_bitangent_result);
+		// result = v_sum(result, r_tangent_result);
+
 		return (vmin(v_sum(light_color, ambient_color), white_v3()));
 	}
 	return (black_v3());

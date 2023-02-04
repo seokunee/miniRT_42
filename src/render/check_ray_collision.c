@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ray_collision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:54:17 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/02 19:44:29 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/04 17:18:08:07 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@ void	checker(t_obj *sphere, t_hit hit)
 /// @param obj 바꾸고 싶은 object
 /// @param hit obj에 부딪힌 hit
 /// @return
-void	get_texture_color(t_obj *obj, t_ray ray, t_hit hit)
+void	get_texture_color(t_obj *obj, t_ray ray, t_hit *hit)
 {
-	t_vec3 d = v_change_minus(hit.normal);
-	double u = spherical_map_u(hit);
-	double v = spherical_map_v(hit);
+	t_vec3 d = v_change_minus(hit->normal);
+	double u = spherical_map_u(*hit);
+	double v = spherical_map_v(*hit);
 	obj->colors = get_texture_image_color(&obj->texture, vec2(u, v));
 	if (obj->texture_nomal.type == NORMAL)
-		hit.normal = sample_normal_map(&obj->texture_nomal, vec2(u, v), &hit, v_cross(ray.normal, hit.normal));
+		copy_vector_value(&hit->normal, sample_normal_map(&obj->texture_nomal, vec2(u, v), hit, v_cross(ray.normal, hit->normal)));
 }
 
 /// @brief ray가 sphere의 어디에서 부딪히는지 계산한 hit 구조체를 반환한다.
@@ -98,7 +98,7 @@ t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 		if (sphere->texture.type == CHECK)
 			checker(sphere, hit);
 		else if (sphere->texture.type == DIFFUSE)
-			get_texture_color(sphere, ray, hit);
+			get_texture_color(sphere, ray, &hit);
 	}
 	return (hit);
 }
