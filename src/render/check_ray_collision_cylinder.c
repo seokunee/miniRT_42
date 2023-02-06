@@ -6,7 +6,7 @@
 /*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:16:53 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/03 16:29:11 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/03 13:58:20 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,23 @@ void	hit_cylinder_cap(t_ray ray, t_obj *cy, t_hit *hit, double hei)
 	double	root;
 
 	r = cy->diameter / 2;
-	circle_center = v_sum(cy->coor, v_mul_double(cy->normal, hei));
+	circle_center = v_sum(cy->coor, v_mul_double(cy->normal, hei)); // 실린더 좌표에서 nor 방향으로 hei만큼 이동하면 실린더의 끝 원 중심이 된다.
 	root = v_dot(v_minus(circle_center, ray.orig), cy->normal) / \
-		v_dot(ray.normal, cy->normal);
-	if (fabs(r) < fabs(v_len(v_minus(circle_center, ray_at(ray, root)))))
+		v_dot(ray.normal, cy->normal); // ray에서 cap까지의 거리
+	if (fabs(r) < fabs(v_len(v_minus(circle_center, ray_at(ray, root))))) // 반지름 안에 있는지 확인
 		return ;
-	if (root < 0.001 || root > 1000 || (hit->d != -1.0 && hit->d <= root))
+	if (root < 0.001 || root > 1000) // 빛이 영향은 무한대가 아니므로 영향 거리를 정해줌.
+		return ;
+	if (hit->d != -1.0 && hit->d <= root)
 		return ;
 	hit->d = root;
 	hit->point = ray_at(ray, root);
 	if (0 < hei)
-		hit->normal = cy->normal;
+		hit->normal = cy->normal; // 위 cap 인경우
 	else
-		hit->normal = v_mul_double(cy->normal, -1);
+		hit->normal = v_mul_double(cy->normal, -1); // 아래 cap인 경우
 	if (v_dot(ray.normal, hit->normal) >= 0)
-		hit->normal = v_mul_double(hit->normal, -1);
+		hit->normal = v_mul_double(hit->normal, -1); // 아래
 }
 
 static bool	cy_boundary(t_obj *cy, t_vec3 at_point, t_cy_settings *set)
