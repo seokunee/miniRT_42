@@ -14,10 +14,9 @@
 #include "info.h"
 #include "parse.h"
 
-static void	check_obj(t_info *info, t_obj *obj, char **opt)
+static void	check_obj(t_info *info, t_obj *obj, char **opt, t_type type)
 {
-	const t_type type = obj->type;
-
+	obj->type = type;
 	if (type == PL)
 		set_pl(info, obj, opt);
 	if (type == SP)
@@ -34,9 +33,18 @@ void	get_obj(t_info *info, char **opt, char *t)
 	t_list	*new;
 	t_type	type;
 
-	obj = ft_malloc(sizeof(t_obj));
-	obj->type = type;
-	check_obj(info, obj, opt);
+	if (ft_strncmp(t, "pl", 3) == 0)
+		type = PL;
+	else if (ft_strncmp(t, "sp", 3) == 0)
+		type = SP;
+	else if (ft_strncmp(t, "cy", 3) == 0)
+		type = CY;
+	else if (ft_strncmp(t, "cn", 3) == 0)
+		type = CN;
+	obj = malloc(sizeof(t_obj));
+	if (!obj)
+		error_exit("malloc error");
 	new = ft_lstnew(obj);
 	ft_lstadd_back(&(info->objs), new);
+	check_obj(info, obj, opt, type);
 }
