@@ -66,12 +66,16 @@ void	checker(t_obj *sphere, t_hit hit)
 /// @param obj 바꾸고 싶은 object
 /// @param hit obj에 부딪힌 hit
 /// @return
+
 void	get_texture_color(t_obj *obj, t_ray ray, t_hit *hit)
 {
 	t_vec3 d = v_change_minus(hit->normal);
 	double u = spherical_map_u(*hit);
 	double v = spherical_map_v(*hit);
+	// printf("be obj->colors %f %f %f \n", obj->colors.x, obj->colors.y, obj->colors.z);
 	obj->colors = get_texture_image_color(&obj->texture, vec2(u, v));
+	// printf("af obj->colors %f %f %f \n", obj->colors.x, obj->colors.y, obj->colors.z);
+
 	if (obj->texture_nomal.type == NORMAL)
 		copy_vector_value(&hit->normal, sample_normal_map(&obj->texture_nomal, vec2(u, v), hit, v_cross(ray.normal, hit->normal)));
 }

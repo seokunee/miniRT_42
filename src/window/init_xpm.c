@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:12:52 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/02 20:29:08 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/06 15:08:26 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	init_image(t_window *win, t_texture *texture, char *file, t_texture_type ty
 		texture->type = DIFFUSE;
 	else if (type == NORMAL)
 		texture->type = NORMAL;
-	file_path = ft_strjoin("./src/images/", file);
+	// file_path = ft_strjoin("./src/images/", file);
+	file_path = ft_strjoin("/Users/sunhwang/inner-circle/miniRT/src/images/", file);
 	data = &texture->data;
 	data->img = mlx_xpm_file_to_image(win->mlx, file_path, &texture->width, &texture->height);
 	if (!data->img)

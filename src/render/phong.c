@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/02 18:55:01 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/06 18:33:11 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ t_hit *hit, t_l *light, t_obj *closest_obj)
 	light_ray = get_ray(\
 		v_sum(hit->point, v_mul_double(hit->normal, 0.001)), light_dir);
 	if (in_shadow(info->objs, light_ray))
-		return (black_v3());
+		return (black_v3()); // TODO 빛이 안가면 무조건 검은색
 	kd = fmax(v_dot(hit->normal, light_dir), 0.0);
 	diffuse = v_divide(light->colors, 255.0);
 	diffuse = v_mul_double(diffuse, light->light_brightness_ratio);
 	diffuse = v_mul_double(diffuse, kd);
+	// printf("closest_obj->colors : %f %f %f\n", closest_obj->colors.x, closest_obj->colors.y, closest_obj->colors.z);
 	diffuse = v_mul(diffuse, closest_obj->colors);
 	diffuse = v_sum(diffuse, get_specular(info, hit, light, light_dir));
 	return (diffuse);
