@@ -39,4 +39,9 @@ t_color3	get_specular(t_info *info, t_hit *hit, t_l *light, \
 t_vec3 light_dir);
 t_color3	point_light_get(t_info *info, t_hit *hit, t_l *light, \
 t_obj *closest_obj);
+
+//checker
+void	checker(t_obj *sphere, t_hit hit);
+void	get_texture_color(t_obj *obj, t_ray ray, t_hit *hit);
+
 #endif

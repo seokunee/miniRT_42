@@ -20,6 +20,13 @@ void	init_info(t_info *info);
 //rotate
 void	rotate(t_info *rotate, t_info *info);
 
+//rotate init
+void	init_rotate_from_info_other(t_info *rotate, t_info *info);
+void	init_rotate_from_info_win(t_info *rotate, t_info *info);
+void	init_rotate_light(t_info *rotate, t_info *info);
+void	init_rotate_from_tmp(t_obj *tmp_obj, t_obj *obj);
+void	init_rotate_texture_normal(t_obj *tmp_obj, t_obj *obj);
+
 //parallel_move
 void	init_parallel_movement(t_info *rotate, t_info *info);
 

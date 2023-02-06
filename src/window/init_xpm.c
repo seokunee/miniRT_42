@@ -15,26 +15,27 @@
 #include "structs.h"
 #include "error.h"
 
-void	init_image(t_window *win, t_texture *texture, char *file, t_texture_type type)
+void	init_image(t_window *w, t_texture *texture, char *f, t_texture_type t)
 {
 	char	*file_path;
 	t_data	*data;
 
-	printf("texture type: %d\n", type);
-	if (ft_strncmp(file, "checker", 8) == 0)
+	if (ft_strncmp(f, "checker", 8) == 0)
 	{
 		texture->type = CHECK;
 		return ;
 	}
-	else if (type == DIFFUSE)
+	else if (t == DIFFUSE)
 		texture->type = DIFFUSE;
-	else if (type == NORMAL)
+	else if (t == NORMAL)
 		texture->type = NORMAL;
-	file_path = ft_strjoin("./src/images/", file);
+	file_path = ft_strjoin("./src/images/", f);
 	data = &texture->data;
-	data->img = mlx_xpm_file_to_image(win->mlx, file_path, &texture->width, &texture->height);
+	data->img = mlx_xpm_file_to_image(w->mlx, file_path, &texture->width, \
+		&texture->height);
 	if (!data->img)
 		error_exit("Invaild texture file");
-	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
+	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, \
+		&data->line_length, &data->endian);
 	free(file_path);
 }

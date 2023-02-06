@@ -28,6 +28,6 @@ void	set_cy(t_info *info, t_obj *obj, char **opt)
 	obj->colors.x = get_arg_color(opt[5]).x;
 	obj->colors.y = get_arg_color(opt[5]).y;
 	obj->colors.z = get_arg_color(opt[5]).z;
-	if (sec_arr_len(opt) ==	7)
+	if (sec_arr_len(opt) == 7)
 		init_image(&info->win, &obj->texture, opt[6], DIFFUSE);
 }

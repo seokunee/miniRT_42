@@ -205,7 +205,7 @@ typedef struct s_obj
 	double			cy_hei;
 	t_vec3			colors;
 	t_texture		texture;
-	t_texture		texture_nomal;
+	t_texture		texture_normal;
 	struct s_obj	*next;
 	struct s_obj	*prev;
 }	t_obj;
