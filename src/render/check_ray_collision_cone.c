@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ray_collision_cone.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 15:15:54 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/03 16:01:14 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/06 21:25:07 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 #include "rt_math.h"
 #include "window.h"
 
-static void	check_ray_collision_cone_side(\
-	t_ray r, t_obj *c, t_hit *h, t_cone_setting s)
+static void	check_ray_collision_cone_side(t_ray r, t_obj *c, t_hit *h)
 {
+	t_cone_setting	s;
+
 	s.H = v_sum(c->coor, v_mul_double(c->normal, c->cy_hei));
 	s.h = v_minus(c->coor, s.H);
 	s.uh = vunit(s.h);
@@ -48,10 +49,9 @@ static void	check_ray_collision_cone_side(\
 t_hit	check_ray_collision_cone(t_ray ray, t_obj *cone)
 {
 	t_hit			hit;
-	t_cone_setting	set;
 
 	hit = get_hit(-1.0, vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0));
 	hit_cylinder_cap(ray, cone, &hit, 0);
-	check_ray_collision_cone_side(ray, cone, &hit, set);
+	check_ray_collision_cone_side(ray, cone, &hit);
 	return (hit);
 }
