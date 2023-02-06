@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:39:59 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/06 18:48:02 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/06 18:50:03 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_hit		check_ray_collision_plane(t_ray ray, t_obj *plane);
 t_hit		check_ray_collision_cone(t_ray ray, t_obj *cone);
 void		hit_cylinder_cap(t_ray ray, t_obj *cy, t_hit *hit, double hei);
 t_hit		check_ray_collision_cone(t_ray ray, t_obj *cone);
-void		check_ray_collision_cone_side(t_ray ray, t_obj *cone, t_hit *hit);
 
 //check_ray_collision_cylinder
 t_hit		check_ray_collision_cylinder(t_ray ray, t_obj *cylinder);

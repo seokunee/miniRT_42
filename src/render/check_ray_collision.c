@@ -99,15 +99,10 @@ t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 		hit.d = min_double((-b - sqrt(det)), (-b + sqrt(det)));
 		hit.point = v_sum(ray.orig, v_mul_double(ray.normal, hit.d));
 		hit.normal = norm_3d_vec(v_minus(hit.point, sphere->coor));
-<<<<<<< HEAD
-		// checker(sphere, hit);
-		// get_texture_color(sphere, hit);
-=======
 		if (sphere->texture.type == CHECK)
 			checker(sphere, hit);
 		else if (sphere->texture.type == DIFFUSE)
 			get_texture_color(sphere, ray, &hit);
->>>>>>> feat-texture
 	}
 	return (hit);
 }
