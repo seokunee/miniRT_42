@@ -91,6 +91,25 @@ void	init_rotate_objs(t_info *rotate, t_info *info)
 		copy_vector_value(&(tmp_obj->colors), obj->colors);
 		tmp_obj->diameter = obj->diameter;
 		tmp_obj->cy_hei = obj->cy_hei;
+		tmp_obj->texture.type = obj->texture.type;
+		tmp_obj->texture.width = obj->texture.width;
+		tmp_obj->texture.height = obj->texture.height;
+		tmp_obj->texture.data.addr = obj->texture.data.addr;
+		tmp_obj->texture.data.bits_per_pixel = obj->texture.data.bits_per_pixel;
+		tmp_obj->texture.data.endian = obj->texture.data.endian;
+		tmp_obj->texture.data.img = obj->texture.data.img;
+		tmp_obj->texture.data.line_length = obj->texture.data.line_length;
+		if (obj->texture_nomal.type != NONE)
+		{
+			tmp_obj->texture_nomal.type = obj->texture_nomal.type;
+			tmp_obj->texture_nomal.width = obj->texture_nomal.width;
+			tmp_obj->texture_nomal.height = obj->texture_nomal.height;
+			tmp_obj->texture_nomal.data.addr = obj->texture_nomal.data.addr;
+			tmp_obj->texture_nomal.data.bits_per_pixel = obj->texture_nomal.data.bits_per_pixel;
+			tmp_obj->texture_nomal.data.endian = obj->texture_nomal.data.endian;
+			tmp_obj->texture_nomal.data.img = obj->texture_nomal.data.img;
+			tmp_obj->texture_nomal.data.line_length = obj->texture_nomal.data.line_length;
+		}
 		ft_lstadd_back(&(rotate->objs), tmp_objs);
 		objs = objs->next;
 	}

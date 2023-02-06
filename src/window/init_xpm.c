@@ -20,6 +20,7 @@ void	init_image(t_window *win, t_texture *texture, char *file, t_texture_type ty
 	char	*file_path;
 	t_data	*data;
 
+	printf("texture type: %d\n", type);
 	if (ft_strncmp(file, "checker", 8) == 0)
 	{
 		texture->type = CHECK;

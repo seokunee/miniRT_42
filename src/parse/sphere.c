@@ -28,7 +28,6 @@ void	set_sp(t_info *info, t_obj *obj, char **opt)
 	}
 	if (sec_arr_len(opt) == 6)
 	{
-		printf("5 = %s\n", opt[5]);
 		init_image(&info->win, &(obj->texture_nomal), opt[5], NORMAL);
 	}
 }
