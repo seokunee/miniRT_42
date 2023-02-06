@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:33:26 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/02 14:38:49 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/06 18:46:17 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,35 @@
 #include "structs.h"
 #include "rt_math.h"
 #include "window.h"
+#include <stdio.h>
 
-static t_vec4	get_image_pixel_color(t_texture *texture, int x, int y)
+t_vec3	get_texture_image_color(t_texture *texture, const t_vec2 uv)
 {
-	int	color;
+	const double	v = 1 - uv.y;
+	const double	x = uv.x * (texture->width - 1);
+	const double	y = uv.y * (texture->height - 1);
+	t_vec4			color;
 
-	x = clamp_int(x, 0, texture->width - 1);
-	y = clamp_int(y, 0, texture->height - 1);
-	color = get_offset(&texture->data, x, y);
-	return (get_v_color(color));
+	color = get_v_color(*(int *)get_pixel(&texture->data, round(x), round(y)));
+	return (vec3(color.x2, color.x3, color.x4));
 }
 
-static t_vec4	get_clamped(t_texture *texture, int x, int y)
+t_vec3	sample_normal_map(t_texture *texture_normal, const t_vec2 uv, \
+t_hit *hit, t_vec3 tangent)
 {
-	t_vec4	point;
+	const t_vec3	rgb = get_texture_image_color(texture_normal, uv);
+	t_vec3			derivative;
+	t_vec3			r_tangent_result;
+	t_vec3			g_bitangent_result;
+	t_vec3			b_normal_result;
 
-	x = clamp_int(x, 0, texture->width - 1);
-	y = clamp_int(y, 0, texture->height - 1);
-	point = get_image_pixel_color(texture, x, y);
-	return (vec4(point.x1, point.x2 / 255.0, \
-	point.x3 / 255.0, point.x3 / 255.0));
-}
-
-static t_vec4	get_clamped_raw(t_texture *texture, int x, int y)
-{
-	t_vec4	point;
-
-	x = clamp_int(x, 0, texture->width - 1);
-	y = clamp_int(y, 0, texture->height - 1);
-	point = get_image_pixel_color(texture, x, y);
-	return (vec4(point.x1, point.x2, point.x3, point.x4));
-}
-
-t_vec4	sample_point(t_texture *texture, const t_vec2 uv, int is_raw)
-{
-	t_vec3	xy;
-	int		x;
-	int		y;
-
-	xy = vec3(uv.x * texture->width, uv.y * texture->height, 0.0);
-	xy = v_sum_double(xy, -0.5, -0.5, -0.5);
-	x = round(xy.x);
-	y = round(xy.y);
-	if (is_raw != true)
-		return (get_clamped(texture, x, y));
-	else
-		return (get_clamped_raw(texture, x, y));
+	derivative.x = rgb.x / 255.0 * 2.0 - 1.0;
+	derivative.y = rgb.y / 255.0 * 2.0 - 1.0;
+	derivative.z = rgb.z / 255.0 * 2.0 - 1.0;
+	r_tangent_result = v_mul_double(tangent, derivative.x);
+	g_bitangent_result = v_mul_double(v_cross(hit->normal, tangent), \
+	derivative.y);
+	b_normal_result = v_mul_double(hit->normal, derivative.z);
+	return (vunit(v_sum(v_sum(b_normal_result, g_bitangent_result), \
+	r_tangent_result)));
 }

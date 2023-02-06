@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:52:00 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/02/02 14:55:05 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/06 18:48:02 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "structs.h"
 #include "info.h"
 #include "parse.h"
 
-static void	check_obj(t_info *info, t_obj *obj, char **opt, t_type type)
+static void	check_obj(t_info *info, t_obj *obj, char **opt)
 {
-	obj->type = type;
+	const t_type type = obj->type;
+
 	if (type == PL)
 		set_pl(info, obj, opt);
 	if (type == SP)
@@ -32,18 +34,9 @@ void	get_obj(t_info *info, char **opt, char *t)
 	t_list	*new;
 	t_type	type;
 
-	if (ft_strncmp(t, "pl", 3) == 0)
-		type = PL;
-	else if (ft_strncmp(t, "sp", 3) == 0)
-		type = SP;
-	else if (ft_strncmp(t, "cy", 3) == 0)
-		type = CY;
-	else if (ft_strncmp(t, "cn", 3) == 0)
-		type = CN;
-	obj = malloc(sizeof(t_obj));
-	if (!obj)
-		error_exit("malloc error");
+	obj = ft_malloc(sizeof(t_obj));
+	obj->type = type;
+	check_obj(info, obj, opt);
 	new = ft_lstnew(obj);
 	ft_lstadd_back(&(info->objs), new);
-	check_obj(info, obj, opt, type);
 }

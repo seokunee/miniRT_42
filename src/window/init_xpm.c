@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:12:52 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/02 14:38:50 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/06 18:46:36 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,25 @@
 #include "structs.h"
 #include "error.h"
 
-void	init_image(t_info *info, t_obj *obj, char *file)
+void	init_image(t_window *win, t_texture *texture, char *file, t_texture_type type)
 {
-	int		img_width;
-	int		img_height;
 	char	*file_path;
+	t_data	*data;
 
-	obj->texture.type = 0;
+	if (ft_strncmp(file, "checker", 8) == 0)
+	{
+		texture->type = CHECK;
+		return ;
+	}
+	else if (type == DIFFUSE)
+		texture->type = DIFFUSE;
+	else if (type == NORMAL)
+		texture->type = NORMAL;
 	file_path = ft_strjoin("./src/images/", file);
-	obj->texture.data.img = mlx_xpm_file_to_image(info->win.mlx, \
-	file_path, &img_width, &img_height);
-	if (!obj->texture.data.img)
+	data = &texture->data;
+	data->img = mlx_xpm_file_to_image(win->mlx, file_path, &texture->width, &texture->height);
+	if (!data->img)
 		error_exit("Invaild texture file");
-	obj->texture.width = img_width;
-	obj->texture.height = img_height;
+	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
 	free(file_path);
 }

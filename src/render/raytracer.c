@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/01 21:24:12 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/02/06 14:47:05 by sunhwang          #+#    #+#             */
+/*   Updated: 2023/02/06 18:48:02 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raytracer.h"
 #include "structs.h"
 #include "rt_math.h"
 #include "window.h"
+#include "raytracer.h"
 
 /*
 * transform_screen_to_world (카메라 적용 버전)
@@ -31,12 +31,25 @@ static t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 }
 
 void	set_closest_hit_obj(t_hit *closest_hit, \
-t_hit hit, t_obj **closest_obj, t_obj *obj)
+t_hit hit, t_obj *closest_obj, t_obj *obj)
 {
 	closest_hit->d = hit.d;
-	closest_hit->normal = hit.normal;
-	closest_hit->point = hit.point;
-	*closest_obj = obj;
+	copy_vector_value(&closest_hit->normal, hit.normal);
+	copy_vector_value(&closest_hit->point, hit.point);
+
+	// closest_hit->normal = hit.normal;
+	// closest_hit->point = hit.point;
+}
+
+void	copy_hit_value(t_hit *dst, t_hit src)
+{
+	dst->d = src.d;
+	dst->normal.x = src.normal.x;
+	dst->normal.y = src.normal.y;
+	dst->normal.z = src.normal.z;
+	dst->point.x = src.point.x;
+	dst->point.y = src.point.y;
+	dst->point.z = src.point.z;
 }
 
 void	get_closest_hit_obj(t_list *objs, \
@@ -50,9 +63,7 @@ t_hit *closest_hit, t_ray ray, t_obj **closest_obj)
 	closest_hit->d = -1;
 	while (objs)
 	{
-		obj = (t_obj *)(objs->content);
-		// if (obj->texture.type != NONE)
-		// 	(void)obj;
+		obj = (t_obj *)objs->content;
 		if (obj->type == CY)
 			hit = check_ray_collision_cylinder(ray, obj);
 		else if (obj->type == SP)
@@ -63,7 +74,11 @@ t_hit *closest_hit, t_ray ray, t_obj **closest_obj)
 			hit = check_ray_collision_cone(ray, obj);
 		if (hit.d >= 0 && closest > hit.d)
 		{
-			set_closest_hit_obj(closest_hit, hit, closest_obj, obj);
+			set_closest_hit_obj(closest_hit, hit, *closest_obj, obj);
+			*closest_obj = obj;
+			// closest_obj->colors.x = obj->colors.x;
+			// closest_obj->colors.y = obj->colors.y;
+			// closest_obj->colors.z = obj->colors.z;
 			closest = hit.d;
 		}
 		objs = objs->next;
@@ -75,7 +90,7 @@ static t_vec3	trace_ray(t_info *info, t_ray ray)
 	t_hit		closest_hit;
 	t_obj		*closest_obj;
 	t_color3	ambient_color;
-	t_vec3		light_color;
+	t_color3	light_color;
 	t_l			*lights;
 
 	get_closest_hit_obj(info->objs, &closest_hit, ray, &closest_obj);
@@ -85,21 +100,43 @@ static t_vec3	trace_ray(t_info *info, t_ray ray)
 		lights = info->lights;
 		while (lights)
 		{
-			light_color = v_sum(light_color, \
-			point_light_get(info, &closest_hit, lights, closest_obj));
+			light_color = v_sum(light_color, point_light_get(info, &closest_hit, lights, closest_obj));
 			lights = lights->next;
+			// 물체의 색깔을 여기서 더 해주거나 곱해줘야하는거 아닌가 샆다.
 		}
-		ambient_color = v_divide(v_mul_double(info->amb.colors, \
-			pow(info->amb.amb_light_ratio, 2)), 255);
+		// printf("light_color :   %f   %f    %f\n", light_color.x, light_color.y, light_color.z);
+
+
+		t_color3 tmp = v_divide(light_color, 255); // lights 비율
+		// printf("tmp %f %f %f\n", tmp.x, tmp.y, tmp.z);
+
+		t_color3 tmp1 = v_divide(v_mul(closest_obj->colors, tmp), 255);
+		// printf("tmp1 %f %f %f\n", tmp1.x, tmp1.y, tmp1.z);
+
+		light_color = v_sum(light_color, tmp1);
+		// printf("light_color %f %f %f\n", light_color.x, light_color.y, light_color.z);
+
+
+		ambient_color = v_divide(v_mul_double(info->amb.colors, pow(info->amb.amb_light_ratio, 2)), 255);
 		ambient_color = v_mul(ambient_color, closest_obj->colors);
-		// TODO 체크보드
-		if (closest_obj->texture.type != NONE)
-		{
-			t_vec3 d = v_change_minus(closest_hit.normal);
-			t_vec2 uv = vec2(atan2(d.x, -d.z) / (2 * PI) + 0.5f, asin(d.y) / (PI) + 0.5f);
-			t_color4 color = sample_point(&closest_obj->texture, uv, false);
-			ambient_color = vec3(color.x2, color.x3, color.x4);
-		}
+
+		// float	eta = 1.0;
+		// t_vec3	normal;
+		// t_vec3	refracted_direction;
+		// t_ray	refracted_ray;
+		// t_vec3	refracted_color;
+
+		// if (v_dot(ray.normal, closest_hit.normal) < 0.0f)
+		// 	normal = closest_hit.normal;
+		// else
+		// 	normal = v_change_minus(closest_hit.normal);
+		// refracted_direction = get_refracted_direction(ray, eta, normal);
+		// refracted_ray = get_ray(v_sum(closest_hit.point, v_mul_double(refracted_direction, 0.0001f)), refracted_direction);
+		// refracted_color = trace_ray(info, ray);
+		// return (refracted_color);
+
+		// 1. 엠비언트가 0일때도 색깔이 있어야한다.
+		// 2. 라이트가 없을때 질감이 표현되어야 한다.
 		return (vmin(v_sum(light_color, ambient_color), white_v3()));
 	}
 	return (black_v3());

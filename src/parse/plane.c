@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/25 17:39:37 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/02 20:25:13 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	set_pl(t_info *info, t_obj *obj, char **opt)
 	obj->normal = get_arg_normal(opt[2]);
 	obj->colors = get_arg_color(opt[3]);
 	if (sec_arr_len(opt) == 5)
-		init_image(info, obj, opt[4]);
+		init_image(&info->win, &obj->texture, opt[4], DIFFUSE);
 }

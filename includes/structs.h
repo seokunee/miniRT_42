@@ -152,7 +152,8 @@ typedef enum e_texture_type
 {
 	NONE,
 	CHECK,
-
+	DIFFUSE,
+	NORMAL,
 }	t_texture_type;
 
 typedef struct s_data
@@ -204,6 +205,7 @@ typedef struct s_obj
 	double			cy_hei;
 	t_vec3			colors;
 	t_texture		texture;
+	t_texture		texture_nomal;
 	struct s_obj	*next;
 	struct s_obj	*prev;
 }	t_obj;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ray_collision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:54:17 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/03 15:17:20 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/04 17:18:08:07 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,6 @@
 #define WHITE 1
 
 t_vec3	uv_pattern_at(t_vec4 checkers, double u, double v) // 체커보드용
-{
-	const double	u2 = floor(u * checkers.x1);
-	const double	v2 = floor(v * checkers.x1);
-	int i = u2 + v2;
-
-	if (i % 2 == 0)
-		return (vec3(0,0,0));
-	else
-		return (vec3(255, 255, 255));
-}
-
-t_vec3	uv_pattern_at_texture(t_vec4 checkers, double u, double v) // 체커보드용
 {
 	const double	u2 = floor(u * checkers.x1);
 	const double	v2 = floor(v * checkers.x1);
@@ -74,15 +62,22 @@ void	checker(t_obj *sphere, t_hit hit)
 	sphere->colors = color;
 }
 
-void	get_texture_color(t_obj *sphere, t_hit hit)
+/// @brief object의 color를 texture color로 바꿀 수 있다..
+/// @param obj 바꾸고 싶은 object
+/// @param hit obj에 부딪힌 hit
+/// @return
+
+void	get_texture_color(t_obj *obj, t_ray ray, t_hit *hit)
 {
-	t_vec4 checkers = vec4(8, 2, BLACK, WHITE);
-	t_vec3 d = v_change_minus(hit.normal);
-	double u = spherical_map_u(hit);
-	double v = spherical_map_v(hit);
-	t_vec4 color4 = sample_point(&(sphere->texture), vec2(u, v), false);
-	t_vec3 color = uv_pattern_at(checkers, u, v);
-	sphere->colors = vec3(color4.x2, color4.x3, color4.x4);
+	t_vec3 d = v_change_minus(hit->normal);
+	double u = spherical_map_u(*hit);
+	double v = spherical_map_v(*hit);
+	// printf("be obj->colors %f %f %f \n", obj->colors.x, obj->colors.y, obj->colors.z);
+	obj->colors = get_texture_image_color(&obj->texture, vec2(u, v));
+	// printf("af obj->colors %f %f %f \n", obj->colors.x, obj->colors.y, obj->colors.z);
+
+	if (obj->texture_nomal.type == NORMAL)
+		copy_vector_value(&hit->normal, sample_normal_map(&obj->texture_nomal, vec2(u, v), hit, v_cross(ray.normal, hit->normal)));
 }
 
 /// @brief ray가 sphere의 어디에서 부딪히는지 계산한 hit 구조체를 반환한다.
@@ -104,8 +99,15 @@ t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 		hit.d = min_double((-b - sqrt(det)), (-b + sqrt(det)));
 		hit.point = v_sum(ray.orig, v_mul_double(ray.normal, hit.d));
 		hit.normal = norm_3d_vec(v_minus(hit.point, sphere->coor));
+<<<<<<< HEAD
 		// checker(sphere, hit);
 		// get_texture_color(sphere, hit);
+=======
+		if (sphere->texture.type == CHECK)
+			checker(sphere, hit);
+		else if (sphere->texture.type == DIFFUSE)
+			get_texture_color(sphere, ray, &hit);
+>>>>>>> feat-texture
 	}
 	return (hit);
 }
