@@ -24,10 +24,7 @@ t_vec3	vunit(t_vec3 v)
 
 	len = v_len(v);
 	if (len == 0)
-	{
-		printf("[%f, %f, %f]\n", v.x, v.y, v.z);
-		error_exit("11 Invalid number of arguments. Check it!");
-	}
+		error_exit("Invalid number of arguments. Check it!");
 	v.x /= len;
 	v.y /= len;
 	v.z /= len;

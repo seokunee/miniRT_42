@@ -37,11 +37,11 @@ void	get_light(t_info *info, char **s)
 	if (!light)
 		error_exit("malloc error");
 	if (sec_arr_len(s) != 3 && sec_arr_len(s) != 4)
-		error_exit("Wrong 1 argument");
+		error_exit("Wrong light argument");
 	light->coor = get_arg_coor(s[1]);
 	light->light_brightness_ratio = ft_atod(s[2]);
 	if (check_range(1, light->light_brightness_ratio) == ERR)
-		error_exit("Wrong 2 argument");
+		error_exit("Wrong light argument");
 	if (sec_arr_len(s) == 4)
 		light->colors = get_arg_color(s[3]);
 	light->next = 0;

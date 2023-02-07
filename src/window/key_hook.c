@@ -96,6 +96,5 @@ int	binding_key_events(int key, t_info *info)
 	binding_key_event_camera(key, info);
 	binding_key_event_light(key, info);
 	binding_key_event_objs(key, info);
-	system("leaks miniRT");
 	return (0);
 }

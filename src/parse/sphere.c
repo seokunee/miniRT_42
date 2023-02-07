@@ -17,7 +17,7 @@
 void	set_sp(t_info *info, t_obj *obj, char **opt)
 {
 	if (sec_arr_len(opt) < 4 && sec_arr_len(opt) > 6)
-		error_exit("Wrong argument");
+		error_exit("Wrong sphere argument");
 	check_coordinates(obj, opt[1]);
 	check_diameter(obj, ft_atod(opt[2]));
 	obj->colors = get_arg_color(opt[3]);
@@ -27,10 +27,5 @@ void	set_sp(t_info *info, t_obj *obj, char **opt)
 		obj->texture_normal.type = NONE;
 	}
 	if (sec_arr_len(opt) == 6)
-	{
 		init_image(&info->win, &(obj->texture_normal), opt[5], NORMAL);
-	}
-	obj->normal.x = 0;
-	obj->normal.y = 0;
-	obj->normal.z = 1;
 }
