@@ -40,7 +40,7 @@ static void	check_ray_collision_cone_side(t_ray r, t_obj *c, t_hit *h)
 		min_double((-s.b - sqrt(s.d)), (-s.b + sqrt(s.d))) / \
 		(2 * s.a))))) > c->cy_hei)
 		return ;
-	s.s = v_len(v_minus(s.H, v_sum(r.orig, v_mul_double(r.normal, \
+	s.s = v_len(v_minus(s.t, v_sum(r.orig, v_mul_double(r.normal, \
 		min_double((-s.b - sqrt(s.d)), (-s.b + sqrt(s.d))) / (2 * s.a)))));
 	if (s.d >= 0 && \
 		sqrt(pow(c->diameter / 2, 2) + pow(v_len(s.h), 2)) >= s.s)

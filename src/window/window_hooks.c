@@ -20,6 +20,7 @@
 int	exit_event(t_window *win)
 {
 	mlx_destroy_window(win->mlx, win->mlx_win);
+	system("leaks miniRT");
 	exit(0);
 	return (0);
 }

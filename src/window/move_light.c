@@ -87,6 +87,7 @@ void	key_hook_light(t_window *win, t_info *info)
 		convert_color_light(light, win->terminal.curr_light);
 		rotate(&rotate_info, info);
 		convert_color_light(rotate_info.lights, win->terminal.curr_light);
+		system("leaks miniRT");
 	}
 	else
 	{

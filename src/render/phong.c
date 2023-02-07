@@ -33,7 +33,7 @@ const t_l *light, const t_vec3 light_dir)
 	v_dot(hit.normal, light_dir)), 2), light_dir);
 	const t_vec3	view_dir = vunit(v_mul_double(ray_normal, -1));
 
-	spec = pow(fmax(v_dot(view_dir, reflect), 0.0), 2);
+	spec = pow(fmax(v_dot(view_dir, reflect), 0.0), 8);
 	specular = v_mul_double(v_mul_double(light->colors, 1.0f), spec);
 	return (specular);
 }

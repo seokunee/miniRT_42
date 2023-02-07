@@ -29,7 +29,7 @@ void	init_image(t_window *w, t_texture *texture, char *f, t_texture_type t)
 		texture->type = DIFFUSE;
 	else if (t == NORMAL)
 		texture->type = NORMAL;
-	file_path = ft_strjoin("./src/images/", f);
+	file_path = ft_strjoin("/Users/chanwjeo/git/miniRT_42/src/images/", f);
 	data = &texture->data;
 	data->img = mlx_xpm_file_to_image(w->mlx, file_path, &texture->width, \
 		&texture->height);

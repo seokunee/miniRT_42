@@ -13,8 +13,8 @@
 NAME			= miniRT
 
 INC_DIR			= -Iincludes -I$(LIBFT_DIR)/include -I$(MLX_DIR)
-CFLAGS			=  $(INC_DIR) -g3 -fsanitize=address -Wall -Wextra -Werror
-# CFLAGS			= -Wall -Wextra -Werror $(INC_DIR)
+# CFLAGS			=  $(INC_DIR) -g3 -fsanitize=address -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror $(INC_DIR) -g3
 LDFLAGS			= -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx
 # LDFLAGS			= -L$(LIBFT_DIR) -lft -L/usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
 SRC_DIR			= src

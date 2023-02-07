@@ -63,6 +63,7 @@ static void	binding_key_event_light(int key, t_info *info)
 	else if (term->light_select && (key == KEY_Q || key == KEY_W || key == \
 		KEY_A || key == KEY_S || key == KEY_Z || key == KEY_X || key == KEY_2))
 		move_light(key, info);
+	system("leaks miniRT");
 }
 
 static void	binding_key_event_objs(int key, t_info *info)
