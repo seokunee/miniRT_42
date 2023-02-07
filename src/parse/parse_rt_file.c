@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rt_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:33 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/02 14:55:05 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/07 13:09:14 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ bool	read_file(t_info *info, int fd, t_num_ele *num_ele)
 
 void	parse_rt_file(t_info *info, char *file_name)
 {
-	int				fd;
+	int	fd;
 
 	check_file_name(file_name);
 	fd = open(file_name, O_RDONLY);

@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:39:59 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/06 21:59:15 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:47:31 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdio.h>
 # include "structs.h"
 
-t_ray		get_ray(t_vec3 start, t_vec3 dir);
-t_point3	ray_at(t_ray ray, double t);
+t_ray		get_ray(const t_vec3 start, const t_vec3 dir);
+t_point3	ray_at(const t_ray ray, const double t);
 t_hit		get_hit(double d, t_vec3 point, t_vec3 normal);
 t_hit		check_ray_collision_sphere(t_ray ray, t_obj *sphere);
 t_hit		check_ray_collision_plane(t_ray ray, t_obj *plane);

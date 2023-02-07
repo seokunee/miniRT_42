@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:12:52 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/06 18:46:36 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:29:12 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	init_image(t_window *win, t_texture *texture, char *file, t_texture_type ty
 	char	*file_path;
 	t_data	*data;
 
-	printf("texture type: %d\n", type);
 	if (ft_strncmp(file, "checker", 8) == 0)
 	{
 		texture->type = CHECK;

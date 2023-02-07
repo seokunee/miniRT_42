@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/06 21:58:35 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:49:10 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@
 
 bool	in_shadow(t_list *objs, t_ray light_ray)
 {
-	t_hit			closest_hit;
-	t_obj			closest_obj;
+	t_hit	closest_hit;
+	t_obj	closest_obj;
 
 	get_closest_hit_obj(objs, light_ray, &closest_hit, &closest_obj);
-	if (closest_hit.d >= 0.0)
-		return (true);
-	return (false);
+	return (closest_hit.d >= 0.0);
 }
 
 static t_color3	get_specular(const t_vec3 ray_normal, const t_hit hit, const t_l *light, const t_vec3 light_dir)
