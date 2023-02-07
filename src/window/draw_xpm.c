@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:33:26 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/06 18:46:17 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/06 20:39:55 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_vec3	get_texture_image_color(t_texture *texture, const t_vec2 uv)
 {
 	const double	v = 1 - uv.y;
 	const double	x = uv.x * (texture->width - 1);
-	const double	y = uv.y * (texture->height - 1);
+	const double	y = v * (texture->height - 1);
 	t_vec4			color;
 
 	color = get_v_color(*(int *)get_pixel(&texture->data, round(x), round(y)));

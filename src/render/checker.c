@@ -1,61 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/07 13:59:02 by sunhwang          #+#    #+#             */
+/*   Updated: 2023/02/07 14:01:12 by sunhwang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "structs.h"
 #include "raytracer.h"
 #include "rt_math.h"
 #include "window.h"
 
 #define BLACK 0
-#define WHITE 1
 
-t_vec3	uv_pattern_at(t_vec4 checkers, double u, double v)
+t_vec3	uv_pattern_at(t_vec2 checkers, t_vec2 uv)
 {
-	const double	u2 = floor(u * checkers.x1);
-	const double	v2 = floor(v * checkers.x1);
-	const int		i = u2 + v2;
+	const double	u2 = floor(uv.x * checkers.x);
+	const double	v2 = floor(uv.y * checkers.y);
+	int				i;
 
-	if (i % 2 == 0)
-		return (vec3(0, 0, 0));
+	i = u2 + v2;
+	if (i % 2 == BLACK)
+		return (black_v3());
 	else
-		return (vec3(255, 255, 255));
+		return (white_v3());
 }
 
-double	spherical_map_u(t_hit hit)
+t_vec2	spherical_map(t_vec3 p)
 {
-	const double	theta = atan2(hit.normal.x, hit.normal.z);
-	const double	raw_u = theta / (2 * PI);
-
-	return (1 - (raw_u + 0.5));
-}
-
-double	spherical_map_v(t_hit hit)
-{
-	const t_vec3	vec = v_change_minus(hit.normal);
+	const double	theta = atan2(p.x, p.z);
+	const t_vec3	vec = vec3(p.x, p.y, p.z);
 	const double	radius = v_len(vec);
+	t_vec2			uv;
 
-	return (1 - (acos(hit.normal.y / radius) / PI));
+	uv.x = 1.0 - ((theta / (2 * PI)) + 0.5);
+	uv.y = 1.0 - (acos(p.y / radius)) / PI;
+	return (uv);
 }
 
-void	checker(t_obj *sphere, t_hit hit)
+void	checker(t_obj *sphere, const t_hit hit)
 {
-	const t_vec4	checkers = vec4(8, 2, BLACK, WHITE);
-	const t_vec3	d = v_change_minus(hit.normal);
-	const t_vec3	color = uv_pattern_at(checkers, \
-		spherical_map_u(hit), spherical_map_v(hit));
+	const t_vec2	checkers = vec2(4, 4);
+	const t_vec2	uv = spherical_map(hit.normal);
 
-	sphere->colors = color;
+	sphere->colors = uv_pattern_at(checkers, uv);
 }
 
 /// @brief object의 color를 texture color로 바꿀 수 있다..
 /// @param obj 바꾸고 싶은 object
 /// @param hit obj에 부딪힌 hit
 /// @return
-void	get_texture_color(t_obj *obj, t_ray ray, t_hit *hit)
+void	get_texture_color(t_obj *obj, const t_ray ray, t_hit *hit)
 {
-	const t_vec3	d = v_change_minus(hit->normal);
-	const double	u = spherical_map_u(*hit);
-	const double	v = spherical_map_v(*hit);
+	const t_vec2	uv = spherical_map(hit->normal);
 
-	obj->colors = get_texture_image_color(&obj->texture, vec2(u, v));
+	obj->colors = get_texture_image_color(&obj->texture, uv);
 	if (obj->texture_normal.type == NORMAL)
-		copy_vector_value(&hit->normal, sample_normal_map(&obj->texture_normal, \
-			vec2(u, v), hit, v_cross(ray.normal, hit->normal)));
+		hit->normal = sample_normal_map(&obj->texture_normal, uv, hit, \
+		v_cross(ray.normal, hit->normal));
 }

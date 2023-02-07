@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:39:59 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/06 18:50:03 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:01:23 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdio.h>
 # include "structs.h"
 
-t_ray		get_ray(t_vec3 start, t_vec3 dir);
-t_point3	ray_at(t_ray ray, double t);
+t_ray		get_ray(const t_vec3 start, const t_vec3 dir);
+t_point3	ray_at(const t_ray ray, const double t);
 t_hit		get_hit(double d, t_vec3 point, t_vec3 normal);
 t_hit		check_ray_collision_sphere(t_ray ray, t_obj *sphere);
 t_hit		check_ray_collision_plane(t_ray ray, t_obj *plane);
@@ -30,18 +30,14 @@ t_hit		check_ray_collision_cylinder(t_ray ray, t_obj *cylinder);
 
 //raytracer
 int			calculate_pixel_color(t_info *info, int x, int y);
-void		get_closest_hit_obj(t_list *objs, t_hit *closest_hit, t_ray ray, \
-t_obj **closest_obj);
+void		get_closest_hit_obj(t_list *objs, t_ray ray, t_hit *closest_hit, t_obj *closest_obj);
 
 //phong
 bool		in_shadow(t_list *objs, t_ray light_ray);
-t_color3	get_specular(t_info *info, t_hit *hit, t_l *light, \
-t_vec3 light_dir);
-t_color3	point_light_get(t_info *info, t_hit *hit, t_l *light, \
-t_obj *closest_obj);
+t_color3	point_light_get(t_info *info, const t_l *light, const t_hit closest_hit, const t_obj closest_obj);
 
-//checker
-void	checker(t_obj *sphere, t_hit hit);
-void	get_texture_color(t_obj *obj, t_ray ray, t_hit *hit);
+// checker
+void		checker(t_obj *sphere, const t_hit hit);
+void		get_texture_color(t_obj *obj, const t_ray ray, t_hit *hit);
 
 #endif

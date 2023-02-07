@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 01:52:00 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/02/06 18:48:02 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/06 21:22:42 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	get_obj(t_info *info, char **opt, char *t)
 	t_list	*new;
 	t_type	type;
 
+	type = NO_OBJS;
 	if (ft_strncmp(t, "pl", 3) == 0)
 		type = PL;
 	else if (ft_strncmp(t, "sp", 3) == 0)
@@ -41,10 +42,8 @@ void	get_obj(t_info *info, char **opt, char *t)
 		type = CY;
 	else if (ft_strncmp(t, "cn", 3) == 0)
 		type = CN;
-	obj = malloc(sizeof(t_obj));
-	if (!obj)
-		error_exit("malloc error");
+	obj = ft_malloc(sizeof(t_obj));
+	check_obj(info, obj, opt, type);
 	new = ft_lstnew(obj);
 	ft_lstadd_back(&(info->objs), new);
-	check_obj(info, obj, opt, type);
 }

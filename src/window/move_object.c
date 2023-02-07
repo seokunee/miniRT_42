@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_object.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:19:20 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/02 14:38:50 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/06 21:21:52 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	select_obj_on_key_b(int key, t_info *info)
 {
 	t_info	rotate_info;
 
+	(void)key;
 	if (info->win.terminal.curr_obj != 0)
 	{
 		info->win.terminal.curr_obj--;
@@ -34,6 +35,7 @@ void	select_obj_on_key_n(int key, t_info *info)
 {
 	t_info	rotate_info;
 
+	(void)key;
 	if (info->win.terminal.curr_obj != info->num_ele.objs_count - 1)
 	{
 		info->win.terminal.curr_obj++;

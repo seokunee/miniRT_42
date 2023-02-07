@@ -21,6 +21,7 @@ void	select_light_on_key_b(int key, t_info *info)
 {
 	t_info	rotate_info;
 
+	(void)key;
 	if (info->win.terminal.curr_light != 0)
 	{
 		info->win.terminal.curr_light--;
@@ -34,6 +35,7 @@ void	select_light_on_key_n(int key, t_info *info)
 {
 	t_info	rotate_info;
 
+	(void)key;
 	if (info->win.terminal.curr_light != info->num_ele.l_count - 1)
 	{
 		info->win.terminal.curr_light++;

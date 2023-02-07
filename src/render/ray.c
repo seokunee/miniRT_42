@@ -6,7 +6,7 @@
 /*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:17:44 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/30 17:11:40 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:47:24 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /// @param start start position of the ray
 /// @param dir direction of the ray
 /// @return
-t_ray	get_ray(t_vec3 start, t_vec3 dir)
+t_ray	get_ray(const t_vec3 start, const t_vec3 dir)
 {
 	t_ray	ray;
 
@@ -26,7 +26,7 @@ t_ray	get_ray(t_vec3 start, t_vec3 dir)
 	return (ray);
 }
 
-t_point3	ray_at(t_ray ray, double t)
+t_point3	ray_at(const t_ray ray, const double t)
 {
 	t_point3	at;
 
