@@ -218,6 +218,7 @@ typedef struct s_terminal
 	bool	light_select;
 	bool	obj_on;
 	bool	obj_select;
+	bool	reverse_color;
 	int		curr_light;
 	int		curr_obj;
 }	t_terminal;

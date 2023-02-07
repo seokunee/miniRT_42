@@ -48,7 +48,7 @@ MATH_SRC		= vector_dot_cross vector_op vector_op2 vector_op3 vector_op_2 absolut
 PARSE_SRC		= ambient camera colors coordinate cylinder diameter init_info light normal objects parse_rt_file plane sphere utils utils2 cone
 RENDER_SRC		= raytracer hit ray check_ray_collision check_ray_collision_cylinder check_ray_collision_cone phong checker
 ROTATE_SRC		= rotate rotate_init parallel_move rotate_minus
-WINDOW_SRC		= color draw_image draw_xpm init_window init_xpm key_hook mouse_hook window_hooks print_terminal move_camera move_camera_rotation move_light move_object move_object_rotation
+WINDOW_SRC		= color draw_image draw_xpm init_window init_xpm key_hook mouse_hook window_hooks print_terminal move_camera move_camera_rotation move_light move_object move_object_rotation move_key
 
 # BONUS SRC
 ifeq (,$(findstring bonus,$(MAKECMDGOALS)))

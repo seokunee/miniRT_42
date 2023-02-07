@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:56:12 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/06 18:48:02 by sunhwang         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:15:01 by chanwjeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void		rotation_controler(char *input);
 void		move_camera(int key, t_info *info);
 void		move_camera_rotation(int key, t_info *info);
 void		key_hook_light(t_window *win, t_info *info);
+void		key_hook_light_off(t_window *win, t_info *info, t_l *light);
 void		convert_color_light(t_l *light, int curr);
 void		convert_color_object(t_list *objs, int curr);
 void		select_light(int key, t_info *info);
@@ -67,6 +68,7 @@ void		light_selector(void);
 void		obj_selector(void);
 void		move_objs(int key, t_info *info);
 void		key_hook_obj(t_window *win, t_info *info);
+void		key_hook_object_off(t_window *win, t_info *info, t_list *obj);
 void		select_obj(int key, t_info *info);
 void		move_object_rotation(int key, t_info *info);
 void		print_turn_off(char *input);

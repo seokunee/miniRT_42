@@ -42,7 +42,6 @@ void	init_rotate_objs(t_info *rotate, t_info *info)
 		objs = objs->next;
 	}
 }
-// info에서 rotate로 먼저 옮길만한 것들 옮겨주기 (값 복사)
 
 void	init_parallel_movement(t_info *rotate, t_info *info)
 {

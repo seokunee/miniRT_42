@@ -19,35 +19,30 @@
 
 void	select_light_on_key_b(int key, t_info *info)
 {
-	t_info	rotate_info;
-
 	(void)key;
 	if (info->win.terminal.curr_light != 0)
 	{
 		info->win.terminal.curr_light--;
 		convert_color_light(info->lights, info->win.terminal.curr_light + 1);
 		convert_color_light(info->lights, info->win.terminal.curr_light);
-		rotate(&rotate_info, info);
+		start_drawing(info);
 	}
 }
 
 void	select_light_on_key_n(int key, t_info *info)
 {
-	t_info	rotate_info;
-
 	(void)key;
 	if (info->win.terminal.curr_light != info->num_ele.l_count - 1)
 	{
 		info->win.terminal.curr_light++;
 		convert_color_light(info->lights, info->win.terminal.curr_light - 1);
 		convert_color_light(info->lights, info->win.terminal.curr_light);
-		rotate(&rotate_info, info);
+		start_drawing(info);
 	}
 }
 
 void	select_light(int key, t_info *info)
 {
-	t_info		rotate_info;
 	t_window	*win;
 
 	win = &info->win;
@@ -58,14 +53,15 @@ void	select_light(int key, t_info *info)
 	else if (key == KEY_O)
 	{
 		convert_color_light(info->lights, info->win.terminal.curr_light);
-		rotate(&rotate_info, info);
+		start_drawing(info);
 		win->terminal.light_select = true;
+		win->terminal.reverse_color = false;
 		remote_controler("Light ");
 	}
 	else if (key == KEY_2)
 	{
 		convert_color_light(info->lights, info->win.terminal.curr_light);
-		rotate(&rotate_info, info);
+		start_drawing(info);
 		info->win.terminal.light_select = false;
 		info->win.terminal.light_on = false;
 		terminal_prompt();
@@ -75,7 +71,6 @@ void	select_light(int key, t_info *info)
 void	key_hook_light(t_window *win, t_info *info)
 {
 	t_l		*light;
-	t_info	rotate_info;
 
 	light = info->lights;
 	if (!light)
@@ -85,24 +80,15 @@ void	key_hook_light(t_window *win, t_info *info)
 		info->win.terminal.light_on = true;
 		light_selector();
 		convert_color_light(light, win->terminal.curr_light);
-		rotate(&rotate_info, info);
-		convert_color_light(rotate_info.lights, win->terminal.curr_light);
-		system("leaks miniRT");
+		start_drawing(info);
+		info->win.terminal.reverse_color = true;
 	}
 	else
-	{
-		info->win.terminal.light_on = false;
-		info->win.terminal.light_select = false;
-		info->win.terminal.curr_light = 0;
-		print_turn_off("LIGHTS");
-		start_drawing(info);
-		terminal_prompt();
-	}
+		key_hook_light_off(win, info, light);
 }
 
 void	move_light(int key, t_info *info)
 {
-	t_info	rotate_info;
 	t_l		*curr_light;
 	int		idx;
 
@@ -120,5 +106,5 @@ void	move_light(int key, t_info *info)
 		start_drawing(info);
 		terminal_prompt();
 	}
-	rotate(&rotate_info, info);
+	start_drawing(info);
 }
