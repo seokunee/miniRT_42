@@ -77,9 +77,8 @@ typedef struct s_cy_settings
 	double			hit_height;
 }	t_cy_settings;
 
-
 /// @brief 원뿔 렌더링에 필요한 요소들의 구조체
-/// @param H 원뿔의 정점 좌표
+/// @param t 원뿔의 정점 좌표
 /// @param h 원뿔의 방향벡터
 /// @param uh 원뿔의 방향벡터의 유닛벡터
 /// @param w ray의 점과 원뿔의 정점간의 방향벡터
@@ -91,7 +90,7 @@ typedef struct s_cy_settings
 /// @param s 원뿔의 빗면 길이
 typedef struct s_cone_setting
 {
-	t_vec3	H;
+	t_vec3	t;
 	t_vec3	h;
 	t_vec3	uh;
 	t_vec3	w;
@@ -119,7 +118,8 @@ typedef struct s_a
 * Camera:
 * identifier: C
 * x,y,z coordinates of the view point: 0.0,0.0,20.6
-* 3d normalized orientation vector. In range [-1,1] for each x,y,z axis: 0.0,0.0,1.0
+* 3d normalized orientation vector. In range
+*	[-1,1] for each x,y,z axis: 0.0,0.0,1.0
 * FOV : Horizontal field of view in degrees in range [0,180]
 * length : Distance from camera to monitor
 */
@@ -142,7 +142,6 @@ typedef struct s_l
 {
 	t_vec3		coor;
 	double		light_brightness_ratio;
-	/* unsued in mand part */
 	t_vec3		colors;
 	struct s_l	*next;
 	struct s_l	*prev;
@@ -191,7 +190,8 @@ typedef enum e_type
 * Objs:
 * identifier : objs type
 * x,y,z coordinates: 50.0,0.0,20.6
-* 3d normalized orientation vector. In range [-1,1] for each x,y,z axis: 0.0,0.0,1.0
+* 3d normalized orientation vector.
+  In range [-1,1] for each x,y,z axis: 0.0,0.0,1.0
 * the cylinder diameter: 14.2
 * the cylinder height: 21.42
 * R,G,B colors in range [0,255]: 10, 0, 255
@@ -236,7 +236,7 @@ typedef struct s_num_ele
 	int	a_count;
 	int	c_count;
 	int	l_count;
-	int objs_count;
+	int	objs_count;
 }	t_num_ele;
 
 /*
@@ -249,8 +249,6 @@ typedef struct s_info
 	t_l				*lights;
 	t_list			*objs;
 	t_window		win;
-
-	// tmp
 	t_hit			*hit;
 	t_vec3			color;
 	t_vec3			phong_color;

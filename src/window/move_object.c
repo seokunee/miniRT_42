@@ -82,7 +82,6 @@ void	key_hook_obj(t_window *win, t_info *info)
 	obj = info->objs;
 	if (!obj)
 		return ((void)printf("NO Object\n"));
-	printf("obj_n : %d\n", info->num_ele.objs_count);
 	if (win->terminal.obj_on == false)
 	{
 		win->terminal.obj_on = true;

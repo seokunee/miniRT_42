@@ -28,7 +28,6 @@ int	main(int ac, char **av)
 	camera_setting(&info);
 	rotate(&rotate_info, &info);
 	binding_events(&rotate_info);
-	// system("leaks miniRT");
 	mlx_loop(rotate_info.win.mlx);
 	return (0);
 }

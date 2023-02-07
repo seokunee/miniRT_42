@@ -30,4 +30,7 @@ void	set_sp(t_info *info, t_obj *obj, char **opt)
 	{
 		init_image(&info->win, &(obj->texture_normal), opt[5], NORMAL);
 	}
+	obj->normal.x = 0;
+	obj->normal.y = 0;
+	obj->normal.z = 1;
 }

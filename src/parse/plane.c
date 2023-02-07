@@ -23,4 +23,6 @@ void	set_pl(t_info *info, t_obj *obj, char **opt)
 	obj->colors = get_arg_color(opt[3]);
 	if (sec_arr_len(opt) == 5)
 		init_image(&info->win, &obj->texture, opt[4], DIFFUSE);
+	if (sec_arr_len(opt) == 5 && ft_strncmp(opt[4], "checker\n", 8) == 0)
+		obj->texture.type = CHECK;
 }

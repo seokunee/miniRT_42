@@ -30,18 +30,8 @@ static t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 	return (vec3(x_scale, y_scale, info->cam.length));
 }
 
-void	copy_hit_value(t_hit *dst, t_hit src)
-{
-	dst->d = src.d;
-	dst->normal.x = src.normal.x;
-	dst->normal.y = src.normal.y;
-	dst->normal.z = src.normal.z;
-	dst->point.x = src.point.x;
-	dst->point.y = src.point.y;
-	dst->point.z = src.point.z;
-}
-
-void	get_closest_hit_obj(t_list *objs, t_ray ray, t_hit *closest_hit, t_obj *closest_obj)
+void	get_closest_hit_obj(t_list *objs, t_ray ray, t_hit *closest_hit, \
+t_obj *closest_obj)
 {
 	t_hit	hit;
 	t_obj	*obj;
@@ -86,18 +76,13 @@ static t_vec3	trace_ray(t_info *info, t_ray ray)
 		lights = info->lights;
 		while (lights)
 		{
-			light_color = v_sum(light_color, point_light_get(info, lights, closest_hit, closest_obj));
+			light_color = v_sum(light_color, point_light_get(info, \
+			lights, closest_hit, closest_obj));
 			lights = lights->next;
-			// 물체의 색깔을 여기서 더 해주거나 곱해줘야하는거 아닌가 샆다.
 		}
-		t_color3 tmp = light_color; // lights 비율
-		t_color3 tmp1 = v_mul(v_divide(closest_obj.colors, 255.0), tmp);
-		light_color = v_sum(light_color, tmp1);
-		ambient_color = v_divide(v_mul_double(info->amb.colors, info->amb.amb_light_ratio), 255.0);
+		ambient_color = v_divide(v_mul_double(info->amb.colors, \
+		info->amb.amb_light_ratio), 255.0);
 		ambient_color = v_mul(ambient_color, closest_obj.colors);
-
-		// 1. 엠비언트가 0일때도 색깔이 있어야한다.
-		// 2. 라이트가 없을때 질감이 표현되어야 한다.
 		return (vmin(v_sum(light_color, ambient_color), white_v3()));
 	}
 	return (black_v3());

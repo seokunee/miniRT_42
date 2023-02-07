@@ -44,7 +44,7 @@ t_vec2	spherical_map(t_vec3 p)
 
 void	checker(t_obj *sphere, const t_hit hit)
 {
-	const t_vec2	checkers = vec2(4, 4);
+	const t_vec2	checkers = vec2(12, 12);
 	const t_vec2	uv = spherical_map(hit.normal);
 
 	sphere->colors = uv_pattern_at(checkers, uv);

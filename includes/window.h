@@ -55,9 +55,7 @@ void		terminal_prompt(void);
 void		remote_controler(char *input);
 void		move_coordinate(t_vec3 *coor, int key);
 void		key_hook_camera(t_window *win);
-void	  rotation_controler(char *input);
-
-//
+void		rotation_controler(char *input);
 void		move_camera(int key, t_info *info);
 void		move_camera_rotation(int key, t_info *info);
 void		key_hook_light(t_window *win, t_info *info);
@@ -73,10 +71,12 @@ void		select_obj(int key, t_info *info);
 void		move_object_rotation(int key, t_info *info);
 void		print_turn_off(char *input);
 void		rotation_objs(t_info *rotate, t_c cam);
-void		init_image(t_window *win, t_texture *texture, char *file, t_texture_type type);
+void		init_image(t_window *win, t_texture *texture, char *file, \
+	t_texture_type type);
 t_vec4		sample_point(t_texture *texture, const t_vec2 uv, int is_raw);
 t_vec3		sample_linear(t_texture *texture, const t_vec2 uv, int is_raw);
 t_vec3		get_texture_image_color(t_texture *texture, const t_vec2 uv);
-t_vec3		sample_normal_map(t_texture *texture_normal, const t_vec2 uv, t_hit *hit, t_vec3 tangent);
+t_vec3		sample_normal_map(t_texture *texture_normal, const t_vec2 uv, \
+	t_hit *hit, t_vec3 tangent);
 
 #endif

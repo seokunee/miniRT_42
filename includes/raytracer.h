@@ -30,14 +30,17 @@ t_hit		check_ray_collision_cylinder(t_ray ray, t_obj *cylinder);
 
 //raytracer
 int			calculate_pixel_color(t_info *info, int x, int y);
-void		get_closest_hit_obj(t_list *objs, t_ray ray, t_hit *closest_hit, t_obj *closest_obj);
+void		get_closest_hit_obj(t_list *objs, t_ray ray, \
+t_hit *closest_hit, t_obj *closest_obj);
 
 //phong
 bool		in_shadow(t_list *objs, t_ray light_ray);
-t_color3	point_light_get(t_info *info, const t_l *light, const t_hit closest_hit, const t_obj closest_obj);
+t_color3	point_light_get(t_info *info, const t_l *light, \
+const t_hit closest_hit, const t_obj closest_obj);
 
 // checker
 void		checker(t_obj *sphere, const t_hit hit);
 void		get_texture_color(t_obj *obj, const t_ray ray, t_hit *hit);
+t_vec3		uv_pattern_at(t_vec2 checkers, t_vec2 uv);
 
 #endif
