@@ -27,9 +27,9 @@ void	move_coordinate(t_vec3 *coor, int key)
 	else if (key == KEY_S)
 		coor->y += 1;
 	else if (key == KEY_Z)
-		coor->z -= 1;
-	else if (key == KEY_X)
 		coor->z += 1;
+	else if (key == KEY_X)
+		coor->z -= 1;
 }
 
 static void	binding_key_event_camera(int key, t_info *info)

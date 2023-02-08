@@ -34,7 +34,6 @@ void		get_closest_hit_obj(t_list *objs, t_ray ray, \
 t_hit *closest_hit, t_obj *closest_obj);
 
 //phong
-bool		in_shadow(t_list *objs, t_ray light_ray);
 t_color3	point_light_get(t_info *info, const t_l *light, \
 const t_hit closest_hit, const t_obj closest_obj);
 
