@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_option_count_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:36:33 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/02/01 12:08:07 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/01 12:08:07 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

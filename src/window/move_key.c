@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_key.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 18:08:05 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/07 18:14:36 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/02/07 18:08:05 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/02/07 18:14:36 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

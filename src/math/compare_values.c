@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compare_values.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 22:43:16 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 16:29:27 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/13 22:43:16 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/20 16:29:27 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

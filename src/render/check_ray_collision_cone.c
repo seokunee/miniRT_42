@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ray_collision_cone.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 15:15:54 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/06 21:25:07 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/02/03 15:15:54 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/02/06 21:25:07 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

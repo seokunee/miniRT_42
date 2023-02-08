@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 14:12:52 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/06 18:46:36 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/25 14:12:52 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/02/06 18:46:36 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

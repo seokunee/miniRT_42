@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 17:58:37 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 09:27:59 by chanwjeo         ###   ########.fr       */
+/*   Created: 2022/03/30 17:58:37 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/11 09:27:59 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #  define BUFFER_SIZE 2048
 # endif
 
-/* Return a line read from a file descriptor, NULL if there is 
+/* Return a line read from a file descriptor, NULL if there is
  * nothing else to read, or an error occurred */
 extern char		*get_next_line(int fd);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isinteger.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 15:25:27 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 16:38:06 by sunhwang         ###   ########.fr       */
+/*   Created: 2022/06/11 15:25:27 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/20 16:38:06 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 17:58:37 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 09:28:04 by chanwjeo         ###   ########.fr       */
+/*   Created: 2022/03/30 17:58:37 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/11 09:28:04 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 #  define OPEN_MAX 1024
 # endif
 
-/* Return a line read from a file descriptor, NULL if there is 
+/* Return a line read from a file descriptor, NULL if there is
  * nothing else to read, or an error occurred */
 extern char		*get_next_line_multi(int fd);
 

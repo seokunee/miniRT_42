@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radian.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 09:09:16 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/01 21:18:48 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/18 09:09:16 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/02/01 21:18:48 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_hooks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 16:54:59 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/31 11:09:10 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/01/16 16:54:59 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/31 11:09:10 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

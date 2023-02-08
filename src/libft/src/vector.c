@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 18:01:27 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 16:29:37 by sunhwang         ###   ########.fr       */
+/*   Created: 2022/10/10 18:01:27 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/20 16:29:37 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

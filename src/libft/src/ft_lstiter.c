@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/13 18:18:44 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 09:27:22 by chanwjeo         ###   ########.fr       */
+/*   Created: 2022/03/13 18:18:44 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/11 09:27:22 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

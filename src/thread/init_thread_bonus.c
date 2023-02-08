@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_thread_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 12:37:50 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/27 14:07:16 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/27 12:37:50 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/27 14:07:16 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

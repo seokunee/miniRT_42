@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 18:27:30 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/01 16:27:04 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/01/31 18:27:30 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/02/01 16:27:04 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

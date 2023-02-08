@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_minus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 14:52:33 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/02/02 14:39:46 by chanwjeo         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:39:46 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

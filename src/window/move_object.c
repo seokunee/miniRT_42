@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_object.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 11:19:20 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/07 18:15:16 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/01/31 11:19:20 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/02/07 18:15:16 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

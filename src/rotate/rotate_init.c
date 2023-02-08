@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 14:47:05 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/07 13:28:59 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/02/06 14:47:05 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/02/07 13:28:59 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

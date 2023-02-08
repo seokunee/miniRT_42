@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 15:23:04 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/16 14:35:54 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/11 15:23:04 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/16 14:35:54 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

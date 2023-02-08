@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_camera.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 11:04:48 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/02 14:38:49 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/01/31 11:04:48 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/02/02 14:38:49 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

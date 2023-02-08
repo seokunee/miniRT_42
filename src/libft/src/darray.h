@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   darray.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/24 16:24:41 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/11 09:27:16 by chanwjeo         ###   ########.fr       */
+/*   Created: 2022/04/24 16:24:41 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/11 09:27:16 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

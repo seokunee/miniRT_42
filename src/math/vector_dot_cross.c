@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_dot_cross.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 15:14:35 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 16:29:23 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/11 15:14:35 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/20 16:29:23 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

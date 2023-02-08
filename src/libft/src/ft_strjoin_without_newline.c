@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin_without_newline.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 23:41:19 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/01/20 16:38:17 by sunhwang         ###   ########.fr       */
+/*   Created: 2022/11/20 23:41:19 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/20 16:38:17 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 19:14:00 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/25 14:15:47 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/16 19:14:00 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/25 14:15:47 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

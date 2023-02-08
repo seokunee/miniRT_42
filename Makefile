@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/15 21:26:09 by chanwjeo          #+#    #+#              #
-#    Updated: 2023/01/25 19:21:22 by sunhwang         ###   ########.fr        #
+#    Created: 2022/10/15 21:26:09 by seokchoi          #+#    #+#              #
+#    Updated: 2023/01/25 19:21:22 by seokchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

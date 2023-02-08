@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanwjeo <chanwjeo@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 09:48:40 by chanwjeo          #+#    #+#             */
-/*   Updated: 2023/02/01 12:07:48 by chanwjeo         ###   ########.fr       */
+/*   Created: 2023/01/11 09:48:40 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/02/01 12:07:48 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

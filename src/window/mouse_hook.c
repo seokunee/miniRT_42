@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 16:44:25 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/01/17 14:16:41 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/01/16 16:44:25 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/01/17 14:16:41 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

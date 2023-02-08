@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 13:59:02 by sunhwang          #+#    #+#             */
-/*   Updated: 2023/02/07 14:01:12 by sunhwang         ###   ########.fr       */
+/*   Created: 2023/02/07 13:59:02 by seokchoi          #+#    #+#             */
+/*   Updated: 2023/02/07 14:01:12 by seokchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
