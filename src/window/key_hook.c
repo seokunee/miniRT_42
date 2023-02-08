@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:27:30 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/02/01 16:27:04 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/02/09 08:57:05 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,8 @@ static void	binding_key_event_objs(int key, t_info *info)
 int	binding_key_events(int key, t_info *info)
 {
 	t_window	*win;
-	t_terminal	*term;
 
 	win = &(info->win);
-	term = &(info->win.terminal);
 	if (key == KEY_ESC)
 		exit_event(win);
 	binding_key_event_camera(key, info);
