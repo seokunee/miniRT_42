@@ -15,10 +15,6 @@
 #include "rt_math.h"
 #include "window.h"
 
-/// @brief ray가 sphere의 어디에서 부딪히는지 계산한 hit 구조체를 반환한다.
-/// @param ray
-/// @param sphere 구체에 대한 정보를 가진 구조체
-/// @return
 t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 {
 	const double	b = v_dot(ray.normal, \

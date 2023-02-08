@@ -12,11 +12,6 @@
 
 #include "structs.h"
 
-/// @brief
-/// @param d 광선의 시작부터 충돌 지점까지의 거리
-/// @param point 충돌한 위치
-/// @param normal 충돌한 위치에서 표면의 수직 벡터
-/// @return
 t_hit	get_hit(double d, t_vec3 point, t_vec3 normal)
 {
 	t_hit	hit;

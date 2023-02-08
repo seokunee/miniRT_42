@@ -15,13 +15,6 @@
 #include "window.h"
 #include "raytracer.h"
 
-/*
-* transform_screen_to_world (카메라 적용 버전)
-@ return : vec3(x, y, z)
-* x : x + camera.x
-* y : y + camera.y
-* z : Distance from camera to monitor
-*/
 static t_vec3	transform_screen_to_world(t_info *info, t_vec2 screen)
 {
 	const double	x_scale = screen.x - (info->win.width / 2);
@@ -88,11 +81,6 @@ static t_vec3	trace_ray(t_info *info, t_ray ray)
 	return (black_v3());
 }
 
-/// @brief 모니터에 그려질 2차원 (x, y) 좌표를 3차원으로 표현하기 위해서 모니터 비율에 맞춰서 3차원 벡터로 만들어줌.
-/// @param info 각종 정보를 가진 구조체
-/// @param x for문에서 넘겨받은 width의 x
-/// @param y for문에서 넘겨받은 height의 y
-/// @return
 int	calculate_pixel_color(t_info *info, int x, int y)
 {
 	t_vec3	pixel_pos_world;

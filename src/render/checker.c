@@ -50,10 +50,6 @@ void	checker(t_obj *sphere, const t_hit hit)
 	sphere->colors = uv_pattern_at(checkers, uv);
 }
 
-/// @brief object의 color를 texture color로 바꿀 수 있다..
-/// @param obj 바꾸고 싶은 object
-/// @param hit obj에 부딪힌 hit
-/// @return
 void	get_texture_color(t_obj *obj, const t_ray ray, t_hit *hit)
 {
 	const t_vec2	uv = spherical_map(hit->normal);

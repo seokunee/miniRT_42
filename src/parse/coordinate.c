@@ -29,11 +29,6 @@ t_vec3	get_arg_coor(char *s)
 	return (vec3(color[0], color[1], color[2]));
 }
 
-/*
-* 모든 coordinates를 체크 할 수 있음
-* vector가 3인지 체크
-* 숫자와 . 으로 이루어졌는지 체크
-*/
 void	check_coordinates(t_obj *obj, char *str)
 {
 	char	**coor;
