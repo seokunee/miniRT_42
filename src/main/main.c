@@ -14,7 +14,6 @@
 #include "error.h"
 #include "parse.h"
 #include "window.h"
-#include "thread.h"
 
 int	main(int ac, char **av)
 {

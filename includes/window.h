@@ -40,6 +40,7 @@
 # define KEY_N		45
 # define KEY_O		31
 
+void		start_drawing(t_info *info);
 void		init_window(t_window *win);
 void		binding_events(t_info *info);
 int			binding_key_events(int key, t_info *info);

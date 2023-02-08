@@ -13,7 +13,7 @@
 #include "info.h"
 #include "rt_math.h"
 #include "parse.h"
-#include "thread.h"
+#include "window.h"
 
 void	rotation_minus_light(t_info *rotate)
 {

@@ -13,7 +13,6 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# include <pthread.h>
 # include "libft.h"
 
 typedef struct s_vec2	t_vec2;
@@ -271,7 +270,6 @@ typedef struct s_drawer
 	int			width;
 	int			height;
 	int			size;
-	pthread_t	thread;
 	t_data		data;
 	t_info		*info;
 }	t_drawer;

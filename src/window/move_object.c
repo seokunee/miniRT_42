@@ -14,7 +14,6 @@
 #include "window.h"
 #include "structs.h"
 #include "info.h"
-#include "thread.h"
 #include "rt_math.h"
 
 void	select_obj_on_key_b(int key, t_info *info)

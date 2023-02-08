@@ -38,11 +38,19 @@ t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 	return (hit);
 }
 
-static t_vec2	plane_map(const t_vec3 hit)
+static t_vec2	plane_map(const t_vec3 hit, const t_vec3 normal)
 {
-	const double	u = hit.x - floor(hit.x);
-	const double	v = hit.z - floor(hit.z);
+	double	u;
+	double	v;
 
+	if (normal.y == 1)
+	{
+		u = hit.x - floor(hit.x);
+		v = hit.z - floor(hit.z);
+		return (vec2(u, v));
+	}
+	u = hit.x - floor(hit.x);
+	v = hit.y - floor(hit.y);
 	return (vec2(u, v));
 }
 
@@ -66,6 +74,7 @@ t_hit	check_ray_collision_plane(t_ray ray, t_obj *plane)
 	if (v_dot(ray.normal, hit.normal) >= 0)
 		hit.normal = v_mul_double(hit.normal, -1);
 	if (plane->texture.type == CHECK)
-		plane->colors = uv_pattern_at(vec2(4, 4), plane_map(hit.point));
+		plane->colors = uv_pattern_at(vec2(2, 2), \
+		plane_map(hit.point, hit.normal));
 	return (hit);
 }

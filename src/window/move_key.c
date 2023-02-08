@@ -13,7 +13,6 @@
 #include "window.h"
 #include "structs.h"
 #include "info.h"
-#include "thread.h"
 #include "rt_math.h"
 
 void	key_hook_light_off(t_window *win, t_info *info, t_l *light)

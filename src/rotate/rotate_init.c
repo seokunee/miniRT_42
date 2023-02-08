@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 14:47:05 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/02/07 13:28:59 by seokchoi         ###   ########.fr       */
+/*   Created: 2023/02/06 14:47:05 by sunhwang          #+#    #+#             */
+/*   Updated: 2023/02/07 13:28:59 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 #include "rt_math.h"
 #include "parse.h"
-#include "thread.h"
+#include "window.h"
 
 void	init_rotate_from_info_other(t_info *rotate, t_info *info)
 {

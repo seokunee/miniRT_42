@@ -13,7 +13,6 @@
 #include "window.h"
 #include "structs.h"
 #include "info.h"
-#include "thread.h"
 #include "parse.h"
 
 void	move_coordinate(t_vec3 *coor, int key)

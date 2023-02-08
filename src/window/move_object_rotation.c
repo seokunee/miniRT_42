@@ -13,7 +13,6 @@
 #include "window.h"
 #include "structs.h"
 #include "info.h"
-#include "thread.h"
 #include "rt_math.h"
 
 static void	move_object_rotation_dir(\

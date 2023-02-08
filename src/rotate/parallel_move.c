@@ -13,7 +13,7 @@
 #include "info.h"
 #include "rt_math.h"
 #include "parse.h"
-#include "thread.h"
+#include "window.h"
 
 void	init_rotate_objs(t_info *rotate, t_info *info)
 {
