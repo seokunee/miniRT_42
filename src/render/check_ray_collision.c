@@ -28,8 +28,12 @@ t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 	if (det >= 0.0)
 	{
 		hit.d = min_double((-b - sqrt(det)), (-b + sqrt(det)));
+		if (hit.d < 0)
+			hit.d = -b + sqrt(det);
 		hit.point = v_sum(ray.orig, v_mul_double(ray.normal, hit.d));
 		hit.normal = norm_3d_vec(v_minus(hit.point, sphere->coor));
+		if ((-b - sqrt(det)) < 0 && (-b + sqrt(det)) > 0)
+			hit.normal = v_mul_double(hit.normal, -1);
 		if (sphere->texture.type == CHECK)
 			checker(sphere, hit);
 		else if (sphere->texture.type == DIFFUSE)
