@@ -1,10 +1,15 @@
-42seoul miniRT
+# miniRT
+make our miniRT = mini Ray Tracing
+## Introduction
+Let's make basic shapes using ray tracing.
 
-파일 파싱 부분
-
--   6개의 식별자 들어오는지 확인 (순서 필요 없음)
--   식별자 중복 확인 -> 중복 가능 :pl, sp, cy -> 중복 불가 :A C L
--   , + 공백이면 오류 처리
--   식별자별로 필요한 인자 개수 확인하기
--   isspace로 split하기
--   오버플로우가 들어오는 경우는?
+## Run
+1. make
+```
+make
+```
+4. execute
+You can put the rt file in the rt folder as a program argument.
+```
+./miniRT rt/example.rt
+```
