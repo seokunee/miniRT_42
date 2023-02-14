@@ -18,8 +18,8 @@
 void	rotation_light(t_info *rotate, t_c cam)
 {
 	const t_vec3	dir_z = vec3(cam.normal.x, cam.normal.y, cam.normal.z);
-	const t_vec3	dir_x = v_cross(dir_z, vec3(0, 0, 1));
-	const t_vec3	dir_y = v_cross(dir_x, dir_z);
+	const t_vec3	dir_y = vunit(v_cross(dir_z, vec3(1, 0, 0)));
+	const t_vec3	dir_x = v_cross(dir_y, dir_z);
 	t_l				*rotate_light;
 
 	rotate_light = rotate->lights;
@@ -36,8 +36,8 @@ void	rotation_light(t_info *rotate, t_c cam)
 void	rotation_objs(t_info *rotate, t_c cam)
 {
 	const t_vec3	dir_z = vec3(cam.normal.x, cam.normal.y, cam.normal.z);
-	const t_vec3	dir_x = v_cross(dir_z, vec3(0, 0, 1));
-	const t_vec3	dir_y = v_cross(dir_x, dir_z);
+	const t_vec3	dir_y = vunit(v_cross(dir_z, vec3(1, 0, 0)));
+	const t_vec3	dir_x = v_cross(dir_y, dir_z);
 	t_list			*rotate_list;
 	t_obj			*rotate_obj;
 
