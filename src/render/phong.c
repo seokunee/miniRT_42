@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:01:17 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/02/07 13:49:10 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/02/22 21:36:29 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ const t_l *light, const t_vec3 light_dir)
 	t_color3		specular;
 	const t_vec3	reflect = v_minus(v_mul_double(v_mul_double(hit.normal, \
 	v_dot(hit.normal, light_dir)), 2), light_dir);
-	const t_vec3	view_dir = vunit(v_mul_double(ray_normal, -1));
+	const t_vec3	view_dir = vunit(v_change_minus(ray_normal));
 
 	spec = pow(fmax(v_dot(view_dir, reflect), 0.0), 8);
 	specular = v_mul_double(v_mul_double(light->colors, 1.0f), spec);
@@ -49,7 +49,7 @@ const t_hit closest_hit, const t_obj closest_obj)
 
 	hit_to_lig_len = v_len(v_minus(light->coor, closest_hit.point));
 	light_ray = get_ray(v_sum(closest_hit.point, \
-	v_mul_double(closest_hit.normal, 0.001)), light_dir);
+	v_mul_double(closest_hit.normal, 1e-4)), light_dir);
 	if (in_shadow(info->objs, light_ray, hit_to_lig_len))
 		return (black_v3());
 	kd = fmax(v_dot(closest_hit.normal, light_dir), 0.0);

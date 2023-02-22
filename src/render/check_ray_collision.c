@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ray_collision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kko <kko@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:54:17 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/02/04 17:18:08 by kko              ###   ########.fr       */
+/*   Updated: 2023/02/22 21:36:38 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_hit	check_ray_collision_sphere(t_ray ray, t_obj *sphere)
 		hit.point = v_sum(ray.orig, v_mul_double(ray.normal, hit.d));
 		hit.normal = norm_3d_vec(v_minus(hit.point, sphere->coor));
 		if ((-b - sqrt(det)) < 0 && (-b + sqrt(det)) > 0)
-			hit.normal = v_mul_double(hit.normal, -1);
+			hit.normal = v_change_minus(hit.normal);
 		if (sphere->texture.type == CHECK)
 			checker(sphere, hit);
 		else if (sphere->texture.type == DIFFUSE)
@@ -76,7 +76,7 @@ t_hit	check_ray_collision_plane(t_ray ray, t_obj *plane)
 	hit.point = ray_at(ray, root);
 	hit.normal = plane->normal;
 	if (v_dot(ray.normal, hit.normal) >= 0)
-		hit.normal = v_mul_double(hit.normal, -1);
+		hit.normal = v_change_minus(hit.normal);
 	if (plane->texture.type == CHECK)
 		plane->colors = uv_pattern_at(vec2(2, 2), \
 		plane_map(hit.point, hit.normal));

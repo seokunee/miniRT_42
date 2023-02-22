@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ray_collision_cylinder.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokchoi <seokchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunhwang <sunhwang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:16:53 by seokchoi          #+#    #+#             */
-/*   Updated: 2023/02/03 13:58:20 by seokchoi         ###   ########.fr       */
+/*   Updated: 2023/02/22 21:36:43 by sunhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	hit_cylinder_cap(t_ray ray, t_obj *cy, t_hit *hit, double hei)
 	if (0 < hei)
 		hit->normal = cy->normal;
 	else
-		hit->normal = v_mul_double(cy->normal, -1);
+		hit->normal = v_change_minus(cy->normal);
 	if (v_dot(ray.normal, hit->normal) >= 0)
-		hit->normal = v_mul_double(hit->normal, -1);
+		hit->normal = v_change_minus(hit->normal);
 }
 
 static bool	cy_boundary(t_obj *cy, t_vec3 at_point, t_cy_settings *set)
@@ -87,7 +87,7 @@ static void	hit_cylinder_side(t_ray ray, t_obj *cy, t_hit *hit)
 	hit->normal = vunit(v_minus(hit->point, \
 		v_sum(cy->coor, v_mul_double(cy->normal, cy_set.hit_height))));
 	if (v_dot(ray.normal, hit->normal) >= 0)
-		hit->normal = v_mul_double(hit->normal, -1);
+		hit->normal = v_change_minus(hit->normal);
 }
 
 t_hit	check_ray_collision_cylinder(t_ray ray, t_obj *cylinder)
